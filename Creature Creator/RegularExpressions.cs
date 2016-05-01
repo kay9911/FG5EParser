@@ -12,7 +12,7 @@ namespace Creature_Creator
 
         public string getCorrectedSpeed(string _speed)
         {
-            // Remove the extra charachters
+            // Remove the extra charachters will be added in later
             _speed = _speed.Replace(",", "").Replace(".","");
 
             if (Regex.IsMatch(_speed, @"\w*\s?\d+\s{1}ft"))

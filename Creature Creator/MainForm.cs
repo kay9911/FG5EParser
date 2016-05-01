@@ -42,6 +42,9 @@ namespace Creature_Creator
 		
 		// All okay flag
 		bool _isOkay = true;
+
+        // Class instance to use the regex features
+        RegularExpressions _regex;
 		
 		// Is Spellcaster?
 		bool _isSpellcaster = false;
@@ -104,7 +107,7 @@ namespace Creature_Creator
 				_build.Append(Environment.NewLine);
 				_build.Append("Innate Spellcasting.");
 				_build.Append(Environment.NewLine);
-				_build.Append(string.Format("The {2} spell casting ability is {0} (spell save DC {1}).",cmbInnateSpellCasting.SelectedItem,
+				_build.Append(string.Format("The {2}'s spell casting ability is {0} (spell save DC {1}). ",cmbInnateSpellCasting.SelectedItem,
 				                            !String.IsNullOrEmpty(txtInnateSaveDc.Text) ? txtInnateSaveDc.Text : "0",
 				                             txtName.Text));
 				
@@ -399,10 +402,34 @@ namespace Creature_Creator
 			}
 			else
 			{
-				_build.Append(Environment.NewLine);
-				_build.Append("Speed " + txtSpeed.Text.Trim());
-				_isOkay = true;
-			}
+                _build.Append(Environment.NewLine);
+
+                // Check and match for each type of movement
+                string _toAppend = string.Empty;
+
+                if (txtSpeed.Text.Contains("ft."))
+                {
+                    _regex = new RegularExpressions();
+
+                    string[] _speedtypes = txtSpeed.Text.Trim().Split('.');
+
+                    for (int i = 0; i < _speedtypes.Length; i++)
+                    {
+                        if (!String.IsNullOrWhiteSpace(_speedtypes[i]))
+                        {
+                            if (i == 0)
+                            {
+                                _toAppend += string.Format("{0}.", _regex.getCorrectedSpeed(_speedtypes[i]));
+                            }
+                            else
+                                _toAppend += string.Format(", {0}.", _regex.getCorrectedSpeed(_speedtypes[i].ToString()));
+                        }
+                    }
+                }
+
+                _build.Append("Speed " + _toAppend);
+                _isOkay = true;
+            }
 		}
 		
 		private void getStats()
@@ -811,6 +838,9 @@ namespace Creature_Creator
 			txtINT.Text = "10";
 			txtWIS.Text = "10";
 			txtCHR.Text = "10";
+
+            // Refresh the stats in the text area
+            doCompile();
 		}
 
 		#region Button actions		
