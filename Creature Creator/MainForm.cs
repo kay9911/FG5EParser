@@ -701,18 +701,16 @@ namespace Creature_Creator
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(_save))
-            {
-                OpenFileDialog choofdlog = new OpenFileDialog();
-                choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = true;
+            // Process for opening and choosing where the info gets saved too
 
-                if (choofdlog.ShowDialog() == DialogResult.OK)
-                {
-                    _save = choofdlog.FileName;
-                    //string[] arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
-                }
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = true;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                _save = choofdlog.FileName;           
             }
         }
 
