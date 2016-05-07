@@ -36,8 +36,11 @@ namespace Creature_Creator
 		
 		StringBuilder _buildActions = new StringBuilder();
 		List<KeyValuePair<string,string>> _action = new List<KeyValuePair<string, string>>();
-		
-		StringBuilder _buildLegends = new StringBuilder();
+
+        StringBuilder _buildReactions = new StringBuilder();
+        List<KeyValuePair<string, string>> _reaction = new List<KeyValuePair<string, string>>();
+
+        StringBuilder _buildLegends = new StringBuilder();
 		List<KeyValuePair<string,string>> _legend = new List<KeyValuePair<string, string>>();
 		
 		// All okay flag
@@ -85,6 +88,9 @@ namespace Creature_Creator
 			
 			// Get Actions
 			_build.Append(_buildActions.ToString());
+
+            // Get Reactions
+            _build.Append(_buildReactions.ToString());
 			
 			// Get Legendary Actions
 			_build.Append(_buildLegends.ToString());
@@ -1113,8 +1119,53 @@ namespace Creature_Creator
 			doCompile();
 		}
 
+
         #endregion
 
+        private void btnAddReaction_Click(object sender, EventArgs e)
+        {            
+            if (!string.IsNullOrEmpty(txtREACTIONS.Text))
+            {
+                if (txtREACTIONS.Text.Contains("."))
+                {
+                    // Clear the builder
+                    _buildReactions.Clear();
+                    _buildReactions.Append(Environment.NewLine);
+                    _buildReactions.Append("REACTIONS");
 
+                    // Clear the line breaks
+                    string _clearLines = txtREACTIONS.Text.Trim().Replace(Environment.NewLine, "");
+
+                    // Split the string
+                    string[] _arr = _clearLines.Split('.');
+
+                    string _val = _returnString(_arr);
+
+                    // Insert into the keyvalue pair list
+                    _reaction.Add(new KeyValuePair<string, string>(string.Format("{0}.", _arr[0].ToString()), _val));
+                    txtREACTIONS.Text = string.Empty;
+
+                    foreach (KeyValuePair<string, string> pair in _reaction)
+                    {
+                        string _format = string.Format("{0}{1}", pair.Key.ToString(), pair.Value.ToString());
+                        _buildReactions.Append(Environment.NewLine);
+                        _buildReactions.Append(_format);
+                    }
+
+                    doCompile();
+                }
+                else
+                {
+                    MessageBox.Show("Please make sure REACTIONS are in this format : <Reaction>. <Description>");
+                }
+            }
+        }
+
+        private void btnRefreshReaction_Click(object sender, EventArgs e)
+        {
+            _buildReactions.Clear();
+            _reaction.Clear();
+            doCompile();
+        }
     }
 }

@@ -268,6 +268,10 @@ namespace Creature_Creator
             this.btnAddtoList = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.txtREACTIONS = new System.Windows.Forms.TextBox();
+            this.btnRefreshReaction = new System.Windows.Forms.Button();
+            this.btnAddReaction = new System.Windows.Forms.Button();
+            this.label45 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -286,7 +290,7 @@ namespace Creature_Creator
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(517, 411);
+            this.tabControl1.Size = new System.Drawing.Size(517, 461);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -635,28 +639,28 @@ namespace Creature_Creator
             // 
             // txtCONIMM
             // 
-            this.txtCONIMM.Location = new System.Drawing.Point(141, 98);
+            this.txtCONIMM.Location = new System.Drawing.Point(141, 260);
             this.txtCONIMM.Multiline = true;
             this.txtCONIMM.Name = "txtCONIMM";
-            this.txtCONIMM.Size = new System.Drawing.Size(362, 20);
+            this.txtCONIMM.Size = new System.Drawing.Size(362, 75);
             this.txtCONIMM.TabIndex = 7;
             this.txtCONIMM.TextChanged += new System.EventHandler(this.TxtCONIMMTextChanged);
             // 
             // txtDMGIMM
             // 
-            this.txtDMGIMM.Location = new System.Drawing.Point(141, 71);
+            this.txtDMGIMM.Location = new System.Drawing.Point(141, 179);
             this.txtDMGIMM.Multiline = true;
             this.txtDMGIMM.Name = "txtDMGIMM";
-            this.txtDMGIMM.Size = new System.Drawing.Size(362, 20);
+            this.txtDMGIMM.Size = new System.Drawing.Size(362, 75);
             this.txtDMGIMM.TabIndex = 6;
             this.txtDMGIMM.TextChanged += new System.EventHandler(this.TxtDMGIMMTextChanged);
             // 
             // txtDMGRES
             // 
-            this.txtDMGRES.Location = new System.Drawing.Point(141, 44);
+            this.txtDMGRES.Location = new System.Drawing.Point(141, 98);
             this.txtDMGRES.Multiline = true;
             this.txtDMGRES.Name = "txtDMGRES";
-            this.txtDMGRES.Size = new System.Drawing.Size(362, 20);
+            this.txtDMGRES.Size = new System.Drawing.Size(362, 75);
             this.txtDMGRES.TabIndex = 5;
             this.txtDMGRES.TextChanged += new System.EventHandler(this.TxtDMGRESTextChanged);
             // 
@@ -665,13 +669,13 @@ namespace Creature_Creator
             this.txtDMGVUL.Location = new System.Drawing.Point(141, 17);
             this.txtDMGVUL.Multiline = true;
             this.txtDMGVUL.Name = "txtDMGVUL";
-            this.txtDMGVUL.Size = new System.Drawing.Size(362, 20);
+            this.txtDMGVUL.Size = new System.Drawing.Size(362, 75);
             this.txtDMGVUL.TabIndex = 4;
             this.txtDMGVUL.TextChanged += new System.EventHandler(this.TxtDMGVULTextChanged);
             // 
             // label30
             // 
-            this.label30.Location = new System.Drawing.Point(3, 98);
+            this.label30.Location = new System.Drawing.Point(6, 258);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(131, 23);
             this.label30.TabIndex = 3;
@@ -680,7 +684,7 @@ namespace Creature_Creator
             // 
             // label29
             // 
-            this.label29.Location = new System.Drawing.Point(3, 71);
+            this.label29.Location = new System.Drawing.Point(6, 177);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(131, 23);
             this.label29.TabIndex = 2;
@@ -689,7 +693,7 @@ namespace Creature_Creator
             // 
             // label28
             // 
-            this.label28.Location = new System.Drawing.Point(3, 44);
+            this.label28.Location = new System.Drawing.Point(3, 96);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(131, 23);
             this.label28.TabIndex = 1;
@@ -698,7 +702,7 @@ namespace Creature_Creator
             // 
             // label27
             // 
-            this.label27.Location = new System.Drawing.Point(3, 17);
+            this.label27.Location = new System.Drawing.Point(6, 15);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(131, 23);
             this.label27.TabIndex = 0;
@@ -707,6 +711,10 @@ namespace Creature_Creator
             // 
             // Actions
             // 
+            this.Actions.Controls.Add(this.label45);
+            this.Actions.Controls.Add(this.btnRefreshReaction);
+            this.Actions.Controls.Add(this.btnAddReaction);
+            this.Actions.Controls.Add(this.txtREACTIONS);
             this.Actions.Controls.Add(this.txtRefreshLegends);
             this.Actions.Controls.Add(this.btnActionsRefresh);
             this.Actions.Controls.Add(this.btnAbilityCheck);
@@ -722,7 +730,7 @@ namespace Creature_Creator
             this.Actions.Location = new System.Drawing.Point(4, 22);
             this.Actions.Name = "Actions";
             this.Actions.Padding = new System.Windows.Forms.Padding(3);
-            this.Actions.Size = new System.Drawing.Size(509, 385);
+            this.Actions.Size = new System.Drawing.Size(509, 435);
             this.Actions.TabIndex = 4;
             this.Actions.Text = "Actions";
             this.Actions.UseVisualStyleBackColor = true;
@@ -1404,7 +1412,7 @@ namespace Creature_Creator
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(531, 34);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(381, 389);
+            this.richTextBox1.Size = new System.Drawing.Size(381, 439);
             this.richTextBox1.TabIndex = 88;
             this.richTextBox1.Text = "";
             // 
@@ -1418,11 +1426,48 @@ namespace Creature_Creator
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // txtREACTIONS
+            // 
+            this.txtREACTIONS.Location = new System.Drawing.Point(88, 338);
+            this.txtREACTIONS.Multiline = true;
+            this.txtREACTIONS.Name = "txtREACTIONS";
+            this.txtREACTIONS.Size = new System.Drawing.Size(413, 66);
+            this.txtREACTIONS.TabIndex = 105;
+            // 
+            // btnRefreshReaction
+            // 
+            this.btnRefreshReaction.Location = new System.Drawing.Point(170, 410);
+            this.btnRefreshReaction.Name = "btnRefreshReaction";
+            this.btnRefreshReaction.Size = new System.Drawing.Size(83, 23);
+            this.btnRefreshReaction.TabIndex = 107;
+            this.btnRefreshReaction.Text = "Refresh";
+            this.btnRefreshReaction.UseVisualStyleBackColor = true;
+            this.btnRefreshReaction.Click += new System.EventHandler(this.btnRefreshReaction_Click);
+            // 
+            // btnAddReaction
+            // 
+            this.btnAddReaction.Location = new System.Drawing.Point(88, 410);
+            this.btnAddReaction.Name = "btnAddReaction";
+            this.btnAddReaction.Size = new System.Drawing.Size(75, 23);
+            this.btnAddReaction.TabIndex = 106;
+            this.btnAddReaction.Text = "ADD";
+            this.btnAddReaction.UseVisualStyleBackColor = true;
+            this.btnAddReaction.Click += new System.EventHandler(this.btnAddReaction_Click);
+            // 
+            // label45
+            // 
+            this.label45.Location = new System.Drawing.Point(7, 338);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(75, 23);
+            this.label45.TabIndex = 108;
+            this.label45.Text = "REACTIONS";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 428);
+            this.ClientSize = new System.Drawing.Size(916, 476);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.richTextBox1);
@@ -1445,5 +1490,9 @@ namespace Creature_Creator
 		}
 
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Button btnRefreshReaction;
+        private System.Windows.Forms.Button btnAddReaction;
+        private System.Windows.Forms.TextBox txtREACTIONS;
     }
 }
