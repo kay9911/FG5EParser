@@ -776,6 +776,7 @@ namespace Creature_Creator
 			_buildabilities.Clear();
 			_buildActions.Clear();
 			_buildLegends.Clear();
+            _buildReactions.Clear();
 			
 			// Clear lists
 			_ability.Clear();
