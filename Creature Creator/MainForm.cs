@@ -119,7 +119,7 @@ namespace Creature_Creator
 				
 				if(!String.IsNullOrEmpty(txtAbilityText.Text))
 				{
-					_build.Append(string.Format("{0}",txtAbilityText.Text));
+					_build.Append(string.Format("\\r{0}",txtAbilityText.Text));
 				}
 								
 				if(!string.IsNullOrEmpty(txtatwill.Text))
