@@ -1170,14 +1170,30 @@ namespace Creature_Creator
 
         private void btnParse_Click(object sender, EventArgs e)
         {
-            Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader _rw = new Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader();
+            Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader _tr = new Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader();
+
             try
             {
-                _rw.ProcesNPCXML(txtInput.Text, txtModuleName.Text, txtCatName.Text, txtImagePath.Text, chkUseInstalled.Checked, txtOutput.Text, txtAuthorName.Text, chkDmOnly.Checked);
+                if (!string.IsNullOrEmpty(txtInput.Text))
+                {
+                    if (!string.IsNullOrEmpty(txtOutput.Text) || chkUseInstalled.Checked == true)
+                    {
+                        _tr.ProcesNPCXML(txtInput.Text, txtModuleName.Text, txtCatName.Text, txtImagePath.Text, chkUseInstalled.Checked, txtOutput.Text, txtAuthorName.Text, chkDmOnly.Checked);
+                        MessageBox.Show("Parsing done!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("An output path is mandatory, please select a path for the parsed modules to go to or else check the \"Use Installed Path\" checkbox to have them directly delivered to your modules folder");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("An input path is mandatory, please select the file that you would like to run through the parser.");
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Something went wrong!! :o");
+                MessageBox.Show("Something went wrong :c " + ex.Message);
             }
         }
 
@@ -1213,8 +1229,7 @@ namespace Creature_Creator
                 btnOutput.Enabled = false;
             }
             else
-            {
-                txtOutput.Enabled = true;
+            {                
                 btnOutput.Enabled = true;
             }
         }

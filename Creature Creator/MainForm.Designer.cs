@@ -270,6 +270,7 @@ namespace Creature_Creator
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.chkDmOnly = new System.Windows.Forms.CheckBox();
             this.btnImage = new System.Windows.Forms.Button();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
@@ -287,7 +288,6 @@ namespace Creature_Creator
             this.btnAddtoList = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.chkDmOnly = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1477,6 +1477,16 @@ namespace Creature_Creator
             this.tabPage5.Text = "Parser";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // chkDmOnly
+            // 
+            this.chkDmOnly.AutoSize = true;
+            this.chkDmOnly.Location = new System.Drawing.Point(114, 196);
+            this.chkDmOnly.Name = "chkDmOnly";
+            this.chkDmOnly.Size = new System.Drawing.Size(100, 17);
+            this.chkDmOnly.TabIndex = 52;
+            this.chkDmOnly.Text = "DM\'s eyes only!";
+            this.chkDmOnly.UseVisualStyleBackColor = true;
+            // 
             // btnImage
             // 
             this.btnImage.Location = new System.Drawing.Point(33, 269);
@@ -1536,6 +1546,7 @@ namespace Creature_Creator
             // 
             // txtImagePath
             // 
+            this.txtImagePath.Enabled = false;
             this.txtImagePath.Location = new System.Drawing.Point(114, 271);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.Size = new System.Drawing.Size(352, 20);
@@ -1564,6 +1575,7 @@ namespace Creature_Creator
             // 
             // txtOutput
             // 
+            this.txtOutput.Enabled = false;
             this.txtOutput.Location = new System.Drawing.Point(114, 120);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(352, 20);
@@ -1571,6 +1583,7 @@ namespace Creature_Creator
             // 
             // txtInput
             // 
+            this.txtInput.Enabled = false;
             this.txtInput.Location = new System.Drawing.Point(114, 91);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(352, 20);
@@ -1625,16 +1638,6 @@ namespace Creature_Creator
             this.btnSave.Text = "Save To Path";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // chkDmOnly
-            // 
-            this.chkDmOnly.AutoSize = true;
-            this.chkDmOnly.Location = new System.Drawing.Point(114, 196);
-            this.chkDmOnly.Name = "chkDmOnly";
-            this.chkDmOnly.Size = new System.Drawing.Size(100, 17);
-            this.chkDmOnly.TabIndex = 52;
-            this.chkDmOnly.Text = "DM\'s eyes only!";
-            this.chkDmOnly.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
