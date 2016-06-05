@@ -14,48 +14,64 @@ namespace Fantasy_Grounds_Parser_Tool.Zipper
             string zipPath = string.Empty;
             string tempPath = string.Empty;
 
-            if (_useInstalledPath)
+            try
             {
-                zipPath = GetRegistryPath();
-            }
-
-            if (string.IsNullOrEmpty(zipPath))
-            {
-                if (!string.IsNullOrEmpty(_destinationPath))
+                if (_useInstalledPath)
                 {
-                    zipPath = _destinationPath;
+                    zipPath = GetRegistryPath();
+                }
+
+                if (string.IsNullOrEmpty(zipPath))
+                {
+                    if (!string.IsNullOrEmpty(_destinationPath))
+                    {
+                        zipPath = _destinationPath;
+                    }
+                    else
+                        zipPath = Environment.CurrentDirectory;
+                }
+
+                // Create a temporary dir
+                tempPath = GetTempDirectory();
+
+                // Store the XML's in there
+                if (_isDMOnly)
+                {
+                    _one.Save(tempPath + "\\db.xml");
                 }
                 else
-                    zipPath = Environment.CurrentDirectory; 
+                    _one.Save(tempPath + "\\common.xml");
+
+                _two.Save(tempPath + "\\definition.xml");
+
+                // Store the image if present
+                if (!string.IsNullOrEmpty(_imagePath))
+                {
+                    File.Copy(_imagePath, tempPath + "\\" + Path.GetFileName(@"C:\BaseCode\Fantasy Grounds Parser\Fantasy Grounds Parser Tool\Fantasy Grounds Parser Tool\bin\Debug\thumbnail.png"));
+                }
+                // Zip them up
+                ZipFile.CreateFromDirectory(tempPath, string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
+
+                // Copy the end result to the modules file
+                File.Copy(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName), string.Format("{0}\\{1}", zipPath, Path.GetFileName(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName))), true);
+
+                // Clean up
+                Directory.Delete(tempPath, true);
+                File.Delete(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
             }
-
-            // Create a temporary dir
-            tempPath = GetTempDirectory();
-
-            // Store the XML's in there
-            if (_isDMOnly)
+            catch (Exception ex)
             {
-                _one.Save(tempPath + "\\db.xml");
+                // Do clean up in case of exception
+                if (Directory.Exists(tempPath))
+                {
+                    Directory.Delete(tempPath, true);
+                }
+                if (File.Exists(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName)))
+                {
+                    File.Delete(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
+                }
+                throw ex;
             }
-            else
-                _one.Save(tempPath + "\\common.xml");
-
-            _two.Save(tempPath + "\\definition.xml");
-
-            // Store the image if present
-            if (!string.IsNullOrEmpty(_imagePath))
-            {
-                File.Copy(_imagePath, tempPath + "\\" + Path.GetFileName(@"C:\BaseCode\Fantasy Grounds Parser\Fantasy Grounds Parser Tool\Fantasy Grounds Parser Tool\bin\Debug\thumbnail.png"));
-            }
-            // Zip them up
-            ZipFile.CreateFromDirectory(tempPath, string.Format("{0}\\{1}.mod",Environment.CurrentDirectory,_modName));
-
-            // Copy the end result to the modules file
-            File.Copy(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName), string.Format("{0}\\{1}", zipPath, Path.GetFileName(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName))), true);
-            
-            // Clean up
-            Directory.Delete(tempPath, true);
-            File.Delete(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
         }
 
         private string GetTempDirectory()

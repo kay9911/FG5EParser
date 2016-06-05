@@ -27,63 +27,67 @@ namespace Fantasy_Grounds_Parser_Tool.Text_Reader
             List<Personalities> NPCS = new List<Personalities>();
 
             //BEGIN
-
-            #region Process Lines
-            foreach (var _line in _lines)
-            {                
-                if (!String.IsNullOrWhiteSpace(_line))
+            try
+            {
+                #region Process Lines
+                foreach (var _line in _lines)
                 {
-                    _basic.Add(_line);
+                    if (!String.IsNullOrWhiteSpace(_line))
+                    {
+                        _basic.Add(_line);
+                    }
+                    else
+                    {
+                        // Send for processing
+                        Personalities _personalities = new Personalities();
+                        if (_basic.Count != 0)
+                        {
+                            _personalities = _personalities.BindValues(_basic);
+                            NPCS.Add(_personalities);
+                        }
+                        _basic.Clear();
+                    }
                 }
-                else
+
+                // If there is just one entry or the last entry
+                if (!string.IsNullOrEmpty(_basic.ToString()))
                 {
-                    // Send for processing
                     Personalities _personalities = new Personalities();
                     if (_basic.Count != 0)
                     {
                         _personalities = _personalities.BindValues(_basic);
                         NPCS.Add(_personalities);
                     }
-                    _basic.Clear();                    
-                }                
-            }
-
-            // If there is just one entry or the last entry
-            if(!string.IsNullOrEmpty(_basic.ToString()))
-            {
-                Personalities _personalities = new Personalities();
-                if (_basic.Count != 0)
-                {
-                    _personalities = _personalities.BindValues(_basic);
-                    NPCS.Add(_personalities);
+                    _basic.Clear();
                 }
-                _basic.Clear();
-            }
-            #endregion
+                #endregion
 
-            // Get the Xdoc's
-            XMLWriter.XMLWriter _xmlWriter = new XMLWriter.XMLWriter();
-            if (string.IsNullOrEmpty(_catalogueName))
-            {
-                _catalogueName = "Core Books";
-            }
-            if (string.IsNullOrEmpty(_moduleName))
-            {
-                _moduleName = "ABC Module";
-            }
-            XDocument commonXML = _xmlWriter.prepareCommonXML(NPCS,_moduleName,_catalogueName);
-            if (string.IsNullOrEmpty(_authorName))
-            {
-                _authorName = "SomeOneCreatedMe";
-            }
-            XDocument definationXML = _xmlWriter.prepareDefinationXML(_moduleName,_authorName);
+                // Get the Xdoc's
+                XMLWriter.XMLWriter _xmlWriter = new XMLWriter.XMLWriter();
+                if (string.IsNullOrEmpty(_catalogueName))
+                {
+                    _catalogueName = "Core Books";
+                }
+                if (string.IsNullOrEmpty(_moduleName))
+                {
+                    _moduleName = "ABC Module";
+                }
+                XDocument commonXML = _xmlWriter.prepareCommonXML(NPCS, _moduleName, _catalogueName);
+                if (string.IsNullOrEmpty(_authorName))
+                {
+                    _authorName = "SomeOneCreatedMe";
+                }
+                XDocument definationXML = _xmlWriter.prepareDefinationXML(_moduleName, _authorName);
 
-            // Zip files and deploy
-            ZipClass _zip = new ZipClass();
-            // Check for text values and if missing set to defaults
-            _zip.ZipFiles(commonXML, definationXML, _moduleName, _destinationPath, _imagePath, _useInstalledPath, _isDMOnly);
-
-            // END
+                // Zip files and deploy
+                ZipClass _zip = new ZipClass();
+                _zip.ZipFiles(commonXML, definationXML, _moduleName, _destinationPath, _imagePath, _useInstalledPath, _isDMOnly);
+                //END
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }
