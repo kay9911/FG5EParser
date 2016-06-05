@@ -19,7 +19,7 @@ namespace Fantasy_Grounds_Parser_Tool.Text_Reader
         /// <param name="_destinationPath">Use given settings instead of registry settings</param>
         /// <param name="_authorName">The authors Name</param>
         /// <param name="_isDMOnly">Is this module for the DM only? True = Yes, False = No</param>
-        public void ProcesNPCXML(string _inputLocation, string _moduleName, string _catalogueName = "Core Books", string _imagePath = "", bool _useInstalledPath = false, string _destinationPath = "", string _authorName = "SomeoneCreatedMe", bool _isDMOnly = false)
+        public void ProcesNPCXML(string _inputLocation, string _moduleName, string _catalogueName, string _imagePath, bool _useInstalledPath, string _destinationPath, string _authorName, bool _isDMOnly)
         {
             var _lines = File.ReadLines(_inputLocation);
 
@@ -63,16 +63,24 @@ namespace Fantasy_Grounds_Parser_Tool.Text_Reader
 
             // Get the Xdoc's
             XMLWriter.XMLWriter _xmlWriter = new XMLWriter.XMLWriter();
+            if (string.IsNullOrEmpty(_catalogueName))
+            {
+                _catalogueName = "Core Books";
+            }
+            if (string.IsNullOrEmpty(_moduleName))
+            {
+                _moduleName = "ABC Module";
+            }
             XDocument commonXML = _xmlWriter.prepareCommonXML(NPCS,_moduleName,_catalogueName);
+            if (string.IsNullOrEmpty(_authorName))
+            {
+                _authorName = "SomeOneCreatedMe";
+            }
             XDocument definationXML = _xmlWriter.prepareDefinationXML(_moduleName,_authorName);
 
             // Zip files and deploy
             ZipClass _zip = new ZipClass();
             // Check for text values and if missing set to defaults
-            if (string.IsNullOrEmpty(_moduleName))
-            {
-                _moduleName = "ABC Module";
-            }
             _zip.ZipFiles(commonXML, definationXML, _moduleName, _destinationPath, _imagePath, _useInstalledPath, _isDMOnly);
 
             // END

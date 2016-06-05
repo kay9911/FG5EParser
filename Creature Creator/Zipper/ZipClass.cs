@@ -51,7 +51,7 @@ namespace Fantasy_Grounds_Parser_Tool.Zipper
             ZipFile.CreateFromDirectory(tempPath, string.Format("{0}\\{1}.mod",Environment.CurrentDirectory,_modName));
 
             // Copy the end result to the modules file
-            File.Copy(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName), string.Format("{0}\\modules\\{1}", zipPath, Path.GetFileName(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName))), true);
+            File.Copy(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName), string.Format("{0}\\{1}", zipPath, Path.GetFileName(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName))), true);
             
             // Clean up
             Directory.Delete(tempPath, true);
@@ -78,7 +78,7 @@ namespace Fantasy_Grounds_Parser_Tool.Zipper
 
             if (key != null)
             {
-                _dataFolder = key.GetValue("DataDir").ToString();
+                _dataFolder = string.Format("{0}\\modules",key.GetValue("DataDir").ToString());
                 return _dataFolder;
             }
             return null;
