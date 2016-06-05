@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using System.Text;
 using System.IO;
@@ -28,9 +27,9 @@ namespace Creature_Creator
 			BindSpellSlots();
 			doCompile();
 		}
-		
-		// String Builders	
-		StringBuilder _build = new StringBuilder();
+
+        // String Builders	
+        StringBuilder _build = new StringBuilder();
 		StringBuilder _buildabilities = new StringBuilder();
 		List<KeyValuePair<string,string>> _ability = new List<KeyValuePair<string, string>>();
 		
@@ -1167,6 +1166,70 @@ namespace Creature_Creator
             _buildReactions.Clear();
             _reaction.Clear();
             doCompile();
+        }
+
+        private void btnParse_Click(object sender, EventArgs e)
+        {
+            Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader _rw = new Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader();
+            try
+            {
+                _rw.ProcesNPCXML(txtInput.Text, txtModuleName.Text, txtCatName.Text, txtImagePath.Text, chkUseInstalled.Checked, txtOutput.Text, txtAuthorName.Text, chkDmOnly.Checked);
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong!! :o");
+            }
+        }
+
+        private void btnInput_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtInput.Text = Path.GetFullPath(choofdlog.FileName);
+            }
+        }
+
+        private void btnOutput_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();          
+
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txtOutput.Text = fbd.SelectedPath;
+            }
+        }
+
+        private void chkUseInstalled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkUseInstalled.Checked)
+            {
+                txtOutput.Text = string.Empty;
+                txtOutput.Enabled = false;
+                btnOutput.Enabled = false;
+            }
+            else
+            {
+                txtOutput.Enabled = true;
+                btnOutput.Enabled = true;
+            }
+        }
+
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtImagePath.Text = Path.GetFullPath(choofdlog.FileName);
+            }
         }
     }
 }

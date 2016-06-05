@@ -196,6 +196,10 @@ namespace Creature_Creator
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.Actions = new System.Windows.Forms.TabPage();
+            this.label45 = new System.Windows.Forms.Label();
+            this.btnRefreshReaction = new System.Windows.Forms.Button();
+            this.btnAddReaction = new System.Windows.Forms.Button();
+            this.txtREACTIONS = new System.Windows.Forms.TextBox();
             this.txtRefreshLegends = new System.Windows.Forms.Button();
             this.btnActionsRefresh = new System.Windows.Forms.Button();
             this.btnAbilityCheck = new System.Windows.Forms.Button();
@@ -265,19 +269,32 @@ namespace Creature_Creator
             this.txtCantrips = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnImage = new System.Windows.Forms.Button();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.btnOutput = new System.Windows.Forms.Button();
+            this.btnInput = new System.Windows.Forms.Button();
+            this.txtImagePath = new System.Windows.Forms.TextBox();
+            this.txtAuthorName = new System.Windows.Forms.TextBox();
+            this.txtCatName = new System.Windows.Forms.TextBox();
+            this.txtModuleName = new System.Windows.Forms.TextBox();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.txtInput = new System.Windows.Forms.TextBox();
+            this.chkUseInstalled = new System.Windows.Forms.CheckBox();
+            this.btnParse = new System.Windows.Forms.Button();
             this.btnAddtoList = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtREACTIONS = new System.Windows.Forms.TextBox();
-            this.btnRefreshReaction = new System.Windows.Forms.Button();
-            this.btnAddReaction = new System.Windows.Forms.Button();
-            this.label45 = new System.Windows.Forms.Label();
+            this.chkDmOnly = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.Actions.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -287,6 +304,7 @@ namespace Creature_Creator
             this.tabControl1.Controls.Add(this.Actions);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -330,7 +348,7 @@ namespace Creature_Creator
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(509, 385);
+            this.tabPage1.Size = new System.Drawing.Size(509, 435);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Creature Basics";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -632,7 +650,7 @@ namespace Creature_Creator
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(509, 385);
+            this.tabPage2.Size = new System.Drawing.Size(509, 435);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Vulnaribilities/Resistances";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -734,6 +752,43 @@ namespace Creature_Creator
             this.Actions.TabIndex = 4;
             this.Actions.Text = "Actions";
             this.Actions.UseVisualStyleBackColor = true;
+            // 
+            // label45
+            // 
+            this.label45.Location = new System.Drawing.Point(7, 338);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(75, 23);
+            this.label45.TabIndex = 108;
+            this.label45.Text = "REACTIONS";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnRefreshReaction
+            // 
+            this.btnRefreshReaction.Location = new System.Drawing.Point(170, 410);
+            this.btnRefreshReaction.Name = "btnRefreshReaction";
+            this.btnRefreshReaction.Size = new System.Drawing.Size(83, 23);
+            this.btnRefreshReaction.TabIndex = 107;
+            this.btnRefreshReaction.Text = "Refresh";
+            this.btnRefreshReaction.UseVisualStyleBackColor = true;
+            this.btnRefreshReaction.Click += new System.EventHandler(this.btnRefreshReaction_Click);
+            // 
+            // btnAddReaction
+            // 
+            this.btnAddReaction.Location = new System.Drawing.Point(88, 410);
+            this.btnAddReaction.Name = "btnAddReaction";
+            this.btnAddReaction.Size = new System.Drawing.Size(75, 23);
+            this.btnAddReaction.TabIndex = 106;
+            this.btnAddReaction.Text = "ADD";
+            this.btnAddReaction.UseVisualStyleBackColor = true;
+            this.btnAddReaction.Click += new System.EventHandler(this.btnAddReaction_Click);
+            // 
+            // txtREACTIONS
+            // 
+            this.txtREACTIONS.Location = new System.Drawing.Point(88, 338);
+            this.txtREACTIONS.Multiline = true;
+            this.txtREACTIONS.Name = "txtREACTIONS";
+            this.txtREACTIONS.Size = new System.Drawing.Size(413, 66);
+            this.txtREACTIONS.TabIndex = 105;
             // 
             // txtRefreshLegends
             // 
@@ -869,7 +924,7 @@ namespace Creature_Creator
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(509, 385);
+            this.tabPage3.Size = new System.Drawing.Size(509, 435);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Innate Spellcasting";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1071,7 +1126,7 @@ namespace Creature_Creator
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(509, 385);
+            this.tabPage4.Size = new System.Drawing.Size(509, 435);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Spellcasting";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1397,6 +1452,151 @@ namespace Creature_Creator
             this.label37.Text = "Ability Flavor Text";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.chkDmOnly);
+            this.tabPage5.Controls.Add(this.btnImage);
+            this.tabPage5.Controls.Add(this.label50);
+            this.tabPage5.Controls.Add(this.label49);
+            this.tabPage5.Controls.Add(this.label48);
+            this.tabPage5.Controls.Add(this.btnOutput);
+            this.tabPage5.Controls.Add(this.btnInput);
+            this.tabPage5.Controls.Add(this.txtImagePath);
+            this.tabPage5.Controls.Add(this.txtAuthorName);
+            this.tabPage5.Controls.Add(this.txtCatName);
+            this.tabPage5.Controls.Add(this.txtModuleName);
+            this.tabPage5.Controls.Add(this.txtOutput);
+            this.tabPage5.Controls.Add(this.txtInput);
+            this.tabPage5.Controls.Add(this.chkUseInstalled);
+            this.tabPage5.Controls.Add(this.btnParse);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(509, 435);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Parser";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnImage
+            // 
+            this.btnImage.Location = new System.Drawing.Point(33, 269);
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(75, 23);
+            this.btnImage.TabIndex = 51;
+            this.btnImage.Text = "IMAGE";
+            this.btnImage.UseVisualStyleBackColor = true;
+            this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
+            // 
+            // label50
+            // 
+            this.label50.Location = new System.Drawing.Point(21, 243);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(87, 23);
+            this.label50.TabIndex = 50;
+            this.label50.Text = "Author Name";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label49
+            // 
+            this.label49.Location = new System.Drawing.Point(21, 217);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(87, 23);
+            this.label49.TabIndex = 49;
+            this.label49.Text = "Catalogue Name";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label48
+            // 
+            this.label48.Location = new System.Drawing.Point(21, 167);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(87, 23);
+            this.label48.TabIndex = 48;
+            this.label48.Text = "Module Name";
+            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnOutput
+            // 
+            this.btnOutput.Location = new System.Drawing.Point(33, 118);
+            this.btnOutput.Name = "btnOutput";
+            this.btnOutput.Size = new System.Drawing.Size(75, 23);
+            this.btnOutput.TabIndex = 15;
+            this.btnOutput.Text = "OUTPUT";
+            this.btnOutput.UseVisualStyleBackColor = true;
+            this.btnOutput.Click += new System.EventHandler(this.btnOutput_Click);
+            // 
+            // btnInput
+            // 
+            this.btnInput.Location = new System.Drawing.Point(33, 89);
+            this.btnInput.Name = "btnInput";
+            this.btnInput.Size = new System.Drawing.Size(75, 23);
+            this.btnInput.TabIndex = 14;
+            this.btnInput.Text = "INPUT";
+            this.btnInput.UseVisualStyleBackColor = true;
+            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
+            // 
+            // txtImagePath
+            // 
+            this.txtImagePath.Location = new System.Drawing.Point(114, 271);
+            this.txtImagePath.Name = "txtImagePath";
+            this.txtImagePath.Size = new System.Drawing.Size(352, 20);
+            this.txtImagePath.TabIndex = 13;
+            // 
+            // txtAuthorName
+            // 
+            this.txtAuthorName.Location = new System.Drawing.Point(114, 245);
+            this.txtAuthorName.Name = "txtAuthorName";
+            this.txtAuthorName.Size = new System.Drawing.Size(352, 20);
+            this.txtAuthorName.TabIndex = 12;
+            // 
+            // txtCatName
+            // 
+            this.txtCatName.Location = new System.Drawing.Point(114, 219);
+            this.txtCatName.Name = "txtCatName";
+            this.txtCatName.Size = new System.Drawing.Size(352, 20);
+            this.txtCatName.TabIndex = 11;
+            // 
+            // txtModuleName
+            // 
+            this.txtModuleName.Location = new System.Drawing.Point(114, 169);
+            this.txtModuleName.Name = "txtModuleName";
+            this.txtModuleName.Size = new System.Drawing.Size(352, 20);
+            this.txtModuleName.TabIndex = 10;
+            // 
+            // txtOutput
+            // 
+            this.txtOutput.Location = new System.Drawing.Point(114, 120);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(352, 20);
+            this.txtOutput.TabIndex = 9;
+            // 
+            // txtInput
+            // 
+            this.txtInput.Location = new System.Drawing.Point(114, 91);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(352, 20);
+            this.txtInput.TabIndex = 8;
+            // 
+            // chkUseInstalled
+            // 
+            this.chkUseInstalled.AutoSize = true;
+            this.chkUseInstalled.Location = new System.Drawing.Point(114, 146);
+            this.chkUseInstalled.Name = "chkUseInstalled";
+            this.chkUseInstalled.Size = new System.Drawing.Size(112, 17);
+            this.chkUseInstalled.TabIndex = 7;
+            this.chkUseInstalled.Text = "Use Installed Path";
+            this.chkUseInstalled.UseVisualStyleBackColor = true;
+            this.chkUseInstalled.CheckedChanged += new System.EventHandler(this.chkUseInstalled_CheckedChanged);
+            // 
+            // btnParse
+            // 
+            this.btnParse.Location = new System.Drawing.Point(391, 297);
+            this.btnParse.Name = "btnParse";
+            this.btnParse.Size = new System.Drawing.Size(75, 23);
+            this.btnParse.TabIndex = 0;
+            this.btnParse.Text = "Parse";
+            this.btnParse.UseVisualStyleBackColor = true;
+            this.btnParse.Click += new System.EventHandler(this.btnParse_Click);
+            // 
             // btnAddtoList
             // 
             this.btnAddtoList.Location = new System.Drawing.Point(828, 5);
@@ -1426,42 +1626,15 @@ namespace Creature_Creator
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtREACTIONS
+            // chkDmOnly
             // 
-            this.txtREACTIONS.Location = new System.Drawing.Point(88, 338);
-            this.txtREACTIONS.Multiline = true;
-            this.txtREACTIONS.Name = "txtREACTIONS";
-            this.txtREACTIONS.Size = new System.Drawing.Size(413, 66);
-            this.txtREACTIONS.TabIndex = 105;
-            // 
-            // btnRefreshReaction
-            // 
-            this.btnRefreshReaction.Location = new System.Drawing.Point(170, 410);
-            this.btnRefreshReaction.Name = "btnRefreshReaction";
-            this.btnRefreshReaction.Size = new System.Drawing.Size(83, 23);
-            this.btnRefreshReaction.TabIndex = 107;
-            this.btnRefreshReaction.Text = "Refresh";
-            this.btnRefreshReaction.UseVisualStyleBackColor = true;
-            this.btnRefreshReaction.Click += new System.EventHandler(this.btnRefreshReaction_Click);
-            // 
-            // btnAddReaction
-            // 
-            this.btnAddReaction.Location = new System.Drawing.Point(88, 410);
-            this.btnAddReaction.Name = "btnAddReaction";
-            this.btnAddReaction.Size = new System.Drawing.Size(75, 23);
-            this.btnAddReaction.TabIndex = 106;
-            this.btnAddReaction.Text = "ADD";
-            this.btnAddReaction.UseVisualStyleBackColor = true;
-            this.btnAddReaction.Click += new System.EventHandler(this.btnAddReaction_Click);
-            // 
-            // label45
-            // 
-            this.label45.Location = new System.Drawing.Point(7, 338);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(75, 23);
-            this.label45.TabIndex = 108;
-            this.label45.Text = "REACTIONS";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkDmOnly.AutoSize = true;
+            this.chkDmOnly.Location = new System.Drawing.Point(114, 196);
+            this.chkDmOnly.Name = "chkDmOnly";
+            this.chkDmOnly.Size = new System.Drawing.Size(100, 17);
+            this.chkDmOnly.TabIndex = 52;
+            this.chkDmOnly.Text = "DM\'s eyes only!";
+            this.chkDmOnly.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1485,6 +1658,8 @@ namespace Creature_Creator
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -1494,5 +1669,21 @@ namespace Creature_Creator
         private System.Windows.Forms.Button btnRefreshReaction;
         private System.Windows.Forms.Button btnAddReaction;
         private System.Windows.Forms.TextBox txtREACTIONS;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button btnParse;
+        private System.Windows.Forms.TextBox txtImagePath;
+        private System.Windows.Forms.TextBox txtAuthorName;
+        private System.Windows.Forms.TextBox txtCatName;
+        private System.Windows.Forms.TextBox txtModuleName;
+        private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.TextBox txtInput;
+        private System.Windows.Forms.CheckBox chkUseInstalled;
+        private System.Windows.Forms.Button btnOutput;
+        private System.Windows.Forms.Button btnInput;
+        private System.Windows.Forms.Button btnImage;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.CheckBox chkDmOnly;
     }
 }
