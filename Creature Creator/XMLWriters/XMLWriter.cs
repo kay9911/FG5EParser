@@ -371,21 +371,21 @@ namespace Fantasy_Grounds_Parser_Tool.XMLWriter
 
                     _npc.Append("<index>");
 
-                    // Get the total count of the NPC's grouped by Starting Letter
-
-                    var _count = _Npcs.Count(x => x.NPCName.StartsWith(_s));
+                    var _list = _Npcs.FindAll(x => x.NPCName.StartsWith(_s)).ToList();
 
                     // Start returning NPC's based on starting letter
 
-                    for (int i = 1; i <= _count; i++)
+                    while (_list.Count != 0)
                     {
+                        _current = _list.First();
+
                         _npc.Append(string.Format("<{0}>", _current.NPCName.Replace(" ", "").ToLower().Trim()));
 
                         _npc.Append("<link type=\"windowreference\">");
 
                         _npc.Append("<class>npc</class>");
 
-                        _npc.Append(string.Format("<recordname>npc.{0}@{1}</recordname>", _current.NPCName.Replace(" ", "").ToLower().Trim(),_moduleName));
+                        _npc.Append(string.Format("<recordname>npc.{0}@{1}</recordname>", _current.NPCName.Replace(" ", "").ToLower().Trim(), _moduleName));
 
                         _npc.Append("<description>");
 
@@ -412,6 +412,8 @@ namespace Fantasy_Grounds_Parser_Tool.XMLWriter
                         //  <source type = "string" />
                         //</ deathknight >
                         #endregion
+                        // After processing get rid of it
+                        _list.RemoveAt(0);
                     }
 
                     _npc.Append("</index>");

@@ -781,6 +781,7 @@ namespace Creature_Creator
 			_ability.Clear();
 			_action.Clear();
 			_legend.Clear();
+            _reaction.Clear();
 			
 			// Clear text boxes
 			txtName.Text = string.Empty;
