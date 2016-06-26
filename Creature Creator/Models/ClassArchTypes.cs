@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Creature_Creator.Models
 {
-    class ArchTypes
+    class ClassArchTypes
     {
         public string header { get; set; }
         public List<ArchSkills> skills { get; set; }

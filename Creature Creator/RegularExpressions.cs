@@ -21,7 +21,7 @@ namespace Creature_Creator
             }
             else
             {
-                return _speed.Replace("ft"," ft").Replace("swim","swim ").Replace("fly","fly ");
+                return _speed.Replace("ft"," ft").Replace("swim","swim ").Replace("fly","fly ").Replace("burrow","burrow ");
             }
         }
     }

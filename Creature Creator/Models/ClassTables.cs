@@ -8,6 +8,7 @@ namespace Creature_Creator.Models
 {
     class ClassTables
     {
-        public List<TableSections> sections { get; set; }
+        private List<TableSections> _sections = new List<TableSections>();
+        public List<TableSections> sections { get { return _sections; } set { _sections = value; } }
     }
 }
