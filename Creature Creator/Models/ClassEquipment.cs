@@ -8,6 +8,8 @@ namespace Creature_Creator.Models
 {
     class ClassEquipment
     {
-        public string equipment { get; set; }
+        public string description { get; set; }
+        List<string> _equipment = new List<string>();
+        public List<string> equipment { get { return _equipment; } set { _equipment = value; } }
     }
 }

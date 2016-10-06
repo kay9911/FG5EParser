@@ -117,13 +117,14 @@ namespace Fantasy_Grounds_Parser_Tool.Text_Reader
             ClassModel _class = new ClassModel();
             StringBuilder _locations = new StringBuilder();
 
-            // Class Name
+            #region Class Name
             _class.className = _classLines.Find(x => x.StartsWith("##;")).Replace("##;", "").Trim();
             _locations = locationBuilder("CLASS_NAME",_locations);
+            #endregion
 
-            // Flavor Text text
+            #region Flavor Text
             int _begin = _classLines.FindIndex(x => x.StartsWith("#f;"));
-            int _end = _classLines.FindIndex(_begin,x => x.StartsWith("##f;"));
+            int _end = _classLines.FindIndex(_begin,x => x.StartsWith("##f;"));          
 
             StringBuilder _flavor = new StringBuilder();
 
@@ -132,8 +133,9 @@ namespace Fantasy_Grounds_Parser_Tool.Text_Reader
                 _flavor.Append(_classLines[i]);
                 _flavor.Append(Environment.NewLine);
             }
+            #endregion
 
-            // Check for tables
+            #region Class Tables
             List<string> _tables = _classLines.FindAll(x => x.StartsWith("#ht;"));
 
             if (_tables.Count != 0)
@@ -153,9 +155,89 @@ namespace Fantasy_Grounds_Parser_Tool.Text_Reader
                     _classTable.sections.Add(_tableSections.processSection(_tableList));
                     _class.classTables.Add(_classTable);
                 }
+            }
+            #endregion
 
+            #region Class Features
+
+            StringBuilder _cfString = new StringBuilder();
+            ClassFeatures _classFeatures = new ClassFeatures();
+
+            // Locate position
+            int _cfIndex = _classLines.FindIndex(x => x.StartsWith("#h;Class Features"));
+            int _cfend = _classLines.FindIndex(_cfIndex,x => x.StartsWith("Hit Points"));
+
+            for (int i = _cfIndex+1; i < _cfend; i++)
+            {
+                _cfString.Append(_classLines[i]);
+                _cfString.Append(Environment.NewLine);
             }
 
+            _classFeatures.description = _cfString.ToString();
+
+            #region Hit Points
+            ClassHitPoints _cfHP = new ClassHitPoints();
+
+            _cfHP.hitDice = _classLines.Find(x => x.StartsWith("Hit Dice:")).Replace("Hit Dice:", "").Trim();
+            _cfHP.hitPointsAtFirstLevel = _classLines.Find(x => x.StartsWith("Hit Points at 1st Level:")).Replace("Hit Points at 1st Level:", "").Trim();
+            _cfHP.hitPointsAfterFirstLevel = _classLines.Find(x => x.StartsWith("Hit Points at Higher Levels:")).Replace("Hit Points at Higher Levels:", "").Trim();
+
+            _classFeatures.hitpoints = _cfHP;
+            #endregion
+
+            #region Proffession
+            ClassProficiencies _cfProff = new ClassProficiencies();
+
+            _cfProff.armour = _classLines.Find(x => x.StartsWith("Armor:")).Replace("Armor:", "").Trim();
+            _cfProff.weapons = _classLines.Find(x => x.StartsWith("Weapons:")).Replace("Weapons:", "").Trim();
+            _cfProff.tools = _classLines.Find(x => x.StartsWith("Tools:")).Replace("Tools:", "").Trim();
+            _cfProff.savingThrows = _classLines.Find(x => x.StartsWith("Saving Throws:")).Replace("Saving Throws:", "").Trim();
+            _cfProff.skills = _classLines.Find(x => x.StartsWith("Skills:")).Replace("Skills:", "").Trim();
+
+            _classFeatures.proficiencies = _cfProff;
+            #endregion
+
+            #region Equipment
+
+            ClassEquipment _cfEquipement = new ClassEquipment();
+
+            _cfIndex = _classLines.FindIndex(x => x.StartsWith("Equipment"));
+            _cfend = _classLines.FindIndex(_cfIndex, x => x.StartsWith("#ls;"));
+
+            _cfString = new StringBuilder();
+
+            for (int i = _cfIndex + 1; i < _cfend; i++)
+            {
+                _cfString.Append(_classLines[i]);
+                _cfString.Append(Environment.NewLine);
+            }
+
+            _cfEquipement.description = _cfString.ToString();
+
+            _cfIndex = _classLines.FindIndex(x => x.StartsWith("#ls;"));
+            _cfend = _classLines.FindIndex(_cfIndex, x => x.StartsWith("#le;"));
+
+            List<string> equipement = new List<string>();
+
+            for (int i = _cfIndex + 1; i < _cfend; i++)
+            {
+                equipement.Add(_classLines[i].Replace("#li;","").Trim());
+            }
+
+            _cfEquipement.equipment = equipement;
+            _classFeatures.equipment = _cfEquipement;
+
+            #endregion
+
+            _class.classFeatures = _classFeatures;
+
+            #endregion
+
+            #region Class Skills
+
+
+
+            #endregion
         }
 
         private StringBuilder locationBuilder(string v, StringBuilder _locations)
