@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Class_Parser_5E.Classes
 {
-    class ClassFeatures
+    class ClassData
     {
         // This class holds all of the mandatory class features
 
@@ -24,9 +24,8 @@ namespace Class_Parser_5E.Classes
         public string SavingThrows { get; set; }
         public string Skills { get; set; }
 
-        /* EQUIPMENT */
-
-        private List<string> Equipment = new List<string>();
-        public List<string> EquipmentList { get { return Equipment; } set { Equipment = value; } }
+        /* STARTING EQUIPMENT */
+        
+        public string EquipmentList { get; set; }
     }
 }

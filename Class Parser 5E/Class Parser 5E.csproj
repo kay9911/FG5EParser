@@ -47,7 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Ability.cs" />
-    <Compile Include="Classes\ClassFeatures.cs" />
+    <Compile Include="Classes\ClassDetails.cs" />
+    <Compile Include="Classes\ClassData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

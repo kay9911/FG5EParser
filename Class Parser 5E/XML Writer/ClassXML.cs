@@ -9,7 +9,39 @@ namespace Class_Parser_5E.XML_Writer
 {
     class ClassXML
     {
-        private string classDetailsToXML(ClassFeatures _CF)
+
+        private string classDetailsToXML(ClassDetails _classDetails, ClassData _CF, List<Ability> _CA)
+        {
+            StringBuilder _xml  = new StringBuilder();
+
+            _xml.Append("<classdata>");
+
+            _xml.Append(string.Format("<{0}>",_classDetails.ClassName));
+
+            _xml.Append(string.Format("<name type=\"string\">{0}</name>",_classDetails.ClassName));
+
+            _xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>",_classDetails.ClassDescription));
+
+            // CALL CLASS DATA
+
+            _xml.Append(classDataToXML(_CF));
+
+            // CALL CLASS FEATURES
+
+            _xml.Append(classFeaturesToXML(_CA));
+
+            // CALL CLASS ABILITIES
+
+            _xml.Append(classAbilitiesToXML(_CA));
+
+            _xml.Append(string.Format("</{0}>", _classDetails.ClassName));
+
+            _xml.Append("</classdata>");
+
+            return _xml.ToString();
+        }
+
+        private string classDataToXML(ClassData _CF)
         {
             StringBuilder _xml = new StringBuilder();
 
@@ -93,10 +125,26 @@ namespace Class_Parser_5E.XML_Writer
 
             #endregion
 
+            #region STARTING EQUIPMENT
+
+            _xml.Append("<equipment>");
+
+            _xml.Append("<standard>");
+
+            _xml.Append("<group type=\"string\">standard</group>");
+
+            _xml.Append(string.Format("<item type=\"string\">{0}</item>",_CF.EquipmentList));
+
+            _xml.Append("</standard>");
+
+            _xml.Append("</equipment>");
+
+            #endregion
+
             return _xml.ToString();
         }
 
-        private string classFeaturesToString(List<Ability> _CA)
+        private string classFeaturesToXML(List<Ability> _CA)
         {
             StringBuilder _xml = new StringBuilder();
 
@@ -107,7 +155,7 @@ namespace Class_Parser_5E.XML_Writer
                 // Send each ability for formatting and append to the string
                 if (!_ability.IsArchTypeHeading)
                 {
-                    _xml.Append(buildAbilityString(_ability));
+                    _xml.Append(buildSkillString(_ability));
                 }
             }
 
@@ -116,7 +164,7 @@ namespace Class_Parser_5E.XML_Writer
             return _xml.ToString();
         }
 
-        private string buildAbilityString(Ability _ability)
+        private string buildSkillString(Ability _ability)
         {
             StringBuilder _ab = new StringBuilder();
 
@@ -153,7 +201,7 @@ namespace Class_Parser_5E.XML_Writer
             return _ab.ToString();
         }
 
-        private string classAbilitiesToString(List<Ability> _CA)
+        private string classAbilitiesToXML(List<Ability> _CA)
         {
             StringBuilder _abilities = new StringBuilder();
 
@@ -164,7 +212,7 @@ namespace Class_Parser_5E.XML_Writer
                 // Send only the abilities that are domain heads
                 if (_ability.IsArchtype)
                 {
-                    _abilities.Append(buildAbilityString(_ability));
+                    _abilities.Append(buildSkillString(_ability));
                 }
             }
 
