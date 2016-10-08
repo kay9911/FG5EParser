@@ -21,7 +21,7 @@ namespace Class_Parser_5E.XML_Writer
 
             _xml.Append("<name type=\"string\">Hit Dice </name>");
 
-            _xml.Append(string.Format("<text type=\"string\">{0}</text>",_CF.HitDice));
+            _xml.Append(string.Format("<text type=\"string\">{0}</text>", _CF.HitDice));
 
             _xml.Append("</hitdice>");
 
@@ -29,7 +29,7 @@ namespace Class_Parser_5E.XML_Writer
 
             _xml.Append("<name type=\"string\">Hit Points at 1st Level</name>");
 
-            _xml.Append(string.Format("<text type=\"string\">{0}</text>",_CF.HitPointsAtFirstLevel));
+            _xml.Append(string.Format("<text type=\"string\">{0}</text>", _CF.HitPointsAtFirstLevel));
 
             _xml.Append("</hitpointsat1stlevel>");
 
@@ -37,7 +37,7 @@ namespace Class_Parser_5E.XML_Writer
 
             _xml.Append("<name type=\"string\">Hit Points at Higher Levels</name>");
 
-            _xml.Append(string.Format("<text type=\"string\">{0}</text>",_CF.HitPointsBeyondFirstLevel));
+            _xml.Append(string.Format("<text type=\"string\">{0}</text>", _CF.HitPointsBeyondFirstLevel));
 
             _xml.Append("</hitpointsathigherlevels>");
 
@@ -53,7 +53,7 @@ namespace Class_Parser_5E.XML_Writer
 
             _xml.Append("<name type=\"string\">Armor</name>");
 
-            _xml.Append(string.Format("<text type=\"string\">{0}</text>",_CF.Armour));
+            _xml.Append(string.Format("<text type=\"string\">{0}</text>", _CF.Armour));
 
             _xml.Append("</armor>");
 
@@ -94,7 +94,83 @@ namespace Class_Parser_5E.XML_Writer
             #endregion
 
             return _xml.ToString();
+        }
 
-        } 
+        private string classFeaturesToString(List<Ability> _CA)
+        {
+            StringBuilder _xml = new StringBuilder();
+
+            _xml.Append("<features>");
+
+            foreach (Ability _ability in _CA)
+            {
+                // Send each ability for formatting and append to the string
+                if (!_ability.IsArchTypeHeading)
+                {
+                    _xml.Append(buildAbilityString(_ability));
+                }
+            }
+
+            _xml.Append("</features>");
+
+            return _xml.ToString();
+        }
+
+        private string buildAbilityString(Ability _ability)
+        {
+            StringBuilder _ab = new StringBuilder();
+
+            if (!_ability.IsArchtype) // FEATURES
+            {
+                _ab.Append(string.Format("<{0}{1}>", _ability.AbilityName, _ability.Levels));
+
+                _ab.Append(string.Format("<name type=\"string\">{0}</name>", _ability.AbilityName));
+
+                _ab.Append(string.Format("<level type=\"number\">{0}</level>", _ability.Levels));
+
+                _ab.Append(string.Format("<text type=\"formattedtext\">{0}</text>", _ability.AbilityDescription));
+
+                if (_ability.IsArchtype)
+                {
+                    _ab.Append(string.Format("<specialization type=\"string\">{0}</specialization>", _ability.ArchtypeName));
+                }
+
+                _ab.Append(string.Format("</{0}{1}>", _ability.AbilityName, _ability.Levels));
+            }
+            else // ABILITY
+            {
+                _ab.Append(string.Format("<{0}>", _ability.AbilityName));
+
+                _ab.Append(string.Format("<name type=\"string\">{0}</name>", _ability.AbilityName));
+
+                _ab.Append(string.Format("<level type=\"number\">{0}</level>", _ability.Levels));
+
+                _ab.Append(string.Format("<text type=\"formattedtext\">{0}</text>", _ability.AbilityDescription));
+
+                _ab.Append(string.Format("</{0}{1}>", _ability.AbilityName, _ability.Levels));
+            }
+
+            return _ab.ToString();
+        }
+
+        private string classAbilitiesToString(List<Ability> _CA)
+        {
+            StringBuilder _abilities = new StringBuilder();
+
+            _abilities.Append("<abilities>");
+
+            foreach (Ability _ability in _CA)
+            {
+                // Send only the abilities that are domain heads
+                if (_ability.IsArchtype)
+                {
+                    _abilities.Append(buildAbilityString(_ability));
+                }
+            }
+
+            _abilities.Append("</abilities>");
+
+            return _abilities.ToString();
+        }
     }
 }
