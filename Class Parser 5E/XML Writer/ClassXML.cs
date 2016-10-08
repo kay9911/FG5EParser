@@ -9,7 +9,6 @@ namespace Class_Parser_5E.XML_Writer
 {
     class ClassXML
     {
-
         private string classDetailsToXML(ClassDetails _classDetails, ClassData _CF, List<Ability> _CA)
         {
             StringBuilder _xml  = new StringBuilder();

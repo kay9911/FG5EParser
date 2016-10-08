@@ -49,6 +49,8 @@
     <Compile Include="Classes\Ability.cs" />
     <Compile Include="Classes\ClassDetails.cs" />
     <Compile Include="Classes\ClassData.cs" />
+    <Compile Include="Classes\ClassLists.cs" />
+    <Compile Include="Common\ReferenceAndLibrary.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
