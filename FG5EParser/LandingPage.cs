@@ -20,6 +20,7 @@ namespace FG5EParser
 
             this._stats.allowUse = this;
             this._resvul.allowUse = this;
+            this._actions.allowUse = this;
         }
 
         #region  Init the User Controls
@@ -70,7 +71,7 @@ namespace FG5EParser
                 _spellcasting.Show();
 
                 // Display all text blocks at the same time
-                rtcDisplay.Text = _stats.exposeStats + _resvul.exposeResAndVul;
+                rtcDisplay.Text = _stats.exposeStats + _resvul.exposeResAndVul + _actions.exposeActions;
             }
 
             if (treeView1.SelectedNode.Name == "_stats")

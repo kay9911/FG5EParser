@@ -12,12 +12,21 @@ namespace FG5EParser.User_Controls.NPC_Controls
 {
     public partial class NPC_Actions : UserControl
     {
+        // properties
+        public string exposeActions
+        {
+            get { return _build.ToString(); }
+        }
+
+        // Allows the use of the parents controls
+        public LandingPage allowUse { get; set; }
+
         public NPC_Actions()
         {
             InitializeComponent();
         }
 
-        #region STRING BUILDERS   
+        #region STRING BUILDERS
         StringBuilder _build = new StringBuilder();
         StringBuilder _buildabilities = new StringBuilder();
         List<KeyValuePair<string, string>> _ability = new List<KeyValuePair<string, string>>();
@@ -31,6 +40,35 @@ namespace FG5EParser.User_Controls.NPC_Controls
         StringBuilder _buildLegends = new StringBuilder();
         List<KeyValuePair<string, string>> _legend = new List<KeyValuePair<string, string>>();
         #endregion
+
+        private void doCompile()
+        {
+            // Clear Builder
+            _build.Clear();
+
+            // Get Abilities			
+            _build.Append(_buildabilities.ToString());
+
+            // Get Actions
+            _build.Append(_buildActions.ToString());
+
+            // Get Reactions
+            _build.Append(_buildReactions.ToString());
+
+            // Get Legendary Actions
+            _build.Append(_buildLegends.ToString());
+
+            // Some final formatting, its tiresome cathing all of these :S
+            _build.Replace("..", ".");
+            _build.Replace(". .", ".");
+            _build.Replace(".  .", ".");
+
+            if (allowUse == null)
+                return;
+
+            RichTextBox _rtc = (allowUse.Controls["rtcDisplay"] as RichTextBox);
+            _rtc.Text = _build.ToString();
+        }
 
         #region ADD BUTTON ON CLICK FUNCTIONS
 
@@ -63,8 +101,7 @@ namespace FG5EParser.User_Controls.NPC_Controls
                         _buildabilities.Append(_format);
                     }
 
-                    // TO DO : check how to integrate DO COMPILE
-                    //doCompile();
+                    doCompile();
                 }
                 else
                 {
@@ -102,8 +139,7 @@ namespace FG5EParser.User_Controls.NPC_Controls
                         _buildActions.Append(_format);
                     }
 
-                    // TO DO : check how to integrate DO COMPILE
-                    //doCompile();
+                    doCompile();
                 }
                 else
                 {
@@ -142,8 +178,7 @@ namespace FG5EParser.User_Controls.NPC_Controls
                         _buildLegends.Append(_format);
                     }
 
-                    // TO DO : check how to integrate DO COMPILE
-                    //doCompile();
+                    doCompile();
                 }
                 else
                 {
@@ -182,8 +217,7 @@ namespace FG5EParser.User_Controls.NPC_Controls
                         _buildReactions.Append(_format);
                     }
 
-                    // TO DO : check how to integrate DO COMPILE
-                    //doCompile();
+                    doCompile();
                 }
                 else
                 {
@@ -202,32 +236,28 @@ namespace FG5EParser.User_Controls.NPC_Controls
         {
             _buildabilities.Clear();
             _ability.Clear();
-            // TO DO : check how to integrate DO COMPILE
-            //doCompile();
+            doCompile();
         }
 
         private void btnActionsRefresh_Click(object sender, EventArgs e)
         {
             _buildActions.Clear();
             _action.Clear();
-            // TO DO : check how to integrate DO COMPILE
-            //doCompile();
+            doCompile();
         }
 
         void TxtRefreshLegendsClick(object sender, EventArgs e)
         {
             _buildLegends.Clear();
             _legend.Clear();
-            // TO DO : check how to integrate DO COMPILE
-            //doCompile();
+            doCompile();
         }
 
         private void btnRefreshReaction_Click(object sender, EventArgs e)
         {
             _buildReactions.Clear();
             _reaction.Clear();
-            // TO DO : check how to integrate DO COMPILE
-            //doCompile();
+            doCompile();
         }
 
         #endregion

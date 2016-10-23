@@ -77,7 +77,7 @@
             this.btnAddReaction.TabIndex = 148;
             this.btnAddReaction.Text = "ADD";
             this.btnAddReaction.UseVisualStyleBackColor = true;
-            this.btnAddReaction.Click += new System.EventHandler(this.BtnADDlegendaryClick);
+            this.btnAddReaction.Click += new System.EventHandler(this.btnAddReaction_Click);
             // 
             // txtREACTIONS
             // 
