@@ -69,6 +69,10 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.btnAbilityRefresh = new System.Windows.Forms.Button();
+            this.btnADDability = new System.Windows.Forms.Button();
+            this.txtAbilities = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtChallenge
@@ -399,47 +403,47 @@
             // 
             // txtCONIMM
             // 
-            this.txtCONIMM.Location = new System.Drawing.Point(174, 744);
+            this.txtCONIMM.Location = new System.Drawing.Point(173, 761);
             this.txtCONIMM.Margin = new System.Windows.Forms.Padding(4);
             this.txtCONIMM.Multiline = true;
             this.txtCONIMM.Name = "txtCONIMM";
-            this.txtCONIMM.Size = new System.Drawing.Size(508, 91);
+            this.txtCONIMM.Size = new System.Drawing.Size(508, 57);
             this.txtCONIMM.TabIndex = 245;
             this.txtCONIMM.TextChanged += new System.EventHandler(this.txtCONIMM_TextChanged);
             // 
             // txtDMGIMM
             // 
-            this.txtDMGIMM.Location = new System.Drawing.Point(174, 645);
+            this.txtDMGIMM.Location = new System.Drawing.Point(173, 696);
             this.txtDMGIMM.Margin = new System.Windows.Forms.Padding(4);
             this.txtDMGIMM.Multiline = true;
             this.txtDMGIMM.Name = "txtDMGIMM";
-            this.txtDMGIMM.Size = new System.Drawing.Size(508, 91);
+            this.txtDMGIMM.Size = new System.Drawing.Size(508, 57);
             this.txtDMGIMM.TabIndex = 244;
             this.txtDMGIMM.TextChanged += new System.EventHandler(this.txtDMGIMM_TextChanged);
             // 
             // txtDMGRES
             // 
-            this.txtDMGRES.Location = new System.Drawing.Point(174, 546);
+            this.txtDMGRES.Location = new System.Drawing.Point(173, 631);
             this.txtDMGRES.Margin = new System.Windows.Forms.Padding(4);
             this.txtDMGRES.Multiline = true;
             this.txtDMGRES.Name = "txtDMGRES";
-            this.txtDMGRES.Size = new System.Drawing.Size(508, 91);
+            this.txtDMGRES.Size = new System.Drawing.Size(508, 57);
             this.txtDMGRES.TabIndex = 243;
             this.txtDMGRES.TextChanged += new System.EventHandler(this.txtDMGRES_TextChanged);
             // 
             // txtDMGVUL
             // 
-            this.txtDMGVUL.Location = new System.Drawing.Point(174, 448);
+            this.txtDMGVUL.Location = new System.Drawing.Point(173, 566);
             this.txtDMGVUL.Margin = new System.Windows.Forms.Padding(4);
             this.txtDMGVUL.Multiline = true;
             this.txtDMGVUL.Name = "txtDMGVUL";
-            this.txtDMGVUL.Size = new System.Drawing.Size(508, 91);
+            this.txtDMGVUL.Size = new System.Drawing.Size(508, 57);
             this.txtDMGVUL.TabIndex = 242;
             this.txtDMGVUL.TextChanged += new System.EventHandler(this.txtDMGVUL_TextChanged);
             // 
             // label30
             // 
-            this.label30.Location = new System.Drawing.Point(5, 744);
+            this.label30.Location = new System.Drawing.Point(4, 761);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(161, 28);
@@ -449,17 +453,17 @@
             // 
             // label29
             // 
-            this.label29.Location = new System.Drawing.Point(13, 645);
+            this.label29.Location = new System.Drawing.Point(4, 696);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(153, 28);
+            this.label29.Size = new System.Drawing.Size(161, 28);
             this.label29.TabIndex = 240;
             this.label29.Text = "Damage Immunities";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label28
             // 
-            this.label28.Location = new System.Drawing.Point(5, 546);
+            this.label28.Location = new System.Drawing.Point(4, 631);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(161, 28);
@@ -469,18 +473,63 @@
             // 
             // label27
             // 
-            this.label27.Location = new System.Drawing.Point(13, 448);
+            this.label27.Location = new System.Drawing.Point(4, 567);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(153, 28);
+            this.label27.Size = new System.Drawing.Size(161, 28);
             this.label27.TabIndex = 238;
             this.label27.Text = "Damage Vulnerabilities";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnAbilityRefresh
+            // 
+            this.btnAbilityRefresh.Location = new System.Drawing.Point(281, 523);
+            this.btnAbilityRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAbilityRefresh.Name = "btnAbilityRefresh";
+            this.btnAbilityRefresh.Size = new System.Drawing.Size(112, 28);
+            this.btnAbilityRefresh.TabIndex = 249;
+            this.btnAbilityRefresh.Text = "Refresh";
+            this.btnAbilityRefresh.UseVisualStyleBackColor = true;
+            this.btnAbilityRefresh.Click += new System.EventHandler(this.BtnAbilityRefresh_Click);
+            // 
+            // btnADDability
+            // 
+            this.btnADDability.Location = new System.Drawing.Point(173, 524);
+            this.btnADDability.Margin = new System.Windows.Forms.Padding(4);
+            this.btnADDability.Name = "btnADDability";
+            this.btnADDability.Size = new System.Drawing.Size(100, 28);
+            this.btnADDability.TabIndex = 248;
+            this.btnADDability.Text = "ADD";
+            this.btnADDability.UseVisualStyleBackColor = true;
+            this.btnADDability.Click += new System.EventHandler(this.btnADDability_Click);
+            // 
+            // txtAbilities
+            // 
+            this.txtAbilities.Location = new System.Drawing.Point(173, 452);
+            this.txtAbilities.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAbilities.Multiline = true;
+            this.txtAbilities.Name = "txtAbilities";
+            this.txtAbilities.Size = new System.Drawing.Size(508, 64);
+            this.txtAbilities.TabIndex = 247;
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(57, 452);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 28);
+            this.label18.TabIndex = 246;
+            this.label18.Text = "Abilities";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NPC_Stats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAbilityRefresh);
+            this.Controls.Add(this.btnADDability);
+            this.Controls.Add(this.txtAbilities);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.txtCONIMM);
             this.Controls.Add(this.txtDMGIMM);
             this.Controls.Add(this.txtDMGRES);
@@ -523,7 +572,7 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Name = "NPC_Stats";
-            this.Size = new System.Drawing.Size(685, 846);
+            this.Size = new System.Drawing.Size(685, 823);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,5 +621,9 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnAbilityRefresh;
+        private System.Windows.Forms.Button btnADDability;
+        private System.Windows.Forms.TextBox txtAbilities;
+        private System.Windows.Forms.Label label18;
     }
 }

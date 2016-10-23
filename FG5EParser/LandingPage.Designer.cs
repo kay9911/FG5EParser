@@ -32,16 +32,14 @@
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Start Here", new System.Windows.Forms.TreeNode[] {
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Stats");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Resist/Vul");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Actions");
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Innate Spells");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Spellcasting");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Actions");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("NPC", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("NPC", new System.Windows.Forms.TreeNode[] {
             treeNode3,
             treeNode4,
             treeNode5,
-            treeNode6,
-            treeNode7});
+            treeNode6});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.rtcDisplay = new System.Windows.Forms.RichTextBox();
             this.btnParse = new System.Windows.Forms.Button();
@@ -59,19 +57,17 @@
             treeNode2.Text = "Start Here";
             treeNode3.Name = "_stats";
             treeNode3.Text = "Stats";
-            treeNode4.Name = "_resistance_and_vulnaribilities";
-            treeNode4.Text = "Resist/Vul";
+            treeNode4.Name = "_actions";
+            treeNode4.Text = "Actions";
             treeNode5.Name = "_innate_spellcasting";
             treeNode5.Text = "Innate Spells";
             treeNode6.Name = "_spellcasting";
             treeNode6.Text = "Spellcasting";
-            treeNode7.Name = "_actions";
-            treeNode7.Text = "Actions";
-            treeNode8.Name = "_NPC";
-            treeNode8.Text = "NPC";
+            treeNode7.Name = "_NPC";
+            treeNode7.Text = "NPC";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
-            treeNode8});
+            treeNode7});
             this.treeView1.Size = new System.Drawing.Size(173, 788);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);

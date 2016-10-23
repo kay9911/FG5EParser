@@ -28,8 +28,6 @@ namespace FG5EParser.User_Controls.NPC_Controls
 
         #region STRING BUILDERS
         StringBuilder _build = new StringBuilder();
-        StringBuilder _buildabilities = new StringBuilder();
-        List<KeyValuePair<string, string>> _ability = new List<KeyValuePair<string, string>>();
 
         StringBuilder _buildActions = new StringBuilder();
         List<KeyValuePair<string, string>> _action = new List<KeyValuePair<string, string>>();
@@ -45,9 +43,6 @@ namespace FG5EParser.User_Controls.NPC_Controls
         {
             // Clear Builder
             _build.Clear();
-
-            // Get Abilities			
-            _build.Append(_buildabilities.ToString());
 
             // Get Actions
             _build.Append(_buildActions.ToString());
@@ -73,42 +68,6 @@ namespace FG5EParser.User_Controls.NPC_Controls
         #region ADD BUTTON ON CLICK FUNCTIONS
 
         // TO DO : NORMALIZE FUNCTION NAMES!
-
-        void BtnADDabilityClick(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtAbilities.Text))
-            {
-                if (txtAbilities.Text.Contains("."))
-                {
-                    // Clear the builder
-                    _buildabilities.Clear();
-
-                    // Clear the line breaks
-                    string _clearLines = txtAbilities.Text.Trim().Replace(Environment.NewLine, "");
-
-                    // Split the string
-                    string[] _arr = _clearLines.Split('.');
-                    string _val = _returnString(_arr);
-
-                    // Insert into the keyvalue pair list
-                    _ability.Add(new KeyValuePair<string, string>(string.Format("{0}.", _arr[0].ToString()), _val));
-                    txtAbilities.Text = string.Empty;
-
-                    foreach (KeyValuePair<string, string> pair in _ability)
-                    {
-                        string _format = string.Format("{0}{1}", pair.Key.ToString(), pair.Value.ToString());
-                        _buildabilities.Append(Environment.NewLine);
-                        _buildabilities.Append(_format);
-                    }
-
-                    doCompile();
-                }
-                else
-                {
-                    MessageBox.Show("Please make sure abilities are in this format : <Ability Name>. <Description>");
-                }
-            }
-        }
 
         void BtnADDactionsClick(object sender, EventArgs e)
         {
@@ -231,13 +190,6 @@ namespace FG5EParser.User_Controls.NPC_Controls
         #region REFRESH FUNCTIONS
 
         // TO DO : NORMALIZE FUNCTION NAMES!
-
-        void BtnAbilityRefresh_Click(object sender, EventArgs e)
-        {
-            _buildabilities.Clear();
-            _ability.Clear();
-            doCompile();
-        }
 
         private void btnActionsRefresh_Click(object sender, EventArgs e)
         {

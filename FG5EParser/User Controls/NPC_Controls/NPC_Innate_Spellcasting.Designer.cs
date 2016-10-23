@@ -66,6 +66,7 @@
             this.txtInnateSaveDc.Name = "txtInnateSaveDc";
             this.txtInnateSaveDc.Size = new System.Drawing.Size(44, 22);
             this.txtInnateSaveDc.TabIndex = 246;
+            this.txtInnateSaveDc.TextChanged += new System.EventHandler(this.TxtInnateSaveDcTextChanged);
             // 
             // label46
             // 
@@ -85,6 +86,7 @@
             this.cmbInnateSpellCasting.Name = "cmbInnateSpellCasting";
             this.cmbInnateSpellCasting.Size = new System.Drawing.Size(160, 24);
             this.cmbInnateSpellCasting.TabIndex = 244;
+            this.cmbInnateSpellCasting.SelectedIndexChanged += new System.EventHandler(this.CmbInnateSpellCastingSelectedIndexChanged);
             // 
             // label47
             // 
@@ -113,6 +115,7 @@
             this.txtfive.Name = "txtfive";
             this.txtfive.Size = new System.Drawing.Size(569, 22);
             this.txtfive.TabIndex = 241;
+            this.txtfive.TextChanged += new System.EventHandler(this.txtfive_TextChanged);
             // 
             // txtfour
             // 
@@ -121,6 +124,7 @@
             this.txtfour.Name = "txtfour";
             this.txtfour.Size = new System.Drawing.Size(569, 22);
             this.txtfour.TabIndex = 240;
+            this.txtfour.TextChanged += new System.EventHandler(this.txtfour_TextChanged);
             // 
             // label21
             // 
@@ -139,6 +143,7 @@
             this.txtthree.Name = "txtthree";
             this.txtthree.Size = new System.Drawing.Size(569, 22);
             this.txtthree.TabIndex = 238;
+            this.txtthree.TextChanged += new System.EventHandler(this.txtthree_TextChanged);
             // 
             // label22
             // 
@@ -157,6 +162,7 @@
             this.txttwo.Name = "txttwo";
             this.txttwo.Size = new System.Drawing.Size(569, 22);
             this.txttwo.TabIndex = 236;
+            this.txttwo.TextChanged += new System.EventHandler(this.txttwo_TextChanged);
             // 
             // label23
             // 
@@ -175,6 +181,7 @@
             this.txtone.Name = "txtone";
             this.txtone.Size = new System.Drawing.Size(569, 22);
             this.txtone.TabIndex = 234;
+            this.txtone.TextChanged += new System.EventHandler(this.txtone_TextChanged);
             // 
             // label24
             // 
@@ -193,6 +200,7 @@
             this.txtatwill.Name = "txtatwill";
             this.txtatwill.Size = new System.Drawing.Size(569, 22);
             this.txtatwill.TabIndex = 232;
+            this.txtatwill.TextChanged += new System.EventHandler(this.txtatwill_TextChanged);
             // 
             // label25
             // 
@@ -212,6 +220,7 @@
             this.txtAbilityText.Name = "txtAbilityText";
             this.txtAbilityText.Size = new System.Drawing.Size(569, 73);
             this.txtAbilityText.TabIndex = 230;
+            this.txtAbilityText.TextChanged += new System.EventHandler(this.txtAbilityText_TextChanged);
             // 
             // label26
             // 

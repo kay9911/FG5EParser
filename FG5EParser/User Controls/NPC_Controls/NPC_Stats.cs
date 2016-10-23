@@ -21,6 +21,10 @@ namespace FG5EParser.User_Controls
         // Allows the use of the parents controls
         public LandingPage allowUse { get; set; }
 
+        public string getNameforInnateSpellCastingUserControl {
+            get { return txtName.Text; }
+        }
+
         public NPC_Stats()
         {
             InitializeComponent();
@@ -37,6 +41,8 @@ namespace FG5EParser.User_Controls
 
         // String Builders	
         StringBuilder _build = new StringBuilder();
+        StringBuilder _buildabilities = new StringBuilder();
+        List<KeyValuePair<string, string>> _ability = new List<KeyValuePair<string, string>>();
 
         // Class instance to use the regex features
         RegularExpressions _regex;
@@ -64,6 +70,9 @@ namespace FG5EParser.User_Controls
             getSenses();
             getLanguages();
             getChallenge();
+
+            // Get Abilities			
+            _build.Append(_buildabilities.ToString());
 
             // Some final formatting, its tiresome cathing all of these :S
             _build.Replace("..", ".");
@@ -514,5 +523,60 @@ namespace FG5EParser.User_Controls
                 doCompile();
         }
         #endregion
+
+        private void btnADDability_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtAbilities.Text))
+            {
+                if (txtAbilities.Text.Contains("."))
+                {
+                    // Clear the builder
+                    _buildabilities.Clear();
+
+                    // Clear the line breaks
+                    string _clearLines = txtAbilities.Text.Trim().Replace(Environment.NewLine, "");
+
+                    // Split the string
+                    string[] _arr = _clearLines.Split('.');
+                    string _val = _returnString(_arr);
+
+                    // Insert into the keyvalue pair list
+                    _ability.Add(new KeyValuePair<string, string>(string.Format("{0}.", _arr[0].ToString()), _val));
+                    txtAbilities.Text = string.Empty;
+
+                    foreach (KeyValuePair<string, string> pair in _ability)
+                    {
+                        string _format = string.Format("{0}{1}", pair.Key.ToString(), pair.Value.ToString());
+                        _buildabilities.Append(Environment.NewLine);
+                        _buildabilities.Append(_format);
+                    }
+
+                    doCompile();
+                }
+                else
+                {
+                    MessageBox.Show("Please make sure abilities are in this format : <Ability Name>. <Description>");
+                }
+            }
+        }
+
+        void BtnAbilityRefresh_Click(object sender, EventArgs e)
+        {
+            _buildabilities.Clear();
+            _ability.Clear();
+            doCompile();
+        }
+
+        private string _returnString(String[] arr)
+        {
+            StringBuilder _retVal = new StringBuilder();
+
+            for (int i = 1; i < arr.Length; i++)
+            {
+                _retVal.Append(String.Format(" {0}.", arr[i].ToString().Trim()));
+            }
+
+            return _retVal.ToString();
+        }
     }
 }
