@@ -19,7 +19,7 @@ namespace FG5EParser
             InitializeComponent();
 
             this._stats.allowUse = this;
-            this._resvul.allowUse = this;
+            //this._resvul.allowUse = this;
             this._actions.allowUse = this;
         }
 
@@ -28,7 +28,7 @@ namespace FG5EParser
         NPC_Spellcasting _spellcasting = new NPC_Spellcasting();
         NPC_Innate_Spellcasting _innateSpellcasting = new NPC_Innate_Spellcasting();
         NPC_Actions _actions = new NPC_Actions();
-        NPC_Resistance_Vulnaribilities _resvul = new NPC_Resistance_Vulnaribilities();
+        //NPC_Resistance_Vulnaribilities _resvul = new NPC_Resistance_Vulnaribilities();
         NPC_Stats _stats = new NPC_Stats();
         #endregion
 
@@ -41,7 +41,7 @@ namespace FG5EParser
             _spellcasting.Hide();
             _innateSpellcasting.Hide();
             _actions.Hide();
-            _resvul.Hide();
+            //_resvul.Hide();
 
             #endregion
 
@@ -58,8 +58,8 @@ namespace FG5EParser
                 pnlMain.Controls.Add(_stats);
                 _stats.Show();
 
-                pnlMain.Controls.Add(_resvul);
-                _resvul.Show();
+                //pnlMain.Controls.Add(_resvul);
+                //_resvul.Show();
 
                 pnlMain.Controls.Add(_actions);
                 _actions.Show();
@@ -71,7 +71,7 @@ namespace FG5EParser
                 _spellcasting.Show();
 
                 // Display all text blocks at the same time
-                rtcDisplay.Text = _stats.exposeStats + _resvul.exposeResAndVul + _actions.exposeActions;
+                rtcDisplay.Text = _stats.exposeStats + _actions.exposeActions;
             }
 
             if (treeView1.SelectedNode.Name == "_stats")
@@ -80,11 +80,12 @@ namespace FG5EParser
                 _stats.Show();
             }
 
-            if (treeView1.SelectedNode.Name == "_resistance_and_vulnaribilities")
-            {
-                pnlMain.Controls.Add(_resvul);
-                _resvul.Show();
-            }
+            // This is now included in the stats block
+            //if (treeView1.SelectedNode.Name == "_resistance_and_vulnaribilities")
+            //{
+            //    pnlMain.Controls.Add(_resvul);
+            //    _resvul.Show();
+            //}
 
             if (treeView1.SelectedNode.Name == "_actions")
             {

@@ -57,6 +57,10 @@ namespace FG5EParser.User_Controls
             getStats();
             getSavingThrows();
             getSkills();
+            getDamageVul();
+            getDamageRes();
+            getDamageImm();
+            getConditionImm();
             getSenses();
             getLanguages();
             getChallenge();
@@ -295,6 +299,42 @@ namespace FG5EParser.User_Controls
                 _isStatsComplete = true;
             }
         }
+
+        private void getDamageVul()
+        {
+            if (!string.IsNullOrEmpty(txtDMGVUL.Text))
+            {
+                _build.Append(Environment.NewLine);
+                _build.Append("Damage Vulnerabilities " + txtDMGVUL.Text.Trim().Replace(Environment.NewLine, " "));
+            }
+        }
+
+        private void getDamageImm()
+        {
+            if (!string.IsNullOrEmpty(txtDMGIMM.Text))
+            {
+                _build.Append(Environment.NewLine);
+                _build.Append("Damage Immunities " + txtDMGIMM.Text.Trim().Replace(Environment.NewLine, " "));
+            }
+        }
+
+        private void getConditionImm()
+        {
+            if (!string.IsNullOrEmpty(txtCONIMM.Text))
+            {
+                _build.Append(Environment.NewLine);
+                _build.Append("Condition Immunities " + txtCONIMM.Text.Trim().Replace(Environment.NewLine, " "));
+            }
+        }
+
+        private void getDamageRes()
+        {
+            if (!string.IsNullOrEmpty(txtDMGRES.Text))
+            {
+                _build.Append(Environment.NewLine);
+                _build.Append("Damage Resistances " + txtDMGRES.Text.Trim().Replace(Environment.NewLine, " "));
+            }
+        }
         #endregion
 
         private string buildStats(string _val)
@@ -363,7 +403,27 @@ namespace FG5EParser.User_Controls
         private void txtChallenge_TextChanged(object sender, EventArgs e)
         {
             doCompile();
-        }        
+        }
+
+        private void txtDMGVUL_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtDMGRES_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtDMGIMM_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtCONIMM_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
         #endregion
 
         #region STAT BLOCK ENTER AND EXIT FUNCTIONS
