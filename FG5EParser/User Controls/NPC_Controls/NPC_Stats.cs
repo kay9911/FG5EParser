@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FG5EParser.User_Controls
 {
-    public partial class NPC : UserControl
+    public partial class NPC_Stats : UserControl
     {
-        public NPC()
+        public NPC_Stats()
         {
             InitializeComponent();
         }

@@ -60,11 +60,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User Controls\NPC.cs">
+    <Compile Include="User Controls\NPC_Controls\NPC_Stats.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Controls\NPC.Designer.cs">
-      <DependentUpon>NPC.cs</DependentUpon>
+    <Compile Include="User Controls\NPC_Controls\NPC_Stats.Designer.cs">
+      <DependentUpon>NPC_Stats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Actions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Actions.Designer.cs">
+      <DependentUpon>NPC_Actions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Innate_Spellcasting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Innate_Spellcasting.Designer.cs">
+      <DependentUpon>NPC_Innate_Spellcasting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Resistance_Vulnaribilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Resistance_Vulnaribilities.Designer.cs">
+      <DependentUpon>NPC_Resistance_Vulnaribilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Spellcasting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\NPC_Controls\NPC_Spellcasting.Designer.cs">
+      <DependentUpon>NPC_Spellcasting.cs</DependentUpon>
     </Compile>
     <Compile Include="User Controls\SetPaths.cs">
       <SubType>UserControl</SubType>
@@ -87,8 +111,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="User Controls\NPC.resx">
-      <DependentUpon>NPC.cs</DependentUpon>
+    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Stats.resx">
+      <DependentUpon>NPC_Stats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Actions.resx">
+      <DependentUpon>NPC_Actions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Innate_Spellcasting.resx">
+      <DependentUpon>NPC_Innate_Spellcasting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Resistance_Vulnaribilities.resx">
+      <DependentUpon>NPC_Resistance_Vulnaribilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Spellcasting.resx">
+      <DependentUpon>NPC_Spellcasting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\SetPaths.resx">
       <DependentUpon>SetPaths.cs</DependentUpon>

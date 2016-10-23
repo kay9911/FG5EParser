@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FG5EParser.User_Controls;
+using FG5EParser.User_Controls.NPC_Controls;
 
 namespace FG5EParser
 {
@@ -20,7 +21,11 @@ namespace FG5EParser
 
         #region  Init the User Controls
         SetPaths _setPaths = new SetPaths();
-        NPC _npc = new NPC();
+        NPC_Spellcasting _spellcasting = new NPC_Spellcasting();
+        NPC_Innate_Spellcasting _innateSpellcasting = new NPC_Innate_Spellcasting();
+        NPC_Actions _actions = new NPC_Actions();
+        NPC_Resistance_Vulnaribilities _resvul = new NPC_Resistance_Vulnaribilities();
+        NPC_Stats _stats = new NPC_Stats();
         #endregion
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -28,7 +33,11 @@ namespace FG5EParser
             #region Hide all User Controls
 
             _setPaths.Hide();
-            _npc.Hide();
+            _stats.Hide();
+            _spellcasting.Hide();
+            _innateSpellcasting.Hide();
+            _actions.Hide();
+            _resvul.Hide();
 
             #endregion
 
@@ -38,10 +47,34 @@ namespace FG5EParser
                 _setPaths.Show();
             }
 
-            if (treeView1.SelectedNode.Name == "_NPC")
+            if (treeView1.SelectedNode.Name == "_stats")
             {
-                pnlMain.Controls.Add(_npc);
-                _npc.Show();
+                pnlMain.Controls.Add(_stats);
+                _stats.Show();
+            }
+
+            if (treeView1.SelectedNode.Name == "_resistance_and_vulnaribilities")
+            {
+                pnlMain.Controls.Add(_resvul);
+                _resvul.Show();
+            }
+
+            if (treeView1.SelectedNode.Name == "_actions")
+            {
+                pnlMain.Controls.Add(_actions);
+                _actions.Show();
+            }
+
+            if (treeView1.SelectedNode.Name == "_innate_spellcasting")
+            {
+                pnlMain.Controls.Add(_innateSpellcasting);
+                _innateSpellcasting.Show();
+            }
+
+            if (treeView1.SelectedNode.Name == "_spellcasting")
+            {
+                pnlMain.Controls.Add(_spellcasting);
+                _spellcasting.Show();
             }
         }
 

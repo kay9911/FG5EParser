@@ -24,7 +24,7 @@ namespace Creature_Creator
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Test1());
+			Application.Run(new MainForm());
 		}
 		
 	}

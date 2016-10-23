@@ -13,7 +13,6 @@ namespace FG5EParser
 {
     public partial class SetPaths : UserControl
     {
-
         #region Properties
 
         public string InputText {
