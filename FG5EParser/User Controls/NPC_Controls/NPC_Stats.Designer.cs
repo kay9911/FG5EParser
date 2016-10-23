@@ -70,6 +70,7 @@
             this.txtChallenge.Name = "txtChallenge";
             this.txtChallenge.Size = new System.Drawing.Size(292, 22);
             this.txtChallenge.TabIndex = 110;
+            this.txtChallenge.TextChanged += new System.EventHandler(this.txtChallenge_TextChanged);
             // 
             // label16
             // 
@@ -88,6 +89,7 @@
             this.txtLanguages.Name = "txtLanguages";
             this.txtLanguages.Size = new System.Drawing.Size(292, 22);
             this.txtLanguages.TabIndex = 108;
+            this.txtLanguages.TextChanged += new System.EventHandler(this.txtLanguages_TextChanged);
             // 
             // label15
             // 
@@ -106,6 +108,7 @@
             this.txtSenses.Name = "txtSenses";
             this.txtSenses.Size = new System.Drawing.Size(292, 22);
             this.txtSenses.TabIndex = 106;
+            this.txtSenses.TextChanged += new System.EventHandler(this.txtSenses_TextChanged);
             // 
             // label14
             // 
@@ -124,6 +127,7 @@
             this.txtSkills.Name = "txtSkills";
             this.txtSkills.Size = new System.Drawing.Size(292, 22);
             this.txtSkills.TabIndex = 104;
+            this.txtSkills.TextChanged += new System.EventHandler(this.txtSkills_TextChanged);
             // 
             // label13
             // 
@@ -142,6 +146,7 @@
             this.txtSavingThrows.Name = "txtSavingThrows";
             this.txtSavingThrows.Size = new System.Drawing.Size(292, 22);
             this.txtSavingThrows.TabIndex = 102;
+            this.txtSavingThrows.TextChanged += new System.EventHandler(this.txtSavingThrows_TextChanged);
             // 
             // label12
             // 
@@ -161,6 +166,8 @@
             this.txtCHR.Size = new System.Drawing.Size(37, 22);
             this.txtCHR.TabIndex = 100;
             this.txtCHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCHR.Enter += new System.EventHandler(this.TxtCHREnter);
+            this.txtCHR.Leave += new System.EventHandler(this.TxtCHRLeave);
             // 
             // txtWIS
             // 
@@ -170,6 +177,8 @@
             this.txtWIS.Size = new System.Drawing.Size(37, 22);
             this.txtWIS.TabIndex = 99;
             this.txtWIS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtWIS.Enter += new System.EventHandler(this.TxtWISEnter);
+            this.txtWIS.Leave += new System.EventHandler(this.TxtWISLeave);
             // 
             // txtINT
             // 
@@ -179,6 +188,8 @@
             this.txtINT.Size = new System.Drawing.Size(39, 22);
             this.txtINT.TabIndex = 98;
             this.txtINT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtINT.Enter += new System.EventHandler(this.TxtINTEnter);
+            this.txtINT.Leave += new System.EventHandler(this.TxtINTLeave);
             // 
             // txtCON
             // 
@@ -188,6 +199,8 @@
             this.txtCON.Size = new System.Drawing.Size(37, 22);
             this.txtCON.TabIndex = 97;
             this.txtCON.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCON.Enter += new System.EventHandler(this.TxtCONEnter);
+            this.txtCON.Leave += new System.EventHandler(this.TxtCONLeave);
             // 
             // txtDEX
             // 
@@ -197,6 +210,8 @@
             this.txtDEX.Size = new System.Drawing.Size(39, 22);
             this.txtDEX.TabIndex = 96;
             this.txtDEX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDEX.Enter += new System.EventHandler(this.TxtDEXEnter);
+            this.txtDEX.Leave += new System.EventHandler(this.TxtDEXLeave);
             // 
             // txtSTR
             // 
@@ -206,6 +221,8 @@
             this.txtSTR.Size = new System.Drawing.Size(39, 22);
             this.txtSTR.TabIndex = 95;
             this.txtSTR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSTR.Enter += new System.EventHandler(this.TxtSTREnter);
+            this.txtSTR.Leave += new System.EventHandler(this.TxtSTRLeave);
             // 
             // label11
             // 
@@ -274,6 +291,7 @@
             this.txtSpeed.Name = "txtSpeed";
             this.txtSpeed.Size = new System.Drawing.Size(292, 22);
             this.txtSpeed.TabIndex = 88;
+            this.txtSpeed.TextChanged += new System.EventHandler(this.txtSpeed_TextChanged);
             // 
             // label5
             // 
@@ -292,6 +310,7 @@
             this.txtHP.Name = "txtHP";
             this.txtHP.Size = new System.Drawing.Size(292, 22);
             this.txtHP.TabIndex = 86;
+            this.txtHP.TextChanged += new System.EventHandler(this.txtHP_TextChanged);
             // 
             // label4
             // 
@@ -310,6 +329,7 @@
             this.txtAC.Name = "txtAC";
             this.txtAC.Size = new System.Drawing.Size(292, 22);
             this.txtAC.TabIndex = 84;
+            this.txtAC.TextChanged += new System.EventHandler(this.txtAC_TextChanged);
             // 
             // label3
             // 
@@ -328,6 +348,7 @@
             this.txtSizeTypeAlignment.Name = "txtSizeTypeAlignment";
             this.txtSizeTypeAlignment.Size = new System.Drawing.Size(292, 22);
             this.txtSizeTypeAlignment.TabIndex = 82;
+            this.txtSizeTypeAlignment.TextChanged += new System.EventHandler(this.txtSizeTypeAlignment_TextChanged);
             // 
             // label2
             // 
@@ -346,6 +367,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(292, 22);
             this.txtName.TabIndex = 80;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // label1
             // 
@@ -367,7 +389,7 @@
             this.label17.TabIndex = 229;
             this.label17.Text = "NPC STATS";
             // 
-            // NPC
+            // NPC_Stats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -404,7 +426,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
-            this.Name = "NPC";
+            this.Name = "NPC_Stats";
             this.Size = new System.Drawing.Size(685, 444);
             this.ResumeLayout(false);
             this.PerformLayout();

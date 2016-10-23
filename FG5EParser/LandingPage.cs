@@ -17,6 +17,9 @@ namespace FG5EParser
         public LandingPage()
         {
             InitializeComponent();
+
+            this._stats.allowUse = this;
+            this._resvul.allowUse = this;
         }
 
         #region  Init the User Controls
@@ -45,6 +48,29 @@ namespace FG5EParser
             {
                 pnlMain.Controls.Add(_setPaths);
                 _setPaths.Show();
+            }
+
+            #region NPC USER CONTROLS
+
+            if (treeView1.SelectedNode.Name == "_NPC")
+            {
+                pnlMain.Controls.Add(_stats);
+                _stats.Show();
+
+                pnlMain.Controls.Add(_resvul);
+                _resvul.Show();
+
+                pnlMain.Controls.Add(_actions);
+                _actions.Show();
+
+                pnlMain.Controls.Add(_innateSpellcasting);
+                _innateSpellcasting.Show();
+
+                pnlMain.Controls.Add(_spellcasting);
+                _spellcasting.Show();
+
+                // Display all text blocks at the same time
+                rtcDisplay.Text = _stats.exposeStats + _resvul.exposeResAndVul;
             }
 
             if (treeView1.SelectedNode.Name == "_stats")
@@ -76,6 +102,8 @@ namespace FG5EParser
                 pnlMain.Controls.Add(_spellcasting);
                 _spellcasting.Show();
             }
+
+            #endregion
         }
 
         private void btnParse_Click(object sender, EventArgs e)

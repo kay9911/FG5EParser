@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Class.Designer.cs">
-      <DependentUpon>Class.cs</DependentUpon>
-    </Compile>
     <Compile Include="LandingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,9 +90,7 @@
     <Compile Include="User Controls\SetPaths.Designer.cs">
       <DependentUpon>SetPaths.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Class.resx">
-      <DependentUpon>Class.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Utilities\RegularExpressions.cs" />
     <EmbeddedResource Include="LandingPage.resx">
       <DependentUpon>LandingPage.cs</DependentUpon>
     </EmbeddedResource>

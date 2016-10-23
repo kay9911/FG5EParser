@@ -43,7 +43,7 @@
             treeNode6,
             treeNode7});
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.rctDisplay = new System.Windows.Forms.RichTextBox();
+            this.rtcDisplay = new System.Windows.Forms.RichTextBox();
             this.btnParse = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
@@ -76,13 +76,13 @@
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // rctDisplay
+            // rtcDisplay
             // 
-            this.rctDisplay.Location = new System.Drawing.Point(923, 12);
-            this.rctDisplay.Name = "rctDisplay";
-            this.rctDisplay.Size = new System.Drawing.Size(494, 788);
-            this.rctDisplay.TabIndex = 1;
-            this.rctDisplay.Text = "";
+            this.rtcDisplay.Location = new System.Drawing.Point(923, 12);
+            this.rtcDisplay.Name = "rtcDisplay";
+            this.rtcDisplay.Size = new System.Drawing.Size(494, 788);
+            this.rtcDisplay.TabIndex = 1;
+            this.rtcDisplay.Text = "";
             // 
             // btnParse
             // 
@@ -109,7 +109,7 @@
             this.ClientSize = new System.Drawing.Size(1429, 812);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.btnParse);
-            this.Controls.Add(this.rctDisplay);
+            this.Controls.Add(this.rtcDisplay);
             this.Controls.Add(this.treeView1);
             this.Name = "LandingPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -121,7 +121,7 @@
         #endregion
 
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.RichTextBox rctDisplay;
+        private System.Windows.Forms.RichTextBox rtcDisplay;
         private System.Windows.Forms.Button btnParse;
         private System.Windows.Forms.FlowLayoutPanel pnlMain;
     }

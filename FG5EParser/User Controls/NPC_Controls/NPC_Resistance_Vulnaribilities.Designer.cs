@@ -57,6 +57,7 @@
             this.txtCONIMM.Name = "txtCONIMM";
             this.txtCONIMM.Size = new System.Drawing.Size(508, 91);
             this.txtCONIMM.TabIndex = 237;
+            this.txtCONIMM.TextChanged += new System.EventHandler(this.txtCONIMM_TextChanged);
             // 
             // txtDMGIMM
             // 
@@ -66,6 +67,7 @@
             this.txtDMGIMM.Name = "txtDMGIMM";
             this.txtDMGIMM.Size = new System.Drawing.Size(508, 91);
             this.txtDMGIMM.TabIndex = 236;
+            this.txtDMGIMM.TextChanged += new System.EventHandler(this.txtDMGIMM_TextChanged);
             // 
             // txtDMGRES
             // 
@@ -75,6 +77,7 @@
             this.txtDMGRES.Name = "txtDMGRES";
             this.txtDMGRES.Size = new System.Drawing.Size(508, 91);
             this.txtDMGRES.TabIndex = 235;
+            this.txtDMGRES.TextChanged += new System.EventHandler(this.txtDMGRES_TextChanged);
             // 
             // txtDMGVUL
             // 
@@ -84,6 +87,7 @@
             this.txtDMGVUL.Name = "txtDMGVUL";
             this.txtDMGVUL.Size = new System.Drawing.Size(508, 91);
             this.txtDMGVUL.TabIndex = 234;
+            this.txtDMGVUL.TextChanged += new System.EventHandler(this.txtDMGVUL_TextChanged);
             // 
             // label30
             // 

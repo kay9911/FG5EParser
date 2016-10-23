@@ -55,13 +55,13 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(97, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(495, 39);
+            this.label1.Size = new System.Drawing.Size(473, 38);
             this.label1.TabIndex = 228;
             this.label1.Text = "NPC INNATE SPELLCASTING";
             // 
             // txtInnateSaveDc
             // 
-            this.txtInnateSaveDc.Location = new System.Drawing.Point(577, 46);
+            this.txtInnateSaveDc.Location = new System.Drawing.Point(577, 63);
             this.txtInnateSaveDc.Margin = new System.Windows.Forms.Padding(4);
             this.txtInnateSaveDc.Name = "txtInnateSaveDc";
             this.txtInnateSaveDc.Size = new System.Drawing.Size(44, 22);
@@ -69,7 +69,7 @@
             // 
             // label46
             // 
-            this.label46.Location = new System.Drawing.Point(436, 43);
+            this.label46.Location = new System.Drawing.Point(436, 60);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(133, 28);
@@ -80,7 +80,7 @@
             // cmbInnateSpellCasting
             // 
             this.cmbInnateSpellCasting.FormattingEnabled = true;
-            this.cmbInnateSpellCasting.Location = new System.Drawing.Point(209, 47);
+            this.cmbInnateSpellCasting.Location = new System.Drawing.Point(209, 64);
             this.cmbInnateSpellCasting.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInnateSpellCasting.Name = "cmbInnateSpellCasting";
             this.cmbInnateSpellCasting.Size = new System.Drawing.Size(160, 24);
@@ -88,7 +88,7 @@
             // 
             // label47
             // 
-            this.label47.Location = new System.Drawing.Point(101, 39);
+            this.label47.Location = new System.Drawing.Point(101, 56);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(99, 41);
@@ -98,7 +98,7 @@
             // 
             // label20
             // 
-            this.label20.Location = new System.Drawing.Point(4, 340);
+            this.label20.Location = new System.Drawing.Point(4, 357);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(99, 28);
@@ -108,23 +108,23 @@
             // 
             // txtfive
             // 
-            this.txtfive.Location = new System.Drawing.Point(112, 340);
+            this.txtfive.Location = new System.Drawing.Point(112, 357);
             this.txtfive.Margin = new System.Windows.Forms.Padding(4);
             this.txtfive.Name = "txtfive";
-            this.txtfive.Size = new System.Drawing.Size(558, 22);
+            this.txtfive.Size = new System.Drawing.Size(569, 22);
             this.txtfive.TabIndex = 241;
             // 
             // txtfour
             // 
-            this.txtfour.Location = new System.Drawing.Point(112, 308);
+            this.txtfour.Location = new System.Drawing.Point(112, 325);
             this.txtfour.Margin = new System.Windows.Forms.Padding(4);
             this.txtfour.Name = "txtfour";
-            this.txtfour.Size = new System.Drawing.Size(558, 22);
+            this.txtfour.Size = new System.Drawing.Size(569, 22);
             this.txtfour.TabIndex = 240;
             // 
             // label21
             // 
-            this.label21.Location = new System.Drawing.Point(4, 308);
+            this.label21.Location = new System.Drawing.Point(4, 325);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(99, 28);
@@ -134,15 +134,15 @@
             // 
             // txtthree
             // 
-            this.txtthree.Location = new System.Drawing.Point(112, 273);
+            this.txtthree.Location = new System.Drawing.Point(112, 290);
             this.txtthree.Margin = new System.Windows.Forms.Padding(4);
             this.txtthree.Name = "txtthree";
-            this.txtthree.Size = new System.Drawing.Size(558, 22);
+            this.txtthree.Size = new System.Drawing.Size(569, 22);
             this.txtthree.TabIndex = 238;
             // 
             // label22
             // 
-            this.label22.Location = new System.Drawing.Point(4, 273);
+            this.label22.Location = new System.Drawing.Point(4, 290);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(99, 28);
@@ -152,15 +152,15 @@
             // 
             // txttwo
             // 
-            this.txttwo.Location = new System.Drawing.Point(112, 239);
+            this.txttwo.Location = new System.Drawing.Point(112, 256);
             this.txttwo.Margin = new System.Windows.Forms.Padding(4);
             this.txttwo.Name = "txttwo";
-            this.txttwo.Size = new System.Drawing.Size(558, 22);
+            this.txttwo.Size = new System.Drawing.Size(569, 22);
             this.txttwo.TabIndex = 236;
             // 
             // label23
             // 
-            this.label23.Location = new System.Drawing.Point(4, 239);
+            this.label23.Location = new System.Drawing.Point(4, 256);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(99, 28);
@@ -170,15 +170,15 @@
             // 
             // txtone
             // 
-            this.txtone.Location = new System.Drawing.Point(112, 206);
+            this.txtone.Location = new System.Drawing.Point(112, 223);
             this.txtone.Margin = new System.Windows.Forms.Padding(4);
             this.txtone.Name = "txtone";
-            this.txtone.Size = new System.Drawing.Size(558, 22);
+            this.txtone.Size = new System.Drawing.Size(569, 22);
             this.txtone.TabIndex = 234;
             // 
             // label24
             // 
-            this.label24.Location = new System.Drawing.Point(4, 206);
+            this.label24.Location = new System.Drawing.Point(4, 223);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(99, 28);
@@ -188,15 +188,15 @@
             // 
             // txtatwill
             // 
-            this.txtatwill.Location = new System.Drawing.Point(112, 178);
+            this.txtatwill.Location = new System.Drawing.Point(112, 195);
             this.txtatwill.Margin = new System.Windows.Forms.Padding(4);
             this.txtatwill.Name = "txtatwill";
-            this.txtatwill.Size = new System.Drawing.Size(558, 22);
+            this.txtatwill.Size = new System.Drawing.Size(569, 22);
             this.txtatwill.TabIndex = 232;
             // 
             // label25
             // 
-            this.label25.Location = new System.Drawing.Point(4, 178);
+            this.label25.Location = new System.Drawing.Point(4, 195);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(99, 28);
@@ -206,16 +206,16 @@
             // 
             // txtAbilityText
             // 
-            this.txtAbilityText.Location = new System.Drawing.Point(112, 95);
+            this.txtAbilityText.Location = new System.Drawing.Point(112, 112);
             this.txtAbilityText.Margin = new System.Windows.Forms.Padding(4);
             this.txtAbilityText.Multiline = true;
             this.txtAbilityText.Name = "txtAbilityText";
-            this.txtAbilityText.Size = new System.Drawing.Size(558, 73);
+            this.txtAbilityText.Size = new System.Drawing.Size(569, 73);
             this.txtAbilityText.TabIndex = 230;
             // 
             // label26
             // 
-            this.label26.Location = new System.Drawing.Point(4, 95);
+            this.label26.Location = new System.Drawing.Point(4, 112);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(99, 28);
@@ -247,7 +247,7 @@
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label1);
             this.Name = "NPC_Innate_Spellcasting";
-            this.Size = new System.Drawing.Size(685, 377);
+            this.Size = new System.Drawing.Size(685, 398);
             this.ResumeLayout(false);
             this.PerformLayout();
 
