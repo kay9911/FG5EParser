@@ -60,10 +60,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetPaths.cs">
+    <Compile Include="User Controls\NPC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SetPaths.Designer.cs">
+    <Compile Include="User Controls\NPC.Designer.cs">
+      <DependentUpon>NPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\SetPaths.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\SetPaths.Designer.cs">
       <DependentUpon>SetPaths.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Class.resx">
@@ -81,7 +87,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SetPaths.resx">
+    <EmbeddedResource Include="User Controls\NPC.resx">
+      <DependentUpon>NPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\SetPaths.resx">
       <DependentUpon>SetPaths.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

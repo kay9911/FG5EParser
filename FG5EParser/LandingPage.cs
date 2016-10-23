@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FG5EParser.User_Controls;
 
 namespace FG5EParser
 {
@@ -15,45 +16,44 @@ namespace FG5EParser
         public LandingPage()
         {
             InitializeComponent();
-            treeView1.BorderStyle = BorderStyle.Fixed3D;
-            this.IsMdiContainer = true;
         }
 
-        // Init the User Controls
+        #region  Init the User Controls
         SetPaths _setPaths = new SetPaths();
-        Class _class = new Class();
+        NPC _npc = new NPC();
+        #endregion
+
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             #region Hide all User Controls
 
             _setPaths.Hide();
-            _class.Hide();
+            _npc.Hide();
 
             #endregion
 
             if (treeView1.SelectedNode.Name == "_setPath")
-            {               
+            {
                 pnlMain.Controls.Add(_setPaths);
                 _setPaths.Show();
             }
 
-            if (treeView1.SelectedNode.Text == "Test")
+            if (treeView1.SelectedNode.Name == "_NPC")
             {
-                pnlMain.Controls.Add(_class);
-                _class.Show();
+                pnlMain.Controls.Add(_npc);
+                _npc.Show();
             }
         }
 
         private void btnParse_Click(object sender, EventArgs e)
         {
-            Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader _tr = new Fantasy_Grounds_Parser_Tool.Text_Reader.TextReader();
             try
             {
                 if (!string.IsNullOrEmpty(_setPaths.InputText))
                 {
                     if (!string.IsNullOrEmpty(_setPaths.OutputText) || _setPaths.UseInstalledPath == true)
                     {
-                        _tr.ProcesNPCXML(_setPaths.InputText, _setPaths.ModuleName, _setPaths.CatalogueName, _setPaths.ImagePath, _setPaths.UseInstalledPath, _setPaths.OutputText, _setPaths.AuthorName, _setPaths.ForDMOnly);
+                        // TO DO : Send files to parse at this point
                         MessageBox.Show("Parsing done!");
                     }
                     else
@@ -70,7 +70,6 @@ namespace FG5EParser
             {
                 MessageBox.Show("Something went wrong :c " + ex.Message);
             }
-
         }
     }
 }

@@ -13,6 +13,9 @@ namespace FG5EParser
 {
     public partial class SetPaths : UserControl
     {
+
+        #region Properties
+
         public string InputText {
             get { return txtInput.Text; }
             set { txtInput.Text = value; }
@@ -59,6 +62,8 @@ namespace FG5EParser
             get { return chkDmOnly.Checked; }
             set { chkDmOnly.Checked = value; }
         }
+
+        #endregion
 
         public SetPaths()
         {
