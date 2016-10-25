@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FG5EParser.Utilities;
+using FG5EParser.User_Controls.NPC_Controls;
 
 namespace FG5EParser.User_Controls
 {
@@ -16,6 +17,103 @@ namespace FG5EParser.User_Controls
         // properties
         public string exposeStats {
             get { return _build.ToString(); }
+            set { doCompile(); }
+        }
+
+        #region RESET PROPERTIES
+        public string resettxtName
+        {
+            set { txtName.Text = value; }
+        }
+        public string resettxtSizeTypeAlignment
+        {
+            set { txtSizeTypeAlignment.Text = value; }
+        }
+        public string resettxtAC
+        {
+            set { txtAC.Text = value; }
+        }
+        public string resettxtHP
+        {
+            set { txtHP.Text = value; }
+        }
+        public string resettxtSpeed
+        {
+            set { txtSpeed.Text = value; }
+        }        
+        public string resettxtSavingThrows
+        {
+            set { txtSavingThrows.Text = value; }
+        }        
+        public string resettxttxtSkills
+        {
+            set { txtSkills.Text = value; }
+        }
+        public string resettxtSenses
+        {
+            set { txtSenses.Text = value; }
+        }        
+        public string resettxtLanguages
+        {
+            set { txtLanguages.Text = value; }
+        }
+        public string resettxtChallenge
+        {
+            set { txtChallenge.Text = value; }
+        }
+        public string resettxtSTR
+        {
+            set { txtSTR.Text = value; }
+        }
+        public string resettxtDEX
+        {
+            set { txtDEX.Text = value; }
+        }
+        public string resettxtCON
+        {
+            set { txtCON.Text = value; }
+        }
+        public string resettxtINT
+        {
+            set { txtINT.Text = value; }
+        }
+        public string resettxtWIS
+        {
+            set { txtWIS.Text = value; }
+        }
+        public string resettxtCHR
+        {
+            set { txtCHR.Text = value; }
+        }
+        public string resettxtAbilities
+        {
+            set
+            {
+                _buildabilities.Clear();
+                _ability.Clear();
+                doCompile();
+            }
+        }
+        public string resettxtDMGVUL
+        {
+            set { txtDMGVUL.Text = value; }
+        }
+        public string resettxtDMGRES
+        {
+            set { txtDMGRES.Text = value; }
+        }
+        public string resettxtDMGIMM
+        {
+            set { txtDMGIMM.Text = value; }
+        }
+        public string resettxtCONIMM
+        {
+            set { txtCONIMM.Text = value; }
+        }
+        #endregion
+
+        public bool isready {
+            get { return _isStatsComplete; }
         }
 
         // Allows the use of the parents controls
@@ -37,7 +135,11 @@ namespace FG5EParser.User_Controls
             txtCHR.Text = "10";
 
             doCompile();
+
+            //this._npcButtons.NPC_StatsallowUse = this;
         }
+
+        NPC_Buttons _npcButtons = new NPC_Buttons();
 
         // String Builders	
         StringBuilder _build = new StringBuilder();
@@ -430,6 +532,36 @@ namespace FG5EParser.User_Controls
         }
 
         private void txtCONIMM_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtSTR_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtDEX_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtCON_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtINT_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtWIS_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
+        private void txtCHR_TextChanged(object sender, EventArgs e)
         {
             doCompile();
         }

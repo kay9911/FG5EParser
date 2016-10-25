@@ -75,6 +75,7 @@
             this.txtSpellHit.Name = "txtSpellHit";
             this.txtSpellHit.Size = new System.Drawing.Size(44, 22);
             this.txtSpellHit.TabIndex = 226;
+            this.txtSpellHit.TextChanged += new System.EventHandler(this.TxtSpellHitTextChanged);
             // 
             // label44
             // 
@@ -93,6 +94,7 @@
             this.txtSpellSave.Name = "txtSpellSave";
             this.txtSpellSave.Size = new System.Drawing.Size(44, 22);
             this.txtSpellSave.TabIndex = 224;
+            this.txtSpellSave.TextChanged += new System.EventHandler(this.TxtSpellSaveTextChanged);
             // 
             // label43
             // 
@@ -112,6 +114,7 @@
             this.cmbSpellCastingAbility.Name = "cmbSpellCastingAbility";
             this.cmbSpellCastingAbility.Size = new System.Drawing.Size(160, 24);
             this.cmbSpellCastingAbility.TabIndex = 222;
+            this.cmbSpellCastingAbility.SelectedIndexChanged += new System.EventHandler(this.CmbSpellCastingAbilitySelectedIndexChanged);
             // 
             // label42
             // 
@@ -131,6 +134,7 @@
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(105, 24);
             this.comboBox9.TabIndex = 220;
+            this.comboBox9.TextChanged += new System.EventHandler(this.ComboBox9SelectedIndexChanged);
             // 
             // txtSpellAbilityText
             // 
@@ -140,6 +144,7 @@
             this.txtSpellAbilityText.Name = "txtSpellAbilityText";
             this.txtSpellAbilityText.Size = new System.Drawing.Size(470, 26);
             this.txtSpellAbilityText.TabIndex = 191;
+            this.txtSpellAbilityText.TextChanged += new System.EventHandler(this.TxtSpellAbilityTextTextChanged);
             // 
             // comboBox8
             // 
@@ -149,6 +154,7 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(105, 24);
             this.comboBox8.TabIndex = 219;
+            this.comboBox8.TextChanged += new System.EventHandler(this.ComboBox8SelectedIndexChanged);
             // 
             // comboBox7
             // 
@@ -158,6 +164,7 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(105, 24);
             this.comboBox7.TabIndex = 218;
+            this.comboBox7.TextChanged += new System.EventHandler(this.ComboBox7SelectedIndexChanged);
             // 
             // comboBox6
             // 
@@ -167,6 +174,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(105, 24);
             this.comboBox6.TabIndex = 217;
+            this.comboBox6.TextChanged += new System.EventHandler(this.ComboBox6SelectedIndexChanged);
             // 
             // comboBox5
             // 
@@ -176,6 +184,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(105, 24);
             this.comboBox5.TabIndex = 216;
+            this.comboBox5.TextChanged += new System.EventHandler(this.ComboBox5SelectedIndexChanged);
             // 
             // comboBox4
             // 
@@ -185,6 +194,7 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(105, 24);
             this.comboBox4.TabIndex = 215;
+            this.comboBox4.TextChanged += new System.EventHandler(this.ComboBox4SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -194,6 +204,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(105, 24);
             this.comboBox3.TabIndex = 214;
+            this.comboBox3.TextChanged += new System.EventHandler(this.ComboBox3SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -203,6 +214,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(105, 24);
             this.comboBox2.TabIndex = 213;
+            this.comboBox2.TextChanged += new System.EventHandler(this.ComboBox2SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -212,6 +224,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(105, 24);
             this.comboBox1.TabIndex = 212;
+            this.comboBox1.TextChanged += new System.EventHandler(this.ComboBox1SelectedIndexChanged);
             // 
             // txtNinthLevel
             // 
@@ -220,6 +233,7 @@
             this.txtNinthLevel.Name = "txtNinthLevel";
             this.txtNinthLevel.Size = new System.Drawing.Size(470, 22);
             this.txtNinthLevel.TabIndex = 211;
+            this.txtNinthLevel.TextChanged += new System.EventHandler(this.TxtNinthLevelTextChanged);
             // 
             // label41
             // 
@@ -238,6 +252,7 @@
             this.txtEightLevel.Name = "txtEightLevel";
             this.txtEightLevel.Size = new System.Drawing.Size(469, 22);
             this.txtEightLevel.TabIndex = 209;
+            this.txtEightLevel.TextChanged += new System.EventHandler(this.TxtEightLevelTextChanged);
             // 
             // label40
             // 
@@ -256,6 +271,7 @@
             this.txtSeventhLevel.Name = "txtSeventhLevel";
             this.txtSeventhLevel.Size = new System.Drawing.Size(470, 22);
             this.txtSeventhLevel.TabIndex = 207;
+            this.txtSeventhLevel.TextChanged += new System.EventHandler(this.TxtSeventhLevelTextChanged);
             // 
             // label39
             // 
@@ -274,6 +290,7 @@
             this.txtSixthLevel.Name = "txtSixthLevel";
             this.txtSixthLevel.Size = new System.Drawing.Size(469, 22);
             this.txtSixthLevel.TabIndex = 205;
+            this.txtSixthLevel.TextChanged += new System.EventHandler(this.TxtSixthLevelTextChanged);
             // 
             // label38
             // 
@@ -302,6 +319,7 @@
             this.txtFifthLevel.Name = "txtFifthLevel";
             this.txtFifthLevel.Size = new System.Drawing.Size(470, 22);
             this.txtFifthLevel.TabIndex = 202;
+            this.txtFifthLevel.TextChanged += new System.EventHandler(this.TxtFifthLevelTextChanged);
             // 
             // txtFourthLevel
             // 
@@ -310,6 +328,7 @@
             this.txtFourthLevel.Name = "txtFourthLevel";
             this.txtFourthLevel.Size = new System.Drawing.Size(470, 22);
             this.txtFourthLevel.TabIndex = 201;
+            this.txtFourthLevel.TextChanged += new System.EventHandler(this.TxtFourthLevelTextChanged);
             // 
             // label32
             // 
@@ -328,6 +347,7 @@
             this.txtThirdLevel.Name = "txtThirdLevel";
             this.txtThirdLevel.Size = new System.Drawing.Size(470, 22);
             this.txtThirdLevel.TabIndex = 199;
+            this.txtThirdLevel.TextChanged += new System.EventHandler(this.TxtThirdLevelTextChanged);
             // 
             // label33
             // 
@@ -346,6 +366,7 @@
             this.txtSecondLevel.Name = "txtSecondLevel";
             this.txtSecondLevel.Size = new System.Drawing.Size(470, 22);
             this.txtSecondLevel.TabIndex = 197;
+            this.txtSecondLevel.TextChanged += new System.EventHandler(this.TxtSecondLevelTextChanged);
             // 
             // label34
             // 
@@ -364,6 +385,7 @@
             this.txtFirstLevel.Name = "txtFirstLevel";
             this.txtFirstLevel.Size = new System.Drawing.Size(470, 22);
             this.txtFirstLevel.TabIndex = 195;
+            this.txtFirstLevel.TextChanged += new System.EventHandler(this.TxtFirstLevelTextChanged);
             // 
             // label35
             // 
@@ -382,6 +404,7 @@
             this.txtCantrips.Name = "txtCantrips";
             this.txtCantrips.Size = new System.Drawing.Size(470, 22);
             this.txtCantrips.TabIndex = 193;
+            this.txtCantrips.TextChanged += new System.EventHandler(this.TxtCantripsTextChanged);
             // 
             // label36
             // 
@@ -409,7 +432,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(173, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(359, 39);
+            this.label1.Size = new System.Drawing.Size(344, 38);
             this.label1.TabIndex = 227;
             this.label1.Text = "NPC SPELLCASTING";
             // 

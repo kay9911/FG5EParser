@@ -14,14 +14,28 @@ namespace FG5EParser
 {
     public partial class LandingPage : Form
     {
+        // Properties
+        public string sendNPCStatBlocks {
+            get { return getAllStatBlocks(); }
+        }
+
+        public LandingPage npc_name {
+            get { return _stats.allowUse; }
+        }
+
+        public string setNPCPath {
+            set { _setPaths.SetNPCPath = value; }
+        }
+
         public LandingPage()
         {
             InitializeComponent();
 
             this._stats.allowUse = this;
-            //this._resvul.allowUse = this;
             this._actions.allowUse = this;
             this._innateSpellcasting.allowUse = this;
+            this._spellcasting.allowUse = this;
+            this._npcButtons.LandingPageallowuse = this;
         }
 
         #region  Init the User Controls
@@ -29,8 +43,8 @@ namespace FG5EParser
         NPC_Spellcasting _spellcasting = new NPC_Spellcasting();
         NPC_Innate_Spellcasting _innateSpellcasting = new NPC_Innate_Spellcasting();
         NPC_Actions _actions = new NPC_Actions();
-        //NPC_Resistance_Vulnaribilities _resvul = new NPC_Resistance_Vulnaribilities();
         NPC_Stats _stats = new NPC_Stats();
+        NPC_Buttons _npcButtons = new NPC_Buttons();
         #endregion
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -42,7 +56,7 @@ namespace FG5EParser
             _spellcasting.Hide();
             _innateSpellcasting.Hide();
             _actions.Hide();
-            //_resvul.Hide();
+            _npcButtons.Hide();
 
             #endregion
 
@@ -54,13 +68,17 @@ namespace FG5EParser
 
             #region NPC USER CONTROLS
 
+            if (treeView1.SelectedNode.Name == "_NPC" || treeView1.SelectedNode.Name == "_stats" || treeView1.SelectedNode.Name == "_actions" ||
+                treeView1.SelectedNode.Name == "_innate_spellcasting" || treeView1.SelectedNode.Name == "_spellcasting")
+            {
+                pnlMainButtons.Controls.Add(_npcButtons);
+                _npcButtons.Show();
+            }
+
             if (treeView1.SelectedNode.Name == "_NPC")
             {
                 pnlMain.Controls.Add(_stats);
                 _stats.Show();
-
-                //pnlMain.Controls.Add(_resvul);
-                //_resvul.Show();
 
                 pnlMain.Controls.Add(_actions);
                 _actions.Show();
@@ -72,38 +90,35 @@ namespace FG5EParser
                 _spellcasting.Show();
 
                 // Display all text blocks at the same time
-                rtcDisplay.Text = _stats.exposeStats + _innateSpellcasting.exposeInnateSpellcasting + _actions.exposeActions;
+                rtcDisplay.Text = _stats.exposeStats + _innateSpellcasting.exposeInnateSpellcasting + _spellcasting.exposeSpellCasting + _actions.exposeActions;
             }
 
             if (treeView1.SelectedNode.Name == "_stats")
             {
                 pnlMain.Controls.Add(_stats);
                 _stats.Show();
+                rtcDisplay.Text = _stats.exposeStats;
             }
-
-            // This is now included in the stats block
-            //if (treeView1.SelectedNode.Name == "_resistance_and_vulnaribilities")
-            //{
-            //    pnlMain.Controls.Add(_resvul);
-            //    _resvul.Show();
-            //}
 
             if (treeView1.SelectedNode.Name == "_actions")
             {
                 pnlMain.Controls.Add(_actions);
                 _actions.Show();
+                rtcDisplay.Text = _actions.exposeActions;
             }
 
             if (treeView1.SelectedNode.Name == "_innate_spellcasting")
             {
                 pnlMain.Controls.Add(_innateSpellcasting);
                 _innateSpellcasting.Show();
+                rtcDisplay.Text = _innateSpellcasting.exposeInnateSpellcasting;
             }
 
             if (treeView1.SelectedNode.Name == "_spellcasting")
             {
                 pnlMain.Controls.Add(_spellcasting);
                 _spellcasting.Show();
+                rtcDisplay.Text = _spellcasting.exposeSpellCasting;
             }
 
             #endregion
@@ -134,6 +149,110 @@ namespace FG5EParser
             {
                 MessageBox.Show("Something went wrong :c " + ex.Message);
             }
+        }
+
+        public string getAllStatBlocks()
+        {
+            return _stats.exposeStats + _innateSpellcasting.exposeInnateSpellcasting + _spellcasting.exposeSpellCasting + _actions.exposeActions;
+        }
+
+        #region REFRESH FUNCTIONS
+        public void RefreshNPCStats()
+        {
+            // Send blank test, it will run doCompile();
+            _stats.exposeStats = "";
+
+            // Text Boxes
+            _stats.resettxtName = string.Empty;
+            _stats.resettxtSizeTypeAlignment = string.Empty;
+            _stats.resettxtAC = string.Empty;
+            _stats.resettxtHP = string.Empty;
+            _stats.resettxtSpeed = string.Empty;
+            _stats.resettxtSpeed = string.Empty;
+            _stats.resettxttxtSkills = string.Empty;
+            _stats.resettxtSenses = string.Empty;
+            _stats.resettxtLanguages = string.Empty;
+            _stats.resettxtChallenge = string.Empty;
+            _stats.resettxtSavingThrows = string.Empty;
+
+            // Stat blocks
+            _stats.resettxtSTR = "10";
+            _stats.resettxtDEX = "10";
+            _stats.resettxtCON = "10";
+            _stats.resettxtINT = "10";
+            _stats.resettxtWIS = "10";
+            _stats.resettxtCHR = "10";
+
+            // Abilities
+            _stats.resettxtAbilities = "";
+
+            // Res/Vul
+            _stats.resettxtDMGVUL = string.Empty;
+            _stats.resettxtDMGRES = string.Empty;
+            _stats.resettxtDMGIMM = string.Empty;
+            _stats.resettxtCONIMM = string.Empty;
+        }
+
+        public void RefreshNPCInnateSpellcasting()
+        {
+            _innateSpellcasting.resettxtAbilityText = string.Empty;
+            _innateSpellcasting.resettxtatwill = string.Empty;
+            _innateSpellcasting.resettxtone = string.Empty;
+            _innateSpellcasting.resettxttwo = string.Empty;
+            _innateSpellcasting.resettxtthree = string.Empty;
+            _innateSpellcasting.resettxtfour = string.Empty;
+            _innateSpellcasting.resettxtfive = string.Empty;
+            _innateSpellcasting.resettxtInnateSaveDc = string.Empty;
+            _innateSpellcasting.resetAbilityDropcmbInnateSpellCasting = 0;
+        }
+
+        public void RefreshNPCSpellcasting()
+        {
+            // Combo Boxes
+            _spellcasting.resetcmbSpellCastingAbility = 0;
+            _spellcasting.resetcmbcomboBox1 = 0;
+            _spellcasting.resetcmbcomboBox2 = 0;
+            _spellcasting.resetcmbcomboBox3 = 0;
+            _spellcasting.resetcmbcomboBox4 = 0;
+            _spellcasting.resetcmbcomboBox5 = 0;
+            _spellcasting.resetcmbcomboBox6 = 0;
+            _spellcasting.resetcmbcomboBox7 = 0;
+            _spellcasting.resetcmbcomboBox8 = 0;
+            _spellcasting.resetcmbcomboBox9 = 0;
+
+            // Text boxes
+            _spellcasting.resettxtSpellAbilityText = string.Empty;
+            _spellcasting.resettxtSpellHit = string.Empty;
+            _spellcasting.resettxtSpellSave = string.Empty;
+
+            _spellcasting.resettxtCantrips = string.Empty;
+            _spellcasting.resettxtFirstLevel = string.Empty;
+            _spellcasting.resettxtSecondLevel = string.Empty;
+            _spellcasting.resettxtThirdLevel = string.Empty;
+            _spellcasting.resettxtFourthLevel = string.Empty;
+            _spellcasting.resettxtFifthLevel = string.Empty;      
+            _spellcasting.resettxtSixthLevel = string.Empty;
+            _spellcasting.resettxtSeventhLevel = string.Empty;
+            _spellcasting.resettxtEightLevel = string.Empty;
+            _spellcasting.resettxtNinthLevel = string.Empty;
+        }
+
+        public void RefreshNPCActions()
+        {
+            _actions.resettxtACTIONS = "";
+            _actions.resettxtREACTIONS = "";
+            _actions.resettxtLEGENDARYACTIONS = "";
+        }
+        #endregion
+
+        public string sendNPCPath()
+        {
+            return _setPaths.SetNPCPath;
+        }
+
+        public bool sendNPCisready()
+        {
+            return _stats.isready;
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using FG5EParser.User_Controls.NPC_Controls;
 
 namespace FG5EParser
 {
@@ -48,6 +49,12 @@ namespace FG5EParser
         {
             get { return txtAuthorName.Text; }
             set { txtAuthorName.Text = value; }
+        }
+
+        public string SetNPCPath
+        {
+            get { return txtNPCPath.Text; }
+            set { txtNPCPath.Text = value; }
         }
 
         public bool UseInstalledPath
@@ -116,6 +123,21 @@ namespace FG5EParser
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
                 txtImagePath.Text = Path.GetFullPath(choofdlog.FileName);
+            }
+        }
+
+        private void btnSetNPCPath_Click(object sender, EventArgs e)
+        {
+            // Process for opening and choosing where the info gets saved too
+
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = true;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtNPCPath.Text = choofdlog.FileName;
             }
         }
     }

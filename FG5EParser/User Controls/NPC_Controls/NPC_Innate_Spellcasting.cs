@@ -18,6 +18,53 @@ namespace FG5EParser.User_Controls.NPC_Controls
             get { return _build.ToString(); }
         }
 
+        #region RESET PROPERTIES
+
+        public string resettxtInnateSaveDc {
+            set { txtInnateSaveDc.Text = value; }
+        }
+
+        public string resettxtAbilityText
+        {
+            set { txtAbilityText.Text = value; }
+        }
+
+        public string resettxtatwill
+        {
+            set { txtatwill.Text = value; }
+        }
+
+        public string resettxtone
+        {
+            set { txtone.Text = value; }
+        }
+
+        public string resettxttwo
+        {
+            set { txttwo.Text = value; }
+        }
+
+        public string resettxtthree
+        {
+            set { txtthree.Text = value; }
+        }
+
+        public string resettxtfour
+        {
+            set { txtfour.Text = value; }
+        }
+
+        public string resettxtfive
+        {
+            set { txtfive.Text = value; }
+        }
+
+        public int resetAbilityDropcmbInnateSpellCasting {
+            set { cmbInnateSpellCasting.SelectedIndex = value; }
+        }
+
+        #endregion
+
         // Allows the use of the parents controls
         public LandingPage allowUse { get; set; }
 

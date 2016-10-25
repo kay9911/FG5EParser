@@ -178,6 +178,7 @@
             this.txtCHR.Size = new System.Drawing.Size(37, 22);
             this.txtCHR.TabIndex = 100;
             this.txtCHR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCHR.TextChanged += new System.EventHandler(this.txtCHR_TextChanged);
             this.txtCHR.Enter += new System.EventHandler(this.TxtCHREnter);
             this.txtCHR.Leave += new System.EventHandler(this.TxtCHRLeave);
             // 
@@ -189,6 +190,7 @@
             this.txtWIS.Size = new System.Drawing.Size(37, 22);
             this.txtWIS.TabIndex = 99;
             this.txtWIS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtWIS.TextChanged += new System.EventHandler(this.txtWIS_TextChanged);
             this.txtWIS.Enter += new System.EventHandler(this.TxtWISEnter);
             this.txtWIS.Leave += new System.EventHandler(this.TxtWISLeave);
             // 
@@ -200,6 +202,7 @@
             this.txtINT.Size = new System.Drawing.Size(39, 22);
             this.txtINT.TabIndex = 98;
             this.txtINT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtINT.TextChanged += new System.EventHandler(this.txtINT_TextChanged);
             this.txtINT.Enter += new System.EventHandler(this.TxtINTEnter);
             this.txtINT.Leave += new System.EventHandler(this.TxtINTLeave);
             // 
@@ -211,6 +214,7 @@
             this.txtCON.Size = new System.Drawing.Size(37, 22);
             this.txtCON.TabIndex = 97;
             this.txtCON.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCON.TextChanged += new System.EventHandler(this.txtCON_TextChanged);
             this.txtCON.Enter += new System.EventHandler(this.TxtCONEnter);
             this.txtCON.Leave += new System.EventHandler(this.TxtCONLeave);
             // 
@@ -222,6 +226,7 @@
             this.txtDEX.Size = new System.Drawing.Size(39, 22);
             this.txtDEX.TabIndex = 96;
             this.txtDEX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDEX.TextChanged += new System.EventHandler(this.txtDEX_TextChanged);
             this.txtDEX.Enter += new System.EventHandler(this.TxtDEXEnter);
             this.txtDEX.Leave += new System.EventHandler(this.TxtDEXLeave);
             // 
@@ -233,6 +238,7 @@
             this.txtSTR.Size = new System.Drawing.Size(39, 22);
             this.txtSTR.TabIndex = 95;
             this.txtSTR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSTR.TextChanged += new System.EventHandler(this.txtSTR_TextChanged);
             this.txtSTR.Enter += new System.EventHandler(this.TxtSTREnter);
             this.txtSTR.Leave += new System.EventHandler(this.TxtSTRLeave);
             // 

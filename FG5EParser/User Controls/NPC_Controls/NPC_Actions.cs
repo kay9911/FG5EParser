@@ -18,6 +18,40 @@ namespace FG5EParser.User_Controls.NPC_Controls
             get { return _build.ToString(); }
         }
 
+        #region RESET PROPERTIES
+
+        public string resettxtACTIONS
+        {
+            set
+            {
+                _buildActions.Clear();
+                _action.Clear();
+                doCompile();
+            }
+        }
+
+        public string resettxtLEGENDARYACTIONS
+        {
+            set
+            {
+                _buildLegends.Clear();
+                _legend.Clear();
+                doCompile();
+            }
+        }
+
+        public string resettxtREACTIONS
+        {
+            set
+            {
+                _buildReactions.Clear();
+                _buildReactions.Clear();
+                doCompile();
+            }
+        }
+
+        #endregion
+
         // Allows the use of the parents controls
         public LandingPage allowUse { get; set; }
 

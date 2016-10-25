@@ -44,6 +44,7 @@
             this.rtcDisplay = new System.Windows.Forms.RichTextBox();
             this.btnParse = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlMainButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // treeView1
@@ -56,14 +57,19 @@
             treeNode2.Name = "Node2";
             treeNode2.Text = "Start Here";
             treeNode3.Name = "_stats";
+            treeNode3.Tag = "NPC_BLOCKS";
             treeNode3.Text = "Stats";
             treeNode4.Name = "_actions";
+            treeNode4.Tag = "NPC_BLOCKS";
             treeNode4.Text = "Actions";
             treeNode5.Name = "_innate_spellcasting";
+            treeNode5.Tag = "NPC_BLOCKS";
             treeNode5.Text = "Innate Spells";
             treeNode6.Name = "_spellcasting";
+            treeNode6.Tag = "NPC_BLOCKS";
             treeNode6.Text = "Spellcasting";
             treeNode7.Name = "_NPC";
+            treeNode7.Tag = "NPC_BLOCKS";
             treeNode7.Text = "NPC";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
@@ -98,13 +104,22 @@
             this.pnlMain.Size = new System.Drawing.Size(726, 716);
             this.pnlMain.TabIndex = 4;
             // 
+            // pnlMainButtons
+            // 
+            this.pnlMainButtons.Location = new System.Drawing.Point(191, 41);
+            this.pnlMainButtons.Name = "pnlMainButtons";
+            this.pnlMainButtons.Size = new System.Drawing.Size(726, 37);
+            this.pnlMainButtons.TabIndex = 5;
+            // 
             // LandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1429, 812);
-            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.btnParse);
+            this.Controls.Add(this.pnlMainButtons);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.rtcDisplay);
             this.Controls.Add(this.treeView1);
             this.Name = "LandingPage";
@@ -120,6 +135,7 @@
         private System.Windows.Forms.RichTextBox rtcDisplay;
         private System.Windows.Forms.Button btnParse;
         private System.Windows.Forms.FlowLayoutPanel pnlMain;
+        private System.Windows.Forms.FlowLayoutPanel pnlMainButtons;
     }
 }
 

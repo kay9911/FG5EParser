@@ -42,6 +42,9 @@
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.chkUseInstalled = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSetNPCPath = new System.Windows.Forms.Button();
+            this.txtNPCPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // chkDmOnly
@@ -181,10 +184,43 @@
             this.chkUseInstalled.UseVisualStyleBackColor = true;
             this.chkUseInstalled.CheckedChanged += new System.EventHandler(this.chkUseInstalled_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(139, 266);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(350, 38);
+            this.label1.TabIndex = 229;
+            this.label1.Text = "SET MODULE PATHS";
+            // 
+            // btnSetNPCPath
+            // 
+            this.btnSetNPCPath.Location = new System.Drawing.Point(21, 317);
+            this.btnSetNPCPath.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSetNPCPath.Name = "btnSetNPCPath";
+            this.btnSetNPCPath.Size = new System.Drawing.Size(100, 28);
+            this.btnSetNPCPath.TabIndex = 231;
+            this.btnSetNPCPath.Text = "NPC";
+            this.btnSetNPCPath.UseVisualStyleBackColor = true;
+            this.btnSetNPCPath.Click += new System.EventHandler(this.btnSetNPCPath_Click);
+            // 
+            // txtNPCPath
+            // 
+            this.txtNPCPath.Enabled = false;
+            this.txtNPCPath.Location = new System.Drawing.Point(129, 320);
+            this.txtNPCPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNPCPath.Name = "txtNPCPath";
+            this.txtNPCPath.Size = new System.Drawing.Size(468, 22);
+            this.txtNPCPath.TabIndex = 230;
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSetNPCPath);
+            this.Controls.Add(this.txtNPCPath);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.chkDmOnly);
             this.Controls.Add(this.btnImage);
             this.Controls.Add(this.label50);
@@ -200,7 +236,7 @@
             this.Controls.Add(this.txtInput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 259);
+            this.Size = new System.Drawing.Size(609, 355);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +258,8 @@
         private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.CheckBox chkUseInstalled;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSetNPCPath;
+        private System.Windows.Forms.TextBox txtNPCPath;
     }
 }

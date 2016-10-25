@@ -109,5 +109,13 @@ namespace FG5EParser.User_Controls.NPC_Controls
             doCompile();
         }
         #endregion
+
+        public void RefreshAll()
+        {
+            txtDMGVUL.Text = string.Empty;
+            txtDMGRES.Text = string.Empty;
+            txtDMGIMM.Text = string.Empty;
+            txtCONIMM.Text = string.Empty;
+        }
     }
 }
