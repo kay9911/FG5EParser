@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base_Class\ClassHitPoints.cs" />
+    <Compile Include="Base_Class\ClassProficiencies.cs" />
     <Compile Include="Base_Class\Personalities.cs" />
     <Compile Include="LandingPage.cs">
       <SubType>Form</SubType>
@@ -56,6 +58,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User Controls\Class_Controls\Class_Basics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\Class_Controls\Class_Basics.Designer.cs">
+      <DependentUpon>Class_Basics.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\NPC_Controls\NPC_Buttons.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,6 +124,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="User Controls\Class_Controls\Class_Basics.resx">
+      <DependentUpon>Class_Basics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Buttons.resx">
       <DependentUpon>NPC_Buttons.cs</DependentUpon>
     </EmbeddedResource>

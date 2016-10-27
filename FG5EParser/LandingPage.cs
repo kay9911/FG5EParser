@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FG5EParser.User_Controls;
 using FG5EParser.User_Controls.NPC_Controls;
 using FG5EParser.Utilities;
+using FG5EParser.User_Controls.Class_Controls;
 
 namespace FG5EParser
 {
@@ -40,6 +41,11 @@ namespace FG5EParser
         }
 
         #region  Init the User Controls
+
+        // Class
+        Class_Basics _classBasics = new Class_Basics();
+
+        // NPC
         SetPaths _setPaths = new SetPaths();
         NPC_Spellcasting _spellcasting = new NPC_Spellcasting();
         NPC_Innate_Spellcasting _innateSpellcasting = new NPC_Innate_Spellcasting();
@@ -59,6 +65,8 @@ namespace FG5EParser
             _actions.Hide();
             _npcButtons.Hide();
 
+            _classBasics.Hide();
+
             #endregion
 
             if (e.Node.Name == "_startHere")
@@ -76,6 +84,16 @@ namespace FG5EParser
                 pnlMain.Controls.Add(_setPaths);
                 _setPaths.Show();
             }
+
+            #region CLASS USER CONTROLS
+
+            if (treeView1.SelectedNode.Name == "_hpproff")
+            {
+                pnlMain.Controls.Add(_classBasics);
+                _classBasics.Show();
+            }
+
+            #endregion
 
             #region NPC USER CONTROLS
 
