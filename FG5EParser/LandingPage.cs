@@ -143,11 +143,10 @@ namespace FG5EParser
                 {
                     if (!string.IsNullOrEmpty(_setPaths.OutputText) || _setPaths.UseInstalledPath == true)
                     {
-                        // TO DO : Send files to parse at this point
-                        //XMLParser _xmlParser = new XMLParser();
+                       XMLParser _xmlParser = new XMLParser();
 
-                        //_xmlParser.ParseXMLs(_setPaths.CatalogueName, _setPaths.ModuleName, _setPaths.AuthorName, _setPaths.OutputText
-                            //, _setPaths.ImagePath, _setPaths.UseInstalledPath, _setPaths.ForDMOnly, _setPaths.SetNPCPath);
+                        _xmlParser.ParseXMLs(_setPaths.CatalogueName, _setPaths.ModuleName, _setPaths.AuthorName, _setPaths.OutputText
+                            , _setPaths.ImagePath, _setPaths.UseInstalledPath, _setPaths.ForDMOnly, _setPaths.SetNPCPath);
 
                         MessageBox.Show("Parsing done!");
                     }

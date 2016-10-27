@@ -17,7 +17,7 @@ namespace FG5EParser.Utilities
             string _moduleName,
             string _authorName,
             string _destinationPath,
-            string _imagePath,           
+            string _imagePath,
             bool _useInstalledPath,
             bool _isDMOnly,
             string _npcTextPath = null

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base_Class\Personalities.cs" />
     <Compile Include="LandingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +99,11 @@
       <DependentUpon>SetPaths.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\RegularExpressions.cs" />
+    <Compile Include="Utilities\XMLParser.cs" />
+    <Compile Include="WriterClasses\NPCWriter.cs" />
+    <Compile Include="XML_Writers\BaseWriter.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />
+    <Compile Include="Zipper1\ZipClass.cs" />
     <EmbeddedResource Include="LandingPage.resx">
       <DependentUpon>LandingPage.cs</DependentUpon>
     </EmbeddedResource>
