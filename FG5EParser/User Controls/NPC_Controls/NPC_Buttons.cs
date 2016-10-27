@@ -43,17 +43,21 @@ namespace FG5EParser.User_Controls.NPC_Controls
 
                     tsw.WriteLine(Environment.NewLine);
 
-                    // Replace '..' with '.'
                     LandingPageallowuse.sendNPCStatBlocks.Replace("..", ".");
 
                     tsw.WriteLine(LandingPageallowuse.sendNPCStatBlocks.ToString().Replace("  ", " "));
 
                     tsw.Close();
 
+                    // Reset all fields back to defaults
+
+                    LandingPageallowuse.RefreshNPCInnateSpellcasting();
+                    LandingPageallowuse.RefreshNPCSpellcasting();
+                    LandingPageallowuse.RefreshNPCActions();
                     LandingPageallowuse.RefreshNPCStats();
                 }
                 else
-                    MessageBox.Show("Please check the information, you have some incorrect values");
+                    MessageBox.Show("Please check the information, you may have some incorrect values");
             }
         }
 

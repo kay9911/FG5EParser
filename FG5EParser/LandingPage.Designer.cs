@@ -54,7 +54,7 @@
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "_setPath";
             treeNode1.Text = "Set Paths";
-            treeNode2.Name = "Node2";
+            treeNode2.Name = "_startHere";
             treeNode2.Text = "Start Here";
             treeNode3.Name = "_stats";
             treeNode3.Tag = "NPC_BLOCKS";

@@ -136,7 +136,6 @@ namespace FG5EParser.User_Controls
 
             doCompile();
 
-            //this._npcButtons.NPC_StatsallowUse = this;
         }
 
         NPC_Buttons _npcButtons = new NPC_Buttons();
