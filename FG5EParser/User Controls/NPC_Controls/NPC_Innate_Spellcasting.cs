@@ -111,18 +111,18 @@ namespace FG5EParser.User_Controls.NPC_Controls
             NPC_Stats _stat = new NPC_Stats();
 
             // Get the ability modifiers here
-            if (cmbInnateSpellCasting.SelectedIndex != 0 && !string.IsNullOrEmpty(txtInnateSaveDc.Text))
+            if (cmbInnateSpellCasting.SelectedIndex != 0)
             {
                 _build.Append(Environment.NewLine);
                 _build.Append("Innate Spellcasting.");
                 _build.Append(Environment.NewLine);
                 _build.Append(string.Format("The {2}'s spell casting ability is {0} (spell save DC {1}). ", cmbInnateSpellCasting.SelectedItem,
                                             !String.IsNullOrEmpty(txtInnateSaveDc.Text) ? txtInnateSaveDc.Text : "0",
-                                             _stat.getNameforInnateSpellCastingUserControl));
+                                             _stat.getNameforInnateSpellCastingUserControl).Trim());
 
                 if (!String.IsNullOrEmpty(txtAbilityText.Text))
                 {
-                    _build.Append(string.Format("\\r{0}", txtAbilityText.Text));
+                    _build.Append(string.Format("\\r{0}", txtAbilityText.Text).Trim());
                 }
 
                 if (!string.IsNullOrEmpty(txtatwill.Text))
