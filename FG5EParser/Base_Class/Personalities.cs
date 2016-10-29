@@ -49,6 +49,8 @@ namespace FG5EParser.Base_Classes
         public string NPCDmgRes { get; set; }
         public string NPCDmgImm { get; set; }
         public string NPCCondImm { get; set; }
+        private List<string> _npcDetails = new List<string>();
+        public List<string> NPCDetails { get { return _npcDetails; } set { _npcDetails = value; } }
         #endregion
 
         public Personalities BindValues(List<string> _Basic)
@@ -143,17 +145,17 @@ namespace FG5EParser.Base_Classes
             // Omitting the "ACTIONS" line
             line = shiftUp(_Basic);
 
-            while (line != "LEGENDARY ACTIONS" && line != "REACTIONS" && line != "Its done!")
+            while (line != "LEGENDARY ACTIONS" && line != "REACTIONS" && line != "Its done!" && line != "##;")
             {
                 _new.NPCActions.Add(line);
                 line = shiftUp(_Basic);
             }
 
             // First check to see if this is a Legendary Action or a Reaction
-            while (line != "Its done!")
+            while (line != "Its done!" && line != "##;")
             {
                 // While the reaction section has not been reached
-                while (line != "REACTIONS" && line != "Its done!")
+                while (line != "REACTIONS" && line != "Its done!" && line != "##;")
                 {
                     // Remove the legendary actions line
                     if (line == "LEGENDARY ACTIONS")
@@ -169,7 +171,7 @@ namespace FG5EParser.Base_Classes
                     }
                 }
 
-                while (line != "Its done!")
+                while (line != "##;" && line != "Its done!")
                 {
                     // Remove the Reactions line
                     if (line == "REACTIONS")
@@ -178,11 +180,23 @@ namespace FG5EParser.Base_Classes
                         _new.NPCReactions.Add(line);
                         line = shiftUp(_Basic);
                     }
-                    else
-                    {
-                        _new.NPCReactions.Add(line);
-                        line = shiftUp(_Basic);
-                    }
+                    //else
+                    //{
+                    //    _new.NPCReactions.Add(line);
+                    //    line = shiftUp(_Basic);
+                    //}
+                }
+            }
+
+            // Check for ##;
+            if (line == "##;")
+            {
+                line = shiftUp(_Basic);
+
+                while (line != "Its done!")
+                {
+                    _new.NPCDetails.Add(line);
+                    line = shiftUp(_Basic);
                 }
             }
 

@@ -419,6 +419,19 @@ namespace FG5EParser.XMLWriterHelperClasses
                 //</ legendaryactions >
             }
 
+            if (_person.NPCDetails.Count != 0)
+            {
+                _npc.Append("<text type =\"formattedtext\">");
+
+                for (int i = 0; i < _person.NPCDetails.Count; i++)
+                {
+                    _npc.Append(string.Format("<p>{0}</p>",_person.NPCDetails[i].ToString()));
+                }
+
+                _npc.Append("</text>");
+
+            }
+
             _npc.Append(string.Format("</{0}>", _person.NPCName.Replace(" ", "").ToLower().Trim()));
 
             return _npc.ToString();

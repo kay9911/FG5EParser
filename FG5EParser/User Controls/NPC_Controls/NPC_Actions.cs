@@ -50,6 +50,10 @@ namespace FG5EParser.User_Controls.NPC_Controls
             }
         }
 
+        public string resettxtNPCDetails {
+            set { txtNPCDetails.Text = value; }
+        }
+
         #endregion
 
         // Allows the use of the parents controls
@@ -87,6 +91,8 @@ namespace FG5EParser.User_Controls.NPC_Controls
             // Get Legendary Actions
             _build.Append(_buildLegends.ToString());
 
+            getNPCDetails();
+
             // Some final formatting, its tiresome cathing all of these :S
             _build.Replace("..", ".");
             _build.Replace(". .", ".");
@@ -97,6 +103,18 @@ namespace FG5EParser.User_Controls.NPC_Controls
 
             RichTextBox _rtc = (allowUse.Controls["rtcDisplay"] as RichTextBox);
             _rtc.Text = _build.ToString();
+        }
+
+        private void getNPCDetails()
+        {
+            if (!string.IsNullOrEmpty(txtNPCDetails.Text))
+            {
+                _build.Append(Environment.NewLine);
+                _build.Append("##;");
+                _build.Append(Environment.NewLine);
+                _build.Append(txtNPCDetails.Text);
+            }
+            
         }
 
         #region ADD BUTTON ON CLICK FUNCTIONS
@@ -243,6 +261,11 @@ namespace FG5EParser.User_Controls.NPC_Controls
         {
             _buildReactions.Clear();
             _reaction.Clear();
+            doCompile();
+        }
+
+        private void txtNPCDetails_TextChanged(object sender, EventArgs e)
+        {
             doCompile();
         }
 

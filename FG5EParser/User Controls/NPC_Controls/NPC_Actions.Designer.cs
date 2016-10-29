@@ -41,6 +41,8 @@
             this.txtACTIONS = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtNPCDetails = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label45
@@ -77,7 +79,7 @@
             // 
             // txtREACTIONS
             // 
-            this.txtREACTIONS.Location = new System.Drawing.Point(113, 309);
+            this.txtREACTIONS.Location = new System.Drawing.Point(112, 309);
             this.txtREACTIONS.Margin = new System.Windows.Forms.Padding(4);
             this.txtREACTIONS.Multiline = true;
             this.txtREACTIONS.Name = "txtREACTIONS";
@@ -176,10 +178,34 @@
             this.label1.TabIndex = 228;
             this.label1.Text = "NPC ACTIONS";
             // 
+            // txtNPCDetails
+            // 
+            this.txtNPCDetails.Location = new System.Drawing.Point(112, 434);
+            this.txtNPCDetails.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNPCDetails.Multiline = true;
+            this.txtNPCDetails.Name = "txtNPCDetails";
+            this.txtNPCDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtNPCDetails.Size = new System.Drawing.Size(568, 350);
+            this.txtNPCDetails.TabIndex = 229;
+            this.txtNPCDetails.TextChanged += new System.EventHandler(this.txtNPCDetails_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 434);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 17);
+            this.label2.TabIndex = 230;
+            this.label2.Text = "NPC DETAILS";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // NPC_Actions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtNPCDetails);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label45);
             this.Controls.Add(this.btnRefreshReaction);
@@ -194,7 +220,7 @@
             this.Controls.Add(this.txtACTIONS);
             this.Controls.Add(this.label18);
             this.Name = "NPC_Actions";
-            this.Size = new System.Drawing.Size(685, 434);
+            this.Size = new System.Drawing.Size(685, 788);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +241,7 @@
         private System.Windows.Forms.TextBox txtACTIONS;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNPCDetails;
+        private System.Windows.Forms.Label label2;
     }
 }

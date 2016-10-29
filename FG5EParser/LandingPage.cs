@@ -275,6 +275,7 @@ namespace FG5EParser
             _actions.resettxtACTIONS = "";
             _actions.resettxtREACTIONS = "";
             _actions.resettxtLEGENDARYACTIONS = "";
+            _actions.resettxtNPCDetails = "";
         }
         #endregion
 
