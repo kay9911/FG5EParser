@@ -59,7 +59,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         {
             StringBuilder xml = new StringBuilder();
 
-            xml.Append(string.Format("<{0}>",_class.className));
+            xml.Append(string.Format("<{0}>", _class.className.Replace(" ", "").ToLower().Trim()));
 
             xml.Append(string.Format("<name type=\"string\">{0}</name>",_class.className)); // Class name goes here
 
@@ -151,7 +151,10 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append("<features>");
 
-            // Features to be sent for processing here 
+            foreach (ClassFeatures _feature in _class.classFeatures)
+            {
+                xml.Append(string.Format("{0}", returnFeatureXML(_feature)));
+            }
 
             xml.Append("</features>");
 
@@ -161,7 +164,10 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append("<abilities>");
 
-            // Abilities to be sent for processing here
+            foreach (ClassAbilities _ability in _class.classAbilities)
+            {
+                xml.Append(string.Format("{0}",returnAbilityXML(_ability)));
+            }
 
             xml.Append("</abilities>");
 
@@ -183,7 +189,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             #endregion
 
-            xml.Append(string.Format("</{0}>", _class.className));
+            xml.Append(string.Format("</{0}>", _class.className.Replace(" ", "").ToLower().Trim()));
 
             return xml.ToString();
         }
@@ -262,6 +268,56 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             } // end of foreach
 
             return _class.ToString();
+        }
+
+        private string returnFeatureXML(ClassFeatures _classFeature)
+        {
+            StringBuilder xml = new StringBuilder();
+            List<string> _level = new List<string>(_classFeature.FeatureLevels.Split(','));
+
+            foreach (string level in _level)
+            {
+                xml.Append(string.Format("<{0}{1}>", _classFeature.FeatureName.Replace(" ", "").ToLower().Trim(), level));
+
+                xml.Append(string.Format("<name type=\"string\">{0}</name>",_classFeature.FeatureName));
+
+                xml.Append(string.Format("<level type=\"number\">{0}</level>",level));
+
+                xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>",_classFeature.FeatureDescription));
+
+                // Check to see if this is an archtype header
+                if (_classFeature.isArchtypeHeader)
+                {
+                    xml.Append("<specializationchoice type=\"number\">1</specializationchoice>");                    
+                }
+
+                // Append what archtype this particular skill falls under
+                if (!string.IsNullOrEmpty(_classFeature.UnderArchtype))
+                {
+                    xml.Append(string.Format("<specialization type=\"string\">{0}</specialization>",_classFeature.UnderArchtype));
+                }
+
+                xml.Append(string.Format("</{0}{1}>", _classFeature.FeatureName.Replace(" ", "").ToLower().Trim(), level));
+            }
+
+            return xml.ToString();
+        }
+
+        private string returnAbilityXML(ClassAbilities _classAbility)
+        {
+            StringBuilder xml = new StringBuilder();
+
+            xml.Append(string.Format("<{0}>",_classAbility.AbilityName.Replace(" ", "").ToLower().Trim()));
+
+            xml.Append(string.Format("<name type=\"string\">{0}</name>", _classAbility.AbilityName));
+
+            xml.Append(string.Format("<level type=\"number\">{0}</level>",_classAbility.AbilityLevels));
+
+            xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>",_classAbility.AbilityDescription));
+
+            xml.Append(string.Format("</{0}>", _classAbility.AbilityName.Replace(" ", "").ToLower().Trim()));          
+
+            return xml.ToString();
         }
     }
 }

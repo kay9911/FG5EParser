@@ -30,7 +30,7 @@ namespace FG5EParser.Base_Class
         }
 
         private List<ClassAbilities> _abilityList = new List<ClassAbilities>();
-        public List<ClassAbilities> abilityFeatures {
+        public List<ClassAbilities> classAbilities {
             get { return _abilityList; }
             set { _abilityList = value; }
         }
