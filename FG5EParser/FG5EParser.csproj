@@ -47,8 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base_Class\ClassHitPoints.cs" />
-    <Compile Include="Base_Class\ClassProficiencies.cs" />
+    <Compile Include="Base_Class\Classes.cs" />
     <Compile Include="Base_Class\Personalities.cs" />
     <Compile Include="LandingPage.cs">
       <SubType>Form</SubType>

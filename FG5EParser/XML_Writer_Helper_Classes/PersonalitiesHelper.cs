@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace FG5EParser.XMLWriterHelperClasses
+namespace FG5EParser.XML_Writer_Helper_Classes
 {
     class PersonalitiesHelper
     {
