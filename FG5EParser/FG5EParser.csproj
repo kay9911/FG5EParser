@@ -110,6 +110,7 @@
     <Compile Include="Utilities\XMLParser.cs" />
     <Compile Include="WriterClasses\NPCWriter.cs" />
     <Compile Include="XML_Writers\BaseWriter.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\ClassHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />
     <Compile Include="Zipper1\ZipClass.cs" />
     <EmbeddedResource Include="LandingPage.resx">
