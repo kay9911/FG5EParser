@@ -34,23 +34,23 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.btnOutput = new System.Windows.Forms.Button();
-            this.btnInput = new System.Windows.Forms.Button();
             this.txtImagePath = new System.Windows.Forms.TextBox();
             this.txtAuthorName = new System.Windows.Forms.TextBox();
             this.txtCatName = new System.Windows.Forms.TextBox();
             this.txtModuleName = new System.Windows.Forms.TextBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
-            this.txtInput = new System.Windows.Forms.TextBox();
             this.chkUseInstalled = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSetNPCPath = new System.Windows.Forms.Button();
             this.txtNPCPath = new System.Windows.Forms.TextBox();
+            this.btnClass = new System.Windows.Forms.Button();
+            this.txtClassPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // chkDmOnly
             // 
             this.chkDmOnly.AutoSize = true;
-            this.chkDmOnly.Location = new System.Drawing.Point(129, 135);
+            this.chkDmOnly.Location = new System.Drawing.Point(124, 97);
             this.chkDmOnly.Margin = new System.Windows.Forms.Padding(4);
             this.chkDmOnly.Name = "chkDmOnly";
             this.chkDmOnly.Size = new System.Drawing.Size(128, 21);
@@ -60,7 +60,7 @@
             // 
             // btnImage
             // 
-            this.btnImage.Location = new System.Drawing.Point(21, 225);
+            this.btnImage.Location = new System.Drawing.Point(16, 187);
             this.btnImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(100, 28);
@@ -71,7 +71,7 @@
             // 
             // label50
             // 
-            this.label50.Location = new System.Drawing.Point(5, 193);
+            this.label50.Location = new System.Drawing.Point(0, 155);
             this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(116, 28);
@@ -81,7 +81,7 @@
             // 
             // label49
             // 
-            this.label49.Location = new System.Drawing.Point(5, 161);
+            this.label49.Location = new System.Drawing.Point(0, 123);
             this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(116, 28);
@@ -91,7 +91,7 @@
             // 
             // label48
             // 
-            this.label48.Location = new System.Drawing.Point(5, 100);
+            this.label48.Location = new System.Drawing.Point(0, 62);
             this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(116, 28);
@@ -101,7 +101,7 @@
             // 
             // btnOutput
             // 
-            this.btnOutput.Location = new System.Drawing.Point(21, 39);
+            this.btnOutput.Location = new System.Drawing.Point(16, 1);
             this.btnOutput.Margin = new System.Windows.Forms.Padding(4);
             this.btnOutput.Name = "btnOutput";
             this.btnOutput.Size = new System.Drawing.Size(100, 28);
@@ -110,21 +110,10 @@
             this.btnOutput.UseVisualStyleBackColor = true;
             this.btnOutput.Click += new System.EventHandler(this.btnOutput_Click);
             // 
-            // btnInput
-            // 
-            this.btnInput.Location = new System.Drawing.Point(21, 4);
-            this.btnInput.Margin = new System.Windows.Forms.Padding(4);
-            this.btnInput.Name = "btnInput";
-            this.btnInput.Size = new System.Drawing.Size(100, 28);
-            this.btnInput.TabIndex = 61;
-            this.btnInput.Text = "INPUT";
-            this.btnInput.UseVisualStyleBackColor = true;
-            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
-            // 
             // txtImagePath
             // 
             this.txtImagePath.Enabled = false;
-            this.txtImagePath.Location = new System.Drawing.Point(129, 228);
+            this.txtImagePath.Location = new System.Drawing.Point(124, 190);
             this.txtImagePath.Margin = new System.Windows.Forms.Padding(4);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.Size = new System.Drawing.Size(468, 22);
@@ -132,7 +121,7 @@
             // 
             // txtAuthorName
             // 
-            this.txtAuthorName.Location = new System.Drawing.Point(129, 196);
+            this.txtAuthorName.Location = new System.Drawing.Point(124, 158);
             this.txtAuthorName.Margin = new System.Windows.Forms.Padding(4);
             this.txtAuthorName.Name = "txtAuthorName";
             this.txtAuthorName.Size = new System.Drawing.Size(468, 22);
@@ -140,7 +129,7 @@
             // 
             // txtCatName
             // 
-            this.txtCatName.Location = new System.Drawing.Point(129, 164);
+            this.txtCatName.Location = new System.Drawing.Point(124, 126);
             this.txtCatName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCatName.Name = "txtCatName";
             this.txtCatName.Size = new System.Drawing.Size(468, 22);
@@ -148,7 +137,7 @@
             // 
             // txtModuleName
             // 
-            this.txtModuleName.Location = new System.Drawing.Point(129, 102);
+            this.txtModuleName.Location = new System.Drawing.Point(124, 64);
             this.txtModuleName.Margin = new System.Windows.Forms.Padding(4);
             this.txtModuleName.Name = "txtModuleName";
             this.txtModuleName.Size = new System.Drawing.Size(468, 22);
@@ -157,25 +146,16 @@
             // txtOutput
             // 
             this.txtOutput.Enabled = false;
-            this.txtOutput.Location = new System.Drawing.Point(129, 42);
+            this.txtOutput.Location = new System.Drawing.Point(124, 4);
             this.txtOutput.Margin = new System.Windows.Forms.Padding(4);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(468, 22);
             this.txtOutput.TabIndex = 56;
             // 
-            // txtInput
-            // 
-            this.txtInput.Enabled = false;
-            this.txtInput.Location = new System.Drawing.Point(129, 6);
-            this.txtInput.Margin = new System.Windows.Forms.Padding(4);
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(468, 22);
-            this.txtInput.TabIndex = 55;
-            // 
             // chkUseInstalled
             // 
             this.chkUseInstalled.AutoSize = true;
-            this.chkUseInstalled.Location = new System.Drawing.Point(129, 74);
+            this.chkUseInstalled.Location = new System.Drawing.Point(124, 36);
             this.chkUseInstalled.Margin = new System.Windows.Forms.Padding(4);
             this.chkUseInstalled.Name = "chkUseInstalled";
             this.chkUseInstalled.Size = new System.Drawing.Size(144, 21);
@@ -188,7 +168,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(139, 266);
+            this.label1.Location = new System.Drawing.Point(134, 228);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(350, 38);
             this.label1.TabIndex = 229;
@@ -196,7 +176,7 @@
             // 
             // btnSetNPCPath
             // 
-            this.btnSetNPCPath.Location = new System.Drawing.Point(21, 317);
+            this.btnSetNPCPath.Location = new System.Drawing.Point(16, 279);
             this.btnSetNPCPath.Margin = new System.Windows.Forms.Padding(4);
             this.btnSetNPCPath.Name = "btnSetNPCPath";
             this.btnSetNPCPath.Size = new System.Drawing.Size(100, 28);
@@ -208,16 +188,38 @@
             // txtNPCPath
             // 
             this.txtNPCPath.Enabled = false;
-            this.txtNPCPath.Location = new System.Drawing.Point(129, 320);
+            this.txtNPCPath.Location = new System.Drawing.Point(124, 282);
             this.txtNPCPath.Margin = new System.Windows.Forms.Padding(4);
             this.txtNPCPath.Name = "txtNPCPath";
             this.txtNPCPath.Size = new System.Drawing.Size(468, 22);
             this.txtNPCPath.TabIndex = 230;
             // 
+            // btnClass
+            // 
+            this.btnClass.Location = new System.Drawing.Point(16, 309);
+            this.btnClass.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClass.Name = "btnClass";
+            this.btnClass.Size = new System.Drawing.Size(100, 28);
+            this.btnClass.TabIndex = 233;
+            this.btnClass.Text = "Class";
+            this.btnClass.UseVisualStyleBackColor = true;
+            this.btnClass.Click += new System.EventHandler(this.btnClass_Click);
+            // 
+            // txtClassPath
+            // 
+            this.txtClassPath.Enabled = false;
+            this.txtClassPath.Location = new System.Drawing.Point(124, 312);
+            this.txtClassPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClassPath.Name = "txtClassPath";
+            this.txtClassPath.Size = new System.Drawing.Size(468, 22);
+            this.txtClassPath.TabIndex = 232;
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnClass);
+            this.Controls.Add(this.txtClassPath);
             this.Controls.Add(this.btnSetNPCPath);
             this.Controls.Add(this.txtNPCPath);
             this.Controls.Add(this.label1);
@@ -227,16 +229,14 @@
             this.Controls.Add(this.label49);
             this.Controls.Add(this.label48);
             this.Controls.Add(this.btnOutput);
-            this.Controls.Add(this.btnInput);
             this.Controls.Add(this.txtImagePath);
             this.Controls.Add(this.txtAuthorName);
             this.Controls.Add(this.txtCatName);
             this.Controls.Add(this.txtModuleName);
             this.Controls.Add(this.txtOutput);
-            this.Controls.Add(this.txtInput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 355);
+            this.Size = new System.Drawing.Size(609, 344);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,16 +250,16 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Button btnOutput;
-        private System.Windows.Forms.Button btnInput;
         private System.Windows.Forms.TextBox txtImagePath;
         private System.Windows.Forms.TextBox txtAuthorName;
         private System.Windows.Forms.TextBox txtCatName;
         private System.Windows.Forms.TextBox txtModuleName;
         private System.Windows.Forms.TextBox txtOutput;
-        private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.CheckBox chkUseInstalled;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSetNPCPath;
         private System.Windows.Forms.TextBox txtNPCPath;
+        private System.Windows.Forms.Button btnClass;
+        private System.Windows.Forms.TextBox txtClassPath;
     }
 }

@@ -1,5 +1,5 @@
 ﻿using FG5EParser.Base_Class;
-using FG5EParser.Writer_Classes;
+using FG5EParser.WriterClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +17,8 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         {
             StringBuilder xml = new StringBuilder();
 
-            //NPCWriter _npcWriter = new NPCWriter();
-            //List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath);
+            ClassWriter _classWriter = new ClassWriter();
+            List<Classes> _classes = _classWriter.compileClassList(_classtxtPath);
 
             List<Classes> _classList = new List<Classes>();
 
@@ -311,7 +311,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append(string.Format("<name type=\"string\">{0}</name>", _classAbility.AbilityName));
 
-            xml.Append(string.Format("<level type=\"number\">{0}</level>",_classAbility.AbilityLevels));
+            xml.Append(string.Format("<level type=\"number\">{0}</level>","1"));
 
             xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>",_classAbility.AbilityDescription));
 

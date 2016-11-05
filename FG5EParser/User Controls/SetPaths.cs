@@ -16,11 +16,6 @@ namespace FG5EParser
     {
         #region Properties
 
-        public string InputText {
-            get { return txtInput.Text; }
-            set { txtInput.Text = value; }
-        }
-
         public string OutputText
         {
             get { return txtOutput.Text; }
@@ -57,6 +52,12 @@ namespace FG5EParser
             set { txtNPCPath.Text = value; }
         }
 
+        public string SetClassPath
+        {
+            get { return txtClassPath.Text; }
+            set { txtClassPath.Text = value; }
+        }
+
         public bool UseInstalledPath
         {
             get { return chkUseInstalled.Checked; }
@@ -74,19 +75,6 @@ namespace FG5EParser
         public SetPaths()
         {
             InitializeComponent();
-        }
-
-        private void btnInput_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.*)|*.*";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
-
-            if (choofdlog.ShowDialog() == DialogResult.OK)
-            {
-                txtInput.Text = Path.GetFullPath(choofdlog.FileName);
-            }
         }
 
         private void btnOutput_Click(object sender, EventArgs e)
@@ -138,6 +126,21 @@ namespace FG5EParser
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
                 txtNPCPath.Text = choofdlog.FileName;
+            }
+        }
+
+        private void btnClass_Click(object sender, EventArgs e)
+        {
+            // Process for opening and choosing where the info gets saved too
+
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = true;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtClassPath.Text = choofdlog.FileName;
             }
         }
     }
