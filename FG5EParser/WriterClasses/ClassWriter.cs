@@ -10,7 +10,7 @@ namespace FG5EParser.WriterClasses
 {
     class ClassWriter
     {
-        public List<Classes> compileClassList(string _inputLocation)
+        public List<Classes> compileClassList(string _inputLocation, string _moduleName)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace FG5EParser.WriterClasses
                         Classes _classes = new Classes();
                         if (_basic.Count != 0)
                         {
-                            _classes = _classes.bindValues(_basic);
+                            _classes = _classes.bindValues(_basic,_moduleName);
                             Classes.Add(_classes);
                         }
                         _basic.Clear();
@@ -45,7 +45,7 @@ namespace FG5EParser.WriterClasses
                         Classes _classes = new Classes();
                         if (_basic.Count != 0)
                         {
-                            _classes = _classes.bindValues(_basic);
+                            _classes = _classes.bindValues(_basic, _moduleName);
                             Classes.Add(_classes);
                         }
                         _basic.Clear();
@@ -55,9 +55,9 @@ namespace FG5EParser.WriterClasses
             return Classes;
 
             } 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     } 

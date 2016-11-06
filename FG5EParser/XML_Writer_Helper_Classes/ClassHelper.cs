@@ -18,7 +18,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             StringBuilder xml = new StringBuilder();
 
             ClassWriter _classWriter = new ClassWriter();
-            List<Classes> _classes = _classWriter.compileClassList(_classtxtPath);
+            List<Classes> _classes = _classWriter.compileClassList(_classtxtPath, _moduleName);
 
             List<Classes> _classList = new List<Classes>();
 
@@ -65,7 +65,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append("<text type=\"formattedtext\">");
 
-            // Here is where a huge block of text needs to come in
+            xml.Append(_class.classDescriptions);
 
             xml.Append("</text>");
 

@@ -157,20 +157,27 @@ namespace FG5EParser
         {
             try
             {
-                if (!string.IsNullOrEmpty(_setPaths.OutputText) || _setPaths.UseInstalledPath == true)
+                if (!string.IsNullOrEmpty(_setPaths.ModuleName))
                 {
-                    XMLParser _xmlParser = new XMLParser();
+                    if (!string.IsNullOrEmpty(_setPaths.OutputText) || _setPaths.UseInstalledPath == true)
+                    {
+                        XMLParser _xmlParser = new XMLParser();
 
-                    _xmlParser.ParseXMLs(_setPaths.CatalogueName, _setPaths.ModuleName, _setPaths.AuthorName, _setPaths.OutputText
-                        , _setPaths.ImagePath, _setPaths.UseInstalledPath, _setPaths.ForDMOnly, _setPaths.SetNPCPath,_setPaths.SetClassPath);
+                        _xmlParser.ParseXMLs(_setPaths.CatalogueName, _setPaths.ModuleName, _setPaths.AuthorName, _setPaths.OutputText
+                            , _setPaths.ImagePath, _setPaths.UseInstalledPath, _setPaths.ForDMOnly, _setPaths.SetNPCPath, _setPaths.SetClassPath);
 
-                    MessageBox.Show("Parsing done!");
+                        MessageBox.Show("Parsing done!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("An output path is mandatory, please select a path for the parsed modules to go to or else check the \"Use Installed Path\" checkbox to have them directly delivered to your modules folder");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("An output path is mandatory, please select a path for the parsed modules to go to or else check the \"Use Installed Path\" checkbox to have them directly delivered to your modules folder");
+                    MessageBox.Show("A module name is mandatory, as references are depenedent on it.");
                 }
-                
+
             }
             catch (Exception ex)
             {
