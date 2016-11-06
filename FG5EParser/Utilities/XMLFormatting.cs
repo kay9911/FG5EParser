@@ -40,7 +40,7 @@ namespace FG5EParser.Utilities
 
                 th.Append("</tr>");
 
-                return th.ToString();
+                _toFormat = th.ToString();
             }
             else if (_toFormat.Contains("#tr;"))
             {
@@ -64,7 +64,7 @@ namespace FG5EParser.Utilities
 
                 th.Append("</tr>");
 
-                return th.ToString();
+                _toFormat = th.ToString();
             }
             else if (_toFormat.Contains("#te;"))
             {
@@ -76,12 +76,17 @@ namespace FG5EParser.Utilities
             }
             else if (_toFormat.Contains("#li;"))
             {
-                _toFormat = _toFormat.Replace("#li;","");
-                return string.Format("<li>{0}</li>",_toFormat.Trim());
+                _toFormat = _toFormat.Replace("#li;", "");
+                return string.Format("<li>{0}</li>", _toFormat.Trim());
             }
             else if (_toFormat.Contains("#le;"))
             {
                 return "</list>";
+            }
+            else if (_toFormat.Contains("#bp;"))
+            {
+                _toFormat = _toFormat.Replace("#bp;", "");
+                _toFormat = string.Format("<p><b>{0}</b></p>",_toFormat);
             }
             else
             {

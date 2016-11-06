@@ -103,7 +103,18 @@ namespace FG5EParser.XMLWriters
 
             xml.Append("</root>");
 
-            XDocument _xml = XDocument.Parse(xml.ToString());
+            #region ENCODING FIX
+
+            Encoding iso = Encoding.GetEncoding("ISO-8859-1");
+            Encoding utf8 = Encoding.UTF8;
+            byte[] utfBytes = utf8.GetBytes(xml.ToString());
+            byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
+            string encodedXML = iso.GetString(isoBytes);
+
+            XDocument _xml = XDocument.Parse(encodedXML);
+
+            #endregion
+
             return _xml;
         }
 

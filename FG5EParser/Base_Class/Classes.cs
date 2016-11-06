@@ -279,7 +279,7 @@ namespace FG5EParser.Base_Class
 
                     _details.Append(string.Format("<link class=\"reference_classfeature\" recordname=\"reference.classdata.{0}.features.{1}{2}@{3}\">{4}</link>",
                         _class.className.ToLower().Trim(),
-                        _class._featureList[i].FeatureName.Replace(" ","").ToLower().Trim(),
+                        _class._featureList[i].FeatureName.Replace(" ", "").Replace("-", "").Replace("&", "").Replace(":", "").Replace("'", "").Replace("’", "").ToLower().Trim(),
                         level,
                         _moduleName,
                         _class._featureList[i].FeatureName));
@@ -296,7 +296,7 @@ namespace FG5EParser.Base_Class
             {
                _details.Append(string.Format("<link class=\"reference_classability\" recordname=\"reference.classdata.{0}.abilities.{1}@{2}\">{3}</link>",
                    _class.className.ToLower().Trim(),
-                   _class._abilityList[i].AbilityName.Replace(" ","").ToLower().Trim(),
+                   _class._abilityList[i].AbilityName.Replace(" ", "").Replace("-", "").Replace("&", "").Replace(":", "").Replace("'", "").Replace("’", "").ToLower().Trim(),
                    _moduleName,
                    _class._abilityList[i].AbilityName));
             }
