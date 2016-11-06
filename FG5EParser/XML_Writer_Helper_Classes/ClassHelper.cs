@@ -18,9 +18,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             StringBuilder xml = new StringBuilder();
 
             ClassWriter _classWriter = new ClassWriter();
-            List<Classes> _classes = _classWriter.compileClassList(_classtxtPath, _moduleName);
-
-            List<Classes> _classList = new List<Classes>();
+            List<Classes> _classList = _classWriter.compileClassList(_classtxtPath, _moduleName);
 
             #region START XML PROCESSING
 
@@ -28,7 +26,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             foreach (Classes _class in _classList)
             {
-                xml.Append(string.Format("{0}", this.generateClassXML(_class)));
+                xml.Append(string.Format("{0}", this.generateClassXML(_class, _moduleName)));
             }
 
             xml.Append("</classdata>");
@@ -55,7 +53,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             return xml.ToString();
         }
 
-        private string generateClassXML(Classes _class)
+        private string generateClassXML(Classes _class, string _moduleName)
         {
             StringBuilder xml = new StringBuilder();
 
@@ -91,9 +89,11 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append("</hitpointsat1stlevel>");
 
+            xml.Append("<hitpointsathigherlevels>");
+
             xml.Append("<name type=\"string\">Hit Points at higher levels</name>");
 
-            xml.Append(string.Format("<text type=\"string\">{0}</ text>",_class.hitPointsAfterFirstLevel)); // hp post first level goes here
+            xml.Append(string.Format("<text type=\"string\">{0}</text>",_class.hitPointsAfterFirstLevel)); // hp post first level goes here
 
             xml.Append("</hitpointsathigherlevels>");
 
@@ -107,7 +107,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append("<name type=\"string\">Armor</name>");
 
-            xml.Append(string.Format("<text type=\"string\">{0}<text>", _class.armour)); // armor goes here
+            xml.Append(string.Format("<text type=\"string\">{0}</text>", _class.armour)); // armor goes here
 
             xml.Append("</armor>");
 
@@ -166,7 +166,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             foreach (ClassAbilities _ability in _class.classAbilities)
             {
-                xml.Append(string.Format("{0}",returnAbilityXML(_ability)));
+                xml.Append(string.Format("{0}",returnAbilityXML(_ability, _class.className, _moduleName)));
             }
 
             xml.Append("</abilities>");
@@ -181,7 +181,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append("<group type=\"string\">standard</group>");
 
-            xml.Append(string.Format("<item type=s\"string\">{0}</item>",_class.equipment)); // equipment goes here
+            xml.Append(string.Format("<item type=\"string\">{0}</item>",_class.equipment)); // equipment goes here
 
             xml.Append("</standard>");
 
@@ -197,17 +197,17 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         private string sortByLetter(List<Classes> _classList, string _modulename)
         {
             StringBuilder _class = new StringBuilder();
-            List<string> alphabets = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+            List<string> alphabets = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
             foreach (string _s in alphabets)
             {
                 Classes _current = new Classes();
 
-                _current = _classList.Find(x => x.className.StartsWith(_s) || x.className.StartsWith(_s.ToLower()));
+                _current = _classList.Find(x => x.className.StartsWith(_s));
 
                 if (_current != null)
                 {
-                    _class.Append(string.Format("<typeletter{0}>", _s.ToLower()));
+                    _class.Append(string.Format("<typeletter{0}>", _s));
 
                     _class.Append(string.Format("<description type=\"string\">{0}</description>", _s));
 
@@ -221,13 +221,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         _current = _list.First();
 
-                        _class.Append(string.Format("<{0}>", _current.className.Replace(" ", "").ToLower().Trim()));
+                        _class.Append(string.Format("<{0}>", _current.className.Replace(" ", "").Trim()));
 
                         _class.Append("<link type=\"windowreference\">");
 
                         _class.Append("<class>reference_class</class>"); // UNIQUE FIELD
 
-                        _class.Append(string.Format("<recordname>npc.{0}@{1}</recordname>", _current.className.Replace(" ", "").ToLower().Trim(), _modulename));
+                        _class.Append(string.Format("<recordname>reference.classdata.{0}@{1}</recordname>", _current.className.Replace(" ", "").ToLower().Trim(), _modulename));
 
                         _class.Append("<description>");
 
@@ -239,21 +239,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                         _class.Append("<source type=\"string\" />");
 
-                        _class.Append(string.Format("</{0}>", _current.className.Replace(" ", "").ToLower().Trim()));
-
-                        #region example
-                        //      < deathknight >
-                        //  < link type = "windowreference" >
-
-                        //     <class>npc</class>
-                        //    <recordname>npc.deathknight @monster manual</recordname>
-                        //    <description>
-                        //      <field>name</field>
-                        //    </description>
-                        //  </link>
-                        //  <source type = "string" />
-                        //</ deathknight >
-                        #endregion
+                        _class.Append(string.Format("</{0}>", _current.className.Replace(" ", "").Trim()));
 
                         // after processing get rid of it
                         _list.RemoveAt(0);
@@ -261,7 +247,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     _class.Append("</index>");
 
-                    _class.Append(string.Format("</typeletter{0}>", _s.ToLower()));
+                    _class.Append(string.Format("</typeletter{0}>", _s));
 
                 } // end of (_current != null)
 
@@ -303,7 +289,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             return xml.ToString();
         }
 
-        private string returnAbilityXML(ClassAbilities _classAbility)
+        private string returnAbilityXML(ClassAbilities _classAbility, string _className, string _moduleName)
         {
             StringBuilder xml = new StringBuilder();
 
@@ -313,11 +299,36 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append(string.Format("<level type=\"number\">{0}</level>","1"));
 
+            _classAbility.AbilityDescription = _classAbility.AbilityDescription + appendAdditionalDetails(_classAbility, _className, _moduleName);
+
             xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>",_classAbility.AbilityDescription));
 
             xml.Append(string.Format("</{0}>", _classAbility.AbilityName.Replace(" ", "").ToLower().Trim()));          
 
             return xml.ToString();
+        }
+
+        private string appendAdditionalDetails(ClassAbilities _classAbility, string _className, string _moduleName)
+        {
+            StringBuilder _formatted = new StringBuilder();
+
+            _formatted.Append("<h>Features</h>");
+
+            _formatted.Append("<listlink>");
+
+            for (int i = 0; i < _classAbility.AbilityList.Count; i++)
+            {
+                _formatted.Append(string.Format("<link class=\"reference_classfeature\" recordname=\"reference.classdata.{0}.features.{1}@{2}\">{3}</link>",
+                    _className.ToLower().Trim(),
+                    _classAbility.AbilityList[i].Split(',')[0].Replace(" ", "").ToLower().Trim() + _classAbility.AbilityList[i].Split(',')[1].Trim(),
+                    _moduleName,
+                    _classAbility.AbilityList[i].Split(',')[0].Trim()
+                    ));
+            }
+
+            _formatted.Append("</listlink>");
+
+            return _formatted.ToString();
         }
     }
 }

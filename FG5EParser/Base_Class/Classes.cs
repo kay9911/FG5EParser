@@ -130,6 +130,11 @@ namespace FG5EParser.Base_Class
                         if (!string.IsNullOrEmpty(_feature.FeatureName))
                         {
                             _feature.FeatureDescription = featureDescription.ToString();
+                            if (_feature.FeatureDescription.Contains("#archtype;"))
+                            {
+                                _feature.FeatureDescription = _feature.FeatureDescription.Replace("#archtype;", "");
+                                _feature.isArchtypeHeader = true;
+                            }
                             _new.classFeatures.Add(_feature);
                             _feature = new ClassFeatures(); // reset
                             featureDescription = new StringBuilder();
@@ -140,7 +145,7 @@ namespace FG5EParser.Base_Class
                     }
                     else
                     {
-                        featureDescription.Append(line);
+                        featureDescription.Append(_xmlFormatting.returnFormattedString(line));
                         line = shiftUp(_Basic);
                     }
                 }
@@ -182,7 +187,7 @@ namespace FG5EParser.Base_Class
 
                     while (!line.Contains("#abf;"))
                     {
-                        abilitiecsDescription.Append(line);
+                        abilitiecsDescription.Append(_xmlFormatting.returnFormattedString(line));
                         line = shiftUp(_Basic);
                     }
 
@@ -203,7 +208,7 @@ namespace FG5EParser.Base_Class
 
                         while (!line.Contains("#abf;") && !line.Contains("#ab;") && !line.Contains("Its done!"))
                         {
-                            featureDescription.Append(line);
+                            featureDescription.Append(_xmlFormatting.returnFormattedString(line));
                             line = shiftUp(_Basic);
                         }
                     }
@@ -273,8 +278,8 @@ namespace FG5EParser.Base_Class
                     }
 
                     _details.Append(string.Format("<link class=\"reference_classfeature\" recordname=\"reference.classdata.{0}.features.{1}{2}@{3}\">{4}</link>",
-                        _class.className,
-                        _class._featureList[i].FeatureName.Replace(" ",""),
+                        _class.className.ToLower().Trim(),
+                        _class._featureList[i].FeatureName.Replace(" ","").ToLower().Trim(),
                         level,
                         _moduleName,
                         _class._featureList[i].FeatureName));
@@ -290,13 +295,13 @@ namespace FG5EParser.Base_Class
             for (int i = 0; i < _class._abilityList.Count; i++)
             {
                _details.Append(string.Format("<link class=\"reference_classability\" recordname=\"reference.classdata.{0}.abilities.{1}@{2}\">{3}</link>",
-                   _class.className,
-                   _class._abilityList[i].AbilityName.Replace(" ","").Trim(),
+                   _class.className.ToLower().Trim(),
+                   _class._abilityList[i].AbilityName.Replace(" ","").ToLower().Trim(),
                    _moduleName,
                    _class._abilityList[i].AbilityName));
             }
 
-            _details.Append("<listlink>");
+            _details.Append("</listlink>");
 
             return _details.ToString();
         }

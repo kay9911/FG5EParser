@@ -16,7 +16,7 @@ namespace FG5EParser.WriterClasses
             {
                 var _lines = File.ReadLines(_inputLocation);
                 List<string> _basic = new List<string>();
-                List<Classes> Classes = new List<Base_Class.Classes>();
+                List<Classes> Classes = new List<Classes>();
 
                 #region Populating the basic list
 
