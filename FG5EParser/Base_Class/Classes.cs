@@ -153,6 +153,11 @@ namespace FG5EParser.Base_Class
                 if (!string.IsNullOrEmpty(_feature.FeatureName))
                 {
                     _feature.FeatureDescription = featureDescription.ToString();
+                    if (_feature.FeatureDescription.Contains("#archtype;"))
+                    {
+                        _feature.FeatureDescription = _feature.FeatureDescription.Replace("#archtype;", "");
+                        _feature.isArchtypeHeader = true;
+                    }
                     _new.classFeatures.Add(_feature);
                     _feature = new ClassFeatures(); // reset
                     featureDescription = new StringBuilder();
