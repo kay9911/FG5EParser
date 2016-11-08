@@ -65,7 +65,7 @@ namespace FG5EParser.Base_Class
 
                 while (line != "Hit Points")
                 {
-                    _descriptions.Append(_xmlFormatting.returnFormattedString(line));
+                    _descriptions.Append(_xmlFormatting.returnFormattedString(line,_moduleName));
                     line = shiftUp(_Basic);
                 }
 
@@ -114,7 +114,7 @@ namespace FG5EParser.Base_Class
 
                 while (!line.Contains("#fe;"))
                 {
-                    _equipment.Append(_xmlFormatting.returnFormattedString(line));
+                    _equipment.Append(_xmlFormatting.returnFormattedString(line,_moduleName));
                     line = shiftUp(_Basic);
                 }
 
@@ -145,7 +145,7 @@ namespace FG5EParser.Base_Class
                     }
                     else
                     {
-                        featureDescription.Append(_xmlFormatting.returnFormattedString(line));
+                        featureDescription.Append(_xmlFormatting.returnFormattedString(line,_moduleName));
                         line = shiftUp(_Basic);
                     }
                 }
@@ -184,6 +184,7 @@ namespace FG5EParser.Base_Class
                             _abilities.AbilityDescription = abilitiecsDescription.ToString();
                             _new.classAbilities.Add(_abilities);
                             _abilities = new ClassAbilities();
+                            abilitiecsDescription = new StringBuilder();
                         }
 
                         _abilities.AbilityName = line.Split(';')[1].Trim();
@@ -192,7 +193,7 @@ namespace FG5EParser.Base_Class
 
                     while (!line.Contains("#abf;"))
                     {
-                        abilitiecsDescription.Append(_xmlFormatting.returnFormattedString(line));
+                        abilitiecsDescription.Append(_xmlFormatting.returnFormattedString(line,_moduleName));
                         line = shiftUp(_Basic);
                     }
 
@@ -213,7 +214,7 @@ namespace FG5EParser.Base_Class
 
                         while (!line.Contains("#abf;") && !line.Contains("#ab;") && !line.Contains("Its done!"))
                         {
-                            featureDescription.Append(_xmlFormatting.returnFormattedString(line));
+                            featureDescription.Append(_xmlFormatting.returnFormattedString(line,_moduleName));
                             line = shiftUp(_Basic);
                         }
                     }
@@ -232,6 +233,7 @@ namespace FG5EParser.Base_Class
                     _abilities.AbilityDescription = abilitiecsDescription.ToString();
                     _new.classAbilities.Add(_abilities);
                     _abilities = new ClassAbilities();
+                    abilitiecsDescription = new StringBuilder();
                 }
             }
 
