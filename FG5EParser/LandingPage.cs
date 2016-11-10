@@ -44,6 +44,7 @@ namespace FG5EParser
 
         // Class
         Class_Basics _classBasics = new Class_Basics();
+        Class_Description _classDescription = new Class_Description();
 
         // NPC
         SetPaths _setPaths = new SetPaths();
@@ -66,6 +67,7 @@ namespace FG5EParser
             _npcButtons.Hide();
 
             _classBasics.Hide();
+            _classDescription.Hide();
 
             #endregion
 
@@ -91,6 +93,12 @@ namespace FG5EParser
             {
                 pnlMain.Controls.Add(_classBasics);
                 _classBasics.Show();
+            }
+
+            if (treeView1.SelectedNode.Name == "_classDescriptions")
+            {
+                pnlMain.Controls.Add(_classDescription);
+                _classDescription.Show();
             }
 
             #endregion
