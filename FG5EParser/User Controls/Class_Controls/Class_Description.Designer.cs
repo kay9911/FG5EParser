@@ -47,6 +47,7 @@
             this.rtbClassDescriptions.Size = new System.Drawing.Size(679, 646);
             this.rtbClassDescriptions.TabIndex = 0;
             this.rtbClassDescriptions.Text = "";
+            this.rtbClassDescriptions.TextChanged += new System.EventHandler(this.rtbClassDescriptions_TextChanged);
             // 
             // cmsFormattingText
             // 
@@ -56,26 +57,26 @@
             this.makeBoldPointToolStripMenuItem,
             this.makeTableToolStripMenuItem});
             this.cmsFormattingText.Name = "cmsFormattingText";
-            this.cmsFormattingText.Size = new System.Drawing.Size(187, 76);
+            this.cmsFormattingText.Size = new System.Drawing.Size(193, 82);
             // 
             // makeHeaderToolStripMenuItem
             // 
             this.makeHeaderToolStripMenuItem.Name = "makeHeaderToolStripMenuItem";
-            this.makeHeaderToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.makeHeaderToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.makeHeaderToolStripMenuItem.Text = "Make Header";
             this.makeHeaderToolStripMenuItem.Click += new System.EventHandler(this.makeHeaderToolStripMenuItem_Click);
             // 
             // makeBoldPointToolStripMenuItem
             // 
             this.makeBoldPointToolStripMenuItem.Name = "makeBoldPointToolStripMenuItem";
-            this.makeBoldPointToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.makeBoldPointToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.makeBoldPointToolStripMenuItem.Text = "Make Bold Point";
             this.makeBoldPointToolStripMenuItem.Click += new System.EventHandler(this.makeBoldPointToolStripMenuItem_Click);
             // 
             // makeTableToolStripMenuItem
             // 
             this.makeTableToolStripMenuItem.Name = "makeTableToolStripMenuItem";
-            this.makeTableToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.makeTableToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.makeTableToolStripMenuItem.Text = "Make Table";
             this.makeTableToolStripMenuItem.Click += new System.EventHandler(this.makeTableToolStripMenuItem_Click);
             // 

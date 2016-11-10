@@ -12,9 +12,37 @@ namespace FG5EParser.User_Controls.Class_Controls
 {
     public partial class Class_Description : UserControl
     {
+        public string exposeClassDescriptions
+        {
+            get { doCompile(); return _build.ToString(); }
+        }
+
         public Class_Description()
         {
             InitializeComponent();
+        }
+
+        // Allows the use of the parents controls
+        public LandingPage allowUse { get; set; }
+
+        StringBuilder _build = new StringBuilder();
+
+        private void doCompile()
+        {
+            _build.Clear();
+
+            getClassDescriptionText();
+
+            if (allowUse == null)
+                return;
+
+            RichTextBox _rtc = (allowUse.Controls["rtcDisplay"] as RichTextBox);
+            _rtc.Text = _build.ToString();
+        }
+
+        private void getClassDescriptionText()
+        {
+            _build.Append(rtbClassDescriptions.Text);
         }
 
         private void makeHeaderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -37,7 +65,7 @@ namespace FG5EParser.User_Controls.Class_Controls
 
             for (int i = 0; i < _builder.Count; i++)
             {
-                _builder[i] = _builder[i].Replace(" ", "; ");
+                _builder[i] = _builder[i].Replace(" ", ";");
             }
 
             _makeTable = new StringBuilder();
@@ -61,6 +89,11 @@ namespace FG5EParser.User_Controls.Class_Controls
             _makeTable.Append("#te;");
 
             rtbClassDescriptions.SelectedText = _makeTable.ToString();
+        }
+
+        private void rtbClassDescriptions_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
         }
     }
 }

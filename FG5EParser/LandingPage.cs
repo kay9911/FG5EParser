@@ -38,6 +38,9 @@ namespace FG5EParser
             this._innateSpellcasting.allowUse = this;
             this._spellcasting.allowUse = this;
             this._npcButtons.LandingPageallowuse = this;
+
+            this._classBasics.allowUse = this;
+            this._classDescription.allowUse = this;
         }
 
         #region  Init the User Controls
@@ -99,6 +102,20 @@ namespace FG5EParser
             {
                 pnlMain.Controls.Add(_classDescription);
                 _classDescription.Show();
+            }
+
+            if (treeView1.SelectedNode.Name == "_Class")
+            {
+                pnlMain.Controls.Add(_classBasics);
+                _classBasics.Show();
+
+                pnlMain.Controls.Add(_classDescription);
+                _classDescription.Show();
+
+                // Display all text blocks at the same time
+                rtcDisplay.Text = string.Format("{0}",_classBasics.exposeClassBasics);
+
+                rtcDisplay.Text = rtcDisplay.Text.Replace("#de;",_classDescription.exposeClassDescriptions);
             }
 
             #endregion
