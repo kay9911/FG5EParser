@@ -35,6 +35,7 @@
             this.makeBoldPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
+            this.makeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsFormattingText.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,9 +56,10 @@
             this.cmsFormattingText.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.makeHeaderToolStripMenuItem,
             this.makeBoldPointToolStripMenuItem,
-            this.makeTableToolStripMenuItem});
+            this.makeTableToolStripMenuItem,
+            this.makeListToolStripMenuItem});
             this.cmsFormattingText.Name = "cmsFormattingText";
-            this.cmsFormattingText.Size = new System.Drawing.Size(193, 82);
+            this.cmsFormattingText.Size = new System.Drawing.Size(193, 136);
             // 
             // makeHeaderToolStripMenuItem
             // 
@@ -90,6 +92,13 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "CLASS DESCRIPTIONS";
             // 
+            // makeListToolStripMenuItem
+            // 
+            this.makeListToolStripMenuItem.Name = "makeListToolStripMenuItem";
+            this.makeListToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.makeListToolStripMenuItem.Text = "Make List";
+            this.makeListToolStripMenuItem.Click += new System.EventHandler(this.makeListToolStripMenuItem_Click);
+            // 
             // Class_Description
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -112,5 +121,6 @@
         private System.Windows.Forms.ToolStripMenuItem makeBoldPointToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeTableToolStripMenuItem;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem makeListToolStripMenuItem;
     }
 }

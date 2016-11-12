@@ -95,5 +95,32 @@ namespace FG5EParser.User_Controls.Class_Controls
         {
             doCompile();
         }
+
+        private void makeListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder _makeTable = new StringBuilder();
+
+            _makeTable.Append(rtbClassDescriptions.SelectedText);
+
+            List<string> _builder = new List<string>(_makeTable.ToString().Split(new string[] { "\n" }, StringSplitOptions.None));
+
+            _makeTable = new StringBuilder();
+
+            // First line
+            _makeTable.Append("#ls;");
+            _makeTable.Append(Environment.NewLine);
+
+            // Rest of the rows
+            for (int i = 0; i < _builder.Count; i++)
+            {
+                _makeTable.Append("#li;" + _builder[i]);
+                _makeTable.Append(Environment.NewLine);
+            }
+
+            // Last Line
+            _makeTable.Append("#le;");
+
+            rtbClassDescriptions.SelectedText = _makeTable.ToString();
+        }
     }
 }

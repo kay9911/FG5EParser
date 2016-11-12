@@ -81,12 +81,10 @@ namespace FG5EParser.User_Controls.Class_Controls
             if (!string.IsNullOrEmpty(rtbEquipment.Text))
             {
                 _build.Append(string.Format("{0}", rtbEquipment.Text.Trim()));
-                _build.Append(Environment.NewLine);
             }
             else
             {
                 _build.Append("<EQUIPMENT REQUIRED>");
-                _build.Append(Environment.NewLine);
             }
         }
 

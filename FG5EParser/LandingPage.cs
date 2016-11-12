@@ -41,6 +41,7 @@ namespace FG5EParser
 
             this._classBasics.allowUse = this;
             this._classDescription.allowUse = this;
+            this._classFeatures.allowUse = this;
         }
 
         #region  Init the User Controls
@@ -48,6 +49,7 @@ namespace FG5EParser
         // Class
         Class_Basics _classBasics = new Class_Basics();
         Class_Description _classDescription = new Class_Description();
+        Class_Features _classFeatures = new Class_Features();
 
         // NPC
         SetPaths _setPaths = new SetPaths();
@@ -75,6 +77,7 @@ namespace FG5EParser
 
             _classBasics.Hide();
             _classDescription.Hide();
+            _classFeatures.Hide();
 
             _keyValuePairViewer.Hide();
 
@@ -116,6 +119,12 @@ namespace FG5EParser
                 _classDescription.Show();
             }
 
+            if (treeView1.SelectedNode.Name == "_features")
+            {
+                pnlMain.Controls.Add(_classFeatures);
+                _classFeatures.Show();
+            }
+
             if (treeView1.SelectedNode.Name == "_Class")
             {
                 pnlMain.Controls.Add(_classBasics);
@@ -124,8 +133,11 @@ namespace FG5EParser
                 pnlMain.Controls.Add(_classDescription);
                 _classDescription.Show();
 
+                pnlMain.Controls.Add(_classFeatures);
+                _classFeatures.Show();
+
                 // Display all text blocks at the same time
-                rtcDisplay.Text = string.Format("{0}",_classBasics.exposeClassBasics);
+                rtcDisplay.Text = string.Format("{0}{1}",_classBasics.exposeClassBasics, _classFeatures.exposeFeatures);
 
                 rtcDisplay.Text = rtcDisplay.Text.Replace("#de;",_classDescription.exposeClassDescriptions);
             }

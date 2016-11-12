@@ -33,19 +33,21 @@
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("HP&Proffs");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Descriptions");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Class", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Features");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Class", new System.Windows.Forms.TreeNode[] {
             treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Stats");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Actions");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Innate Spells");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Spellcasting");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("NPC", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Stats");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Actions");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Innate Spells");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Spellcasting");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("NPC", new System.Windows.Forms.TreeNode[] {
             treeNode7,
             treeNode8,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Test");
+            treeNode9,
+            treeNode10});
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Test");
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.rtcDisplay = new System.Windows.Forms.RichTextBox();
             this.btnParse = new System.Windows.Forms.Button();
@@ -66,36 +68,39 @@
             treeNode3.Text = "HP&Proffs";
             treeNode4.Name = "_classDescriptions";
             treeNode4.Text = "Descriptions";
-            treeNode5.Name = "_Class";
-            treeNode5.Text = "Class";
-            treeNode6.Name = "_stats";
-            treeNode6.Tag = "NPC_BLOCKS";
-            treeNode6.Text = "Stats";
-            treeNode7.Name = "_actions";
+            treeNode5.Name = "_features";
+            treeNode5.Text = "Features";
+            treeNode6.Name = "_Class";
+            treeNode6.Text = "Class";
+            treeNode7.Name = "_stats";
             treeNode7.Tag = "NPC_BLOCKS";
-            treeNode7.Text = "Actions";
-            treeNode8.Name = "_innate_spellcasting";
+            treeNode7.Text = "Stats";
+            treeNode8.Name = "_actions";
             treeNode8.Tag = "NPC_BLOCKS";
-            treeNode8.Text = "Innate Spells";
-            treeNode9.Name = "_spellcasting";
+            treeNode8.Text = "Actions";
+            treeNode9.Name = "_innate_spellcasting";
             treeNode9.Tag = "NPC_BLOCKS";
-            treeNode9.Text = "Spellcasting";
-            treeNode10.Name = "_NPC";
+            treeNode9.Text = "Innate Spells";
+            treeNode10.Name = "_spellcasting";
             treeNode10.Tag = "NPC_BLOCKS";
-            treeNode10.Text = "NPC";
-            treeNode11.Name = "_test";
-            treeNode11.Text = "Test";
+            treeNode10.Text = "Spellcasting";
+            treeNode11.Name = "_NPC";
+            treeNode11.Tag = "NPC_BLOCKS";
+            treeNode11.Text = "NPC";
+            treeNode12.Name = "_test";
+            treeNode12.Text = "Test";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
-            treeNode5,
-            treeNode10,
-            treeNode11});
+            treeNode6,
+            treeNode11,
+            treeNode12});
             this.treeView1.Size = new System.Drawing.Size(173, 788);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // rtcDisplay
             // 
+            this.rtcDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtcDisplay.Location = new System.Drawing.Point(912, 12);
             this.rtcDisplay.Name = "rtcDisplay";
             this.rtcDisplay.Size = new System.Drawing.Size(505, 788);
