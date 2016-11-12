@@ -56,6 +56,10 @@ namespace FG5EParser
         NPC_Actions _actions = new NPC_Actions();
         NPC_Stats _stats = new NPC_Stats();
         NPC_Buttons _npcButtons = new NPC_Buttons();
+
+        // TEST
+        KeyValuePairViewer _keyValuePairViewer = new KeyValuePairViewer();
+
         #endregion
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -72,11 +76,19 @@ namespace FG5EParser
             _classBasics.Hide();
             _classDescription.Hide();
 
+            _keyValuePairViewer.Hide();
+
             #endregion
 
             if (e.Node.Name == "_startHere")
             {
                 e.Node.Expand();
+            }
+
+            if (e.Node.Name == "_test")
+            {
+                pnlMain.Controls.Add(_keyValuePairViewer);
+                _keyValuePairViewer.Show();
             }
 
             if (e.Node.Name == "_NPC")

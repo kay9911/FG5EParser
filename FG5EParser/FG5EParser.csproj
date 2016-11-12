@@ -111,6 +111,12 @@
     <Compile Include="User Controls\SetPaths.Designer.cs">
       <DependentUpon>SetPaths.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\KeyValuePairViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilities\KeyValuePairViewer.Designer.cs">
+      <DependentUpon>KeyValuePairViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\RegularExpressions.cs" />
     <Compile Include="Utilities\XMLFormatting.cs" />
     <Compile Include="Utilities\XMLParser.cs" />
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\SetPaths.resx">
       <DependentUpon>SetPaths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\KeyValuePairViewer.resx">
+      <DependentUpon>KeyValuePairViewer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
