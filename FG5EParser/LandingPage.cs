@@ -42,6 +42,7 @@ namespace FG5EParser
             this._classBasics.allowUse = this;
             this._classDescription.allowUse = this;
             this._classFeatures.allowUse = this;
+            this._classAbilities.allowUse = this;
         }
 
         #region  Init the User Controls
@@ -50,6 +51,7 @@ namespace FG5EParser
         Class_Basics _classBasics = new Class_Basics();
         Class_Description _classDescription = new Class_Description();
         Class_Features _classFeatures = new Class_Features();
+        Class_Abilities _classAbilities = new Class_Abilities();
 
         // NPC
         SetPaths _setPaths = new SetPaths();
@@ -78,6 +80,7 @@ namespace FG5EParser
             _classBasics.Hide();
             _classDescription.Hide();
             _classFeatures.Hide();
+            _classAbilities.Hide();
 
             _keyValuePairViewer.Hide();
 
@@ -127,6 +130,8 @@ namespace FG5EParser
 
             if (treeView1.SelectedNode.Name == "_Class")
             {
+                e.Node.Expand();
+
                 pnlMain.Controls.Add(_classBasics);
                 _classBasics.Show();
 
@@ -136,10 +141,19 @@ namespace FG5EParser
                 pnlMain.Controls.Add(_classFeatures);
                 _classFeatures.Show();
 
+                pnlMain.Controls.Add(_classAbilities);
+                _classAbilities.Show();
+
                 // Display all text blocks at the same time
-                rtcDisplay.Text = string.Format("{0}{1}",_classBasics.exposeClassBasics, _classFeatures.exposeFeatures);
+                rtcDisplay.Text = string.Format("{0}{1}{2}",_classBasics.exposeClassBasics, _classFeatures.exposeFeatures, _classAbilities.exposeAbilities);
 
                 rtcDisplay.Text = rtcDisplay.Text.Replace("#de;",_classDescription.exposeClassDescriptions);
+            }
+
+            if (treeView1.SelectedNode.Name == "_abilities")
+            {
+                pnlMain.Controls.Add(_classAbilities);
+                _classAbilities.Show();
             }
 
             #endregion
