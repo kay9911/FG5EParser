@@ -40,6 +40,11 @@ namespace FG5EParser.User_Controls.Class_Controls
             _rtc.Text = _build.ToString();
         }
 
+        private void rtbClassDescriptions_TextChanged(object sender, EventArgs e)
+        {
+            doCompile();
+        }
+
         private void getClassDescriptionText()
         {
             _build.Append(rtbClassDescriptions.Text);
@@ -47,80 +52,46 @@ namespace FG5EParser.User_Controls.Class_Controls
 
         private void makeHeaderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtbClassDescriptions.SelectedText = string.Format("#h;{0}", rtbClassDescriptions.SelectedText);            
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
+
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
+
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "header");
         }
 
         private void makeBoldPointToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rtbClassDescriptions.SelectedText = string.Format("#bp;{0}", rtbClassDescriptions.SelectedText);
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
+
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
+
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "bold");
         }
 
         private void makeTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder _makeTable = new StringBuilder();
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
 
-            _makeTable.Append(rtbClassDescriptions.SelectedText);
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
 
-            List<string> _builder = new List<string>(_makeTable.ToString().Split(new string[] { "\n" }, StringSplitOptions.None));
-
-            for (int i = 0; i < _builder.Count; i++)
-            {
-                _builder[i] = _builder[i].Replace(" ", ";");
-            }
-
-            _makeTable = new StringBuilder();
-
-            // First line
-            _makeTable.Append("#ts;");
-            _makeTable.Append(Environment.NewLine);
-
-            // Header which will be the first line
-            _makeTable.Append("#th;" + _builder[0]);
-            _makeTable.Append(Environment.NewLine);
-
-            // Rest of the rows
-            for (int i = 1; i < _builder.Count; i++)
-            {
-                _makeTable.Append("#tr;" + _builder[i]);
-                _makeTable.Append(Environment.NewLine);
-            }
-
-            // Last Line
-            _makeTable.Append("#te;");
-
-            rtbClassDescriptions.SelectedText = _makeTable.ToString();
-        }
-
-        private void rtbClassDescriptions_TextChanged(object sender, EventArgs e)
-        {
-            doCompile();
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "table");
         }
 
         private void makeListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder _makeTable = new StringBuilder();
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
 
-            _makeTable.Append(rtbClassDescriptions.SelectedText);
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
 
-            List<string> _builder = new List<string>(_makeTable.ToString().Split(new string[] { "\n" }, StringSplitOptions.None));
-
-            _makeTable = new StringBuilder();
-
-            // First line
-            _makeTable.Append("#ls;");
-            _makeTable.Append(Environment.NewLine);
-
-            // Rest of the rows
-            for (int i = 0; i < _builder.Count; i++)
-            {
-                _makeTable.Append("#li;" + _builder[i]);
-                _makeTable.Append(Environment.NewLine);
-            }
-
-            // Last Line
-            _makeTable.Append("#le;");
-
-            rtbClassDescriptions.SelectedText = _makeTable.ToString();
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "list");
         }
     }
 }

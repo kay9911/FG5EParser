@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFeatureName = new System.Windows.Forms.TextBox();
@@ -37,6 +38,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.cmsFormattingText = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.makeHeaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeBoldPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsFormattingText.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -83,6 +90,7 @@
             // 
             // rtbFeatureDescription
             // 
+            this.rtbFeatureDescription.ContextMenuStrip = this.cmsFormattingText;
             this.rtbFeatureDescription.Location = new System.Drawing.Point(111, 104);
             this.rtbFeatureDescription.Name = "rtbFeatureDescription";
             this.rtbFeatureDescription.Size = new System.Drawing.Size(571, 308);
@@ -118,6 +126,45 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // cmsFormattingText
+            // 
+            this.cmsFormattingText.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsFormattingText.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.makeHeaderToolStripMenuItem,
+            this.makeBoldPointToolStripMenuItem,
+            this.makeTableToolStripMenuItem,
+            this.makeListToolStripMenuItem});
+            this.cmsFormattingText.Name = "cmsFormattingText";
+            this.cmsFormattingText.Size = new System.Drawing.Size(193, 108);
+            // 
+            // makeHeaderToolStripMenuItem
+            // 
+            this.makeHeaderToolStripMenuItem.Name = "makeHeaderToolStripMenuItem";
+            this.makeHeaderToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.makeHeaderToolStripMenuItem.Text = "Make Header";
+            this.makeHeaderToolStripMenuItem.Click += new System.EventHandler(this.makeHeaderToolStripMenuItem_Click);
+            // 
+            // makeBoldPointToolStripMenuItem
+            // 
+            this.makeBoldPointToolStripMenuItem.Name = "makeBoldPointToolStripMenuItem";
+            this.makeBoldPointToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.makeBoldPointToolStripMenuItem.Text = "Make Bold Point";
+            this.makeBoldPointToolStripMenuItem.Click += new System.EventHandler(this.makeBoldPointToolStripMenuItem_Click);
+            // 
+            // makeTableToolStripMenuItem
+            // 
+            this.makeTableToolStripMenuItem.Name = "makeTableToolStripMenuItem";
+            this.makeTableToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.makeTableToolStripMenuItem.Text = "Make Table";
+            this.makeTableToolStripMenuItem.Click += new System.EventHandler(this.makeTableToolStripMenuItem_Click);
+            // 
+            // makeListToolStripMenuItem
+            // 
+            this.makeListToolStripMenuItem.Name = "makeListToolStripMenuItem";
+            this.makeListToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.makeListToolStripMenuItem.Text = "Make List";
+            this.makeListToolStripMenuItem.Click += new System.EventHandler(this.makeListToolStripMenuItem_Click);
+            // 
             // Class_Features
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -133,6 +180,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Class_Features";
             this.Size = new System.Drawing.Size(685, 453);
+            this.cmsFormattingText.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +197,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ContextMenuStrip cmsFormattingText;
+        private System.Windows.Forms.ToolStripMenuItem makeHeaderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeBoldPointToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeListToolStripMenuItem;
     }
 }

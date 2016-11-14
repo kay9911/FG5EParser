@@ -192,29 +192,13 @@ namespace FG5EParser.User_Controls.Class_Controls
 
         private void makeListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder _makeTable = new StringBuilder();
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
 
-            _makeTable.Append(rtbEquipment.SelectedText);
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
 
-            List<string> _builder = new List<string>(_makeTable.ToString().Split(new string[] { "\n" }, StringSplitOptions.None));
-
-            _makeTable = new StringBuilder();
-
-            // First line
-            _makeTable.Append("#ls;");
-            _makeTable.Append(Environment.NewLine);
-
-            // Rest of the rows
-            for (int i = 0; i < _builder.Count; i++)
-            {
-                _makeTable.Append("#li;" + _builder[i]);
-                _makeTable.Append(Environment.NewLine);
-            }
-
-            // Last Line
-            _makeTable.Append("#le;");
-
-            rtbEquipment.SelectedText = _makeTable.ToString();
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "list");
         }
 
         #region TEXT CHANGED EVENTS

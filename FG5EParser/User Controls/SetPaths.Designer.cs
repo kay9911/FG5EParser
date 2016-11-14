@@ -201,7 +201,7 @@
             this.btnClass.Name = "btnClass";
             this.btnClass.Size = new System.Drawing.Size(100, 28);
             this.btnClass.TabIndex = 233;
-            this.btnClass.Text = "Class";
+            this.btnClass.Text = "CLASS";
             this.btnClass.UseVisualStyleBackColor = true;
             this.btnClass.Click += new System.EventHandler(this.btnClass_Click);
             // 

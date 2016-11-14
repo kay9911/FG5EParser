@@ -123,6 +123,7 @@
     <Compile Include="User Controls\SetPaths.Designer.cs">
       <DependentUpon>SetPaths.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ContextMenuFunctionHelper.cs" />
     <Compile Include="Utilities\KeyValuePairViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -32,6 +32,10 @@ namespace FG5EParser.User_Controls.Class_Controls
             disableControls();
         }
 
+        StringBuilder _build = new StringBuilder();
+        List<ClassFeatures> _abilityFeatures = new List<ClassFeatures>();
+        List<string> _abilityList = new List<string>();
+
         private void doCompile()
         {
             _build.Clear();
@@ -48,12 +52,6 @@ namespace FG5EParser.User_Controls.Class_Controls
             RichTextBox _rtc = (allowUse.Controls["rtcDisplay"] as RichTextBox);
             _rtc.Text = _build.ToString();
         }
-
-        StringBuilder _build = new StringBuilder();
-
-        List<ClassFeatures> _abilityFeatures = new List<ClassFeatures>();
-
-        List<string> _abilityList = new List<string>();
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -189,6 +187,50 @@ namespace FG5EParser.User_Controls.Class_Controls
             _abilityList.Clear();
 
             cmbPathSelect.SelectedIndex = 0;
+        }
+
+        private void makeHeaderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
+
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
+
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "header");
+        }
+
+        private void makeBoldPointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
+
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
+
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "bold");
+        }
+
+        private void makeTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
+
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
+
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "table");
+        }
+
+        private void makeListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem _tsmi = (ToolStripMenuItem)sender;
+            ContextMenuStrip _cms = (ContextMenuStrip)_tsmi.Owner;
+            RichTextBox _rtb = (RichTextBox)_cms.SourceControl;
+
+            Utilities.ContextMenuFunctionHelper _context = new Utilities.ContextMenuFunctionHelper();
+
+            _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "list");
         }
     }
 }
