@@ -114,18 +114,24 @@ namespace FG5EParser
             {
                 pnlMain.Controls.Add(_classBasics);
                 _classBasics.Show();
+
+                rtcDisplay.Text = _classBasics.exposeClassName + _classBasics.exposeClassBasics;
             }
 
             if (treeView1.SelectedNode.Name == "_classDescriptions")
             {
                 pnlMain.Controls.Add(_classDescription);
                 _classDescription.Show();
+
+                rtcDisplay.Text = _classDescription.exposeClassDescriptions;
             }
 
             if (treeView1.SelectedNode.Name == "_features")
             {
                 pnlMain.Controls.Add(_classFeatures);
                 _classFeatures.Show();
+
+                rtcDisplay.Text = _classFeatures.exposeFeatures;
             }
 
             if (treeView1.SelectedNode.Name == "_Class")
@@ -144,10 +150,23 @@ namespace FG5EParser
                 pnlMain.Controls.Add(_classAbilities);
                 _classAbilities.Show();
 
-                // Display all text blocks at the same time
-                rtcDisplay.Text = string.Format("{0}{1}{2}",_classBasics.exposeClassBasics, _classFeatures.exposeFeatures, _classAbilities.exposeAbilities);
+                string _checkIfEmpty = string.Empty;
 
-                rtcDisplay.Text = rtcDisplay.Text.Replace("#de;",_classDescription.exposeClassDescriptions);
+                if (!string.IsNullOrEmpty(_classDescription.exposeClassDescriptions))
+                {
+                    _checkIfEmpty = _classDescription.exposeClassDescriptions;
+                }
+                else
+                {
+                    _checkIfEmpty = "#h;Class Features";
+                }
+
+                // Display all text blocks at the same time
+                rtcDisplay.Text = string.Format("{0}{1}{2}"
+                    , _classBasics.exposeClassBasics.Replace("#de;",_checkIfEmpty)
+                    , _classFeatures.exposeFeatures
+                    , _classAbilities.exposeAbilities
+                    );
             }
 
             if (treeView1.SelectedNode.Name == "_abilities")
