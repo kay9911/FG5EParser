@@ -272,6 +272,9 @@ namespace FG5EParser.User_Controls.Class_Controls
                 txtSkills.Text = string.Empty;
 
                 rtbEquipment.Text = string.Empty;
+
+                doCompile();
+                doNameCompile();
             }
             else
             {

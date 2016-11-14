@@ -21,12 +21,22 @@ namespace FG5EParser
             get { return getAllStatBlocks(); }
         }
 
+        public string sendClassBlocks
+        {
+            get { return getAllClassBlocks(); }
+        }
+
         public LandingPage npc_name {
             get { return _stats.allowUse; }
         }
 
         public string setNPCPath {
             set { _setPaths.SetNPCPath = value; }
+        }
+
+        public string setClassPath
+        {
+            set { _setPaths.SetClassPath = value; }
         }
 
         public LandingPage()
@@ -43,6 +53,7 @@ namespace FG5EParser
             this._classDescription.allowUse = this;
             this._classFeatures.allowUse = this;
             this._classAbilities.allowUse = this;
+            this._classButtons.LandingPageallowuse = this;
         }
 
         #region  Init the User Controls
@@ -52,6 +63,7 @@ namespace FG5EParser
         Class_Description _classDescription = new Class_Description();
         Class_Features _classFeatures = new Class_Features();
         Class_Abilities _classAbilities = new Class_Abilities();
+        Class_Buttons _classButtons = new Class_Buttons();
 
         // NPC
         SetPaths _setPaths = new SetPaths();
@@ -81,6 +93,7 @@ namespace FG5EParser
             _classDescription.Hide();
             _classFeatures.Hide();
             _classAbilities.Hide();
+            _classButtons.Hide();
 
             _keyValuePairViewer.Hide();
 
@@ -109,6 +122,13 @@ namespace FG5EParser
             }
 
             #region CLASS USER CONTROLS
+
+            if (treeView1.SelectedNode.Name == "_hpproff" || treeView1.SelectedNode.Name == "_classDescriptions" || treeView1.SelectedNode.Name == "_features" ||
+                treeView1.SelectedNode.Name == "_Class" || treeView1.SelectedNode.Name == "_abilities")
+            {
+                pnlMainButtons.Controls.Add(_classButtons);
+                _classButtons.Show();
+            }
 
             if (treeView1.SelectedNode.Name == "_hpproff")
             {
@@ -272,7 +292,30 @@ namespace FG5EParser
             return _stats.exposeStats + _innateSpellcasting.exposeInnateSpellcasting + _spellcasting.exposeSpellCasting + _actions.exposeActions;
         }
 
+        public string getAllClassBlocks()
+        {
+            string _checkIfEmpty = string.Empty;
+
+            if (!string.IsNullOrEmpty(_classDescription.exposeClassDescriptions))
+            {
+                _checkIfEmpty = _classDescription.exposeClassDescriptions;
+            }
+            else
+            {
+                _checkIfEmpty = "#h;Class Features";
+            }
+
+            // Display all text blocks at the same time
+            return string.Format("{0}{1}{2}"
+                , _classBasics.exposeClassBasics.Replace("#de;", _checkIfEmpty)
+                , _classFeatures.exposeFeatures
+                , _classAbilities.exposeAbilities
+                );
+        }
+
         #region REFRESH FUNCTIONS
+
+        #region NPC REFRESH FUNCTIONS
         public void RefreshNPCStats()
         {
             // Send blank test, it will run doCompile();
@@ -362,14 +405,32 @@ namespace FG5EParser
         }
         #endregion
 
+        public void RefreshClassBasics()
+        {
+            _classBasics.resetTextBoxes = "1";
+        }
+
+        #endregion
+
         public string sendNPCPath()
         {
             return _setPaths.SetNPCPath;
         }
 
+        public string sendClassPath()
+        {
+            return _setPaths.SetClassPath;
+        }
+
         public bool sendNPCisready()
         {
             return _stats.isready;
+        }
+
+        public bool sendClassisReady()
+        {
+            // TO DO : Get this implemented
+            return true;
         }
     }
 }

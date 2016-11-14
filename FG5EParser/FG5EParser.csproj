@@ -69,6 +69,12 @@
     <Compile Include="User Controls\Class_Controls\Class_Basics.Designer.cs">
       <DependentUpon>Class_Basics.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\Class_Controls\Class_Buttons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\Class_Controls\Class_Buttons.Designer.cs">
+      <DependentUpon>Class_Buttons.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\Class_Controls\Class_Description.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\Class_Controls\Class_Basics.resx">
       <DependentUpon>Class_Basics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\Class_Controls\Class_Buttons.resx">
+      <DependentUpon>Class_Buttons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\Class_Controls\Class_Description.resx">
       <DependentUpon>Class_Description.cs</DependentUpon>
