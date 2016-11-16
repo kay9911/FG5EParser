@@ -410,6 +410,21 @@ namespace FG5EParser
             _classBasics.resetTextBoxes = "1";
         }
 
+        public void RefreshClassAbilities()
+        {
+            _classAbilities.resetTextBoxes = "1";
+        }
+
+        public void RefreshClassDescription()
+        {
+            _classDescription.resetTextBoxes = "1";
+        }
+
+        public void RefreshClassFeatures()
+        {
+            _classFeatures.resetTextBoxes = "1";
+        }
+
         #endregion
 
         public string sendNPCPath()
@@ -429,7 +444,7 @@ namespace FG5EParser
 
         public bool sendClassisReady()
         {
-            // TO DO : Get this implemented
+            // TO DO : Still needs implementation
             return true;
         }
     }

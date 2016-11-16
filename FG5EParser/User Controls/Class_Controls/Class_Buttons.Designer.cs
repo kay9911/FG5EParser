@@ -40,6 +40,7 @@
             this.btnRefreshAll.TabIndex = 3;
             this.btnRefreshAll.Text = "Refresh All";
             this.btnRefreshAll.UseVisualStyleBackColor = true;
+            this.btnRefreshAll.Click += new System.EventHandler(this.btnRefreshAll_Click);
             // 
             // btnAddToList
             // 

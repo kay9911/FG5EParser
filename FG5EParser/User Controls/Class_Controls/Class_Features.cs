@@ -20,6 +20,11 @@ namespace FG5EParser.User_Controls.Class_Controls
             get { return _build.ToString(); }
         }
 
+        public string resetTextBoxes
+        {
+            set { doReset(value); }
+        }
+
         public Class_Features()
         {
             InitializeComponent();
@@ -27,15 +32,15 @@ namespace FG5EParser.User_Controls.Class_Controls
 
         StringBuilder _build = new StringBuilder();
 
-        StringBuilder _buildActions = new StringBuilder();
-        List<KeyValuePair<string, string>> _action = new List<KeyValuePair<string, string>>();
+        StringBuilder _buildFeatures = new StringBuilder();
+        List<KeyValuePair<string, string>> _features = new List<KeyValuePair<string, string>>();
 
         private void doCompile()
         {
             _build.Clear();
 
             // Get Actions
-            _build.Append(_buildActions.ToString());
+            _build.Append(_buildFeatures.ToString());
 
             if (allowUse == null)
                 return;
@@ -56,7 +61,7 @@ namespace FG5EParser.User_Controls.Class_Controls
                     if (!string.IsNullOrEmpty(rtbFeatureDescription.Text))
                     {
                         // Clear the builder
-                        _buildActions.Clear();
+                        _buildFeatures.Clear();
 
                         // Prepare the feature name string
 
@@ -65,19 +70,24 @@ namespace FG5EParser.User_Controls.Class_Controls
                             , txtFeatureLevels.Text.Replace(" ",",")
                             );
 
+                        if (chkIsArchtype.Checked)
+                        {
+                            rtbFeatureDescription.Text = rtbFeatureDescription.Text + "#archtype;";
+                        }
+
                         // Insert into the keyvalue pair list
-                        _action.Add(new KeyValuePair<string, string>(_formattedName,rtbFeatureDescription.Text.Trim()));
+                        _features.Add(new KeyValuePair<string, string>(_formattedName,rtbFeatureDescription.Text.Trim()));
 
                         // Clear the text boxes
                         txtFeatureName.Text = string.Empty;
                         txtFeatureLevels.Text = string.Empty;
                         rtbFeatureDescription.Text = string.Empty;
 
-                        foreach (KeyValuePair<string, string> pair in _action)
+                        foreach (KeyValuePair<string, string> pair in _features)
                         {
                             string _format = string.Format("{0}{1}{2}", pair.Key.ToString(), Environment.NewLine ,pair.Value.ToString());
-                            _buildActions.Append(Environment.NewLine);
-                            _buildActions.Append(_format);
+                            _buildFeatures.Append(Environment.NewLine);
+                            _buildFeatures.Append(_format);
                         }
 
                         doCompile();
@@ -101,10 +111,34 @@ namespace FG5EParser.User_Controls.Class_Controls
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            _buildActions.Clear();
-            _action.Clear();
+            _buildFeatures.Clear();
+            _features.Clear();
             doCompile();
         }
+
+        public void doReset(string value)
+        {
+            if (value == "1")
+            {
+                txtFeatureName.Text = string.Empty;
+                txtFeatureLevels.Text = string.Empty;
+                rtbFeatureDescription.Text = string.Empty;
+
+                chkIsArchtype.Checked = false;
+
+                // Drop all keys
+                _features.Clear();
+                _buildFeatures.Clear();
+
+                doCompile();
+            }
+            else
+            {
+                doCompile();
+            }
+        }
+
+        #region CONTEXT MENU FUNCTIONS
 
         private void makeHeaderToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -149,5 +183,6 @@ namespace FG5EParser.User_Controls.Class_Controls
 
             _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "list");
         }
+        #endregion
     }
 }

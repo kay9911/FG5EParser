@@ -35,14 +35,15 @@
             this.txtFeatureLevels = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.rtbFeatureDescription = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.cmsFormattingText = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.makeHeaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeBoldPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.chkIsArchtype = new System.Windows.Forms.CheckBox();
             this.cmsFormattingText.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,35 +98,6 @@
             this.rtbFeatureDescription.TabIndex = 234;
             this.rtbFeatureDescription.Text = "";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 17);
-            this.label4.TabIndex = 235;
-            this.label4.Text = "Description";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(111, 418);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(93, 29);
-            this.btnAdd.TabIndex = 236;
-            this.btnAdd.Text = "ADD";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(210, 418);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(127, 29);
-            this.btnRefresh.TabIndex = 237;
-            this.btnRefresh.Text = "REFRESH ALL";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // cmsFormattingText
             // 
             this.cmsFormattingText.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -165,10 +137,50 @@
             this.makeListToolStripMenuItem.Text = "Make List";
             this.makeListToolStripMenuItem.Click += new System.EventHandler(this.makeListToolStripMenuItem_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 17);
+            this.label4.TabIndex = 235;
+            this.label4.Text = "Description";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(111, 418);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(93, 29);
+            this.btnAdd.TabIndex = 236;
+            this.btnAdd.Text = "ADD";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(210, 418);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(127, 29);
+            this.btnRefresh.TabIndex = 237;
+            this.btnRefresh.Text = "REFRESH ALL";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // chkIsArchtype
+            // 
+            this.chkIsArchtype.AutoSize = true;
+            this.chkIsArchtype.Location = new System.Drawing.Point(543, 418);
+            this.chkIsArchtype.Name = "chkIsArchtype";
+            this.chkIsArchtype.Size = new System.Drawing.Size(139, 21);
+            this.chkIsArchtype.TabIndex = 238;
+            this.chkIsArchtype.Text = "Archtype Feature";
+            this.chkIsArchtype.UseVisualStyleBackColor = true;
+            // 
             // Class_Features
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkIsArchtype);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label4);
@@ -202,5 +214,6 @@
         private System.Windows.Forms.ToolStripMenuItem makeBoldPointToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeListToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkIsArchtype;
     }
 }

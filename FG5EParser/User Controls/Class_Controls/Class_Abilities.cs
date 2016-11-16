@@ -21,6 +21,11 @@ namespace FG5EParser.User_Controls.Class_Controls
             get { return _build.ToString(); }
         }
 
+        public string resetTextBoxes
+        {
+            set { doReset(value); }
+        }
+
         public Class_Abilities()
         {
             InitializeComponent();
@@ -41,7 +46,11 @@ namespace FG5EParser.User_Controls.Class_Controls
             _build.Clear();
             // Get the archtype name
 
-            _build.Append("#abh;" + txtArchtypeName.Text.Trim());
+            if (!string.IsNullOrEmpty(txtArchtypeName.Text.Trim()))
+            {
+                _build.Append("#abh;" + txtArchtypeName.Text.Trim());
+            }
+
             _build.Append(Environment.NewLine);
 
             getArchtypeList();
@@ -187,6 +196,35 @@ namespace FG5EParser.User_Controls.Class_Controls
             _abilityList.Clear();
 
             cmbPathSelect.SelectedIndex = 0;
+        }
+
+        public void doReset(string value)
+        {
+            if (value == "1")
+            {
+                txtArchtypeName.Text = string.Empty;
+                txtPathName.Text = string.Empty;
+                rtbPathDescription.Text = string.Empty;
+
+                cmbPathSelect.SelectedIndex = 0;
+                txtFeatureName.Text = string.Empty;
+                txtFeatureLevels.Text = string.Empty;
+                rtbFeatureDescription.Text = string.Empty;
+
+                // Clear the List
+                _abilityList.Clear();
+
+                // Remove all existing paths from the dropdown
+                var _toadd = cmbPathSelect.Items.IndexOf(0);
+                cmbPathSelect.Items.Clear();
+                cmbPathSelect.Items.Add(_toadd);
+
+                doCompile();
+            }
+            else
+            {
+                doCompile();
+            }
         }
 
         private void makeHeaderToolStripMenuItem_Click(object sender, EventArgs e)

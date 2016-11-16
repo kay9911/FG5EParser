@@ -17,6 +17,11 @@ namespace FG5EParser.User_Controls.Class_Controls
             get { doCompile(); return _build.ToString(); }
         }
 
+        public string resetTextBoxes
+        {
+            set { doReset(value); }
+        }
+
         public Class_Description()
         {
             InitializeComponent();
@@ -49,6 +54,19 @@ namespace FG5EParser.User_Controls.Class_Controls
         {
             _build.Append(rtbClassDescriptions.Text);
         }
+
+        public void doReset(string value)
+        {
+            if (value == "1")
+            {
+                rtbClassDescriptions.Text = string.Empty;
+                doCompile();
+            }
+            else
+                doCompile();
+        }
+
+        #region CONTEXT MENU FUNCTIONS
 
         private void makeHeaderToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -93,5 +111,7 @@ namespace FG5EParser.User_Controls.Class_Controls
 
             _rtb.SelectedText = _context.returnFormatted(_rtb.SelectedText, "list");
         }
+
+        #endregion
     }
 }

@@ -41,7 +41,7 @@ namespace FG5EParser.User_Controls.Class_Controls
                 {
                     TextWriter tsw = new StreamWriter(LandingPageallowuse.sendClassPath(), true);
 
-                    tsw.WriteLine(Environment.NewLine);
+                    //tsw.WriteLine(Environment.NewLine);
 
                     tsw.WriteLine(LandingPageallowuse.sendClassBlocks.ToString());
 
@@ -50,10 +50,21 @@ namespace FG5EParser.User_Controls.Class_Controls
                     // Reset all fields back to defaults
 
                     LandingPageallowuse.RefreshClassBasics();
+                    LandingPageallowuse.RefreshClassAbilities();
+                    LandingPageallowuse.RefreshClassDescription();
+                    LandingPageallowuse.RefreshClassFeatures();
                 }
                 else
                     MessageBox.Show("Please check the information, you may have some incorrect values");
             }
+        }
+
+        private void btnRefreshAll_Click(object sender, EventArgs e)
+        {
+            LandingPageallowuse.RefreshClassBasics();
+            LandingPageallowuse.RefreshClassAbilities();
+            LandingPageallowuse.RefreshClassDescription();
+            LandingPageallowuse.RefreshClassFeatures();
         }
     }
 }
