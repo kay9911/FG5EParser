@@ -16,7 +16,8 @@ namespace FG5EParser.XMLWriters
             string _moduleName,
             string _catName,
             string _npcTextPath = "",
-            string _classTextPath = ""
+            string _classTextPath = "",
+            string _storyTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -24,11 +25,34 @@ namespace FG5EParser.XMLWriters
             // Module Based Instances
             PersonalitiesHelper _personalitiesHelper = new PersonalitiesHelper();
             ClassHelper _classHelper = new ClassHelper();
+            StoryHelper _storyHelper = new StoryHelper();
+
+            bool requiresList = false;
 
             #region XML Header
             xml.Append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
             xml.Append("<root version=\"3.0\">");
             #endregion
+
+            if (!string.IsNullOrEmpty(_storyTextPath))
+            {
+                xml.Append(_storyHelper.returnStoryXML(_storyTextPath, _moduleName));
+                requiresList = true;
+            }
+
+            // Getting in the additional lists
+            if (requiresList)
+            {
+                xml.Append("<lists>");
+
+                // Story Elements
+                if (!string.IsNullOrEmpty(_storyTextPath))
+                {
+                    xml.Append(_storyHelper.returnStoryXML(_storyTextPath, _moduleName, true)); // true : Switch to list
+                }
+
+                xml.Append("</lists>");
+            }
 
             xml.Append("<reference static=\"true\">");
 
@@ -60,6 +84,23 @@ namespace FG5EParser.XMLWriters
             xml.Append(string.Format("<categoryname type=\"string\">{0}</categoryname>", _catName));
 
             xml.Append("<entries>");
+
+            if (!string.IsNullOrEmpty(_storyTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_colindex</class>");
+
+                xml.Append(string.Format("<recordname>lists.encounter.bycategory@{0}</recordname>",_moduleName));
+
+                xml.Append("</librarylink>");
+
+                xml.Append("<name type=\"string\">Story</name>");
+
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+            }
 
             if (!string.IsNullOrEmpty(_npcTextPath))
             {

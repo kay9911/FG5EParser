@@ -21,7 +21,8 @@ namespace FG5EParser.Utilities
             bool _useInstalledPath,
             bool _isDMOnly,
             string _npcTextPath = null,
-            string _classTextPath = null
+            string _classTextPath = null,
+            string _storyTextPath = null
         )
         {
             // Get the Xdoc's
@@ -34,7 +35,7 @@ namespace FG5EParser.Utilities
             {
                 _moduleName = "ABC Module";
             }
-            XDocument commonXML = _xmlWriter.createCommonXML(_moduleName, _catalogueName, _npcTextPath, _classTextPath);
+            XDocument commonXML = _xmlWriter.createCommonXML(_moduleName, _catalogueName, _npcTextPath, _classTextPath, _storyTextPath);
             if (string.IsNullOrEmpty(_authorName))
             {
                 _authorName = "SomeOneCreatedMe";

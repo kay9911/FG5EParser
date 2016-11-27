@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Base_Class\Classes.cs" />
     <Compile Include="Base_Class\Personalities.cs" />
+    <Compile Include="Base_Class\RollableTables.cs" />
+    <Compile Include="Base_Class\StoryElements.cs" />
     <Compile Include="LandingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,9 +143,11 @@
     <Compile Include="Utilities\XMLParser.cs" />
     <Compile Include="WriterClasses\ClassWriter.cs" />
     <Compile Include="WriterClasses\NPCWriter.cs" />
+    <Compile Include="WriterClasses\StoryWriter.cs" />
     <Compile Include="XML_Writers\BaseWriter.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ClassHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\StoryHelper.cs" />
     <Compile Include="Zipper1\ZipClass.cs" />
     <EmbeddedResource Include="LandingPage.resx">
       <DependentUpon>LandingPage.cs</DependentUpon>

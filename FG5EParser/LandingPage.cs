@@ -265,8 +265,19 @@ namespace FG5EParser
                     {
                         XMLParser _xmlParser = new XMLParser();
 
-                        _xmlParser.ParseXMLs(_setPaths.CatalogueName, _setPaths.ModuleName, _setPaths.AuthorName, _setPaths.OutputText
-                            , _setPaths.ImagePath, _setPaths.UseInstalledPath, _setPaths.ForDMOnly, _setPaths.SetNPCPath, _setPaths.SetClassPath);
+                        // Pass all paths for processing
+                        _xmlParser.ParseXMLs(
+                            _setPaths.CatalogueName
+                            , _setPaths.ModuleName
+                            , _setPaths.AuthorName
+                            , _setPaths.OutputText
+                            , _setPaths.ImagePath
+                            , _setPaths.UseInstalledPath
+                            , _setPaths.ForDMOnly
+                            , _setPaths.SetNPCPath
+                            , _setPaths.SetClassPath
+                            , _setPaths.SetStoryPath
+                            );
 
                         MessageBox.Show("Parsing done!");
                     }

@@ -45,6 +45,8 @@
             this.txtNPCPath = new System.Windows.Forms.TextBox();
             this.btnClass = new System.Windows.Forms.Button();
             this.txtClassPath = new System.Windows.Forms.TextBox();
+            this.btnStory = new System.Windows.Forms.Button();
+            this.txtStoryPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // chkDmOnly
@@ -214,10 +216,32 @@
             this.txtClassPath.Size = new System.Drawing.Size(468, 22);
             this.txtClassPath.TabIndex = 232;
             // 
+            // btnStory
+            // 
+            this.btnStory.Location = new System.Drawing.Point(16, 339);
+            this.btnStory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStory.Name = "btnStory";
+            this.btnStory.Size = new System.Drawing.Size(100, 28);
+            this.btnStory.TabIndex = 235;
+            this.btnStory.Text = "STORY";
+            this.btnStory.UseVisualStyleBackColor = true;
+            this.btnStory.Click += new System.EventHandler(this.btnStory_Click);
+            // 
+            // txtStoryPath
+            // 
+            this.txtStoryPath.Enabled = false;
+            this.txtStoryPath.Location = new System.Drawing.Point(124, 342);
+            this.txtStoryPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStoryPath.Name = "txtStoryPath";
+            this.txtStoryPath.Size = new System.Drawing.Size(468, 22);
+            this.txtStoryPath.TabIndex = 234;
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnStory);
+            this.Controls.Add(this.txtStoryPath);
             this.Controls.Add(this.btnClass);
             this.Controls.Add(this.txtClassPath);
             this.Controls.Add(this.btnSetNPCPath);
@@ -236,7 +260,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 344);
+            this.Size = new System.Drawing.Size(609, 380);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,5 +285,7 @@
         private System.Windows.Forms.TextBox txtNPCPath;
         private System.Windows.Forms.Button btnClass;
         private System.Windows.Forms.TextBox txtClassPath;
+        private System.Windows.Forms.Button btnStory;
+        private System.Windows.Forms.TextBox txtStoryPath;
     }
 }

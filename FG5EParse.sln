@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Creature Creator", "Creature Creator\Creature Creator.csproj", "{800DD991-91AD-48B9-92E9-5C7220AEEC89}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class Parser 5E", "Class Parser 5E\Class Parser 5E.csproj", "{AA1992BB-C120-4597-9BA2-EFF898FBCC75}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FG5EParser", "FG5EParser\FG5EParser.csproj", "{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}"
 EndProject
 Global
@@ -15,14 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{800DD991-91AD-48B9-92E9-5C7220AEEC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{800DD991-91AD-48B9-92E9-5C7220AEEC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{800DD991-91AD-48B9-92E9-5C7220AEEC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{800DD991-91AD-48B9-92E9-5C7220AEEC89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA1992BB-C120-4597-9BA2-EFF898FBCC75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA1992BB-C120-4597-9BA2-EFF898FBCC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA1992BB-C120-4597-9BA2-EFF898FBCC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA1992BB-C120-4597-9BA2-EFF898FBCC75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
