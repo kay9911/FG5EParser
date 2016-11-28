@@ -32,11 +32,11 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                 {
                     if (!string.IsNullOrEmpty(_header))
                     {
-                        xml.Append(string.Format("<category name=\"{0}\" baseicon=\"0\" decalicon=\"0\">", _header));
+                        xml.Append(string.Format("<category name=\"{0}\" baseicon=\"2\" decalicon=\"1\">", _header));
                     }
                     else
                     {
-                        xml.Append("<category name=\"\" baseicon=\"0\" decalicon=\"0\">");
+                        xml.Append("<category name=\"\" baseicon=\"2\" decalicon=\"1\">");
                     }
 
                     #region LOOP AREA
@@ -45,7 +45,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         if (!string.IsNullOrEmpty(_storyList[i].StoryTitle) && _storyList[i].StoryHeader == _header) // Avoid Null exceptions
                         {
-                            xml.Append(string.Format("<enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Trim()));
+                            xml.Append(string.Format("<enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".","_").Trim()));
 
                             xml.Append(string.Format("<locked type=\"number\">{0}</locked>", _storyList[i].isLocked));
 
@@ -53,7 +53,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                             xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>", _storyList[i].StoryDescription));
 
-                            xml.Append(string.Format("</enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Trim()));
+                            xml.Append(string.Format("</enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".", "_").Trim()));
                         }
                     }
 
@@ -78,16 +78,17 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                 xml.Append("<groups>");
 
-                xml.Append("<typecategory>");
-
                 foreach (string _header in _categoryTypes)
                 {
                     if (!string.IsNullOrEmpty(_header))
                     {
+                        xml.Append(string.Format("<typecategory{0}>", _header.Replace(" ", "").Replace(".","_").Trim()));
+
                         xml.Append(string.Format("<description type=\"string\">{0}</description>",_header));
                     }
                     else
                     {
+                        xml.Append("<typecategory>");
                         xml.Append("<description type=\"string\" />");
                     }
 
@@ -97,15 +98,16 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         if (!string.IsNullOrEmpty(_storyList[i].StoryTitle) && _storyList[i].StoryHeader == _header)
                         {
-                            xml.Append(string.Format("<enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Trim()));
+                            xml.Append(string.Format("<enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".","_").Trim()));
 
                             xml.Append("<link type=\"windowreference\">");
 
                             xml.Append("<class>encounter</class>");
 
                             xml.Append(string.Format("<recordname>encounter.enc_{0}@{1}</recordname>"
-                                , _storyList[i].StoryTitle.ToLower().Replace(" ", "").Trim()
-                                , _moduleName));
+                                , _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".", "_").Trim()
+                                , _moduleName
+                                ));
 
                             xml.Append("<description>");
 
@@ -117,14 +119,21 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                             xml.Append("<source type=\"string\" />");
 
-                            xml.Append(string.Format("</enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Trim()));
+                            xml.Append(string.Format("</enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".", "_").Trim()));
                         }
                     }
 
                     xml.Append("</index>");
-                }
 
-                xml.Append("</typecategory>");
+                    if (!string.IsNullOrEmpty(_header))
+                    {
+                        xml.Append(string.Format("</typecategory{0}>", _header.Replace(" ", "").Replace(".", "_").Trim()));
+                    }
+                    else
+                    {
+                        xml.Append("</typecategory>");
+                    }
+                }                
 
                 xml.Append("</groups>");
 
