@@ -1,4 +1,5 @@
 ﻿using FG5EParser.Base_Class;
+using FG5EParser.Utilities;
 using FG5EParser.WriterClasses;
 using System;
 using System.Collections.Generic;
@@ -56,8 +57,9 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         private string generateClassXML(Classes _class, string _moduleName)
         {
             StringBuilder xml = new StringBuilder();
+            XMLFormatting xmlFormatting = new XMLFormatting();
 
-            xml.Append(string.Format("<{0}>", _class.className.Replace(" ", "").ToLower().Trim()));
+            xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_class.className,"CH")));
 
             xml.Append(string.Format("<name type=\"string\">{0}</name>",_class.className)); // Class name goes here
 
@@ -189,7 +191,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             #endregion
 
-            xml.Append(string.Format("</{0}>", _class.className.Replace(" ", "").ToLower().Trim()));
+            xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_class.className, "CH")));
 
             return xml.ToString();
         }
@@ -259,11 +261,12 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         private string returnFeatureXML(ClassFeatures _classFeature)
         {
             StringBuilder xml = new StringBuilder();
+            XMLFormatting xmlFormatting = new XMLFormatting();
             List<string> _level = new List<string>(_classFeature.FeatureLevels.Split(','));
 
             foreach (string level in _level)
             {
-                xml.Append(string.Format("<{0}{1}>", _classFeature.FeatureName.Replace(" ", "").Replace("-", "").Replace("&", "").Replace(":","").Replace("'","").Replace("’", "").ToLower().Trim(), level));
+                xml.Append(string.Format("<{0}{1}>", xmlFormatting.formatXMLCharachters(_classFeature.FeatureName,"FH"), level));
 
                 xml.Append(string.Format("<name type=\"string\">{0}</name>",_classFeature.FeatureName));
 
@@ -283,7 +286,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     xml.Append(string.Format("<specialization type=\"string\">{0}</specialization>",_classFeature.UnderArchtype));
                 }
 
-                xml.Append(string.Format("</{0}{1}>", _classFeature.FeatureName.Replace(" ", "").Replace("-", "").Replace("&", "").Replace(":", "").Replace("'", "").Replace("’", "").ToLower().Trim(), level));
+                xml.Append(string.Format("</{0}{1}>", xmlFormatting.formatXMLCharachters(_classFeature.FeatureName, "FH"), level));
             }
 
             return xml.ToString();
@@ -292,8 +295,9 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         private string returnAbilityXML(ClassAbilities _classAbility, string _className, string _moduleName)
         {
             StringBuilder xml = new StringBuilder();
+            XMLFormatting xmlFormatting = new XMLFormatting();
 
-            xml.Append(string.Format("<{0}>",_classAbility.AbilityName.Replace(" ", "").Replace("-", "").Replace("&", "").Replace(":", "").Replace("'", "").Replace("’", "").ToLower().Trim()));
+            xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_classAbility.AbilityName,"FH")));
 
             xml.Append(string.Format("<name type=\"string\">{0}</name>", _classAbility.AbilityName));
 
@@ -303,7 +307,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>",_classAbility.AbilityDescription));
 
-            xml.Append(string.Format("</{0}>", _classAbility.AbilityName.Replace(" ", "").Replace("-", "").Replace("&", "").Replace(":", "").Replace("'", "").Replace("’", "").ToLower().Trim()));          
+            xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_classAbility.AbilityName, "FH")));          
 
             return xml.ToString();
         }
@@ -311,6 +315,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         private string appendAdditionalDetails(ClassAbilities _classAbility, string _className, string _moduleName)
         {
             StringBuilder _formatted = new StringBuilder();
+            XMLFormatting xmlFormatting = new XMLFormatting();
 
             _formatted.Append("<h>Features</h>");
 
@@ -320,7 +325,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             {
                 _formatted.Append(string.Format("<link class=\"reference_classfeature\" recordname=\"reference.classdata.{0}.features.{1}@{2}\">{3}</link>",
                     _className.ToLower().Trim(),
-                    _classAbility.AbilityList[i].Split(',')[0].Replace(" ", "").Replace("-", "").Replace("&", "").Replace(":", "").Replace("'", "").Replace("’", "").ToLower().Trim() + _classAbility.AbilityList[i].Split(',')[1].Trim(),
+                    xmlFormatting.formatXMLCharachters(_classAbility.AbilityList[i].Split(',')[0],"FH") + _classAbility.AbilityList[i].Split(',')[1].Trim(),
                     _moduleName,
                     _classAbility.AbilityList[i].Split(',')[0].Trim()
                     ));

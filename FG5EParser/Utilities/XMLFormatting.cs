@@ -317,5 +317,31 @@ namespace FG5EParser.Utilities
 
             return _toFormat;
         }
+
+        public string formatXMLCharachters(string _toFormat, string type)
+        {
+            // Class Header
+            if (type == "CH")
+            {
+                _toFormat = _toFormat.Replace(" ", "").ToLower().Trim();
+                return _toFormat;
+            }
+
+            // Feature Header
+            if (type == "FH")
+            { 
+                _toFormat = _toFormat.Replace(" ", "")
+                                                    .Replace("-", "")
+                                                    .Replace("&", "")
+                                                    .Replace(":", "")
+                                                    .Replace("'", "")
+                                                    .Replace("’", "")
+                                                    .ToLower().Trim();
+
+                return _toFormat;
+            }
+
+            return _toFormat.Trim();
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace FG5EParser
 {
     public partial class LandingPage : Form
     {
-        // Properties
+        #region PROPERTIES
         public string sendNPCStatBlocks {
             get { return getAllStatBlocks(); }
         }
@@ -38,10 +38,13 @@ namespace FG5EParser
         {
             set { _setPaths.SetClassPath = value; }
         }
+        #endregion
 
         public LandingPage()
         {
             InitializeComponent();
+
+            #region INSTACE PASSING
 
             this._stats.allowUse = this;
             this._actions.allowUse = this;
@@ -54,24 +57,28 @@ namespace FG5EParser
             this._classFeatures.allowUse = this;
             this._classAbilities.allowUse = this;
             this._classButtons.LandingPageallowuse = this;
+
+            #endregion
         }
 
-        #region  Init the User Controls
+        #region  INIT USER CONTROLS
 
-        // Class
+        #region CLASS
         Class_Basics _classBasics = new Class_Basics();
         Class_Description _classDescription = new Class_Description();
         Class_Features _classFeatures = new Class_Features();
         Class_Abilities _classAbilities = new Class_Abilities();
         Class_Buttons _classButtons = new Class_Buttons();
+        #endregion
 
-        // NPC
+        #region NPCS
         SetPaths _setPaths = new SetPaths();
         NPC_Spellcasting _spellcasting = new NPC_Spellcasting();
         NPC_Innate_Spellcasting _innateSpellcasting = new NPC_Innate_Spellcasting();
         NPC_Actions _actions = new NPC_Actions();
         NPC_Stats _stats = new NPC_Stats();
         NPC_Buttons _npcButtons = new NPC_Buttons();
+        #endregion
 
         // TEST
         KeyValuePairViewer _keyValuePairViewer = new KeyValuePairViewer();

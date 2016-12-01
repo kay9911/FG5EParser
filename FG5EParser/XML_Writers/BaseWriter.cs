@@ -30,6 +30,7 @@ namespace FG5EParser.XMLWriters
             bool requiresList = false;
 
             #region XML Header
+            // TO DO: Check and see if this line is required...
             xml.Append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
             xml.Append("<root version=\"3.0\">");
             #endregion
