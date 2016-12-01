@@ -74,19 +74,35 @@ namespace FG5EParser.Base_Class
     }
 
     class Items
-    {
-        public int ItemIndex { get; set; } // Keep track of what needs to be linked where later
-        public string AC { get; set; }
-        public string Bonus { get; set; }
-        public string Cost { get; set; }
-        public string Description { get; set; } // Needs formatting options
+    {    
         public bool isIdentified { get; set; }
         public bool isTemplate { get; set; }
-        public bool isLocked { get { return true; } set { isLocked = value; } }
-        public string Name { get; set; }
         public string Rarity { get; set; }
+
+        // Mandatory
+        public string Name { get; set; }
+        public string isLocked { get { return "1"; } set { isLocked = value; } }
+        public string Type { get; set; }
         public string Subtype { get; set; }
+        public string Cost { get; set; }
         public string Weight { get; set; }
+
+        // Armor Related
+        public string AC { get; set; }
+        public string DexBonus { get; set; }
+        public string StrRequired { get; set; }
+        public string StealthDisadvantage { get; set; }
+
+        // Weapon Related
+        public string Damage { get; set; }
+        public string Properties { get; set; }
+
+        // Mounts
+
+        // Misc
+        public string Description { get; set; } // Needs formatting options
+        public int ItemIndex { get; set; } // Keep track of what needs to be linked where later 
+
     }
 
     class Parcles

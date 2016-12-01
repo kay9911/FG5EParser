@@ -146,6 +146,7 @@
     <Compile Include="WriterClasses\StoryWriter.cs" />
     <Compile Include="XML_Writers\BaseWriter.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ClassHelper.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\ItemHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\StoryHelper.cs" />
     <Compile Include="Zipper1\ZipClass.cs" />
