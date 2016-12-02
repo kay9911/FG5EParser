@@ -170,7 +170,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                 for (int i = 0; i < _categoryTypes.Count; i++)
                 {
-                    xml.Append(string.Format("<index-{0}>",i+1));
+                    xml.Append(string.Format("<id-{0}>",i+1));
 
                     xml.Append("<listlink type=\"windowreference\">");
 
@@ -185,7 +185,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     xml.Append(string.Format("<name type=\"string\">{0}</name>",_categoryTypes[i]));
 
-                    xml.Append(string.Format("</index-{0}>", i + 1));
+                    xml.Append(string.Format("</id-{0}>", i + 1));
                 }
 
                 xml.Append("</index>");
@@ -294,5 +294,131 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             return xml.ToString();
 
         }
+
+        public string returnItemReferenceDetails(string _itemTextPath, string _moduleName)
+        {
+            StringBuilder xml = new StringBuilder();
+            XMLFormatting xmlFormatting = new XMLFormatting();
+
+            // REMOVE
+            List<Items> _itemList = new List<Items>();
+
+            // Gather a collection of all category types
+            List<string> _categoryTypes = new List<string>();
+            List<string> _subTypes = new List<string>();
+
+            xml.Append("<equipmentdata>");
+
+            foreach (Items _item in _itemList)
+            {
+                // Add the name
+                xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_item.Name, "IH")));
+
+                // Locked type
+                xml.Append(string.Format("<locked type=\"number\">{0}</locked>", _item.isLocked));
+
+                // Item Name
+                xml.Append(string.Format("<name type=\"string\">{0}</name>", _item.Name));
+
+                // Item Type
+                xml.Append(string.Format("<type type=\"string\">{0}</type>", _item.Type));
+
+                // Item Subtype
+                xml.Append(string.Format("<subtype type=\"string\">{0}</subtype>", _item.Subtype));
+
+                // Item Cost
+                xml.Append(string.Format("<cost type=\"string\">{0}</cost>", _item.Cost));
+
+                // Mount Speed
+                if (!string.IsNullOrEmpty(_item.Speed))
+                {
+                    xml.Append(string.Format("<speed type=\"string\">{0}</speed>", _item.Speed));
+                }
+
+                // Mount Carrying Capacity
+                if (!string.IsNullOrEmpty(_item.CarryingCapacity))
+                {
+                    xml.Append(string.Format("<carryingcapacity type=\"string\">{0}</carryingcapacity>", _item.CarryingCapacity));
+                }
+
+                // Item AC
+                if (!string.IsNullOrEmpty(_item.AC))
+                {
+                    xml.Append(string.Format("<ac type=\"number\">{0}</ac>", _item.AC));
+                }
+
+                // Dex bonus
+                if (!string.IsNullOrEmpty(_item.DexBonus))
+                {
+                    xml.Append(string.Format("<dexbonus type=\"string\">{0}</dexbonus>", _item.DexBonus));
+                }
+
+                // Str Requirement
+                if (!string.IsNullOrEmpty(_item.StrRequired))
+                {
+                    xml.Append(string.Format("<strength type=\"string\">{0}</strength>", _item.StrRequired));
+                }
+
+                // Stealth Disadvantage
+                if (!string.IsNullOrEmpty(_item.StealthDisadvantage))
+                {
+                    xml.Append(string.Format("<stealth type=\"string\">{0}</stealth>", _item.StealthDisadvantage));
+                }
+
+                // Item Damage
+                if (!string.IsNullOrEmpty(_item.Damage))
+                {
+                    xml.Append(string.Format("<damage type=\"string\">{0}</damage>", _item.Damage));
+                }
+
+                // Item properties
+                if (!string.IsNullOrEmpty(_item.Properties))
+                {
+                    xml.Append(string.Format("<properties type=\"string\">{0}</properties>", _item.Properties));
+                }
+
+                // Item Weight
+                xml.Append(string.Format("<weight type=\"number\">{0}</weight>", _item.Weight));
+
+                // Item Description
+                if (!string.IsNullOrEmpty(_item.Description))
+                {
+                    xml.Append(string.Format("<description type=\"formattedtext\">{0}</description>", xmlFormatting.returnFormattedString(_item.Description, _moduleName)));
+                }
+
+                // Subitems
+                if (_item.Subitems.Count != 0)
+                {
+                    foreach (Subitems _subItem in _item.Subitems)
+                    {
+                        xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_subItem.ItemName, "IH")));
+
+                        xml.Append(string.Format("<count type=\"number\">{0}</count>", _subItem.Count));
+
+                        // Unique String
+                        xml.Append("<link type=\"windowreference\">");
+
+                        xml.Append("<class>reference_equipment</class>");
+
+                        // Record to link
+                        xml.Append(string.Format("<recordname>reference.equipmentdata.{0}@{1}</recordname>"
+                            , xmlFormatting.formatXMLCharachters(_subItem.ItemName, "IH")
+                            , _moduleName
+                            ));
+
+                        xml.Append("</link>");
+
+                        xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_subItem.ItemName, "IH")));
+                    }
+                }
+
+                xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_item.Name, "IH")));
+            }
+
+            xml.Append("</equipmentdata>");
+
+            return xml.ToString();
+        }
+
     }
 }

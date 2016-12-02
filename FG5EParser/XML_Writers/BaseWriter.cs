@@ -17,7 +17,8 @@ namespace FG5EParser.XMLWriters
             string _catName,
             string _npcTextPath = "",
             string _classTextPath = "",
-            string _storyTextPath = ""
+            string _storyTextPath = "",
+            string _itemTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -26,6 +27,7 @@ namespace FG5EParser.XMLWriters
             PersonalitiesHelper _personalitiesHelper = new PersonalitiesHelper();
             ClassHelper _classHelper = new ClassHelper();
             StoryHelper _storyHelper = new StoryHelper();
+            ItemHelper _itemHelper = new ItemHelper();
 
             bool requiresList = false;
 
@@ -34,6 +36,12 @@ namespace FG5EParser.XMLWriters
             xml.Append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
             xml.Append("<root version=\"3.0\">");
             #endregion
+
+            if (!string.IsNullOrEmpty(_itemTextPath))
+            {
+                xml.Append(_itemHelper.returnItemXML(_itemTextPath, _moduleName));
+                requiresList = true;
+            }
 
             if (!string.IsNullOrEmpty(_storyTextPath))
             {
@@ -46,6 +54,11 @@ namespace FG5EParser.XMLWriters
             {
                 xml.Append("<lists>");
 
+                if (!string.IsNullOrEmpty(_itemTextPath))
+                {
+                    xml.Append(_itemHelper.returnItemXML(_itemTextPath,_moduleName,true)); // true : Switch to list
+                }
+
                 // Story Elements
                 if (!string.IsNullOrEmpty(_storyTextPath))
                 {
@@ -55,6 +68,7 @@ namespace FG5EParser.XMLWriters
                 xml.Append("</lists>");
             }
 
+            // REFRENCE SECTION
             xml.Append("<reference static=\"true\">");
 
             // Input for personalities
@@ -67,6 +81,13 @@ namespace FG5EParser.XMLWriters
             if (!string.IsNullOrEmpty(_classTextPath))
             {
                 xml.Append(_classHelper.returnClassesXML(_classTextPath, _moduleName));
+            }
+
+            // Input for Equipement
+            if (!string.IsNullOrEmpty(_itemTextPath))
+            {
+                xml.Append(_itemHelper.returnItemReferenceDetails(_itemTextPath,_moduleName));
+                xml.Append(_storyHelper.returnStoryXML(_storyTextPath, _moduleName, true)); // true : Switch to list
             }
 
             xml.Append("</reference>");
@@ -86,6 +107,27 @@ namespace FG5EParser.XMLWriters
 
             xml.Append("<entries>");
 
+            // Entry for Items
+            if (!string.IsNullOrEmpty(_itemTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>referenceindex</class>");
+
+                xml.Append("<recordname>reference.equipmentlists.equipment</recordname>");
+
+                xml.Append("</librarylink>");
+
+                xml.Append("<name type=\"string\">Equipment</name>");
+
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
             if (!string.IsNullOrEmpty(_storyTextPath))
             {
                 xml.Append(string.Format("<id-0000{0}>", index.ToString()));
@@ -101,6 +143,9 @@ namespace FG5EParser.XMLWriters
                 xml.Append("<name type=\"string\">Story</name>");
 
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
             }
 
             if (!string.IsNullOrEmpty(_npcTextPath))
