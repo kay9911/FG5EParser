@@ -341,6 +341,22 @@ namespace FG5EParser.Utilities
                 return _toFormat;
             }
 
+            if (type == "IH")
+            {
+                _toFormat = _toFormat.Replace(" ","")
+                                                    .Replace("-", "_")
+                                                    .Replace("&", "_")
+                                                    .Replace(":", "_")
+                                                    .Replace("'", "_")
+                                                    .Replace("’", "_")
+                                                    .Replace("(", "_")
+                                                    .Replace(")", "_")
+                                                    .Replace(",", "_")
+                                                    .ToLower().Trim();
+
+                return _toFormat;
+            }
+
             return _toFormat.Trim();
         }
     }

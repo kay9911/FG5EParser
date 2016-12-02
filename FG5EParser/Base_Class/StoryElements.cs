@@ -74,11 +74,7 @@ namespace FG5EParser.Base_Class
     }
 
     class Items
-    {    
-        public bool isIdentified { get; set; }
-        public bool isTemplate { get; set; }
-        public string Rarity { get; set; }
-
+    {
         // Mandatory
         public string Name { get; set; }
         public string isLocked { get { return "1"; } set { isLocked = value; } }
@@ -97,12 +93,24 @@ namespace FG5EParser.Base_Class
         public string Damage { get; set; }
         public string Properties { get; set; }
 
-        // Mounts
+        // Mounts and Locomotives
+        public string Speed { get; set; }
+        public string CarryingCapacity { get; set; }
 
         // Misc
         public string Description { get; set; } // Needs formatting options
-        public int ItemIndex { get; set; } // Keep track of what needs to be linked where later 
+        public int ItemIndex { get; set; } // Keep track of what needs to be linked where later
+        private List<Subitems> _itemList = new List<Base_Class.Subitems>();
+        public List<Subitems> Subitems { get { return _itemList; } set { _itemList = value; } }
+        public bool isIdentified { get; set; }
+        public bool isTemplate { get; set; }
+        public string Rarity { get; set; }
+    }
 
+    class Subitems
+    {
+        public string ItemName { get; set; }
+        public string Count { get; set; }
     }
 
     class Parcles
