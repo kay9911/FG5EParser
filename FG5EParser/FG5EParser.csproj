@@ -142,6 +142,7 @@
     <Compile Include="Utilities\XMLFormatting.cs" />
     <Compile Include="Utilities\XMLParser.cs" />
     <Compile Include="WriterClasses\ClassWriter.cs" />
+    <Compile Include="WriterClasses\ItemWriter.cs" />
     <Compile Include="WriterClasses\NPCWriter.cs" />
     <Compile Include="WriterClasses\StoryWriter.cs" />
     <Compile Include="XML_Writers\BaseWriter.cs" />

@@ -75,6 +75,7 @@ namespace FG5EParser.Base_Class
 
     class Items
     {
+        #region PROPERTIES
         // Mandatory
         public string Name { get; set; }
         public string isLocked { get { return "1"; } set { isLocked = value; } }
@@ -105,6 +106,94 @@ namespace FG5EParser.Base_Class
         public bool isIdentified { get; set; }
         public bool isTemplate { get; set; }
         public string Rarity { get; set; }
+        #endregion
+
+        public List<Items> bindValues(List<string> _Basic, string itemHeader, string _moduleName)
+        {
+            Items _item = new Items();
+            List<Items> _itemList = new List<Items>();
+
+            StringBuilder xml = new StringBuilder();
+            XMLFormatting _xmlFormatting = new XMLFormatting();
+
+            // Variable that will be used in order to process fields that are not mandatory
+            string line = _Basic.First();
+
+            while (line != "Its done!")
+            {
+                // Clear heading line
+                if (line.Contains("#@;"))
+                {
+                    line = shiftUp(_Basic);
+                }
+
+                List<string> tableFields = new List<string>();
+                // Obtain the possible fields
+                if (line.Contains("#th;"))
+                {
+                    tableFields = line.Split(';').ToList();
+                    tableFields.RemoveAt(0);
+                    line = shiftUp(_Basic);
+                }
+
+                string subTypeName = string.Empty;
+
+                // Obtain the subtype
+                if (line.Contains("#st;"))
+                {
+                    subTypeName = line.Split(';')[1];
+                    line = shiftUp(_Basic);
+                }
+
+                while (line != "Its done!" && !line.Contains("#st;"))
+                {
+                    // Break up the line
+                    List<string> _itemDetails = line.Split(';').ToList();
+
+                    for (int i = 0; i < tableFields.Count; i++)
+                    {
+                        if (tableFields[i] == "Item")
+                        {
+                            _item.Name = _itemDetails[i];
+                        }
+                        if (tableFields[i] == "Cost")
+                        {
+                            _item.Cost = _itemDetails[i];
+                        }
+                        if (tableFields[i] == "Weight")
+                        {
+                            _item.Weight = _itemDetails[i];
+                        }
+                    }
+
+                    // Assign constants
+                    _item.Type = itemHeader;
+                    _item.Subtype = subTypeName;
+
+                    // Add the item to the list
+                    _itemList.Add(_item);
+
+                    line = shiftUp(_Basic);
+                }
+            }
+
+            return _itemList;
+        }
+
+        // Makes reading the list variable consistant
+        private string shiftUp(List<string> _Basic)
+        {
+            _Basic.RemoveAt(0);
+            if (_Basic.Count != 0)
+            {
+                return _Basic.First();
+            }
+            else
+            {
+                _Basic.Add("Its done!");
+                return _Basic.First();
+            }
+        }
     }
 
     class Subitems

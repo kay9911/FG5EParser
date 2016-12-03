@@ -1,5 +1,6 @@
 ﻿using FG5EParser.Base_Class;
 using FG5EParser.Utilities;
+using FG5EParser.WriterClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,14 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             StringBuilder xml = new StringBuilder();
             XMLFormatting xmlFormatting = new XMLFormatting();
 
-            // REMOVE
-            List<Items> _itemList = new List<Items>();
+            ItemWriter _itemWriter = new ItemWriter();
+            List<Items> _itemList = _itemWriter.compileItemList(_itemTextPath, _moduleName);
 
             // Gather a collection of all category types
-            List<string> _categoryTypes = new List<string>();
-            List<string> _subTypes = new List<string>();
+            List<string> _categoryTypes = _itemList.Select(x => x.Type).Distinct().ToList();
 
-            //_categoryTypes = _storyList.Select(x => x.StoryHeader).Distinct().ToList();
+            // Gather a collection of all subtypes
+            List<string> _subTypes = _itemList.Select(x => x.Subtype).Distinct().ToList();
 
             if (!isListCall)
             {
@@ -300,12 +301,14 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             StringBuilder xml = new StringBuilder();
             XMLFormatting xmlFormatting = new XMLFormatting();
 
-            // REMOVE
-            List<Items> _itemList = new List<Items>();
+            ItemWriter _itemWriter = new ItemWriter();
+            List<Items> _itemList = _itemWriter.compileItemList(_itemTextPath, _moduleName);
 
             // Gather a collection of all category types
-            List<string> _categoryTypes = new List<string>();
-            List<string> _subTypes = new List<string>();
+            List<string> _categoryTypes = _itemList.Select(x => x.Type).Distinct().ToList();
+
+            // Gather a collection of all subtypes
+            List<string> _subTypes = _itemList.Select(x => x.Subtype).Distinct().ToList();
 
             xml.Append("<equipmentdata>");
 
