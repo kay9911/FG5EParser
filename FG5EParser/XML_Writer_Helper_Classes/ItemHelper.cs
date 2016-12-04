@@ -22,9 +22,6 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             // Gather a collection of all category types
             List<string> _categoryTypes = _itemList.Select(x => x.Type).Distinct().ToList();
 
-            // Gather a collection of all subtypes
-            List<string> _subTypes = _itemList.Select(x => x.Subtype).Distinct().ToList();
-
             if (!isListCall)
             {
                 #region NON LIST REGION
@@ -57,7 +54,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                             xml.Append(string.Format("<type type=\"string\">{0}</type>", _item.Type));
 
                             // Item Subtype
-                            xml.Append(string.Format("<subtype type=\"string\">{0}</subtype>", _item.Subtype));
+                            xml.Append(string.Format("<subtype type=\"string\">{0}</subtype>", xmlFormatting.formatXMLCharachters(_item.Subtype,"ID")));
 
                             // Item Cost
                             xml.Append(string.Format("<cost type=\"string\">{0}</cost>", _item.Cost));
@@ -175,7 +172,16 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     xml.Append("<listlink type=\"windowreference\">");
 
-                    xml.Append(string.Format("<class>reference_{0}table</class>",xmlFormatting.formatXMLCharachters(_categoryTypes[i],"IH")));
+                    if (_categoryTypes[i].ToLower() == "tools")
+                    {
+                        xml.Append("<class>reference_adventuringgeartable</class>");
+                    }
+                    if (_categoryTypes[i].ToLower() == "tack, harness, and drawn vehicles")
+                    {
+                        xml.Append("<class>reference_adventuringgeartable</class>");
+                    }
+                    else
+                        xml.Append(string.Format("<class>reference_{0}table</class>", xmlFormatting.formatXMLCharachters(_categoryTypes[i], "IH")));
 
                     xml.Append(string.Format("<recordname>reference.equipmentlists.{0}table@{1}</recordname>"
                         , xmlFormatting.formatXMLCharachters(_categoryTypes[i], "IH")
@@ -196,7 +202,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                 foreach (string _category in _categoryTypes)
                 {
                     // Start making the sublists
-                    xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_category, "IH")));
+                    xml.Append(string.Format("<{0}table>", xmlFormatting.formatXMLCharachters(_category, "IH")));
 
                     xml.Append(string.Format("<description type=\"string\">{0}</description>",_category));
 
@@ -204,6 +210,11 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     // Counter
                     int index = 0;
+
+                    // Gater the collection wrt to current category
+                    List<Items> _currentCollection = _itemList.Where(x => x.Type == _category).ToList();
+                    // Gather a collection of all subtypes
+                    List<string> _subTypes = _currentCollection.Select(x => x.Subtype).Distinct().ToList();
 
                     foreach (string _subType in _subTypes)
                     {
@@ -222,7 +233,20 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                                 xml.Append("<link type=\"windowreference\">");
 
-                                xml.Append("<class>reference_equipment</class>");
+                                if (_category.ToLower() == "armor")
+                                {
+                                    xml.Append("<class>reference_armor</class>");
+                                }
+                                else if (_category.ToLower() == "weapon")
+                                {
+                                    xml.Append("<class>reference_weapon</class>");
+                                }
+                                else if (_category.ToLower() == "mounts and other animals")
+                                {
+                                    xml.Append("<class>reference_mountsandotheranimals</class>");
+                                }
+                                else
+                                    xml.Append("<class>reference_equipment</class>");
 
                                 xml.Append(string.Format("<recordname>reference.equipmentdata.{0}@{1}</recordname>"
                                     , xmlFormatting.formatXMLCharachters(_item.Name,"IH")
@@ -271,7 +295,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                 #endregion
 
                                 if (!string.IsNullOrEmpty(_item.Weight))
-                                    xml.Append(string.Format("<weight type=\"number\">1.0</weight>", _item.Weight));
+                                    xml.Append(string.Format("<weight type=\"number\">{0}</weight>", _item.Weight));
 
                                 xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_item.Name, "IH")));
                             }
@@ -280,11 +304,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                         xml.Append("</equipment>");
 
                         xml.Append(string.Format("</section{0}>", Convert.ToInt32(index)));
+
+                        index++;
                     }
 
                     xml.Append("</groups>");
 
-                    xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_category, "IH")));
+                    xml.Append(string.Format("</{0}table>", xmlFormatting.formatXMLCharachters(_category, "IH")));
                 }
 
                 xml.Append("</equipmentlists>");

@@ -87,7 +87,7 @@ namespace FG5EParser.XMLWriters
             if (!string.IsNullOrEmpty(_itemTextPath))
             {
                 xml.Append(_itemHelper.returnItemReferenceDetails(_itemTextPath,_moduleName));
-                xml.Append(_storyHelper.returnStoryXML(_storyTextPath, _moduleName, true)); // true : Switch to list
+                xml.Append(_itemHelper.returnItemXML(_itemTextPath, _moduleName, true)); // true : Switch to list
             }
 
             xml.Append("</reference>");

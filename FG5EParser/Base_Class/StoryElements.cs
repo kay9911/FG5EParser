@@ -116,6 +116,8 @@ namespace FG5EParser.Base_Class
             StringBuilder xml = new StringBuilder();
             XMLFormatting _xmlFormatting = new XMLFormatting();
 
+            List<string> tableFields = new List<string>();
+
             // Variable that will be used in order to process fields that are not mandatory
             string line = _Basic.First();
 
@@ -126,8 +128,7 @@ namespace FG5EParser.Base_Class
                 {
                     line = shiftUp(_Basic);
                 }
-
-                List<string> tableFields = new List<string>();
+                                
                 // Obtain the possible fields
                 if (line.Contains("#th;"))
                 {
@@ -141,7 +142,7 @@ namespace FG5EParser.Base_Class
                 // Obtain the subtype
                 if (line.Contains("#st;"))
                 {
-                    subTypeName = line.Split(';')[1];
+                    subTypeName = line.Split(';')[1].Trim();
                     line = shiftUp(_Basic);
                 }
 
@@ -152,17 +153,69 @@ namespace FG5EParser.Base_Class
 
                     for (int i = 0; i < tableFields.Count; i++)
                     {
-                        if (tableFields[i] == "Item")
+                        if (tableFields[i].Trim() == "Item" || tableFields[i].Trim() == "Armor" || tableFields[i].Trim() == "Name")
                         {
-                            _item.Name = _itemDetails[i];
+                            _item.Name = _itemDetails[i].Trim();
                         }
-                        if (tableFields[i] == "Cost")
+                        if (tableFields[i].Trim() == "Cost")
                         {
-                            _item.Cost = _itemDetails[i];
+                            _item.Cost = _itemDetails[i].Trim();
                         }
-                        if (tableFields[i] == "Weight")
+                        if (tableFields[i].Trim() == "Speed")
                         {
-                            _item.Weight = _itemDetails[i];
+                            _item.Speed = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Carrying Capacity")
+                        {
+                            _item.CarryingCapacity = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Damage")
+                        {
+                            _item.Damage = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Weight")
+                        {
+                            _item.Weight = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Properties")
+                        {
+                            _item.Properties = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Armor Class (AC)")
+                        {
+                            // Check for AC value
+                            if (_itemDetails[i].Contains("+"))
+                            {
+                                _item.AC = _itemDetails[i].Split('+')[0].Trim();
+
+                                if (_itemDetails[i].Split('+')[1].Trim() == "Dex modifier")
+                                {
+                                    _item.DexBonus = "Yes";
+                                }
+                                else if (_itemDetails[i].Split('+')[1].Trim() == "Dex modifier (max 2)")
+                                {
+                                    _item.DexBonus = "Yes (max 2)";
+                                }
+                                else if (_itemDetails[i].Split('+')[1].Trim() == "Dex modifier (max 3)")
+                                {
+                                    _item.DexBonus = "Yes (max 3)";
+                                }
+                                else
+                                    _item.DexBonus = "-";
+                            }
+                            else // For shields
+                            {
+                                _item.AC = _itemDetails[i].Trim();
+                                _item.DexBonus = "-";
+                            }
+                        }
+                        if (tableFields[i].Trim() == "Strength")
+                        {
+                            _item.StrRequired = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Stealth")
+                        {
+                            _item.StealthDisadvantage = _itemDetails[i].Trim();
                         }
                     }
 
@@ -172,6 +225,7 @@ namespace FG5EParser.Base_Class
 
                     // Add the item to the list
                     _itemList.Add(_item);
+                    _item = new Items();
 
                     line = shiftUp(_Basic);
                 }

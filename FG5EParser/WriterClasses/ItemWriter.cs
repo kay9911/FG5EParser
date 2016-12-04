@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FG5EParser.Base_Class;
 using System.IO;
+using System.Globalization;
 
 namespace FG5EParser.WriterClasses
 {
@@ -18,44 +19,38 @@ namespace FG5EParser.WriterClasses
                 List<string> _basic = new List<string>();
                 List<Items> _itemList = new List<Items>();
 
-                string ItemHeader = string.Empty;
+                TextInfo _textInfo = new CultureInfo("en-US", false).TextInfo;
 
-                // Bool Counter
-                bool hasHeader = false;
+                string ItemHeader = string.Empty;
+                Items _item = new Items();
 
                 foreach (var _line in _lines)
                 {
-                    // Check for process condition
-                    if (!hasHeader)
+                    // Check to see if hearder has come up
+                    if (_line.Contains("#@;"))
                     {
-                        if (_line.Contains("#@;"))
+                        // Send for processing
+                        if (_basic.Count != 0)
                         {
-                            _basic.Add(_line);
-                            if (_line.Contains("#@;"))
-                            {
-                                ItemHeader = _line.Replace("#@;", "");
-                            }
+                            _itemList.AddRange(_item.bindValues(_basic, _textInfo.ToTitleCase(ItemHeader.ToLower().Trim()), _moduleName));
                         }
+                        _basic = new List<string>();
+                        // Make header
+                        ItemHeader = _line.Replace("#@;", "").Trim();
                     }
                     else
                     {
-                        // Revert counter
-                        hasHeader = false;
-
-                        // Send for processing
-                        Items _item = new Items();
-                        if (_basic.Count != 0)
+                        if (!string.IsNullOrEmpty(_line) && !_line.Contains("Its done!"))
                         {
-                            _itemList.AddRange(_item.bindValues(_basic, ItemHeader, _moduleName));
+                            _basic.Add(_line);
                         }
-                        _basic.Clear();
-                    }
+                    }                                       
+                }
 
-                    // Keep track until we hit another header
-                    if (_line.Contains("#@;"))
-                    {
-                        hasHeader = true;
-                    }
+                // Catch the last bit of entries out of the loop
+                if (_basic.Count != 0)
+                {
+                    _itemList.AddRange(_item.bindValues(_basic, _textInfo.ToTitleCase(ItemHeader.ToLower().Trim()), _moduleName));
                 }
 
                 return _itemList;

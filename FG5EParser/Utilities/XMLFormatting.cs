@@ -357,6 +357,13 @@ namespace FG5EParser.Utilities
                 return _toFormat;
             }
 
+            if (type == "ID")
+            {
+                _toFormat = _toFormat.Replace(" ", "")
+                                        .Replace("&", "&amp;")
+                                        .ToLower().Trim();
+            }
+
             return _toFormat.Trim();
         }
     }
