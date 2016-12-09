@@ -56,6 +56,10 @@ namespace FG5EParser.WriterClasses
                     }
                     _basic.Clear();
                 }
+
+                // Adding on the descriptions
+                
+
                 #endregion
 
                 return _storyList;

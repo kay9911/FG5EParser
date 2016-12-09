@@ -119,9 +119,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                             // Subitems
                             if (_item.Subitems.Count != 0)
                             {
+                                xml.Append("<subitems>");
+
                                 foreach (Subitems _subItem in _item.Subitems)
                                 {
                                     xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_subItem.ItemName,"IH")));
+
+                                    xml.Append(string.Format("<name type=\"string\">{0}</name>", _subItem.ItemName));
 
                                     xml.Append(string.Format("<count type=\"number\">{0}</count>", _subItem.Count));
 
@@ -131,7 +135,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                     xml.Append("<class>reference_equipment</class>");
 
                                     // Record to link
-                                    xml.Append(string.Format("<recordname>reference.equipmentdata.{0}@{1}</recordname>"
+                                    xml.Append(string.Format("<recordname>items.{0}@{1}</recordname>"
                                         , xmlFormatting.formatXMLCharachters(_subItem.ItemName,"IH")
                                         , _moduleName
                                         ));
@@ -140,6 +144,8 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                                     xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_subItem.ItemName,"IH")));
                                 }
+
+                                xml.Append("</subitems>");
                             }
 
                             xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_item.Name, "IH")));
@@ -418,9 +424,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                 // Subitems
                 if (_item.Subitems.Count != 0)
                 {
+                    xml.Append("<subitems>");
+
                     foreach (Subitems _subItem in _item.Subitems)
                     {
                         xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_subItem.ItemName, "IH")));
+
+                        xml.Append(string.Format("<name type=\"string\">{0}</name>",_subItem.ItemName));
 
                         xml.Append(string.Format("<count type=\"number\">{0}</count>", _subItem.Count));
 
@@ -439,6 +449,8 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                         xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_subItem.ItemName, "IH")));
                     }
+
+                    xml.Append("</subitems>");
                 }
 
                 xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_item.Name, "IH")));

@@ -53,6 +53,55 @@ namespace FG5EParser.WriterClasses
                     _itemList.AddRange(_item.bindValues(_basic, _textInfo.ToTitleCase(ItemHeader.ToLower().Trim()), _moduleName));
                 }
 
+                // Assigning the item descriptions
+                for (int i = 0; i < _basic.Count; i++)
+                {
+                    // Sub type bulk update
+                    if (_basic[i].Contains("#stt;"))
+                    {
+                        string _temp = _basic[i].Replace("#stt;","");
+
+                        List<Items> _itemDesc = _itemList.Where(x => x.Subtype == _temp.Split('.')[0].Trim()).ToList();
+
+                        // Assign the descriptions
+                        foreach (Items _items in _itemDesc)
+                        {
+                            _items.Description = _temp.Replace(_temp.Split('.')[0].Trim() + ".", "").Trim();
+                        }
+                    }
+                    else if (_basic[i].Contains("."))
+                    {
+                        Items _itemDesc = _itemList.Where(x => x.Name == _basic[i].Split('.')[0].Trim()).FirstOrDefault();
+                        if (_itemDesc != null)
+                        {
+                            _itemDesc.Description = _basic[i].Replace(_basic[i].Split('.')[0].Trim() + ".","").Trim();
+
+                            // Check to see if this is an Equipment Pack
+                            if (_basic[i + 1].Contains("#si;"))
+                            {
+                                string _temp = _basic[i + 1].Replace("#si;","");
+
+                                // Seperate the list
+                                List<string> _packagedGoods = _temp.Split(';').ToList();
+
+                                Subitems _subItem = new Subitems();
+
+                                foreach (string _packageGood in _packagedGoods)
+                                {
+                                    _subItem.Count = _packageGood.Split('.')[0].Trim();
+                                    _subItem.ItemName = _packageGood.Split('.')[1].Trim();
+
+                                    _itemDesc.Subitems.Add(_subItem);
+
+                                    _subItem = new Subitems();
+                                }
+                                // Increase the index counter
+                                i++;
+                            }
+                        }
+                    }
+                }
+
                 return _itemList;
             }
             catch(Exception ex)

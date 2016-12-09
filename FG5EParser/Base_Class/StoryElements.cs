@@ -101,7 +101,7 @@ namespace FG5EParser.Base_Class
         // Misc
         public string Description { get; set; } // Needs formatting options
         public int ItemIndex { get; set; } // Keep track of what needs to be linked where later
-        private List<Subitems> _itemList = new List<Base_Class.Subitems>();
+        private List<Subitems> _itemList = new List<Subitems>();
         public List<Subitems> Subitems { get { return _itemList; } set { _itemList = value; } }
         public bool isIdentified { get; set; }
         public bool isTemplate { get; set; }
@@ -121,14 +121,14 @@ namespace FG5EParser.Base_Class
             // Variable that will be used in order to process fields that are not mandatory
             string line = _Basic.First();
 
-            while (line != "Its done!")
+            while (line != "Its done!" && !line.Contains("##;"))
             {
                 // Clear heading line
                 if (line.Contains("#@;"))
                 {
                     line = shiftUp(_Basic);
                 }
-                                
+
                 // Obtain the possible fields
                 if (line.Contains("#th;"))
                 {
@@ -146,7 +146,7 @@ namespace FG5EParser.Base_Class
                     line = shiftUp(_Basic);
                 }
 
-                while (line != "Its done!" && !line.Contains("#st;"))
+                while (line != "Its done!" && !line.Contains("#st;") && !line.Contains("##;"))
                 {
                     // Break up the line
                     List<string> _itemDetails = line.Split(';').ToList();
@@ -227,6 +227,7 @@ namespace FG5EParser.Base_Class
                     _itemList.Add(_item);
                     _item = new Items();
 
+                    // Shift to next item
                     line = shiftUp(_Basic);
                 }
             }
