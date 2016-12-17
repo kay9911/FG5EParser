@@ -69,6 +69,12 @@ namespace FG5EParser
             set { txtItemPath.Text = value; }
         }
 
+        public string SetMagicalItemPath
+        {
+            get { return txtMagicalEquipmentPath.Text; }
+            set { txtMagicalEquipmentPath.Text = value; }
+        }
+
         public bool UseInstalledPath
         {
             get { return chkUseInstalled.Checked; }
@@ -182,6 +188,21 @@ namespace FG5EParser
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
                 txtItemPath.Text = choofdlog.FileName;
+            }
+        }
+
+        private void btnMagicalEquipment_Click(object sender, EventArgs e)
+        {
+            // Process for opening and choosing where the info gets saved too
+
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = true;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtMagicalEquipmentPath.Text = choofdlog.FileName;
             }
         }
     }

@@ -98,13 +98,16 @@ namespace FG5EParser.Base_Class
         public string Speed { get; set; }
         public string CarryingCapacity { get; set; }
 
+        // Magic Item Related
+        public string ACBonus { get; set; }
+
         // Misc
         public string Description { get; set; } // Needs formatting options
         public int ItemIndex { get; set; } // Keep track of what needs to be linked where later
         private List<Subitems> _itemList = new List<Subitems>();
         public List<Subitems> Subitems { get { return _itemList; } set { _itemList = value; } }
-        public bool isIdentified { get; set; }
-        public bool isTemplate { get; set; }
+        public string isIdentified { get { return "0"; } set { isIdentified = value; } }
+        public string isTemplate { get { return "0"; } set { isTemplate = value; } }
         public string Rarity { get; set; }
         #endregion
 
@@ -216,6 +219,85 @@ namespace FG5EParser.Base_Class
                         if (tableFields[i].Trim() == "Stealth")
                         {
                             _item.StealthDisadvantage = _itemDetails[i].Trim();
+                        }
+                    }
+
+                    // Assign constants
+                    _item.Type = itemHeader;
+                    _item.Subtype = subTypeName;
+
+                    // Add the item to the list
+                    _itemList.Add(_item);
+                    _item = new Items();
+
+                    // Shift to next item
+                    line = shiftUp(_Basic);
+                }
+            }
+
+            return _itemList;
+        }
+
+        public List<Items> bindMagicalValues(List<string> _Basic, string itemHeader, string _moduleName)
+        {
+            Items _item = new Items();
+            List<Items> _itemList = new List<Items>();
+
+            StringBuilder xml = new StringBuilder();
+            XMLFormatting _xmlFormatting = new XMLFormatting();
+
+            List<string> tableFields = new List<string>();
+
+            // Variable that will be used in order to process fields that are not mandatory
+            string line = _Basic.First();
+
+            while (line != "Its done!" && !line.Contains("##;"))
+            {
+                // Clear heading line
+                if (line.Contains("#@;"))
+                {
+                    line = shiftUp(_Basic);
+                }
+
+                // Obtain the possible fields
+                if (line.Contains("#th;"))
+                {
+                    tableFields = line.Split(';').ToList();
+                    tableFields.RemoveAt(0);
+                    line = shiftUp(_Basic);
+                }
+
+                string subTypeName = string.Empty;
+
+                // Obtain the subtype
+                if (line.Contains("#st;"))
+                {
+                    subTypeName = line.Split(';')[1].Trim();
+                    line = shiftUp(_Basic);
+                }
+
+                while (line != "Its done!" && !line.Contains("#st;") && !line.Contains("##;"))
+                {
+                    // Break up the line
+                    List<string> _itemDetails = line.Split(';').ToList();
+
+                    for (int i = 0; i < tableFields.Count; i++)
+                    {
+                        if (tableFields[i].Trim() == "Item")
+                        {
+                            _item.Name = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Rarity")
+                        {
+                            _item.Rarity = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Cost")
+                        {
+                            _item.Cost = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Weight")
+                        {
+                            _item.Weight = _itemDetails[i].Trim();
                         }
                     }
 

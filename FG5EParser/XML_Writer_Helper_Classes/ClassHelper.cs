@@ -147,6 +147,58 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             xml.Append("</proficiencies>");
 
+            #region MULTICLASSING
+            //xml.Append("<multiclassproficiencies>");
+
+            //xml.Append("<armor>");
+
+            //xml.Append("<name type=\"string\">Armor</name>");
+
+            //xml.Append(string.Format("<text type=\"string\">{0}</text>",_class.armour));
+
+            //xml.Append("</armor>");
+
+            //xml.Append("<weapons>");
+
+            //xml.Append("<name type=\"string\">Weapons</name>");
+
+            //xml.Append(string.Format("<text type=\"string\">{0}</text>",_class.weapons));
+
+            //xml.Append("</weapons>");
+
+            //xml.Append("<tools>");
+
+            //xml.Append("<name type=\"string\">Tools</name>");
+
+            //xml.Append(string.Format("<text type=\"string\">{0}</text>", _class.tools));
+
+            //xml.Append("</tools>");
+
+            //xml.Append("<skills>");
+
+            //xml.Append("<name type=\"string\">Skills</name>");
+
+            //// Adding a check to see how many skills a class has
+            //if (_class.skills.Contains("three"))
+            //{
+            //    _class.skills =  _class.skills.Replace("three", "one");
+            //    xml.Append(string.Format("<text type=\"string\">{0}</text>", _class.skills));
+            //}
+            //else if (_class.skills.Contains("four"))
+            //{
+            //    _class.skills = _class.skills.Replace("four", "one");
+            //    xml.Append(string.Format("<text type=\"string\">{0}</text>", _class.skills));
+            //}          
+            //else
+            //    xml.Append("<text type=\"string\"/>");
+
+            //xml.Append("</skills>");
+
+            //xml.Append("</multiclassproficiencies>");
+
+            //// TO DO : Multiclass features also need to be added.
+            #endregion
+
             #endregion
 
             #region FEATURES SECTION

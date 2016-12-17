@@ -49,6 +49,8 @@
             this.txtStoryPath = new System.Windows.Forms.TextBox();
             this.btnEquipment = new System.Windows.Forms.Button();
             this.txtItemPath = new System.Windows.Forms.TextBox();
+            this.btnMagicalEquipment = new System.Windows.Forms.Button();
+            this.txtMagicalEquipmentPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // chkDmOnly
@@ -64,10 +66,10 @@
             // 
             // btnImage
             // 
-            this.btnImage.Location = new System.Drawing.Point(16, 187);
+            this.btnImage.Location = new System.Drawing.Point(4, 187);
             this.btnImage.Margin = new System.Windows.Forms.Padding(4);
             this.btnImage.Name = "btnImage";
-            this.btnImage.Size = new System.Drawing.Size(100, 28);
+            this.btnImage.Size = new System.Drawing.Size(112, 28);
             this.btnImage.TabIndex = 66;
             this.btnImage.Text = "IMAGE";
             this.btnImage.UseVisualStyleBackColor = true;
@@ -85,30 +87,30 @@
             // 
             // label49
             // 
-            this.label49.Location = new System.Drawing.Point(0, 123);
+            this.label49.Location = new System.Drawing.Point(3, 123);
             this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(116, 28);
+            this.label49.Size = new System.Drawing.Size(113, 28);
             this.label49.TabIndex = 64;
             this.label49.Text = "Catalogue Name";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label48
             // 
-            this.label48.Location = new System.Drawing.Point(0, 62);
+            this.label48.Location = new System.Drawing.Point(4, 62);
             this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(116, 28);
+            this.label48.Size = new System.Drawing.Size(112, 28);
             this.label48.TabIndex = 63;
             this.label48.Text = "Module Name";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnOutput
             // 
-            this.btnOutput.Location = new System.Drawing.Point(16, 1);
+            this.btnOutput.Location = new System.Drawing.Point(4, 1);
             this.btnOutput.Margin = new System.Windows.Forms.Padding(4);
             this.btnOutput.Name = "btnOutput";
-            this.btnOutput.Size = new System.Drawing.Size(100, 28);
+            this.btnOutput.Size = new System.Drawing.Size(112, 28);
             this.btnOutput.TabIndex = 62;
             this.btnOutput.Text = "OUTPUT";
             this.btnOutput.UseVisualStyleBackColor = true;
@@ -180,10 +182,10 @@
             // 
             // btnSetNPCPath
             // 
-            this.btnSetNPCPath.Location = new System.Drawing.Point(16, 279);
+            this.btnSetNPCPath.Location = new System.Drawing.Point(4, 279);
             this.btnSetNPCPath.Margin = new System.Windows.Forms.Padding(4);
             this.btnSetNPCPath.Name = "btnSetNPCPath";
-            this.btnSetNPCPath.Size = new System.Drawing.Size(100, 28);
+            this.btnSetNPCPath.Size = new System.Drawing.Size(112, 28);
             this.btnSetNPCPath.TabIndex = 231;
             this.btnSetNPCPath.Text = "NPC";
             this.btnSetNPCPath.UseVisualStyleBackColor = true;
@@ -200,10 +202,10 @@
             // 
             // btnClass
             // 
-            this.btnClass.Location = new System.Drawing.Point(16, 309);
+            this.btnClass.Location = new System.Drawing.Point(4, 309);
             this.btnClass.Margin = new System.Windows.Forms.Padding(4);
             this.btnClass.Name = "btnClass";
-            this.btnClass.Size = new System.Drawing.Size(100, 28);
+            this.btnClass.Size = new System.Drawing.Size(112, 28);
             this.btnClass.TabIndex = 233;
             this.btnClass.Text = "CLASS";
             this.btnClass.UseVisualStyleBackColor = true;
@@ -220,10 +222,10 @@
             // 
             // btnStory
             // 
-            this.btnStory.Location = new System.Drawing.Point(16, 339);
+            this.btnStory.Location = new System.Drawing.Point(4, 339);
             this.btnStory.Margin = new System.Windows.Forms.Padding(4);
             this.btnStory.Name = "btnStory";
-            this.btnStory.Size = new System.Drawing.Size(100, 28);
+            this.btnStory.Size = new System.Drawing.Size(112, 28);
             this.btnStory.TabIndex = 235;
             this.btnStory.Text = "STORY";
             this.btnStory.UseVisualStyleBackColor = true;
@@ -240,10 +242,10 @@
             // 
             // btnEquipment
             // 
-            this.btnEquipment.Location = new System.Drawing.Point(16, 369);
+            this.btnEquipment.Location = new System.Drawing.Point(4, 369);
             this.btnEquipment.Margin = new System.Windows.Forms.Padding(4);
             this.btnEquipment.Name = "btnEquipment";
-            this.btnEquipment.Size = new System.Drawing.Size(100, 28);
+            this.btnEquipment.Size = new System.Drawing.Size(112, 28);
             this.btnEquipment.TabIndex = 237;
             this.btnEquipment.Text = "EQUIPMENT";
             this.btnEquipment.UseVisualStyleBackColor = true;
@@ -258,10 +260,33 @@
             this.txtItemPath.Size = new System.Drawing.Size(468, 22);
             this.txtItemPath.TabIndex = 236;
             // 
+            // btnMagicalEquipment
+            // 
+            this.btnMagicalEquipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMagicalEquipment.Location = new System.Drawing.Point(4, 399);
+            this.btnMagicalEquipment.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMagicalEquipment.Name = "btnMagicalEquipment";
+            this.btnMagicalEquipment.Size = new System.Drawing.Size(112, 43);
+            this.btnMagicalEquipment.TabIndex = 239;
+            this.btnMagicalEquipment.Text = "MAGICAL EQUIPMENT";
+            this.btnMagicalEquipment.UseVisualStyleBackColor = true;
+            this.btnMagicalEquipment.Click += new System.EventHandler(this.btnMagicalEquipment_Click);
+            // 
+            // txtMagicalEquipmentPath
+            // 
+            this.txtMagicalEquipmentPath.Enabled = false;
+            this.txtMagicalEquipmentPath.Location = new System.Drawing.Point(124, 402);
+            this.txtMagicalEquipmentPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMagicalEquipmentPath.Name = "txtMagicalEquipmentPath";
+            this.txtMagicalEquipmentPath.Size = new System.Drawing.Size(468, 22);
+            this.txtMagicalEquipmentPath.TabIndex = 238;
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnMagicalEquipment);
+            this.Controls.Add(this.txtMagicalEquipmentPath);
             this.Controls.Add(this.btnEquipment);
             this.Controls.Add(this.txtItemPath);
             this.Controls.Add(this.btnStory);
@@ -284,7 +309,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 405);
+            this.Size = new System.Drawing.Size(609, 447);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +338,7 @@
         private System.Windows.Forms.TextBox txtStoryPath;
         private System.Windows.Forms.Button btnEquipment;
         private System.Windows.Forms.TextBox txtItemPath;
+        private System.Windows.Forms.Button btnMagicalEquipment;
+        private System.Windows.Forms.TextBox txtMagicalEquipmentPath;
     }
 }

@@ -285,6 +285,7 @@ namespace FG5EParser
                             , _setPaths.SetClassPath
                             , _setPaths.SetStoryPath
                             , _setPaths.SetItemPath
+                            , _setPaths.SetMagicalItemPath
                             );
 
                         MessageBox.Show("Parsing done!");

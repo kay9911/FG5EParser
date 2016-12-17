@@ -18,7 +18,8 @@ namespace FG5EParser.XMLWriters
             string _npcTextPath = "",
             string _classTextPath = "",
             string _storyTextPath = "",
-            string _itemTextPath = ""
+            string _itemTextPath = "",
+            string _magicalTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -28,6 +29,7 @@ namespace FG5EParser.XMLWriters
             ClassHelper _classHelper = new ClassHelper();
             StoryHelper _storyHelper = new StoryHelper();
             ItemHelper _itemHelper = new ItemHelper();
+            MagicalItemHelper _magicalItemHelper = new MagicalItemHelper();
 
             bool requiresList = false;
 
@@ -37,10 +39,19 @@ namespace FG5EParser.XMLWriters
             xml.Append("<root version=\"3.0\">");
             #endregion
 
-            if (!string.IsNullOrEmpty(_itemTextPath))
+            if (!string.IsNullOrEmpty(_itemTextPath) || !string.IsNullOrEmpty(_magicalTextPath))
             {
-                xml.Append(_itemHelper.returnItemXML(_itemTextPath, _moduleName));
+                xml.Append("<item>");
+                if (!string.IsNullOrEmpty(_itemTextPath))
+                {
+                    xml.Append(_itemHelper.returnItemXML(_itemTextPath, _moduleName));
+                }
+                if (!string.IsNullOrEmpty(_magicalTextPath))
+                {
+                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath, _moduleName));
+                }
                 requiresList = true;
+                xml.Append("</item>");
             }
 
             if (!string.IsNullOrEmpty(_storyTextPath))
@@ -57,6 +68,11 @@ namespace FG5EParser.XMLWriters
                 if (!string.IsNullOrEmpty(_itemTextPath))
                 {
                     xml.Append(_itemHelper.returnItemXML(_itemTextPath,_moduleName,true)); // true : Switch to list
+                }
+
+                if (!string.IsNullOrEmpty(_magicalTextPath))
+                {
+                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath,_moduleName,true)); // true : Switch to list
                 }
 
                 // Story Elements
@@ -121,6 +137,26 @@ namespace FG5EParser.XMLWriters
                 xml.Append("</librarylink>");
 
                 xml.Append("<name type=\"string\">Equipment</name>");
+
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            if (!string.IsNullOrEmpty(_magicalTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_colindex</class>");
+
+                xml.Append(string.Format("<recordname>lists.magicitem.bytype</recordname>", _moduleName));
+
+                xml.Append("</librarylink>");
+
+                xml.Append("<name type=\"string\">Magic Items</name>");
 
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
 
