@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FG5EParser.Base_Class;
 using System.IO;
 using System.Globalization;
+using FG5EParser.Utilities;
 
 namespace FG5EParser.WriterClasses
 {
@@ -171,40 +172,26 @@ namespace FG5EParser.WriterClasses
                             _items.Description = _temp.Replace(_temp.Split('.')[0].Trim() + ".", "").Trim();
                         }
                     }
-                    else if (_basic[i].Contains("."))
+                    else if (_basic[i].Contains("#desc;"))
                     {
-                        Items _itemDesc = _itemList.Where(x => x.Name == _basic[i].Split('.')[0].Trim()).FirstOrDefault();
-                        if (_itemDesc != null)
+                        Items _itemDesc = new Items();
+                        StringBuilder desc = new StringBuilder();
+                        XMLFormatting _xml = new XMLFormatting();
+
+                        desc.Append(_xml.returnFormattedString("#h;Description",_moduleName));
+
+                        for (int j = i; j < _basic.Count; j++)
                         {
-                            _itemDesc.Description = _basic[i].Replace(_basic[i].Split('.')[0].Trim() + ".", "").Trim();
-
-                            // Check to see if there are anymore lines before we can do this
-                            if (i + 1 < _basic.Count)
+                            if (_basic[j].Contains("#desc;"))
                             {
-                                // Check to see if this is an Equipment Pack
-                                if (_basic[i + 1].Contains("#si;"))
-                                {
-                                    string _temp = _basic[i + 1].Replace("#si;", "");
-
-                                    // Seperate the list
-                                    List<string> _packagedGoods = _temp.Split(';').ToList();
-
-                                    Subitems _subItem = new Subitems();
-
-                                    foreach (string _packageGood in _packagedGoods)
-                                    {
-                                        _subItem.Count = _packageGood.Split('.')[0].Trim();
-                                        _subItem.ItemName = _packageGood.Split('.')[1].Trim();
-
-                                        _itemDesc.Subitems.Add(_subItem);
-
-                                        _subItem = new Subitems();
-                                    }
-                                    // Increase the index counter
-                                    i++;
-                                }
-                            } // else skip this step otherwise we're gonna get a out of range exception
-                        }
+                                _itemDesc = _itemList.Where(x => x.Name == _basic[j].Split(';')[1]).FirstOrDefault();
+                            }
+                            else
+                            {
+                                desc.Append(_xml.returnFormattedString(_basic[j], _moduleName));
+                            }
+                            _itemDesc.Description = desc.ToString();
+                        }                       
                     }
                 }
 

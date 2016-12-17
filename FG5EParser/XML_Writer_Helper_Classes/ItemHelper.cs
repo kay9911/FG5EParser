@@ -471,7 +471,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             List<Items> _itemList = _magicalItemWriter.compileItemList(_magicalItemTextPath, _moduleName);
 
             // Gather a collection of all category types
-            List<string> _categoryTypes = _itemList.Select(x => x.Subtype).Distinct().ToList();
+            List<string> _categoryTypes = _itemList.Select(x => x.Type).Distinct().ToList();
 
             if (!isListCall)
             {
@@ -507,9 +507,19 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     xml.Append(string.Format("<cost type=\"string\">{0}</cost>", _item.Cost));
 
+                    if (!string.IsNullOrEmpty(_item.Damage))
+                    {
+                        xml.Append(string.Format("<damage type=\"string\">{0}</damage>",_item.Damage));
+                    }
+
                     if (!string.IsNullOrEmpty(_item.Description))
                     {
                         xml.Append(string.Format("<description type=\"formattedtext\">{0}</description>", _item.Description));
+                    }
+
+                    if (!string.IsNullOrEmpty(_item.DexBonus))
+                    {
+                        xml.Append(string.Format("<dexbonus type=\"string\">{0}</dexbonus>",_item.DexBonus));
                     }
 
                     xml.Append(string.Format("<isidentified type=\"number\">{0}</isidentified>",_item.isIdentified));
@@ -520,11 +530,36 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     xml.Append(string.Format("<name type=\"string\">{0}</name>",_item.Name));
 
-                    xml.Append(string.Format("<rarity type=\"string\">{0}</rarity>",_item.Rarity));
+                    if (!string.IsNullOrEmpty(_item.UnidentifiedBaseType))
+                    {
+                        xml.Append(string.Format("<nonid_name type=\"string\">{0}</nonid_name>",_item.UnidentifiedBaseType));
+                    }
 
-                    xml.Append(string.Format("<type type=\"string\">{0}</type>",_item.Subtype));
+                    if (!string.IsNullOrEmpty(_item.UnidentifiedDescription))
+                    {
+                        xml.Append(string.Format("<nonidentified type=\"string\">{0}</nonidentified>", _item.UnidentifiedDescription));
+                    }
+
+                    if (!string.IsNullOrEmpty(_item.Properties))
+                    {
+                        xml.Append(string.Format("<properties type=\"string\">{0}</properties>", _item.Properties));
+                    }
+
+                    if (!string.IsNullOrEmpty(_item.StealthDisadvantage))
+                    {
+                        xml.Append(string.Format("<stealth type=\"string\">{0}</stealth>", _item.StealthDisadvantage));
+                    }
+
+                    if (!string.IsNullOrEmpty(_item.StrRequired))
+                    {
+                        xml.Append(string.Format("<strength type=\"string\">{0}</strength>", _item.StrRequired));
+                    }
+
+                    xml.Append(string.Format("<subtype type=\"string\">{0}</subtype>", _item.Subtype));
 
                     xml.Append(string.Format("<type type=\"string\">{0}</type>",_item.Type));
+
+                    xml.Append(string.Format("<rarity type=\"string\">{0}</rarity>", _item.Rarity));
 
                     if (string.IsNullOrEmpty(_item.Weight))
                     {
@@ -563,14 +598,14 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     foreach (Items _item in _itemList)
                     {
-                        if (_item.Subtype == _category)
+                        if (_item.Type == _category)
                         {
                             // Start tag                            
                             xml.Append(string.Format(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_item.Name, "IH"))));
 
                             xml.Append("<link type=\"windowreference\">");
 
-                            xml.Append("<class>item</class>");
+                            xml.Append("<class>reference_magicitem</class>");
 
                             xml.Append(string.Format("<recordname>item.{0}@{1}</recordname>"
                                 , xmlFormatting.formatXMLCharachters(_item.Name, "IH")

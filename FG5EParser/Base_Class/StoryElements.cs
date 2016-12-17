@@ -100,15 +100,18 @@ namespace FG5EParser.Base_Class
 
         // Magic Item Related
         public string ACBonus { get; set; }
+        public string isIdentified { get; set; }
+        public string Rarity { get; set; }
+        public string UnidentifiedBaseType { get; set; }
+        public string UnidentifiedDescription { get; set; }
 
         // Misc
         public string Description { get; set; } // Needs formatting options
         public int ItemIndex { get; set; } // Keep track of what needs to be linked where later
         private List<Subitems> _itemList = new List<Subitems>();
-        public List<Subitems> Subitems { get { return _itemList; } set { _itemList = value; } }
-        public string isIdentified { get { return "0"; } set { isIdentified = value; } }
+        public List<Subitems> Subitems { get { return _itemList; } set { _itemList = value; } }        
         public string isTemplate { get { return "0"; } set { isTemplate = value; } }
-        public string Rarity { get; set; }
+        
         #endregion
 
         public List<Items> bindValues(List<string> _Basic, string itemHeader, string _moduleName)
@@ -267,12 +270,12 @@ namespace FG5EParser.Base_Class
                     line = shiftUp(_Basic);
                 }
 
-                string subTypeName = string.Empty;
+                string type = string.Empty;
 
                 // Obtain the subtype
                 if (line.Contains("#st;"))
                 {
-                    subTypeName = line.Split(';')[1].Trim();
+                    type = line.Split(';')[1].Trim();
                     line = shiftUp(_Basic);
                 }
 
@@ -283,27 +286,76 @@ namespace FG5EParser.Base_Class
 
                     for (int i = 0; i < tableFields.Count; i++)
                     {
-                        if (tableFields[i].Trim() == "Item")
+                        if (tableFields[i].Trim() == "Item" && i < _itemDetails.Count)
                         {
                             _item.Name = _itemDetails[i].Trim();
                         }
-                        if (tableFields[i].Trim() == "Rarity")
+                        if (tableFields[i].Trim() == "Rarity" && i < _itemDetails.Count)
                         {
                             _item.Rarity = _itemDetails[i].Trim();
                         }
-                        if (tableFields[i].Trim() == "Cost")
+                        if (tableFields[i].Trim() == "Cost" && i < _itemDetails.Count)
                         {
                             _item.Cost = _itemDetails[i].Trim();
                         }
-                        if (tableFields[i].Trim() == "Weight")
+                        if (tableFields[i].Trim() == "Weight" && i < _itemDetails.Count)
                         {
                             _item.Weight = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "AC" && i < _itemDetails.Count)
+                        {
+                            _item.AC = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "AC Bonus" && i < _itemDetails.Count)
+                        {
+                            _item.ACBonus = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Dex Bonus" && i < _itemDetails.Count)
+                        {
+                            _item.DexBonus = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Stealth" && i < _itemDetails.Count) 
+                        {
+                            _item.StealthDisadvantage = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Strength" && i < _itemDetails.Count)
+                        {
+                            _item.StrRequired = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Subtype" && i < _itemDetails.Count)
+                        {
+                            _item.Subtype = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Damage" && i < _itemDetails.Count)
+                        {
+                            _item.Damage = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Properties" && i < _itemDetails.Count)
+                        {
+                            _item.Properties = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Identified" && i < _itemDetails.Count)
+                        {
+                            if (_itemDetails[i].ToLower().Trim() == "no")
+                            {
+                                _item.UnidentifiedBaseType = "0";
+                            }
+                            else
+                                _item.UnidentifiedBaseType = "1";
+                        }
+                        if (tableFields[i].Trim() == "Unidentified Type" && i < _itemDetails.Count)
+                        {
+                            _item.UnidentifiedBaseType = _itemDetails[i].Trim();
+                        }
+                        if (tableFields[i].Trim() == "Unidentified Description" && i < _itemDetails.Count)
+                        {
+                            _item.UnidentifiedDescription = _itemDetails[i].Trim();
                         }
                     }
 
                     // Assign constants
-                    _item.Type = itemHeader;
-                    _item.Subtype = subTypeName;
+                    _item.Type = type;
+                    //_item.Subtype = subTypeName;
 
                     // Add the item to the list
                     _itemList.Add(_item);
