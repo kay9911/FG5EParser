@@ -14,7 +14,8 @@ namespace FG5EParser.XML_Writer_Helper_Classes
     {
         public string returnPersonalitiesXML(
             string _npcTextPath,
-            string _moduleName
+            string _moduleName,
+            bool isList = false
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -22,121 +23,46 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             NPCWriter _npcWriter = new NPCWriter();
             List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath);
 
-            #region Start NPC XML processing
-            xml.Append("<npc>");
-            xml.Append(string.Format("<category name=\"NPCs - {0}\" baseicon=\"2\" decalicon=\"1\">", _moduleName));
-
-            foreach (Personalities _person in _Npcs)
+            if (!isList)
             {
-                xml.Append(string.Format("{0}", generateNPCXML(_person)));
+                #region Start NPC XML processing
+                xml.Append("<npc>");
+                xml.Append(string.Format("<category name=\"NPCs - {0}\" baseicon=\"2\" decalicon=\"1\">", _moduleName));
+
+                foreach (Personalities _person in _Npcs)
+                {
+                    xml.Append(string.Format("{0}", generateNPCXML(_person)));
+                }
+
+                xml.Append("</category>");
+                xml.Append("</npc>");
+                #endregion
             }
-
-            xml.Append("</category>");
-            xml.Append("</npc>");
-            #endregion
-
-            #region Creating The Lists
-            xml.Append("<lists>");
-
-            xml.Append("<npc>");
-
-            #region By Letter
-
-            xml.Append("<byletter>");
-
-            xml.Append("<description type=\"string\">NPCs</description>");
-
-            xml.Append("<groups>");
-
-            // Now we need to sort by letter
-            xml.Append(string.Format("{0}", sortByLetter(_Npcs, _moduleName)));
-
-            xml.Append("</groups>");
-
-            xml.Append("</byletter>");
-
-            #endregion
-
-            xml.Append("</npc>");
-
-            xml.Append("</lists>");
-
-            #region NPC DATA
-
-            xml.Append("<reference static=\"true\">");
-
-            xml.Append("<npcdata>");
-
-            foreach (Personalities _person in _Npcs)
+            else
             {
-                xml.Append(string.Format("{0}", generateNPCXML(_person)));
-            }
+                #region Creating The Lists
 
-            xml.Append("</npcdata>");
+                xml.Append("<npc>");
 
-            #endregion
+                #region By Letter
 
-            xml.Append("<npclists>");
+                xml.Append("<byletter>");
 
-            xml.Append("<npcs>");
+                xml.Append("<description type=\"string\">NPCs</description>");
 
-            xml.Append("<name type=\"string\">NPCs</name>");
+                xml.Append("<groups>");
 
-            xml.Append("<index>");
+                // Now we need to sort by letter
+                xml.Append(string.Format("{0}", sortByLetter(_Npcs, _moduleName)));
 
-            xml.Append("<id-00001>");
-            xml.Append("<name type=\"string\">NPCs - Alphabetical Index</name>");
-            xml.Append("<listlink type=\"windowreference\">");
-            xml.Append("<class>reference_colindex</class>");
+                xml.Append("</groups>");
 
-            xml.Append(string.Format("<recordname>reference.npclists.byletter@{0}</recordname>", _moduleName));
-            xml.Append("</listlink>");
-            xml.Append("</id-00001>");
+                xml.Append("</byletter>");
 
-            xml.Append("<id-00002>");
-            xml.Append("<name type=\"string\">NPCs - Challenge Rating Index</name>");
-            xml.Append("<listlink type=\"windowreference\">");
-            xml.Append("<class>reference_colindex</class>");
+                #endregion
 
-            xml.Append(string.Format("<recordname>reference.npclists.bylevel@{0}</recordname>", _moduleName));
-            xml.Append("</listlink>");
-            xml.Append("</id-00002>");
-
-            xml.Append("<id-00003>");
-            xml.Append("<name type=\"string\">NPCs - Class Index</name>");
-            xml.Append("<listlink type=\"windowreference\">");
-            xml.Append("<class>reference_colindex</class>");
-
-            xml.Append(string.Format("<recordname>reference.npclists.bytype@{0}</recordname>", _moduleName));
-            xml.Append("</listlink>");
-            xml.Append("</id-00003>");
-
-            xml.Append("</index>");
-
-            xml.Append("</npcs>");
-
-            xml.Append("<byletter>");
-
-            xml.Append("<description type=\"string\">NPCs</description>");
-
-            xml.Append("<groups>");
-
-            // Sort by letter
-            xml.Append(string.Format("{0}", sortByLetter(_Npcs, _moduleName)));
-
-            xml.Append("</groups>");
-
-            xml.Append("</byletter>");
-
-            // Sort by level
-            xml.Append(string.Format("{0}", sortByLevel(_Npcs, _moduleName)));
-
-            // Sort by Type
-            xml.Append(string.Format("{0}", sortByType(_Npcs, _moduleName)));
-
-            xml.Append("</npclists>");
-
-            xml.Append("</reference>");
+                xml.Append("</npc>");
+            }            
 
             return xml.ToString();
 
@@ -435,6 +361,89 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             _npc.Append(string.Format("</{0}>", _person.NPCName.Replace(" ", "").ToLower().Trim()));
 
             return _npc.ToString();
+        }
+
+        public string returnNPCReferenceDetails(string _npcTextPath, string _moduleName)
+        {
+            StringBuilder xml = new StringBuilder();
+
+            NPCWriter _npcWriter = new NPCWriter();
+            List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath);
+
+            #region NPC DATA
+
+            xml.Append("<npcdata>");
+
+            foreach (Personalities _person in _Npcs)
+            {
+                xml.Append(string.Format("{0}", generateNPCXML(_person)));
+            }
+
+            xml.Append("</npcdata>");
+
+            #endregion
+
+            xml.Append("<npclists>");
+
+            xml.Append("<npcs>");
+
+            xml.Append("<name type=\"string\">NPCs</name>");
+
+            xml.Append("<index>");
+
+            xml.Append("<id-00001>");
+            xml.Append("<name type=\"string\">NPCs - Alphabetical Index</name>");
+            xml.Append("<listlink type=\"windowreference\">");
+            xml.Append("<class>reference_colindex</class>");
+
+            xml.Append(string.Format("<recordname>reference.npclists.byletter@{0}</recordname>", _moduleName));
+            xml.Append("</listlink>");
+            xml.Append("</id-00001>");
+
+            xml.Append("<id-00002>");
+            xml.Append("<name type=\"string\">NPCs - Challenge Rating Index</name>");
+            xml.Append("<listlink type=\"windowreference\">");
+            xml.Append("<class>reference_colindex</class>");
+
+            xml.Append(string.Format("<recordname>reference.npclists.bylevel@{0}</recordname>", _moduleName));
+            xml.Append("</listlink>");
+            xml.Append("</id-00002>");
+
+            xml.Append("<id-00003>");
+            xml.Append("<name type=\"string\">NPCs - Class Index</name>");
+            xml.Append("<listlink type=\"windowreference\">");
+            xml.Append("<class>reference_colindex</class>");
+
+            xml.Append(string.Format("<recordname>reference.npclists.bytype@{0}</recordname>", _moduleName));
+            xml.Append("</listlink>");
+            xml.Append("</id-00003>");
+
+            xml.Append("</index>");
+
+            xml.Append("</npcs>");
+
+            xml.Append("<byletter>");
+
+            xml.Append("<description type=\"string\">NPCs</description>");
+
+            xml.Append("<groups>");
+
+            // Sort by letter
+            xml.Append(string.Format("{0}", sortByLetter(_Npcs, _moduleName)));
+
+            xml.Append("</groups>");
+
+            xml.Append("</byletter>");
+
+            // Sort by level
+            xml.Append(string.Format("{0}", sortByLevel(_Npcs, _moduleName)));
+
+            // Sort by Type
+            xml.Append(string.Format("{0}", sortByType(_Npcs, _moduleName)));
+
+            xml.Append("</npclists>");
+
+            return xml.ToString();
         }
 
         private string sortByLetter(List<Personalities> _Npcs, string _moduleName)

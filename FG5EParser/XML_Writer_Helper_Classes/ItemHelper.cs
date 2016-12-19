@@ -179,9 +179,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         xml.Append("<class>reference_adventuringgeartable</class>");
                     }
-                    if (_categoryTypes[i].ToLower() == "tack, harness, and drawn vehicles")
+                    else if (_categoryTypes[i].ToLower() == "tack, harness, and drawn vehicles")
                     {
                         xml.Append("<class>reference_adventuringgeartable</class>");
+                    }
+                    else if (_categoryTypes[i].ToLower() == "waterborne vehicles")
+                    {
+                        xml.Append("<class>reference_waterbornevehiclestable</class>");
                     }
                     else
                         xml.Append(string.Format("<class>reference_{0}table</class>", xmlFormatting.formatXMLCharachters(_categoryTypes[i], "IH")));
@@ -247,6 +251,10 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                 else if (_category.ToLower() == "mounts and other animals")
                                 {
                                     xml.Append("<class>reference_mountsandotheranimals</class>");
+                                }
+                                else if (_category.ToLower() == "waterborne vehicles")
+                                {
+                                    xml.Append("<class>reference_waterbornevehicles</class>");
                                 }
                                 else
                                     xml.Append("<class>reference_equipment</class>");

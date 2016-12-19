@@ -19,7 +19,8 @@ namespace FG5EParser.XMLWriters
             string _classTextPath = "",
             string _storyTextPath = "",
             string _itemTextPath = "",
-            string _magicalTextPath = ""
+            string _magicalTextPath = "",
+            string _encounterTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -30,6 +31,7 @@ namespace FG5EParser.XMLWriters
             StoryHelper _storyHelper = new StoryHelper();
             ItemHelper _itemHelper = new ItemHelper();
             MagicalItemHelper _magicalItemHelper = new MagicalItemHelper();
+            EncounterHelper _encounterHelper = new EncounterHelper();
 
             bool requiresList = false;
 
@@ -39,6 +41,7 @@ namespace FG5EParser.XMLWriters
             xml.Append("<root version=\"3.0\">");
             #endregion
 
+            // Item Entries
             if (!string.IsNullOrEmpty(_itemTextPath) || !string.IsNullOrEmpty(_magicalTextPath))
             {
                 xml.Append("<item>");
@@ -54,9 +57,24 @@ namespace FG5EParser.XMLWriters
                 xml.Append("</item>");
             }
 
+            // Story Entries
             if (!string.IsNullOrEmpty(_storyTextPath))
             {
                 xml.Append(_storyHelper.returnStoryXML(_storyTextPath, _moduleName));
+                requiresList = true;
+            }
+
+            // Encounter Entries
+            if (!string.IsNullOrEmpty(_encounterTextPath))
+            {
+                xml.Append(_encounterHelper.returnEncounterXML(_encounterTextPath, _moduleName));
+                requiresList = true;
+            }
+
+            // NPC Entries
+            if (!string.IsNullOrEmpty(_npcTextPath))
+            {
+                xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcTextPath, _moduleName));
                 requiresList = true;
             }
 
@@ -65,20 +83,34 @@ namespace FG5EParser.XMLWriters
             {
                 xml.Append("<lists>");
 
+                // Item List
                 if (!string.IsNullOrEmpty(_itemTextPath))
                 {
                     xml.Append(_itemHelper.returnItemXML(_itemTextPath,_moduleName,true)); // true : Switch to list
                 }
 
+                // Magical Item List
                 if (!string.IsNullOrEmpty(_magicalTextPath))
                 {
                     xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath,_moduleName,true)); // true : Switch to list
                 }
 
-                // Story Elements
+                // Story List
                 if (!string.IsNullOrEmpty(_storyTextPath))
                 {
                     xml.Append(_storyHelper.returnStoryXML(_storyTextPath, _moduleName, true)); // true : Switch to list
+                }
+
+                // Encounters List
+                if (!string.IsNullOrEmpty(_encounterTextPath))
+                {
+                    xml.Append(_encounterHelper.returnEncounterXML(_encounterTextPath, _moduleName, true)); // true : Switch to list
+                }
+
+                // NPC List
+                if(!string.IsNullOrEmpty(_npcTextPath))
+                {
+                    xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcTextPath, _moduleName, true)); // true : Switch to list
                 }
 
                 xml.Append("</lists>");
@@ -104,6 +136,12 @@ namespace FG5EParser.XMLWriters
             {
                 xml.Append(_itemHelper.returnItemReferenceDetails(_itemTextPath,_moduleName));
                 xml.Append(_itemHelper.returnItemXML(_itemTextPath, _moduleName, true)); // true : Switch to list
+            }
+
+            // Input for NPC
+            if (!string.IsNullOrEmpty(_npcTextPath))
+            {
+                xml.Append(_personalitiesHelper.returnNPCReferenceDetails(_npcTextPath,_moduleName));
             }
 
             xml.Append("</reference>");
@@ -144,6 +182,7 @@ namespace FG5EParser.XMLWriters
                 index++;
             }
 
+            // Entry for Magical Items
             if (!string.IsNullOrEmpty(_magicalTextPath))
             {
                 xml.Append(string.Format("<id-0000{0}>", index.ToString()));
@@ -164,6 +203,28 @@ namespace FG5EParser.XMLWriters
                 index++;
             }
 
+            // Entry for Ecnounters
+            if (!string.IsNullOrEmpty(_encounterTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_colindex</class>");
+
+                xml.Append(string.Format("<recordname>lists.battle.bycategory@{0}</recordname>", _moduleName));
+
+                xml.Append("</librarylink>");
+
+                xml.Append("<name type=\"string\">Encounters</name>");
+
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            // Entry for Stories
             if (!string.IsNullOrEmpty(_storyTextPath))
             {
                 xml.Append(string.Format("<id-0000{0}>", index.ToString()));
@@ -184,6 +245,7 @@ namespace FG5EParser.XMLWriters
                 index++;
             }
 
+            // Entry for NPC's
             if (!string.IsNullOrEmpty(_npcTextPath))
             {
                 xml.Append(string.Format("<id-0000{0}>", index.ToString()));
@@ -200,6 +262,7 @@ namespace FG5EParser.XMLWriters
                 index++;
             }
 
+            // Entry for Classes
             if (!string.IsNullOrEmpty(_classTextPath))
             {
                 xml.Append(string.Format("<id-0000{0}>", index.ToString()));

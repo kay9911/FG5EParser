@@ -403,4 +403,110 @@ namespace FG5EParser.Base_Class
         public string CoinName { get; set; }
         public string CoinValue { get; set; }
     }
+
+    class Encounters
+    {
+        #region PROPERTIES
+        public string Category { get; set; }
+        public string CR { get; set; }
+        public string Exp { get; set; }
+        public string isLocked { get { return "1"; } set { isLocked = value; } }
+        public string Name { get; set; }
+        private List<EncounterNPC> _npcList = new List<EncounterNPC>();
+        public List<EncounterNPC> NPCList { get { return _npcList; } set { _npcList = value; } }
+        #endregion
+
+        public List<Encounters> bindValues(List<string> _Basic, string EncounterHeader, string _moduleName)
+        {
+            Encounters _encounter = new Encounters();
+            List<Encounters> _encounterList = new List<Encounters>();
+
+            StringBuilder xml = new StringBuilder();
+            XMLFormatting _xmlFormatting = new XMLFormatting();
+
+            // Variable that will be used in order to process fields that are not mandatory
+            string line = _Basic.First();
+
+            while (line != "Its done!")
+            {
+                // Init the NPC list
+                List<EncounterNPC> _listNPC = new List<EncounterNPC>();
+
+                // Clear heading line
+                if (line.Contains("#@;"))
+                {
+                    line = shiftUp(_Basic);
+                }
+
+                // Get the Encounter Name
+                if (line.Contains("##;"))
+                {
+                    _encounter.Name = line.Replace("##;","");
+                    line = shiftUp(_Basic);
+                    _listNPC = new List<EncounterNPC>();
+                }
+
+                while (line != "Its done!" && !line.Contains("##;"))
+                {
+                    // Get the CR and EXP rating of the encounter
+                    if (line.Contains("XP"))
+                    {
+                        line = line.Replace("CR", ";").Replace("XP",";").Trim();
+                        _encounter.CR = line.Split(';')[1];
+                        _encounter.Exp = line.Split(';')[2];
+                        line = shiftUp(_Basic);
+                    }
+
+                    // Get the NPC's in this encounter
+                    while (line != "Its done!" && !line.Contains("##;"))
+                    {
+                        EncounterNPC _npc = new EncounterNPC();
+                        if (line.Contains(";"))
+                        {
+                            _npc.Count = line.Split(';')[0].Trim();
+                            _npc.Name = line.Split(';')[1].Trim();
+
+                            // Add to the list
+                            _listNPC.Add(_npc);
+
+                            line = shiftUp(_Basic);
+                        }                        
+                    }
+
+                    // Add the NPC list
+                    _encounter.NPCList = _listNPC;
+                }
+            }
+
+            // Add the category
+            _encounter.Category = EncounterHeader;
+
+            // Add Encounter to main list
+            _encounterList.Add(_encounter);
+
+            return _encounterList;
+        }
+
+        // Makes reading the list variable consistant
+        private string shiftUp(List<string> _Basic)
+        {
+            _Basic.RemoveAt(0);
+            if (_Basic.Count != 0)
+            {
+                return _Basic.First();
+            }
+            else
+            {
+                _Basic.Add("Its done!");
+                return _Basic.First();
+            }
+        }
+    }
+
+    class EncounterNPC
+    {
+        public string Count { get; set; }
+        public string Name { get; set; }
+        public string Token { get; set; }
+    }
 }
