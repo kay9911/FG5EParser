@@ -10,9 +10,7 @@ using System.Threading.Tasks;
 namespace FG5EParser.XML_Writer_Helper_Classes
 {
     class EncounterHelper
-    {
-        public int Encounter { get; private set; }
-
+    { 
         public string returnEncounterXML(string _encounterTextPath, string _moduleName, bool isListCall = false)
         {
             StringBuilder xml = new StringBuilder();
@@ -40,48 +38,50 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     foreach (Encounters _encounter in _encounterList)
                     {
-                        // Name Index of the encounter
-                        xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
-
-                        // CR
-                        xml.Append(string.Format("<cr type=\"string\">{0}</cr>", _encounter.CR.Trim()));
-                        // XP
-                        xml.Append(string.Format("<exp type=\"number\">{0}</exp>", _encounter.Exp.Trim()));
-
-                        xml.Append(string.Format("<locked type=\"number\">{0}</locked>", _encounter.isLocked));
-                        // Name
-                        xml.Append(string.Format("<name type=\"string\">{0}</name>", _encounter.Name.Trim()));
-
-                        // Adding the NPC list
-                        xml.Append("<npclist>");
-                        foreach (EncounterNPC _npc in _encounter.NPCList)
+                        if (_encounter.Category == _category)
                         {
-                            // Name Index
-                            xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_npc.Name, "IH")));
+                            // Name Index of the encounter
+                            xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
 
-                            //Count
-                            xml.Append(string.Format("<count type=\"number\">{0}</count>", _npc.Count));
+                            // CR
+                            xml.Append(string.Format("<cr type=\"string\">{0}</cr>", _encounter.CR.Trim()));
+                            // XP
+                            xml.Append(string.Format("<exp type=\"number\">{0}</exp>", _encounter.Exp.Trim()));
 
-                            xml.Append("<link type=\"windowreference\">");
+                            xml.Append(string.Format("<locked type=\"number\">{0}</locked>", _encounter.isLocked));
+                            // Name
+                            xml.Append(string.Format("<name type=\"string\">{0}</name>", _encounter.Name.Trim()));
 
-                            xml.Append("<class>npc</class>");
+                            // Adding the NPC list
+                            xml.Append("<npclist>");
+                            foreach (EncounterNPC _npc in _encounter.NPCList)
+                            {
+                                // Name Index
+                                xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_npc.Name, "IH")));
 
-                            xml.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _npc.Name.ToLower(), _moduleName));
+                                //Count
+                                xml.Append(string.Format("<count type=\"number\">{0}</count>", _npc.Count));
 
-                            xml.Append("</link>");
+                                xml.Append("<link type=\"windowreference\">");
 
-                            // NPC Name
-                            xml.Append(string.Format("<name type=\"string\">{0}</name>", _npc.Name));
-                            // Token
-                            xml.Append(string.Format("<token type=\"token\">{0}</token>", _npc.Token));
+                                xml.Append("<class>npc</class>");
 
-                            xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_npc.Name, "IH")));
+                                xml.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _npc.Name.ToLower(), _moduleName));
+
+                                xml.Append("</link>");
+
+                                // NPC Name
+                                xml.Append(string.Format("<name type=\"string\">{0}</name>", _npc.Name));
+                                // Token
+                                xml.Append(string.Format("<token type=\"token\">{0}</token>", _npc.Token));
+
+                                xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_npc.Name, "IH")));
+                            }
+                            xml.Append("</npclist>");
+
+                            xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
                         }
-                        xml.Append("</npclist>");
-
-                        xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
                     }
-
                     // close category
                     xml.Append("</category>");
                 }

@@ -420,6 +420,8 @@ namespace FG5EParser.Base_Class
         {
             Encounters _encounter = new Encounters();
             List<Encounters> _encounterList = new List<Encounters>();
+            // Init the NPC list
+            List<EncounterNPC> _listNPC = new List<EncounterNPC>();
 
             StringBuilder xml = new StringBuilder();
             XMLFormatting _xmlFormatting = new XMLFormatting();
@@ -429,9 +431,6 @@ namespace FG5EParser.Base_Class
 
             while (line != "Its done!")
             {
-                // Init the NPC list
-                List<EncounterNPC> _listNPC = new List<EncounterNPC>();
-
                 // Clear heading line
                 if (line.Contains("#@;"))
                 {
@@ -441,9 +440,10 @@ namespace FG5EParser.Base_Class
                 // Get the Encounter Name
                 if (line.Contains("##;"))
                 {
+                    _encounter = new Encounters();
                     _encounter.Name = line.Replace("##;","");
                     line = shiftUp(_Basic);
-                    _listNPC = new List<EncounterNPC>();
+                    _listNPC = new List<EncounterNPC>();                    
                 }
 
                 while (line != "Its done!" && !line.Contains("##;"))
@@ -476,13 +476,11 @@ namespace FG5EParser.Base_Class
                     // Add the NPC list
                     _encounter.NPCList = _listNPC;
                 }
+                // Add the category
+                _encounter.Category = EncounterHeader;
+                // Add Encounter to main list
+                _encounterList.Add(_encounter);
             }
-
-            // Add the category
-            _encounter.Category = EncounterHeader;
-
-            // Add Encounter to main list
-            _encounterList.Add(_encounter);
 
             return _encounterList;
         }
