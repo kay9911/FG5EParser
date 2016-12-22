@@ -145,11 +145,13 @@
     <Compile Include="WriterClasses\EncounterWriter.cs" />
     <Compile Include="WriterClasses\ItemWriter.cs" />
     <Compile Include="WriterClasses\NPCWriter.cs" />
+    <Compile Include="WriterClasses\ParcelWriter.cs" />
     <Compile Include="WriterClasses\StoryWriter.cs" />
     <Compile Include="XML_Writers\BaseWriter.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ClassHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\EncounterHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ItemHelper.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\ParcelHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\StoryHelper.cs" />
     <Compile Include="Zipper1\ZipClass.cs" />

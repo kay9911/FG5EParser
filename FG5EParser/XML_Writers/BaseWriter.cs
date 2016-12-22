@@ -20,7 +20,8 @@ namespace FG5EParser.XMLWriters
             string _storyTextPath = "",
             string _itemTextPath = "",
             string _magicalTextPath = "",
-            string _encounterTextPath = ""
+            string _encounterTextPath = "",
+            string _parcelTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -32,6 +33,7 @@ namespace FG5EParser.XMLWriters
             ItemHelper _itemHelper = new ItemHelper();
             MagicalItemHelper _magicalItemHelper = new MagicalItemHelper();
             EncounterHelper _encounterHelper = new EncounterHelper();
+            ParcelHelper _parcelHelper = new ParcelHelper();
 
             bool requiresList = false;
 
@@ -78,6 +80,13 @@ namespace FG5EParser.XMLWriters
                 requiresList = true;
             }
 
+            // Treasure Parcel Entries
+            if (!string.IsNullOrEmpty(_parcelTextPath))
+            {
+                xml.Append(_parcelHelper.returnParcelXML(_parcelTextPath,_moduleName));
+                requiresList = true;
+            }
+
             // Getting in the additional lists
             if (requiresList)
             {
@@ -111,6 +120,12 @@ namespace FG5EParser.XMLWriters
                 if(!string.IsNullOrEmpty(_npcTextPath))
                 {
                     xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcTextPath, _moduleName, true)); // true : Switch to list
+                }
+
+                // Treasure Parcel List
+                if (!string.IsNullOrEmpty(_parcelTextPath))
+                {
+                    xml.Append(_parcelHelper.returnParcelXML(_parcelTextPath,_moduleName,true)); // true : Switch to list
                 }
 
                 xml.Append("</lists>");

@@ -53,6 +53,8 @@
             this.txtMagicalEquipmentPath = new System.Windows.Forms.TextBox();
             this.btnEncounter = new System.Windows.Forms.Button();
             this.txtEncounterPath = new System.Windows.Forms.TextBox();
+            this.btnParcels = new System.Windows.Forms.Button();
+            this.txtParcelPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // chkDmOnly
@@ -297,16 +299,38 @@
             // txtEncounterPath
             // 
             this.txtEncounterPath.Enabled = false;
-            this.txtEncounterPath.Location = new System.Drawing.Point(124, 450);
+            this.txtEncounterPath.Location = new System.Drawing.Point(124, 447);
             this.txtEncounterPath.Margin = new System.Windows.Forms.Padding(4);
             this.txtEncounterPath.Name = "txtEncounterPath";
             this.txtEncounterPath.Size = new System.Drawing.Size(468, 22);
             this.txtEncounterPath.TabIndex = 240;
             // 
+            // btnParcels
+            // 
+            this.btnParcels.Location = new System.Drawing.Point(4, 477);
+            this.btnParcels.Margin = new System.Windows.Forms.Padding(4);
+            this.btnParcels.Name = "btnParcels";
+            this.btnParcels.Size = new System.Drawing.Size(112, 28);
+            this.btnParcels.TabIndex = 243;
+            this.btnParcels.Text = "PARCELS";
+            this.btnParcels.UseVisualStyleBackColor = true;
+            this.btnParcels.Click += new System.EventHandler(this.btnParcels_Click);
+            // 
+            // txtParcelPath
+            // 
+            this.txtParcelPath.Enabled = false;
+            this.txtParcelPath.Location = new System.Drawing.Point(124, 477);
+            this.txtParcelPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtParcelPath.Name = "txtParcelPath";
+            this.txtParcelPath.Size = new System.Drawing.Size(468, 22);
+            this.txtParcelPath.TabIndex = 242;
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnParcels);
+            this.Controls.Add(this.txtParcelPath);
             this.Controls.Add(this.btnEncounter);
             this.Controls.Add(this.txtEncounterPath);
             this.Controls.Add(this.btnMagicalEquipment);
@@ -333,7 +357,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 481);
+            this.Size = new System.Drawing.Size(609, 520);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,5 +390,7 @@
         private System.Windows.Forms.TextBox txtMagicalEquipmentPath;
         private System.Windows.Forms.Button btnEncounter;
         private System.Windows.Forms.TextBox txtEncounterPath;
+        private System.Windows.Forms.Button btnParcels;
+        private System.Windows.Forms.TextBox txtParcelPath;
     }
 }

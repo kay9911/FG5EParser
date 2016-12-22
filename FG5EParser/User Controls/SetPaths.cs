@@ -81,6 +81,12 @@ namespace FG5EParser
             set { txtEncounterPath.Text = value; }
         }
 
+        public string SetParcelPath
+        {
+            get { return txtParcelPath.Text; }
+            set { txtParcelPath.Text = value; }
+        }
+
         public bool UseInstalledPath
         {
             get { return chkUseInstalled.Checked; }
@@ -224,6 +230,21 @@ namespace FG5EParser
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
                 txtEncounterPath.Text = choofdlog.FileName;
+            }
+        }
+
+        private void btnParcels_Click(object sender, EventArgs e)
+        {
+            // Process for opening and choosing where the info gets saved too
+
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = true;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtParcelPath.Text = choofdlog.FileName;
             }
         }
     }

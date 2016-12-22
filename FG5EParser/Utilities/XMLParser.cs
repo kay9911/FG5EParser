@@ -25,7 +25,8 @@ namespace FG5EParser.Utilities
             string _storyTextPath = null,
             string _itemTextPath = null,
             string _magicalItemTextPath = null,
-            string _encounterTextPath = null
+            string _encounterTextPath = null,
+            string _parcelTextPath = null
         )
         {
             // Get the Xdoc's
@@ -46,7 +47,9 @@ namespace FG5EParser.Utilities
                 , _storyTextPath
                 , _itemTextPath
                 ,_magicalItemTextPath
-                ,_encounterTextPath);
+                ,_encounterTextPath
+                ,_parcelTextPath
+                );
 
             if (string.IsNullOrEmpty(_authorName))
             {

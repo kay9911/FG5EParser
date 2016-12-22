@@ -35,13 +35,13 @@ namespace FG5EParser.Base_Class
                 if (line.Contains("##;"))
                 {
                     // Adding the page Name
-                    _storyElement.StoryTitle = line.Replace("##;","").Trim();
+                    _storyElement.StoryTitle = line.Replace("##;", "").Trim();
                     line = shiftUp(_Basic);
                 }
 
                 if (line != "Its done!")
                 {
-                    _description.Append(_xmlFormatting.returnFormattedString(line,_moduleName));
+                    _description.Append(_xmlFormatting.returnFormattedString(line, _moduleName));
                     line = shiftUp(_Basic);
                 }
 
@@ -109,9 +109,9 @@ namespace FG5EParser.Base_Class
         public string Description { get; set; } // Needs formatting options
         public int ItemIndex { get; set; } // Keep track of what needs to be linked where later
         private List<Subitems> _itemList = new List<Subitems>();
-        public List<Subitems> Subitems { get { return _itemList; } set { _itemList = value; } }        
+        public List<Subitems> Subitems { get { return _itemList; } set { _itemList = value; } }
         public string isTemplate { get { return "0"; } set { isTemplate = value; } }
-        
+
         #endregion
 
         public List<Items> bindValues(List<string> _Basic, string itemHeader, string _moduleName)
@@ -314,7 +314,7 @@ namespace FG5EParser.Base_Class
                         {
                             _item.DexBonus = _itemDetails[i].Trim();
                         }
-                        if (tableFields[i].Trim() == "Stealth" && i < _itemDetails.Count) 
+                        if (tableFields[i].Trim() == "Stealth" && i < _itemDetails.Count)
                         {
                             _item.StealthDisadvantage = _itemDetails[i].Trim();
                         }
@@ -393,15 +393,116 @@ namespace FG5EParser.Base_Class
 
     class Parcles
     {
-        public List<Coins> coinsList { get; set; }
-        public List<Items> itemList { get; set; }
+        public string Category { get; set; }
+        public string Name { get; set; }
+        public string isLocked { get { return "1"; } set { isLocked = value; } }
+
+        private List<Coins> _coins = new List<Coins>();
+        public List<Coins> coinsList { get { return _coins; } set { _coins = value; } }
+        private List<ItemList> _itemList = new List<ItemList>();
+        public List<ItemList> itemList { get { return _itemList; } set { _itemList = value; } }
+
+        public List<Parcles> bindValues(List<string> _Basic, string ParcleHeader, string _moduleName)
+        {
+            Parcles _parcle = new Parcles();
+            List<Parcles> _parcleList = new List<Parcles>();
+            // Init the lists required
+            List<Coins> _listCoins = new List<Coins>();
+            List<ItemList> _listItems = new List<ItemList>();
+
+            StringBuilder xml = new StringBuilder();
+            XMLFormatting _xmlFormatting = new XMLFormatting();
+
+            // Variable that will be used in order to process fields that are not mandatory
+            string line = _Basic.First();
+
+            while (line != "Its done!")
+            {
+                // Clear heading line
+                if (line.Contains("#@;"))
+                {
+                    line = shiftUp(_Basic);
+                }
+
+                // Get the Parcle Name
+                if (line.Contains("##;"))
+                {
+                    _parcle = new Parcles();
+                    _parcle.Name = line.Replace("##;", "");
+                    line = shiftUp(_Basic);
+                    _listCoins = new List<Coins>();
+                    _listItems = new List<ItemList>();
+                }
+
+                while (line != "Its done!" && !line.Contains("##;"))
+                {
+                    // Get the items in this parcle
+                    while (line != "Its done!" && !line.Contains("##;"))
+                    {
+                        // Check to see if coins or items
+                        if (line.Contains("coin"))
+                        {
+                            //coin;100;PP 
+                            Coins _coins = new Coins();
+                            _coins.Name = line.Split(';')[2].Trim();
+                            _coins.Amount = line.Split(';')[1].Trim();
+
+                            // Add to the list of coins
+                            _listCoins.Add(_coins);
+                            line = shiftUp(_Basic);
+                        }
+                        else if (line.Contains("item"))
+                        {
+                            //item; 1; Cloak of Invisibility
+                            ItemList _itemList = new ItemList();
+                            _itemList.Name = line.Split(';')[2].Trim();
+                            _itemList.Count = line.Split(';')[1].Trim();
+
+                            // Add to the list of items
+                            _listItems.Add(_itemList);
+                            line = shiftUp(_Basic);
+                        }
+
+                        // Add the sublists to the parent object
+                        _parcle.coinsList = _listCoins;
+                        _parcle.itemList = _listItems;
+                    }                   
+                }
+                // Add the category
+                _parcle.Category = ParcleHeader;
+                // Add Parcle to main list 
+                _parcleList.Add(_parcle);
+            }
+
+            return _parcleList;
+        }
+
+        // Makes reading the list variable consistant
+        private string shiftUp(List<string> _Basic)
+        {
+            _Basic.RemoveAt(0);
+            if (_Basic.Count != 0)
+            {
+                return _Basic.First();
+            }
+            else
+            {
+                _Basic.Add("Its done!");
+                return _Basic.First();
+            }
+        }
     }
 
     class Coins
     {
-        public int CoinIndex { get; set; }
-        public string CoinName { get; set; }
-        public string CoinValue { get; set; }
+        public string Name { get; set; }
+        public string Amount { get; set; }
+    }
+
+    class ItemList
+    {
+        public string Name { get; set; }
+        public string Count { get; set; }
     }
 
     class Encounters
@@ -441,9 +542,9 @@ namespace FG5EParser.Base_Class
                 if (line.Contains("##;"))
                 {
                     _encounter = new Encounters();
-                    _encounter.Name = line.Replace("##;","");
+                    _encounter.Name = line.Replace("##;", "");
                     line = shiftUp(_Basic);
-                    _listNPC = new List<EncounterNPC>();                    
+                    _listNPC = new List<EncounterNPC>();
                 }
 
                 while (line != "Its done!" && !line.Contains("##;"))
@@ -451,7 +552,7 @@ namespace FG5EParser.Base_Class
                     // Get the CR and EXP rating of the encounter
                     if (line.Contains("XP"))
                     {
-                        line = line.Replace("CR", ";").Replace("XP",";").Trim();
+                        line = line.Replace("CR", ";").Replace("XP", ";").Trim();
                         _encounter.CR = line.Split(';')[1];
                         _encounter.Exp = line.Split(';')[2];
                         line = shiftUp(_Basic);
@@ -470,7 +571,7 @@ namespace FG5EParser.Base_Class
                             _listNPC.Add(_npc);
 
                             line = shiftUp(_Basic);
-                        }                        
+                        }
                     }
 
                     // Add the NPC list
