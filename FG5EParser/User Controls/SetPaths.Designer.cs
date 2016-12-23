@@ -55,6 +55,8 @@
             this.txtEncounterPath = new System.Windows.Forms.TextBox();
             this.btnParcels = new System.Windows.Forms.Button();
             this.txtParcelPath = new System.Windows.Forms.TextBox();
+            this.btnTables = new System.Windows.Forms.Button();
+            this.txtTablePath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // chkDmOnly
@@ -325,10 +327,32 @@
             this.txtParcelPath.Size = new System.Drawing.Size(468, 22);
             this.txtParcelPath.TabIndex = 242;
             // 
+            // btnTables
+            // 
+            this.btnTables.Location = new System.Drawing.Point(4, 507);
+            this.btnTables.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTables.Name = "btnTables";
+            this.btnTables.Size = new System.Drawing.Size(112, 28);
+            this.btnTables.TabIndex = 245;
+            this.btnTables.Text = "TABLES";
+            this.btnTables.UseVisualStyleBackColor = true;
+            this.btnTables.Click += new System.EventHandler(this.btnTables_Click);
+            // 
+            // txtTablePath
+            // 
+            this.txtTablePath.Enabled = false;
+            this.txtTablePath.Location = new System.Drawing.Point(124, 507);
+            this.txtTablePath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTablePath.Name = "txtTablePath";
+            this.txtTablePath.Size = new System.Drawing.Size(468, 22);
+            this.txtTablePath.TabIndex = 244;
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnTables);
+            this.Controls.Add(this.txtTablePath);
             this.Controls.Add(this.btnParcels);
             this.Controls.Add(this.txtParcelPath);
             this.Controls.Add(this.btnEncounter);
@@ -357,7 +381,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 520);
+            this.Size = new System.Drawing.Size(609, 541);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,5 +416,7 @@
         private System.Windows.Forms.TextBox txtEncounterPath;
         private System.Windows.Forms.Button btnParcels;
         private System.Windows.Forms.TextBox txtParcelPath;
+        private System.Windows.Forms.Button btnTables;
+        private System.Windows.Forms.TextBox txtTablePath;
     }
 }

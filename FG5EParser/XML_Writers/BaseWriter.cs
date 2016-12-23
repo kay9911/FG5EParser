@@ -21,7 +21,8 @@ namespace FG5EParser.XMLWriters
             string _itemTextPath = "",
             string _magicalTextPath = "",
             string _encounterTextPath = "",
-            string _parcelTextPath = ""
+            string _parcelTextPath = "",
+            string _tableTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -34,6 +35,7 @@ namespace FG5EParser.XMLWriters
             MagicalItemHelper _magicalItemHelper = new MagicalItemHelper();
             EncounterHelper _encounterHelper = new EncounterHelper();
             ParcelHelper _parcelHelper = new ParcelHelper();
+            TableHelper _tableHelper = new TableHelper();
 
             bool requiresList = false;
 
@@ -87,6 +89,13 @@ namespace FG5EParser.XMLWriters
                 requiresList = true;
             }
 
+            // Table Entries
+            if (!string.IsNullOrEmpty(_tableTextPath))
+            {
+                xml.Append(_tableHelper.returnTableXML(_tableTextPath,_moduleName));
+                requiresList = true;
+            }
+
             // Getting in the additional lists
             if (requiresList)
             {
@@ -126,6 +135,12 @@ namespace FG5EParser.XMLWriters
                 if (!string.IsNullOrEmpty(_parcelTextPath))
                 {
                     xml.Append(_parcelHelper.returnParcelXML(_parcelTextPath,_moduleName,true)); // true : Switch to list
+                }
+
+                // Table List
+                if (!string.IsNullOrEmpty(_tableTextPath))
+                {
+                    xml.Append(_tableHelper.returnTableXML(_tableTextPath, _moduleName, true)); // true : Switch to list
                 }
 
                 xml.Append("</lists>");
@@ -288,6 +303,23 @@ namespace FG5EParser.XMLWriters
 
                 xml.Append("</librarylink>");
                 xml.Append("<name type=\"string\">Classes</name>");
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            // Entry for Tables
+            if (!string.IsNullOrEmpty(_tableTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_colindex</class>");
+                xml.Append(string.Format("<recordname>lists.table.bycategory@{0}</recordname>",_moduleName));
+
+                xml.Append("</librarylink>");
+                xml.Append("<name type=\"string\">Tables</name>");
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
 
                 // Counter + 1
