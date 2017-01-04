@@ -10,7 +10,7 @@ namespace FG5EParser.Writer_Classes
 {
     class NPCWriter
     {
-        public List<Personalities> compileNPCList(string _inputLocation)
+        public List<Personalities> compileNPCList(string _inputLocation, string moduleName)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace FG5EParser.Writer_Classes
                         Personalities _personalities = new Personalities();
                         if (_basic.Count != 0)
                         {
-                            _personalities = _personalities.BindValues(_basic);
+                            _personalities = _personalities.BindValues(_basic,moduleName);
                             NPCS.Add(_personalities);
                         }
                         _basic.Clear();
@@ -45,7 +45,7 @@ namespace FG5EParser.Writer_Classes
                     Personalities _personalities = new Personalities();
                     if (_basic.Count != 0)
                     {
-                        _personalities = _personalities.BindValues(_basic);
+                        _personalities = _personalities.BindValues(_basic, moduleName);
                         NPCS.Add(_personalities);
                     }
                     _basic.Clear();

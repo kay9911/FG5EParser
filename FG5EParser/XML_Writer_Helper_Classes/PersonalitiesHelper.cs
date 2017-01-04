@@ -21,7 +21,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             StringBuilder xml = new StringBuilder();
 
             NPCWriter _npcWriter = new NPCWriter();
-            List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath);
+            List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath,_moduleName);
 
             if (!isList)
             {
@@ -368,7 +368,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             StringBuilder xml = new StringBuilder();
 
             NPCWriter _npcWriter = new NPCWriter();
-            List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath);
+            List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath,_moduleName);
 
             #region NPC DATA
 

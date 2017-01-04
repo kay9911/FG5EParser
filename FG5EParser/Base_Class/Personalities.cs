@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FG5EParser.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,9 +54,10 @@ namespace FG5EParser.Base_Classes
         public List<string> NPCDetails { get { return _npcDetails; } set { _npcDetails = value; } }
         #endregion
 
-        public Personalities BindValues(List<string> _Basic)
+        public Personalities BindValues(List<string> _Basic, string moduleName)
         {
             Personalities _new = new Personalities();
+            XMLFormatting _xmlformatting = new XMLFormatting();
 
             // Variable that will be used in order to process fields that are not mandatory
             string line = string.Empty;
@@ -192,12 +194,15 @@ namespace FG5EParser.Base_Classes
             if (line == "##;")
             {
                 line = shiftUp(_Basic);
+                StringBuilder _sb = new StringBuilder();
 
                 while (line != "Its done!")
                 {
-                    _new.NPCDetails.Add(line);
+                    // Catch all the lines and formatting required for this section              
+                    _sb.Append(_xmlformatting.returnFormattedString(line, moduleName));                                      
                     line = shiftUp(_Basic);
                 }
+                _new.NPCDetails.Add(_sb.ToString());
             }
 
             return _new;
