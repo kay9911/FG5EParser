@@ -10,10 +10,27 @@ namespace FG5EParser.Utilities
     {
         public string returnFormattedString(string _toFormat, string _moduleName)
         {
+            #region HEADER
             if (_toFormat.Contains("#h;"))
             {
                 _toFormat = string.Format("{0}</h>", _toFormat.Replace("#h;", "<h>"));
             }
+            else if (_toFormat.Contains("#bp;"))
+            {
+                _toFormat = _toFormat.Replace("#bp;", "");
+                _toFormat = string.Format("<p><b>{0}</b></p>", _toFormat);
+            }
+            #endregion
+
+            #region FRAME
+            else if (_toFormat.Contains("#cf;"))
+            {
+                _toFormat = _toFormat.Replace("#cf;","");
+                _toFormat = string.Format(string.Format("<frame>{0}</frame>",_toFormat));
+            }
+            #endregion
+
+            #region TABLE
             else if (_toFormat.Contains("#ts;"))
             {
                 _toFormat = string.Format("<table>");
@@ -70,6 +87,9 @@ namespace FG5EParser.Utilities
             {
                 _toFormat = "</table>";
             }
+            #endregion
+
+            #region LIST
             else if (_toFormat.Contains("#ls;"))
             {
                 return "<list>";
@@ -83,43 +103,48 @@ namespace FG5EParser.Utilities
             {
                 return "</list>";
             }
-            else if (_toFormat.Contains("#bp;"))
-            {
-                _toFormat = _toFormat.Replace("#bp;", "");
-                _toFormat = string.Format("<p><b>{0}</b></p>", _toFormat);
-            }
+            #endregion
+
+            #region LINKED LIST
             else if (_toFormat.Contains("#zls;"))
             {
                 return "<listlink>";
             }
-            else if (_toFormat.Contains("#zl;"))
+            else if (_toFormat.Contains("#zle;"))
             {
-                _toFormat = _toFormat.Replace("#zl;","");
-
-                // Format depending on what record set is required
-                if (_toFormat.Contains("_ability"))
-                {
-                    _toFormat = _toFormat.Replace("_ability", "");
-
-                    string _useName = string.Empty;
-
-                    if (!string.IsNullOrEmpty(_toFormat.Split(';')[2]))
-                    {
-                        _useName = _toFormat.Split(';')[2];
-                    }
-                    else
-                    {
-                        _useName = _toFormat.Split(';')[1];
-                    }
-
-                    _toFormat = string.Format("<link class=\"reference_classability\" recordname=\"reference.classdata.{0}.abilities.{1}@{2}\">{3}</link>",
-                        _toFormat.Split(';')[0].ToLower().Trim(),
-                        _toFormat.Split(';')[1].ToLower().Replace(" ", "").Trim(),
-                        _moduleName,
-                        _useName.Trim());
-                }
-
+                return "</listlink>";
             }
+            #endregion
+
+            //else if (_toFormat.Contains("#zl;"))
+            //{
+            //    _toFormat = _toFormat.Replace("#zl;","");
+
+            //    // Format depending on what record set is required
+            //    if (_toFormat.Contains("_ability"))
+            //    {
+            //        _toFormat = _toFormat.Replace("_ability", "");
+
+            //        string _useName = string.Empty;
+
+            //        if (!string.IsNullOrEmpty(_toFormat.Split(';')[2]))
+            //        {
+            //            _useName = _toFormat.Split(';')[2];
+            //        }
+            //        else
+            //        {
+            //            _useName = _toFormat.Split(';')[1];
+            //        }
+
+            //        _toFormat = string.Format("<link class=\"reference_classability\" recordname=\"reference.classdata.{0}.abilities.{1}@{2}\">{3}</link>",
+            //            _toFormat.Split(';')[0].ToLower().Trim(),
+            //            _toFormat.Split(';')[1].ToLower().Replace(" ", "").Trim(),
+            //            _moduleName,
+            //            _useName.Trim());
+            //    }
+
+            //}
+            #region LINK REFERENCE
             else if (_toFormat.Contains("#zal;"))
             {
                 _toFormat = _toFormat.Replace("#zal;", "");
@@ -305,11 +330,8 @@ namespace FG5EParser.Utilities
                         );
                 }
             }
+            #endregion
 
-            else if (_toFormat.Contains("#zle;"))
-            {
-                return "</listlink>";
-            }
             else
             {
                 _toFormat = string.Format("<p>{0}</p>", _toFormat);
