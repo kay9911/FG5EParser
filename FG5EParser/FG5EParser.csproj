@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base_Class\Backgrounds.cs" />
     <Compile Include="Base_Class\Classes.cs" />
     <Compile Include="Base_Class\Personalities.cs" />
     <Compile Include="Base_Class\RollableTables.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Utilities\RegularExpressions.cs" />
     <Compile Include="Utilities\XMLFormatting.cs" />
     <Compile Include="Utilities\XMLParser.cs" />
+    <Compile Include="WriterClasses\BackgroundWriter.cs" />
     <Compile Include="WriterClasses\ClassWriter.cs" />
     <Compile Include="WriterClasses\EncounterWriter.cs" />
     <Compile Include="WriterClasses\ItemWriter.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="WriterClasses\StoryWriter.cs" />
     <Compile Include="WriterClasses\TableWriter.cs" />
     <Compile Include="XML_Writers\BaseWriter.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\BackgroundHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ClassHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\EncounterHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ItemHelper.cs" />

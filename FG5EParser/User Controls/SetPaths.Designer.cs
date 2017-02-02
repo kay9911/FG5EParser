@@ -57,6 +57,8 @@
             this.txtParcelPath = new System.Windows.Forms.TextBox();
             this.btnTables = new System.Windows.Forms.Button();
             this.txtTablePath = new System.Windows.Forms.TextBox();
+            this.txtBackgroundPath = new System.Windows.Forms.TextBox();
+            this.btnBackgrounds = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chkDmOnly
@@ -347,10 +349,33 @@
             this.txtTablePath.Size = new System.Drawing.Size(468, 22);
             this.txtTablePath.TabIndex = 244;
             // 
+            // txtBackgroundPath
+            // 
+            this.txtBackgroundPath.Enabled = false;
+            this.txtBackgroundPath.Location = new System.Drawing.Point(124, 543);
+            this.txtBackgroundPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBackgroundPath.Name = "txtBackgroundPath";
+            this.txtBackgroundPath.Size = new System.Drawing.Size(468, 22);
+            this.txtBackgroundPath.TabIndex = 246;
+            // 
+            // btnBackgrounds
+            // 
+            this.btnBackgrounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackgrounds.Location = new System.Drawing.Point(4, 543);
+            this.btnBackgrounds.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBackgrounds.Name = "btnBackgrounds";
+            this.btnBackgrounds.Size = new System.Drawing.Size(112, 28);
+            this.btnBackgrounds.TabIndex = 247;
+            this.btnBackgrounds.Text = "BACKGROUND";
+            this.btnBackgrounds.UseVisualStyleBackColor = true;
+            this.btnBackgrounds.Click += new System.EventHandler(this.btnBackgrounds_Click);
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBackgrounds);
+            this.Controls.Add(this.txtBackgroundPath);
             this.Controls.Add(this.btnTables);
             this.Controls.Add(this.txtTablePath);
             this.Controls.Add(this.btnParcels);
@@ -381,7 +406,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 541);
+            this.Size = new System.Drawing.Size(609, 580);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,5 +443,7 @@
         private System.Windows.Forms.TextBox txtParcelPath;
         private System.Windows.Forms.Button btnTables;
         private System.Windows.Forms.TextBox txtTablePath;
+        private System.Windows.Forms.TextBox txtBackgroundPath;
+        private System.Windows.Forms.Button btnBackgrounds;
     }
 }

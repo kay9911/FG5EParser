@@ -22,7 +22,8 @@ namespace FG5EParser.XMLWriters
             string _magicalTextPath = "",
             string _encounterTextPath = "",
             string _parcelTextPath = "",
-            string _tableTextPath = ""
+            string _tableTextPath = "",
+            string _backgroundTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -36,6 +37,7 @@ namespace FG5EParser.XMLWriters
             EncounterHelper _encounterHelper = new EncounterHelper();
             ParcelHelper _parcelHelper = new ParcelHelper();
             TableHelper _tableHelper = new TableHelper();
+            BackgroundHelper _backgroundHelper = new BackgroundHelper();
 
             bool requiresList = false;
 
@@ -172,6 +174,13 @@ namespace FG5EParser.XMLWriters
             if (!string.IsNullOrEmpty(_npcTextPath))
             {
                 xml.Append(_personalitiesHelper.returnNPCReferenceDetails(_npcTextPath,_moduleName));
+            }
+
+            // Input for Backgrounds
+            if (!string.IsNullOrEmpty(_backgroundTextPath))
+            {
+                xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath,_moduleName));
+                xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath, _moduleName,true));
             }
 
             xml.Append("</reference>");
@@ -320,6 +329,23 @@ namespace FG5EParser.XMLWriters
 
                 xml.Append("</librarylink>");
                 xml.Append("<name type=\"string\">Tables</name>");
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            // Entry for Backgrounds
+            if (!string.IsNullOrEmpty(_backgroundTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_colindex</class>");
+                xml.Append(string.Format("<recordname>reference.backgroundlists.byletter</recordname>"));
+
+                xml.Append("</librarylink>");
+                xml.Append("<name type=\"string\">Backgrounds</name>");
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
 
                 // Counter + 1

@@ -564,6 +564,13 @@ namespace FG5EParser.Utilities
                         , _toFormat.Split(';')[2]
                         );
                         break;
+                    //T;*;Acolyte Traits;Acolyte Traits
+                    case "T": _toFormat = string.Format("<link class=\"table\" recordname=\"tables.tab_{0}@{1}\">{2}</link>"
+                        , _toFormat.Split(';')[3].ToLower().Trim().Replace(" ", "")
+                        , _toFormat.Split(';')[1]
+                        , _toFormat.Split(';')[2]
+                        );
+                        break;
                     default:
                         break;
                 }
