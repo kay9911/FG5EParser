@@ -87,6 +87,8 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     xml.Append(string.Format("<skill type=\"string\">{0}</skill>", _back.Skills));
 
+                    xml.Append(string.Format("<tool type=\"string\">{0}</tool>",_back.Tools));
+
                     xml.Append(string.Format("<languages type=\"string\">{0}</languages>", _back.Languages));
 
                     xml.Append(string.Format("<equipment type=\"string\">{0}</equipment>", _back.Equipment));

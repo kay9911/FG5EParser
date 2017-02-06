@@ -360,7 +360,7 @@
             // 
             // btnBackgrounds
             // 
-            this.btnBackgrounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackgrounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackgrounds.Location = new System.Drawing.Point(4, 543);
             this.btnBackgrounds.Margin = new System.Windows.Forms.Padding(4);
             this.btnBackgrounds.Name = "btnBackgrounds";
