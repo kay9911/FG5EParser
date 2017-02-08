@@ -42,11 +42,12 @@ namespace FG5EParser.Base_Class
 
         #endregion
 
-        public Classes bindValues(List<string> _Basic, string _moduleName = "")
+        public List<Classes> bindValues(List<string> _Basic, string _moduleName = "")
         {
             Classes _new = new Classes();
-            XMLFormatting _xmlFormatting = new XMLFormatting();           
+            List<Classes> _classList = new List<Classes>();
 
+            XMLFormatting _xmlFormatting = new XMLFormatting();
             StringBuilder _descriptions = new StringBuilder();
             StringBuilder _equipment = new StringBuilder();
 
@@ -241,7 +242,9 @@ namespace FG5EParser.Base_Class
 
             _new.classDescriptions = _new.classDescriptions + appendAdditionalDetails(_new,_moduleName);
 
-            return _new;
+            _classList.Add(_new);
+
+            return _classList;
         }
 
         private string appendAdditionalDetails(Classes _class, string _moduleName)
