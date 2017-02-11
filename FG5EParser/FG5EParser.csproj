@@ -50,6 +50,7 @@
     <Compile Include="Base_Class\Backgrounds.cs" />
     <Compile Include="Base_Class\Classes.cs" />
     <Compile Include="Base_Class\Personalities.cs" />
+    <Compile Include="Base_Class\Races.cs" />
     <Compile Include="Base_Class\RollableTables.cs" />
     <Compile Include="Base_Class\StoryElements.cs" />
     <Compile Include="LandingPage.cs">
@@ -148,6 +149,7 @@
     <Compile Include="WriterClasses\ItemWriter.cs" />
     <Compile Include="WriterClasses\NPCWriter.cs" />
     <Compile Include="WriterClasses\ParcelWriter.cs" />
+    <Compile Include="WriterClasses\RacesWriter.cs" />
     <Compile Include="WriterClasses\StoryWriter.cs" />
     <Compile Include="WriterClasses\TableWriter.cs" />
     <Compile Include="XML_Writers\BaseWriter.cs" />
@@ -157,6 +159,7 @@
     <Compile Include="XML_Writer_Helper_Classes\ItemHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ParcelHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\RacesHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\StoryHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\TableHelper.cs" />
     <Compile Include="Zipper1\ZipClass.cs" />

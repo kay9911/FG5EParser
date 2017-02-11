@@ -41,8 +41,8 @@
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.chkUseInstalled = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSetNPCPath = new System.Windows.Forms.Button();
-            this.txtNPCPath = new System.Windows.Forms.TextBox();
+            this.btnSetRacesPath = new System.Windows.Forms.Button();
+            this.txtRacesPath = new System.Windows.Forms.TextBox();
             this.btnClass = new System.Windows.Forms.Button();
             this.txtClassPath = new System.Windows.Forms.TextBox();
             this.btnStory = new System.Windows.Forms.Button();
@@ -50,7 +50,6 @@
             this.btnEquipment = new System.Windows.Forms.Button();
             this.txtItemPath = new System.Windows.Forms.TextBox();
             this.btnMagicalEquipment = new System.Windows.Forms.Button();
-            this.txtMagicalEquipmentPath = new System.Windows.Forms.TextBox();
             this.btnEncounter = new System.Windows.Forms.Button();
             this.txtEncounterPath = new System.Windows.Forms.TextBox();
             this.btnParcels = new System.Windows.Forms.Button();
@@ -59,6 +58,9 @@
             this.txtTablePath = new System.Windows.Forms.TextBox();
             this.txtBackgroundPath = new System.Windows.Forms.TextBox();
             this.btnBackgrounds = new System.Windows.Forms.Button();
+            this.txtMagicalEquipmentPath = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtNPCPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // chkDmOnly
@@ -188,25 +190,25 @@
             this.label1.TabIndex = 229;
             this.label1.Text = "SET MODULE PATHS";
             // 
-            // btnSetNPCPath
+            // btnSetRacesPath
             // 
-            this.btnSetNPCPath.Location = new System.Drawing.Point(4, 279);
-            this.btnSetNPCPath.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSetNPCPath.Name = "btnSetNPCPath";
-            this.btnSetNPCPath.Size = new System.Drawing.Size(112, 28);
-            this.btnSetNPCPath.TabIndex = 231;
-            this.btnSetNPCPath.Text = "NPC";
-            this.btnSetNPCPath.UseVisualStyleBackColor = true;
-            this.btnSetNPCPath.Click += new System.EventHandler(this.btnSetNPCPath_Click);
+            this.btnSetRacesPath.Location = new System.Drawing.Point(4, 579);
+            this.btnSetRacesPath.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSetRacesPath.Name = "btnSetRacesPath";
+            this.btnSetRacesPath.Size = new System.Drawing.Size(112, 28);
+            this.btnSetRacesPath.TabIndex = 231;
+            this.btnSetRacesPath.Text = "Races";
+            this.btnSetRacesPath.UseVisualStyleBackColor = true;
+            this.btnSetRacesPath.Click += new System.EventHandler(this.btnSetRacesPath_Click);
             // 
-            // txtNPCPath
+            // txtRacesPath
             // 
-            this.txtNPCPath.Enabled = false;
-            this.txtNPCPath.Location = new System.Drawing.Point(124, 282);
-            this.txtNPCPath.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNPCPath.Name = "txtNPCPath";
-            this.txtNPCPath.Size = new System.Drawing.Size(468, 22);
-            this.txtNPCPath.TabIndex = 230;
+            this.txtRacesPath.Enabled = false;
+            this.txtRacesPath.Location = new System.Drawing.Point(124, 582);
+            this.txtRacesPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRacesPath.Name = "txtRacesPath";
+            this.txtRacesPath.Size = new System.Drawing.Size(468, 22);
+            this.txtRacesPath.TabIndex = 230;
             // 
             // btnClass
             // 
@@ -279,15 +281,6 @@
             this.btnMagicalEquipment.Text = "MAGICAL EQUIPMENT";
             this.btnMagicalEquipment.UseVisualStyleBackColor = true;
             this.btnMagicalEquipment.Click += new System.EventHandler(this.btnMagicalEquipment_Click);
-            // 
-            // txtMagicalEquipmentPath
-            // 
-            this.txtMagicalEquipmentPath.Enabled = false;
-            this.txtMagicalEquipmentPath.Location = new System.Drawing.Point(124, 410);
-            this.txtMagicalEquipmentPath.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMagicalEquipmentPath.Name = "txtMagicalEquipmentPath";
-            this.txtMagicalEquipmentPath.Size = new System.Drawing.Size(468, 22);
-            this.txtMagicalEquipmentPath.TabIndex = 238;
             // 
             // btnEncounter
             // 
@@ -370,10 +363,40 @@
             this.btnBackgrounds.UseVisualStyleBackColor = true;
             this.btnBackgrounds.Click += new System.EventHandler(this.btnBackgrounds_Click);
             // 
+            // txtMagicalEquipmentPath
+            // 
+            this.txtMagicalEquipmentPath.Enabled = false;
+            this.txtMagicalEquipmentPath.Location = new System.Drawing.Point(124, 410);
+            this.txtMagicalEquipmentPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMagicalEquipmentPath.Name = "txtMagicalEquipmentPath";
+            this.txtMagicalEquipmentPath.Size = new System.Drawing.Size(468, 22);
+            this.txtMagicalEquipmentPath.TabIndex = 238;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 615);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 28);
+            this.button1.TabIndex = 249;
+            this.button1.Text = "NPC";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txtNPCPath
+            // 
+            this.txtNPCPath.Enabled = false;
+            this.txtNPCPath.Location = new System.Drawing.Point(123, 615);
+            this.txtNPCPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNPCPath.Name = "txtNPCPath";
+            this.txtNPCPath.Size = new System.Drawing.Size(468, 22);
+            this.txtNPCPath.TabIndex = 248;
+            // 
             // SetPaths
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtNPCPath);
             this.Controls.Add(this.btnBackgrounds);
             this.Controls.Add(this.txtBackgroundPath);
             this.Controls.Add(this.btnTables);
@@ -390,8 +413,8 @@
             this.Controls.Add(this.txtStoryPath);
             this.Controls.Add(this.btnClass);
             this.Controls.Add(this.txtClassPath);
-            this.Controls.Add(this.btnSetNPCPath);
-            this.Controls.Add(this.txtNPCPath);
+            this.Controls.Add(this.btnSetRacesPath);
+            this.Controls.Add(this.txtRacesPath);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkDmOnly);
             this.Controls.Add(this.btnImage);
@@ -406,7 +429,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.chkUseInstalled);
             this.Name = "SetPaths";
-            this.Size = new System.Drawing.Size(609, 580);
+            this.Size = new System.Drawing.Size(609, 657);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,8 +450,8 @@
         private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.CheckBox chkUseInstalled;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSetNPCPath;
-        private System.Windows.Forms.TextBox txtNPCPath;
+        private System.Windows.Forms.Button btnSetRacesPath;
+        private System.Windows.Forms.TextBox txtRacesPath;
         private System.Windows.Forms.Button btnClass;
         private System.Windows.Forms.TextBox txtClassPath;
         private System.Windows.Forms.Button btnStory;
@@ -436,7 +459,6 @@
         private System.Windows.Forms.Button btnEquipment;
         private System.Windows.Forms.TextBox txtItemPath;
         private System.Windows.Forms.Button btnMagicalEquipment;
-        private System.Windows.Forms.TextBox txtMagicalEquipmentPath;
         private System.Windows.Forms.Button btnEncounter;
         private System.Windows.Forms.TextBox txtEncounterPath;
         private System.Windows.Forms.Button btnParcels;
@@ -445,5 +467,8 @@
         private System.Windows.Forms.TextBox txtTablePath;
         private System.Windows.Forms.TextBox txtBackgroundPath;
         private System.Windows.Forms.Button btnBackgrounds;
+        private System.Windows.Forms.TextBox txtMagicalEquipmentPath;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtNPCPath;
     }
 }

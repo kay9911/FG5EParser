@@ -93,6 +93,12 @@ namespace FG5EParser
             set { txtTablePath.Text = value; }
         }
 
+        public string SetRacesPath
+        {
+            get { return txtRacesPath.Text; }
+            set { txtRacesPath.Text = value; }
+        }
+
         public string SetBackgroundPath
         {
             get { return txtBackgroundPath.Text; }
@@ -157,17 +163,7 @@ namespace FG5EParser
 
         private void btnSetNPCPath_Click(object sender, EventArgs e)
         {
-            // Process for opening and choosing where the info gets saved too
 
-            OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.*)|*.*";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = true;
-
-            if (choofdlog.ShowDialog() == DialogResult.OK)
-            {
-                txtNPCPath.Text = choofdlog.FileName;
-            }
         }
 
         private void btnClass_Click(object sender, EventArgs e)
@@ -287,6 +283,21 @@ namespace FG5EParser
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
                 txtBackgroundPath.Text = choofdlog.FileName;
+            }
+        }
+
+        private void btnSetRacesPath_Click(object sender, EventArgs e)
+        {
+            // Process for opening and choosing where the info gets saved too
+
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = true;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtRacesPath.Text = choofdlog.FileName;
             }
         }
     }

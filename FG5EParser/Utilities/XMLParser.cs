@@ -28,7 +28,8 @@ namespace FG5EParser.Utilities
             string _encounterTextPath = null,
             string _parcelTextPath = null,
             string _tableTextPath = null,
-            string _backgroundTextPath = null
+            string _backgroundTextPath = null,
+            string _racesTextPath = null
         )
         {
             // Get the Xdoc's
@@ -53,6 +54,7 @@ namespace FG5EParser.Utilities
                 ,_parcelTextPath
                 ,_tableTextPath
                 ,_backgroundTextPath
+                ,_racesTextPath
                 );
 
             if (string.IsNullOrEmpty(_authorName))

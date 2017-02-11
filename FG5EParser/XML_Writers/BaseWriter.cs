@@ -23,7 +23,8 @@ namespace FG5EParser.XMLWriters
             string _encounterTextPath = "",
             string _parcelTextPath = "",
             string _tableTextPath = "",
-            string _backgroundTextPath = ""
+            string _backgroundTextPath = "",
+            string _racesTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -38,6 +39,7 @@ namespace FG5EParser.XMLWriters
             ParcelHelper _parcelHelper = new ParcelHelper();
             TableHelper _tableHelper = new TableHelper();
             BackgroundHelper _backgroundHelper = new BackgroundHelper();
+            RacesHelper _raceHelper = new RacesHelper();            
 
             bool requiresList = false;
 
@@ -181,6 +183,13 @@ namespace FG5EParser.XMLWriters
             {
                 xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath,_moduleName));
                 xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath, _moduleName,true));
+            }
+
+            // Input for Races
+            if (!string.IsNullOrEmpty(_racesTextPath))
+            {
+                xml.Append(_raceHelper.returnRaceXML(_racesTextPath,_moduleName));
+                xml.Append(_raceHelper.returnRaceXML(_racesTextPath, _moduleName,true));
             }
 
             xml.Append("</reference>");
@@ -346,6 +355,23 @@ namespace FG5EParser.XMLWriters
 
                 xml.Append("</librarylink>");
                 xml.Append("<name type=\"string\">Backgrounds</name>");
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            // Entry for Races
+            if (!string.IsNullOrEmpty(_racesTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_colindex</class>");
+                xml.Append(string.Format("<recordname>reference.racelists.byletter</recordname>"));
+
+                xml.Append("</librarylink>");
+                xml.Append("<name type=\"string\">Races</name>");
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
 
                 // Counter + 1
