@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FG5EParser", "FG5EParser\FG5EParser.csproj", "{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FG5EParser_v_2.0", "FG5EParser_v_2.0\FG5EParser_v_2.0.csproj", "{A380D72F-F018-4670-895F-7FDE51983DF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA5869AC-A7D5-4879-A009-6DFA78F9FD8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A380D72F-F018-4670-895F-7FDE51983DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A380D72F-F018-4670-895F-7FDE51983DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A380D72F-F018-4670-895F-7FDE51983DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A380D72F-F018-4670-895F-7FDE51983DF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
