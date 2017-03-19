@@ -5,8 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FG5EParser_v_2._0"
         mc:Ignorable="d"
-        Title="FG5EParser" Height="350" Width="525" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="FG5EParser" WindowStartupLocation="CenterScreen" d:DesignWidth="1333.2" d:DesignHeight="716.4" Height="768" Width="1366" ScrollViewer.CanContentScroll="True">
     <Grid>
-        
+        <TabControl x:Name="tabControl" TabStripPlacement="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+            <TabItem Header="CLASS">
+                <Grid Background="#FFE5E5E5" ScrollViewer.CanContentScroll="True" Margin="-3,0,3.4,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="614*"/>
+                        <ColumnDefinition Width="683*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label" Content="Class Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_Name" HorizontalAlignment="Left" Height="23" Margin="167,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy" Content="Hit Points" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="label_Copy1" Content="Hit Points At 1st Level" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_HP_First" HorizontalAlignment="Left" Height="23" Margin="167,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy2" Content="Hit Points After 1st Level" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_HP_After_First" HorizontalAlignment="Left" Height="23" Margin="167,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <TextBox x:Name="txt_Class_Hp" HorizontalAlignment="Left" Height="23" Margin="167,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy3" Content="Armor" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_Armor" HorizontalAlignment="Left" Height="23" Margin="167,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy4" Content="Weapons" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_Weapons" HorizontalAlignment="Left" Height="23" Margin="167,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy5" Content="Tools" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="label_Copy6" Content="Saving Throws" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="label_Copy7" Content="Skills" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_Tools" HorizontalAlignment="Left" Height="23" Margin="167,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <TextBox x:Name="txt_Class_SavingThrows" HorizontalAlignment="Left" Height="23" Margin="167,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <TextBox x:Name="txt_Class_Skills" HorizontalAlignment="Left" Height="23" Margin="167,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy8" Content="Starting Equipment" HorizontalAlignment="Left" Margin="10,312,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <RichTextBox x:Name="rtc_Class_Starting_Equipment" HorizontalAlignment="Left" Height="100" Margin="167,316,0,0" VerticalAlignment="Top" Width="404" Block.LineHeight="1">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <Label x:Name="label_Copy9" Content="Feature Name" HorizontalAlignment="Left" Margin="10,441,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_Feature_Name" HorizontalAlignment="Left" Height="23" Margin="167,444,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy10" Content="Feature Levels" HorizontalAlignment="Left" Margin="10,472,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="txt_Class_Feature_Level" HorizontalAlignment="Left" Height="23" Margin="167,475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404"/>
+                    <Label x:Name="label_Copy11" Content="Feature Description" HorizontalAlignment="Left" Margin="10,503,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <RichTextBox x:Name="rtc_Class_Feature_Description" HorizontalAlignment="Left" Height="100" Margin="167,507,0,0" VerticalAlignment="Top" Width="404" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" Block.LineHeight="1">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <Button x:Name="btn_Class_Feature_Add" Content="Add" HorizontalAlignment="Left" Margin="416,612,0,0" VerticalAlignment="Top" Width="75" Height="19"/>
+                    <Button x:Name="btn_Class_Feature_Review" Content="Review" HorizontalAlignment="Left" Margin="496,612,0,0" VerticalAlignment="Top" Width="75" Height="19"/>
+                    <CheckBox x:Name="chk_Class_isArchtype" Content="Archtype Feature?" HorizontalAlignment="Left" Margin="167,617,0,0" VerticalAlignment="Top" Height="15" Width="116"/>
+                    <Label x:Name="label_Copy12" Content="Archtype Name" HorizontalAlignment="Left" Margin="11.6,13,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <TextBox x:Name="txt_Class_Archtype_Name" HorizontalAlignment="Left" Height="23" Margin="168.6,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404" Grid.Column="1"/>
+                    <Label x:Name="label_Copy13" Content="Archtype Path Name" HorizontalAlignment="Left" Margin="11.6,44,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <TextBox x:Name="txt_Class_Archtype_Path_Name" HorizontalAlignment="Left" Height="23" Margin="168.6,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404" Grid.Column="1"/>
+                    <Label x:Name="label_Copy14" Content="Description" HorizontalAlignment="Left" Margin="11.6,75,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <RichTextBox x:Name="rtc_Class_Archtype_Description" HorizontalAlignment="Left" Height="100" Margin="168.6,79,0,0" VerticalAlignment="Top" Width="404" Block.LineHeight="1" Grid.Column="1">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <Label x:Name="label_Copy15" Content="Feature Name" HorizontalAlignment="Left" Margin="11.6,218,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <Button x:Name="btn_Class_Archtype_Add" Content="Add" HorizontalAlignment="Left" Margin="577.6,160,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="19"/>
+                    <Button x:Name="btn_Class_Archtype_Review" Content="Review" HorizontalAlignment="Left" Margin="577.6,78,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" RenderTransformOrigin="5.957,3.125" Height="19"/>
+                    <ComboBox x:Name="cmb_Class_Archtype_Selector" Grid.Column="1" HorizontalAlignment="Left" Margin="168.6,188,0,0" VerticalAlignment="Top" Width="404" Height="22"/>
+                    <TextBox x:Name="txt_Class_Archtype_Feature_Name" HorizontalAlignment="Left" Height="23" Margin="168.6,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404" Grid.Column="1"/>
+                    <Label x:Name="label_Copy16" Content="Feature Levels" HorizontalAlignment="Left" Margin="11.6,250,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <TextBox x:Name="txt_Class_Archtype_Feature_Levels" HorizontalAlignment="Left" Height="23" Margin="168.6,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404" Grid.Column="1"/>
+                    <Label x:Name="label_Copy17" Content="Feature Description" HorizontalAlignment="Left" Margin="11.6,281,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <RichTextBox x:Name="rtc_Class_Archtype_Feature_Description" HorizontalAlignment="Left" Height="100" Margin="168.6,285,0,0" VerticalAlignment="Top" Width="404" Block.LineHeight="1" Grid.Column="1">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <Button x:Name="btn_Class_Archtype_Feature_Add" Content="Add" HorizontalAlignment="Left" Margin="577.6,365,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="19"/>
+                    <Button x:Name="btn_Class_Archtype_Feature_Review" Content="Review" HorizontalAlignment="Left" Margin="577.6,285,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" RenderTransformOrigin="5.957,3.125" Height="19"/>
+                    <Label x:Name="label_Copy18" Content="CLASS DESCRIPTION" HorizontalAlignment="Left" Margin="11.6,398,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <RichTextBox x:Name="txt_Class_Description" HorizontalAlignment="Left" Height="320" Margin="168.6,402,0,0" VerticalAlignment="Top" Width="404" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" Block.LineHeight="1" Grid.Column="1">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <Label x:Name="label_Copy19" Content="Select Archtype" HorizontalAlignment="Left" Margin="11.6,187,0,0" VerticalAlignment="Top" Height="26" Width="152" FontWeight="Bold" HorizontalContentAlignment="Right" Grid.Column="1"/>
+                    <Label x:Name="label_Copy20" Content="Reserved for multiclassing" HorizontalAlignment="Left" Margin="252,667,0,0" VerticalAlignment="Top" Height="26" Width="192" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="75" Margin="577.6,647,0,0" VerticalAlignment="Top" Width="96">
+                        <Button x:Name="btn_Class_Add_List" Content="ADD TO LIST" FontWeight="Bold"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
