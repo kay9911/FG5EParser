@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FG5EParser_v_2._0"
         mc:Ignorable="d"
-        Title="FG5EParser" WindowStartupLocation="CenterScreen" d:DesignWidth="1333.2" d:DesignHeight="716.4" Height="768" Width="1366" ScrollViewer.CanContentScroll="True">
+        Title="FG5EParser" WindowStartupLocation="CenterScreen" d:DesignWidth="1333.2" d:DesignHeight="716.4" Height="768" Width="1366" ScrollViewer.CanContentScroll="True" Source="Pages/Home.xaml">
 </NavigationWindow>

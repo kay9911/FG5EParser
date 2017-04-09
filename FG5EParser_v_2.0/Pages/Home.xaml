@@ -1,0 +1,54 @@
+﻿<Page x:Class="FG5EParser_v_2._0.Pages.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FG5EParser_v_2._0.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Home">
+
+    <Grid Margin="10,0,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".5*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" BorderBrush="Azure" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">PLAYER MODULE</Label>
+        <Button x:Name="btnBackgrounds" Grid.Column="0" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnBackgrounds_Click">BACKGROUNDS</Button>
+        <Button x:Name="btnRaces" Grid.Column="1" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnRaces_Click">RACES</Button>
+        <Button Grid.Column="2" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">CLASSES</Button>
+        <Button Grid.Column="3" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">EQUIPMENT</Button>
+        <Button Grid.Column="4" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SPELLS</Button>
+        <Button Grid.Column="5" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">FEATS</Button>
+        <Button Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SKILLS</Button>
+        <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" BorderBrush="Azure" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">STORY MODULE</Label>
+        <Button Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">STORY ENTRIES</Button>
+        <Button Grid.Column="1" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">NPC</Button>
+        <Button Grid.Column="2" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">TREASURE PARCELS</Button>
+        <Button Grid.Column="3" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">MAGICAL ITEMS</Button>
+        <Button Grid.Column="4" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ENCOUNTERS</Button>
+        <Button Grid.Column="5" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">IMAGES &amp; MAPS</Button>
+        <Button Grid.Column="0" Grid.Row="5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">QUESTS</Button>
+        <Button Grid.Column="1" Grid.Row="5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">REFERENCE MANUAL</Button>
+        <Button Grid.Column="2" Grid.Row="5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ROLLABLE TABLES</Button>
+        <Button Grid.Column="3" Grid.Row="5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">TOKENS</Button>
+        <Button Grid.Column="4" Grid.Row="5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">TRAPS &amp; HAZARDS</Button>
+        <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="6" BorderBrush="Azure" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">EDITING &amp; PARSING TOOLS</Label>
+        <Button Grid.Column="0" Grid.Row="7" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">TABLE BUILDING</Button>
+        <Button Grid.Column="6" Grid.Row="7" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SET PATHS</Button>
+    </Grid>
+</Page>
