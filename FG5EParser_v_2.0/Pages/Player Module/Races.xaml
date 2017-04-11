@@ -60,16 +60,23 @@
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Name:</Label>
         <TextBox x:Name="txtRaceName" Grid.Column="1" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
 
-        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Details &amp; Traits:</Label>
-        <RichTextBox x:Name="rtbRaceDetails" Grid.Column="1" Grid.RowSpan="9"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Details:</Label>
+        <RichTextBox x:Name="rtbRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
 
-        <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Sub Race Name:</Label>
-        <TextBox x:Name="txtSubRaceName" Grid.Column="1" Grid.Row="14" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Traits:</Label>
+        <RichTextBox x:Name="rtbRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="10" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" TextWrapping="WrapWithOverflow">Sub Race Details &amp; Traits:</TextBlock>
-        <RichTextBox x:Name="rtbSubRaceDetails" Grid.Column="1" Grid.RowSpan="9"  Grid.Row="16" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+
+        <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Sub Race Name:</Label>
+        <TextBox x:Name="txtSubRaceName" Grid.Column="1" Grid.Row="16" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right">Sub Race Details:</Label>
+        <RichTextBox x:Name="rtbSubRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="18" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+
+        <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right">Sub Race Traits:</Label>
+        <RichTextBox x:Name="rtbSubRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="24" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
         
-        <Button x:Name="btnSaveSubRaces" Grid.Column="1" Grid.Row="26" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE SUB RACE</Button>
+        <Button x:Name="btnSaveSubRaces" Grid.Column="1" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE SUB RACE</Button>
 
         <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
         <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>

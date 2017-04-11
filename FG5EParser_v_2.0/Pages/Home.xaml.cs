@@ -37,5 +37,11 @@ namespace FG5EParser_v_2._0.Pages
             Races _racePage = new Races();
             NavigationService.Navigate(_racePage);
         }
+
+        private void btnEquipment_Click(object sender, RoutedEventArgs e)
+        {
+            Equipment _equipmentPage = new Equipment();
+            NavigationService.Navigate(_equipmentPage);
+        }
     }
 }

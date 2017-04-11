@@ -1,0 +1,112 @@
+﻿<Page x:Class="FG5EParser_v_2._0.Pages.Player_Module.Equipment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FG5EParser_v_2._0.Pages.Player_Module"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Equipment">
+
+    <Grid Margin="10,0,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">EQUIPMENT</Label>
+
+        <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Select Type:</Label>
+        <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" />
+
+        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Subtype:</Label>
+        <TextBox x:Name="txtSubType" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Item Name:</Label>
+        <TextBox x:Name="txtItemName" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Cost:</Label>
+        <TextBox x:Name="txtCost" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Weight:</Label>
+        <TextBox x:Name="txtWeight" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Armor Class(AC):</Label>
+        <TextBox x:Name="txtAC" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Strength Required:</Label>
+        <TextBox x:Name="txtStrength" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Stealth Disadvantage?:</Label>
+        <CheckBox x:Name="chkStealth" Grid.Column="1" Grid.Row="16" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Weapon Damage:</Label>
+        <TextBox x:Name="txtDamage" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="20" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Weapon Properties:</Label>
+        <TextBox x:Name="txtWeaponProperties" Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Speed:</Label>
+        <TextBox x:Name="txtSpeed" Grid.Column="1" Grid.Row="22" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Carrying Capacity:</Label>
+        <TextBox x:Name="txtCarryingCapacity" Grid.Column="1" Grid.Row="24" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Column="3" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Description:</Label>
+        <RichTextBox x:Name="rtbItemDescription" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+
+        <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment Parts:</Label>
+        <RichTextBox x:Name="rtbItemParts" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Row="26" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+
+
+        <Button x:Name="btnReset" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="2" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
+
+        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="23" Grid.ColumnSpan="4" Grid.Row="8" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+
+
+    </Grid>
+</Page>
