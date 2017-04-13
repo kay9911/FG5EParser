@@ -32,7 +32,7 @@
         <Button x:Name="btnRaces" Grid.Column="1" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnRaces_Click">RACES</Button>
         <Button Grid.Column="2" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">CLASSES</Button>
         <Button x:Name="btnEquipment" Grid.Column="3" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnEquipment_Click">EQUIPMENT</Button>
-        <Button Grid.Column="4" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SPELLS</Button>
+        <Button x:Name="btnSpells" Grid.Column="4" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnSpells_Click">SPELLS</Button>
         <Button Grid.Column="5" Grid.Row="1" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">FEATS</Button>
         <Button Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SKILLS</Button>
         <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" BorderBrush="Azure" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">STORY MODULE</Label>

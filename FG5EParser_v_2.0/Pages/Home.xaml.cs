@@ -43,5 +43,11 @@ namespace FG5EParser_v_2._0.Pages
             Equipment _equipmentPage = new Equipment();
             NavigationService.Navigate(_equipmentPage);
         }
+
+        private void btnSpells_Click(object sender, RoutedEventArgs e)
+        {
+            Spells _spellsPage = new Spells();
+            NavigationService.Navigate(_spellsPage);
+        }
     }
 }
