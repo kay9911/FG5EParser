@@ -49,5 +49,11 @@ namespace FG5EParser_v_2._0.Pages
             Spells _spellsPage = new Spells();
             NavigationService.Navigate(_spellsPage);
         }
+
+        private void btnFeats_Click(object sender, RoutedEventArgs e)
+        {
+            Feats _featsPage = new Feats();
+            NavigationService.Navigate(_featsPage);
+        }
     }
 }

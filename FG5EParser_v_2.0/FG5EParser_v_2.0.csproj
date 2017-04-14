@@ -64,6 +64,9 @@
     <Compile Include="Pages\Player Module\Equipment.xaml.cs">
       <DependentUpon>Equipment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Player Module\Feats.xaml.cs">
+      <DependentUpon>Feats.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Player Module\Races.xaml.cs">
       <DependentUpon>Races.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Player Module\Equipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Player Module\Feats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
