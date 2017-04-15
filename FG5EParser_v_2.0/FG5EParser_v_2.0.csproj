@@ -61,6 +61,9 @@
     <Compile Include="Pages\Player Module\Backgrounds.xaml.cs">
       <DependentUpon>Backgrounds.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Player Module\Classes.xaml.cs">
+      <DependentUpon>Classes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Player Module\Equipment.xaml.cs">
       <DependentUpon>Equipment.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Player Module\Backgrounds.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Player Module\Classes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

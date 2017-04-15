@@ -61,5 +61,11 @@ namespace FG5EParser_v_2._0.Pages
             Skills _skillsPage = new Skills();
             NavigationService.Navigate(_skillsPage);
         }
+
+        private void btnClass_Click(object sender, RoutedEventArgs e)
+        {
+            Classes _classPage = new Classes();
+            NavigationService.Navigate(_classPage);
+        }
     }
 }
