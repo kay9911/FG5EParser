@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FG5EParser", "FG5EParser\FG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FG5EParser_v_2.0", "FG5EParser_v_2.0\FG5EParser_v_2.0.csproj", "{A380D72F-F018-4670-895F-7FDE51983DF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FG5eParserLib", "FG5eParserLib\FG5eParserLib.csproj", "{7FA229E1-9329-4B8A-834D-3D1A4E087622}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A380D72F-F018-4670-895F-7FDE51983DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A380D72F-F018-4670-895F-7FDE51983DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A380D72F-F018-4670-895F-7FDE51983DF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA229E1-9329-4B8A-834D-3D1A4E087622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA229E1-9329-4B8A-834D-3D1A4E087622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA229E1-9329-4B8A-834D-3D1A4E087622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA229E1-9329-4B8A-834D-3D1A4E087622}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
