@@ -55,5 +55,11 @@ namespace FG5EParser_v_2._0.Pages
             Feats _featsPage = new Feats();
             NavigationService.Navigate(_featsPage);
         }
+
+        private void btnSkills_Click(object sender, RoutedEventArgs e)
+        {
+            Skills _skillsPage = new Skills();
+            NavigationService.Navigate(_skillsPage);
+        }
     }
 }
