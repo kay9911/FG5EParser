@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FG5eParserLib.Class_Modules
+namespace FG5eParserModels.Player_Models
 {
-    class Backgrounds : INotifyPropertyChanged
+    public class Backgrounds : INotifyPropertyChanged
     {
         private string Name { get; set; }
         private string Description { get; set; }
@@ -34,10 +34,12 @@ namespace FG5eParserLib.Class_Modules
 
         public string _Name
         {
-            get {
+            get
+            {
                 return Name;
             }
-            set {
+            set
+            {
                 Name = value;
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Name");
