@@ -79,6 +79,10 @@
     <Compile Include="Pages\Player Module\Spells.xaml.cs">
       <DependentUpon>Spells.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Utilities\FolderBrowserDialog.cs" />
+    <Compile Include="Pages\Utilities\Paths.xaml.cs">
+      <DependentUpon>Paths.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\XMLFormatting.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +129,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Utilities\Paths.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -157,6 +165,10 @@
     <ProjectReference Include="..\FG5eParserLib\FG5eParserLib.csproj">
       <Project>{7fa229e1-9329-4b8a-834d-3d1a4e087622}</Project>
       <Name>FG5eParserLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FG5EParser\FG5EParser.csproj">
+      <Project>{ca5869ac-a7d5-4879-a009-6dfa78f9fd8b}</Project>
+      <Name>FG5EParser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

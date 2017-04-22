@@ -1,4 +1,5 @@
 ﻿using FG5EParser_v_2._0.Pages.Player_Module;
+using FG5EParser_v_2._0.Pages.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +67,12 @@ namespace FG5EParser_v_2._0.Pages
         {
             Classes _classPage = new Classes();
             NavigationService.Navigate(_classPage);
+        }
+
+        private void btnParse_Click(object sender, RoutedEventArgs e)
+        {
+            Paths _pathsPage = new Paths();
+            NavigationService.Navigate(_pathsPage);
         }
     }
 }

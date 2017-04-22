@@ -50,6 +50,6 @@
         <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="6" BorderBrush="Azure" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">EDITING &amp; PARSING TOOLS</Label>
         <Button Grid.Column="0" Grid.Row="7" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">TABLE BUILDING</Button>
         <Button Grid.Column="4" Grid.Row="7" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">XSLT DOCUMENT</Button>
-        <Button Grid.Column="5" Grid.Row="7" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SET PATHS &amp; PARSE</Button>
+        <Button x:Name="btnParse" Grid.Column="5" Grid.Row="7" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnParse_Click">SET PATHS &amp; PARSE</Button>
     </Grid>
 </Page>

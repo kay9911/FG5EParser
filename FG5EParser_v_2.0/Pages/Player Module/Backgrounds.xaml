@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FG5EParser_v_2._0.Pages.Player_Module"
+      xmlns:backgroundVM="clr-namespace:FG5eParserLib.View_Mo.dels;assembly=FG5eParserLib"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Backgrounds">
@@ -56,41 +57,49 @@
 
         <!--Background Details-->
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Name:</Label>
-        <TextBox x:Name="txtBackgroundName" Grid.Column="1" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtBackgroundName" Grid.Column="1" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
+        
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Details:</Label>
-        <RichTextBox x:Name="rtbBackgroundDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbBackgroundDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" TextChanged="CollectData"/>
+        
         <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Skill Proficiencies:</Label>
-        <TextBox x:Name="txtSkillProficiencies" Grid.Column="1" Grid.Row="8" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSkillProficiencies" Grid.Column="1" Grid.Row="8" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
+        
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Tool Proficiencies:</Label>
-        <TextBox x:Name="txtToolProficiencies" Grid.Column="1" Grid.Row="10" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtToolProficiencies" Grid.Column="1" Grid.Row="10" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Languages:</Label>
-        <TextBox x:Name="txtLanguages" Grid.Column="1" Grid.Row="12" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtLanguages" Grid.Column="1" Grid.Row="12" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
+        
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment:</Label>
-        <TextBox x:Name="txtEquipment" Grid.Column="1" Grid.Row="14" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtEquipment" Grid.Column="1" Grid.Row="14" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
+        
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Name:</Label>
-        <TextBox x:Name="txtFeatureName" Grid.Column="1" Grid.Row="16" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtFeatureName" Grid.Column="1" Grid.Row="16" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
+        
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Description:</Label>
-        <RichTextBox x:Name="rtbFeatureDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="18" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbFeatureDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="18" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" TextChanged="CollectData"/>
+        
         <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Suggested Characteristics:</Label>
-        <RichTextBox x:Name="rtbSuggestedChar" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="22" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbSuggestedChar" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="22" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" TextChanged="CollectData"/>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Personality Traits:</Label>
-        <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
 
         <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ideals:</Label>
-        <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
 
         <Label Grid.Column="0" Grid.Row="30" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Bonds:</Label>
-        <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
 
         <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Flaws:</Label>
-        <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" TextChanged="CollectData"/>
 
         <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
         <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
 
-        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        </RichTextBox>
 
     </Grid>
 </Page>

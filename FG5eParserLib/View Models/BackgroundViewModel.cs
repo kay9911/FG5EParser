@@ -9,33 +9,34 @@ using FG5eParserModels.Player_Models;
 
 namespace FG5eParserLib.View_Mo.dels
 {
-    class BackgroundViewModel : INotifyPropertyChanged
+    public class BackgroundViewModel
     {
-        // Declare the event
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        // Create the OnPropertyChanged method to raise the event
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
+        public string outputString { get; set; }
 
         Backgrounds _background = new Backgrounds();
 
-        public ObservableCollection<Backgrounds> _backgrounds;
+        public ObservableCollection<Backgrounds> _backgrounds { get; private set; }
 
         public BackgroundViewModel()
         {
-            _backgrounds = new ObservableCollection<Backgrounds>();
+            Output = new RelayCommand(displayOutput);
         }
 
         public string txtBackgroundName {
             get { return _background._Name; }
-            set { _background._Name = value.Trim(); }
+            set { _background._Name = value.Trim();
+            }
+        }
+
+        public RelayCommand Output { get; private set; }
+
+        // Functions
+        public void displayOutput(Object obj)
+        {
+            StringBuilder _sb = new StringBuilder();
+            _sb.Append(txtBackgroundName);
+
+            outputString = _sb.ToString();
         }
 
     }
