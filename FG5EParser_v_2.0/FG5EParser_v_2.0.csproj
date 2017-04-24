@@ -79,7 +79,6 @@
     <Compile Include="Pages\Player Module\Spells.xaml.cs">
       <DependentUpon>Spells.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Utilities\FolderBrowserDialog.cs" />
     <Compile Include="Pages\Utilities\Paths.xaml.cs">
       <DependentUpon>Paths.xaml</DependentUpon>
     </Compile>

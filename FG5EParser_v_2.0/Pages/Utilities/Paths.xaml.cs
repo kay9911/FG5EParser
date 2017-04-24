@@ -39,7 +39,35 @@ namespace FG5EParser_v_2._0.Pages.Utilities
             if (choofdlog.ShowDialog() == true)
             {
                 txtBackgroundPath.Text = choofdlog.FileName;
-                txtBackgroundPath.IsEnabled = false;                 
+                txtBackgroundPath.IsEnabled = false;
+            }
+        }
+
+        private void btnSelectImagePath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                txtImagePath.Text = choofdlog.FileName;
+                txtImagePath.IsEnabled = false;
+            }
+        }
+
+        private void btnSelectOutputPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                txtOutputPath.Text = choofdlog.FileName;
+                txtOutputPath.IsEnabled = false;
             }
         }
     }

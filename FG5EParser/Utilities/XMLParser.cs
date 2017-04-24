@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace FG5EParser.Utilities
 {
-    class XMLParser
+    public class XMLParser
     {
         public void ParseXMLs(
             string _catalogueName,

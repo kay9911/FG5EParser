@@ -4,14 +4,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FG5EParser_v_2._0.Pages.Utilities"
+      xmlns:converter="clr-namespace:FG5eParserLib;assembly=FG5eParserLib"      
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Paths">
 
+    <Page.Resources>
+        <converter:InvertBoolConverter x:Key="invertBoolConverter"/>
+    </Page.Resources>
+    
+
     <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -52,15 +59,31 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">PATHS</Label>
+        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">PATHS</Label>
 
-        <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Path:</Label>
-        <TextBox x:Name="txtBackgroundPath" Grid.Column="1" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
-        <Button x:Name="btnBackgroundPathSave" Grid.Column="2" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnBackgroundPathSave_Click">SELECT</Button>
+        <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Output Path:</Label>
+        <TextBox x:Name="txtOutputPath" Grid.Column="1" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetOutputPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsChecked, ElementName=chkUseInstalledPath, Converter={StaticResource invertBoolConverter}}"/>
+        <Button x:Name="btnSelectOutputPath" Grid.Column="2" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectOutputPath_Click">SELECT</Button>
+        <CheckBox x:Name="chkUseInstalledPath" Grid.Column="4" Grid.Row="2" VerticalContentAlignment="Center" FontWeight="Bold" FontFamily="Cooper Black" HorizontalContentAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding pathViewModel.SetOuputChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Use Installed Path?</CheckBox>
 
-        <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Output Path:</Label>
-        <TextBox x:Name="txtOutput" Grid.Column="1" Grid.Row="32" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
-        <Button x:Name="btnOutputPath" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7">SELECT</Button>
+        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Module Name:</Label>
+        <TextBox x:Name="txtModuleName" Grid.Column="1" Grid.Row="4" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetModuleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="chkIsDMOnly" Grid.Column="4" Grid.Row="4" VerticalContentAlignment="Center" FontWeight="Bold" FontFamily="Cooper Black" HorizontalContentAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding pathViewModel.SetDMOnlyChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">For DM Only?</CheckBox>
+
+        <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Catalogue Name:</Label>
+        <TextBox x:Name="txtCatalogueName" Grid.Column="1" Grid.Row="6" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetCatalogueName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Author Name:</Label>
+        <TextBox x:Name="txtAuthorName" Grid.Column="1" Grid.Row="8" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetAuthorName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Image Path:</Label>
+        <TextBox x:Name="txtImagePath" Grid.Column="1" Grid.Row="10" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetImagePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsChecked, ElementName=chkUseInstalledPath, Converter={StaticResource invertBoolConverter}}"/>
+        <Button x:Name="btnSelectImagePath" Grid.Column="2" Grid.Row="10" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectImagePath_Click">SELECT</Button>
+
+        <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Path:</Label>
+        <TextBox x:Name="txtBackgroundPath" Grid.Column="1" Grid.Row="12" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetBackgroundPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectBackgroundPath" Grid.Column="2" Grid.Row="12" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnBackgroundPathSave_Click">SELECT</Button>
+
 
 
 
