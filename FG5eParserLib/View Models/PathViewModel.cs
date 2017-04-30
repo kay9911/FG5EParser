@@ -8,10 +8,11 @@ namespace FG5eParserLib.View_Models
 {
     public class PathViewModel
     {
+        //properties
         public RelayCommand ParseCommand { get; set; }
-
         public Paths pathViewModel { get; set; }
 
+        // Constructors
         public PathViewModel()
         {
             ParseCommand = new RelayCommand(Parse,CanParse);
@@ -20,6 +21,7 @@ namespace FG5eParserLib.View_Models
             //pathViewModel = new Paths() { SetBackgroundPath = "Something" } ;
         }
 
+        // Functions
         public void Parse(object _obj)
         {
             // Initiate parser here

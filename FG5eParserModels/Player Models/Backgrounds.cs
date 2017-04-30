@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace FG5eParserModels.Player_Models
 {
@@ -19,11 +14,14 @@ namespace FG5eParserModels.Player_Models
         private string FeatureDescription { get; set; }
         private string SuggestedCharachteristics { get; set; }
 
-        // Declare the event
+        // Output
+        private string Output { get; set; }
+
+        // Declare the nterface event
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Create the OnPropertyChanged method to raise the event
-        protected void OnPropertyChanged(string name)
+        public void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
@@ -31,6 +29,7 @@ namespace FG5eParserModels.Player_Models
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+        #region EXPOSED PROPERTIES
 
         public string _Name
         {
@@ -84,6 +83,7 @@ namespace FG5eParserModels.Player_Models
                 OnPropertyChanged("_Tools");
             }
         }
+
         public string _Languages
         {
             get
@@ -149,5 +149,18 @@ namespace FG5eParserModels.Player_Models
                 OnPropertyChanged("_SuggestedCharachteristics");
             }
         }
+        public string _Output
+        {
+            get
+            {
+                return Output;
+            }
+            set
+            {
+                Output = value;
+                OnPropertyChanged("_Output");
+            }
+        }
+        #endregion
     }
 }
