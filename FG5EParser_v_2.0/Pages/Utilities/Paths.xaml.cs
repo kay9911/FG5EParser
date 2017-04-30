@@ -26,7 +26,6 @@ namespace FG5EParser_v_2._0.Pages.Utilities
         public Paths()
         {
             InitializeComponent();
-            DataContext = new PathViewModel();
         }
 
         private void btnBackgroundPathSave_Click(object sender, RoutedEventArgs e)
@@ -38,6 +37,8 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
             if (choofdlog.ShowDialog() == true)
             {
+                // Adding to resources
+                Properties.Settings.Default.BackgroundTextPath = choofdlog.FileName;
                 txtBackgroundPath.Text = choofdlog.FileName;
                 txtBackgroundPath.IsEnabled = false;
             }

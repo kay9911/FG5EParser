@@ -6,18 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FG5eParserModels.Player_Models;
+using FG5eParserModels.Utility_Modules;
+using System.IO;
 
 namespace FG5eParserLib.View_Mo.dels
 {
     public class BackgroundViewModel : INotifyPropertyChanged
     {
+        public string backgroundTextPath { get; set; }
+
         // Relay Commands
         public RelayCommand AddBackground { get; set; } // Save Button
         public RelayCommand ResetFields { get; set; } // Reset Button
 
         // Lists and Objects
         private Backgrounds BackgroundObj { get; set; }
-        public ObservableCollection<Backgrounds> _backgroundList { get; private set; }
 
         #region PROPERTY CHANGES
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,7 +30,7 @@ namespace FG5eParserLib.View_Mo.dels
             }
             set {
                 BackgroundObj = value;
-                OnPropertyChanged("_newBackground");
+                OnPropertyChanged(null);
             }
         }
 
@@ -46,20 +49,20 @@ namespace FG5eParserLib.View_Mo.dels
         public BackgroundViewModel()
         {
             // Command Inits
-            AddBackground = new RelayCommand(BackgroundAddToList,CanAdd);
+            AddBackground = new RelayCommand(BackgroundAddToList, CanAdd);
             ResetFields = new RelayCommand(resetObject);
 
             //Inits
-            _backgroundList = new ObservableCollection<Backgrounds>();
             BackgroundObj = new Backgrounds();
-            //BackgroundObj = new Backgrounds() { _Name = "NAME", _Skills = "SKILLS", _Description="DESC", _Equipment="EQ", _Feature="Feat", _FeatureDescription = "featdesc", _Languages = "Lang", _Output = "OP", _SuggestedCharachteristics = "SP", _Tools = "Tool" };
-            //_backgroundList.Add(BackgroundObj);
-        }        
+        }
 
         // Functions
         public void BackgroundAddToList(object obj)
         {
-            _backgroundList.Add(BackgroundObj);
+            // Add the object to the file
+            TextWriter tsw = new StreamWriter(backgroundTextPath, true);
+            tsw.WriteLine(BackgroundObj._Output);
+            tsw.Close();
 
             // Reset the object
             Backgrounds _backObj = new Backgrounds();
@@ -67,26 +70,19 @@ namespace FG5eParserLib.View_Mo.dels
         }
 
         public bool CanAdd(object _obj)
-        {
+        {            
+            if (!string.IsNullOrEmpty(backgroundTextPath))
+            {
+                return true;
+            }
             // TO DO: Validation logic for add goes here
-            return true;
+            return false;
         }
 
         private void resetObject(object obj)
         {
             Backgrounds _backObj = new Backgrounds();
             Background = _backObj;
-            #region OLD CODE
-            //var properties = from property in typeof(Backgrounds).GetProperties()
-            //                 where property.PropertyType == typeof(string)
-            //                 && property.CanRead && property.CanWrite
-            //                 select property;
-
-            //foreach (var prop in properties)
-            //{
-            //    prop.SetValue(_backgrounds,null,null);
-            //}
-            #endregion
         }
     }
 }

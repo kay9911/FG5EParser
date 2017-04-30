@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FG5EParser_v_2._0.Pages.Utilities;
 
 namespace FG5EParser_v_2._0.Pages.Player_Module
 {
@@ -24,50 +25,8 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
         public Backgrounds()
         {
             InitializeComponent();
+            //BackgroundViewModel _bvm = new BackgroundViewModel(Properties.Settings.Default.BackgroundTextPath);
+            //this.DataContext = _bvm;
         }
-
-        //private void CollectData(object sender, TextChangedEventArgs e)
-        //{
-        //    StringBuilder _sb = new StringBuilder();
-
-        //    // Name
-        //    _sb.Append(string.Format("##;{0}", txtBackgroundName.Text.Trim()));
-        //    _sb.Append(Environment.NewLine);
-
-        //    // Desc
-        //    _sb.Append(new TextRange(rtbBackgroundDescription.Document.ContentStart, rtbBackgroundDescription.Document.ContentEnd).Text);
-        //    _sb.Append(Environment.NewLine);
-
-        //    //Skill Proficiencies: Insight, Religion
-        //    _sb.Append(string.Format("Skill Proficiencies: {0}", txtSkillProficiencies.Text.Trim()));
-        //    _sb.Append(Environment.NewLine);
-
-        //    //Tool Proficiencies: Insight, Religion
-        //    _sb.Append(string.Format("Tool Proficiencies: {0}", txtToolProficiencies.Text.Trim()));
-        //    _sb.Append(Environment.NewLine);
-
-        //    //Languages: Two of your choice 
-        //    _sb.Append(string.Format("Languages: {0}", txtLanguages.Text.Trim()));
-        //    _sb.Append(Environment.NewLine);
-
-        //    //Equipment:
-        //    _sb.Append(string.Format("Equipment: {0}", txtEquipment.Text.Trim()));
-        //    _sb.Append(Environment.NewLine);
-
-        //    //Feature:
-        //    _sb.Append(string.Format("Feature: {0}", txtFeatureName.Text.Trim()));
-        //    _sb.Append(Environment.NewLine);
-
-        //    // Desc
-        //    _sb.Append(new TextRange(rtbFeatureDescription.Document.ContentStart, rtbFeatureDescription.Document.ContentEnd).Text);
-        //    _sb.Append(Environment.NewLine);
-
-        //    // Suggested
-        //    _sb.Append(new TextRange(rtbSuggestedChar.Document.ContentStart, rtbSuggestedChar.Document.ContentEnd).Text);
-        //    _sb.Append(Environment.NewLine);
-
-        //    rtbOutput.Document.Blocks.Clear();
-        //    rtbOutput.Document.Blocks.Add(new Paragraph(new Run(_sb.ToString())));
-        //}
     }
 }

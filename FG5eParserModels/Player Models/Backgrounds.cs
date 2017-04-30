@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Text;
 
 namespace FG5eParserModels.Player_Models
 {
@@ -17,9 +19,10 @@ namespace FG5eParserModels.Player_Models
         // Output
         private string Output { get; set; }
 
+        #region PROPERTY CHANGES
+
         // Declare the nterface event
         public event PropertyChangedEventHandler PropertyChanged;
-
         // Create the OnPropertyChanged method to raise the event
         public void OnPropertyChanged(string name)
         {
@@ -29,6 +32,8 @@ namespace FG5eParserModels.Player_Models
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+        #endregion
+
         #region EXPOSED PROPERTIES
 
         public string _Name
@@ -40,6 +45,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Name = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Name");
             }
@@ -53,6 +59,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Description = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Description");
             }
@@ -66,6 +73,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Skills = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Skills");
             }
@@ -79,6 +87,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Tools = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Tools");
             }
@@ -93,6 +102,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Languages = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Languages");
             }
@@ -106,6 +116,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Equipment = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Equipment");
             }
@@ -119,6 +130,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Feature = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Feature");
             }
@@ -132,6 +144,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 FeatureDescription = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_FeatureDescription");
             }
@@ -145,6 +158,7 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 SuggestedCharachteristics = value;
+                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_SuggestedCharachteristics");
             }
@@ -162,5 +176,49 @@ namespace FG5eParserModels.Player_Models
             }
         }
         #endregion
+
+        private void formatOutput()
+        {
+            StringBuilder _sb = new StringBuilder();
+
+            // Name
+            _sb.Append(string.Format("##;{0}", _Name));
+            _sb.Append(Environment.NewLine);
+
+            // Desc
+            _sb.Append(_Description);
+            _sb.Append(Environment.NewLine);
+
+            //Skill Proficiencies: Insight, Religion
+            _sb.Append(string.Format("Skill Proficiencies: {0}", _Skills));
+            _sb.Append(Environment.NewLine);
+
+            //Tool Proficiencies: Insight, Religion
+            _sb.Append(string.Format("Tool Proficiencies: {0}", _Tools));
+            _sb.Append(Environment.NewLine);
+
+            //Languages: Two of your choice 
+            _sb.Append(string.Format("Languages: {0}", _Languages));
+            _sb.Append(Environment.NewLine);
+
+            //Equipment:
+            _sb.Append(string.Format("Equipment: {0}", _Equipment));
+            _sb.Append(Environment.NewLine);
+
+            //Feature:
+            _sb.Append(string.Format("Feature: {0}", _Feature));
+            _sb.Append(Environment.NewLine);
+
+            // Desc
+            _sb.Append(_FeatureDescription);
+            _sb.Append(Environment.NewLine);
+
+            // Suggested
+            _sb.Append(_SuggestedCharachteristics);
+            _sb.Append(Environment.NewLine);
+
+            _Output = _sb.ToString();
+            OnPropertyChanged("_Output");
+        }
     }
 }

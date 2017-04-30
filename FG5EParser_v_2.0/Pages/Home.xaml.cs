@@ -22,9 +22,12 @@ namespace FG5EParser_v_2._0.Pages
     /// </summary>
     public partial class Home : Page
     {
+        Paths _pathsPage;
+
         public Home()
         {
             InitializeComponent();
+            _pathsPage = new Paths();            
         }
 
         private void btnBackgrounds_Click(object sender, RoutedEventArgs e)
@@ -70,8 +73,7 @@ namespace FG5EParser_v_2._0.Pages
         }
 
         private void btnParse_Click(object sender, RoutedEventArgs e)
-        {
-            Paths _pathsPage = new Paths();
+        {            
             NavigationService.Navigate(_pathsPage);
         }
     }

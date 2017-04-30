@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:FG5EParser_v_2._0"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>
