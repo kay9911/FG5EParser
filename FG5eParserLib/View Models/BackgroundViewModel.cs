@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using FG5eParserModels.Player_Models;
 using FG5eParserModels.Utility_Modules;
 using System.IO;
+using Microsoft.Win32;
 
 namespace FG5eParserLib.View_Mo.dels
 {
@@ -59,6 +60,20 @@ namespace FG5eParserLib.View_Mo.dels
         // Functions
         public void BackgroundAddToList(object obj)
         {
+            if (string.IsNullOrEmpty(backgroundTextPath))
+            {
+                OpenFileDialog choofdlog = new OpenFileDialog();
+                choofdlog.Filter = "All Files (*.*)|*.*";
+                choofdlog.FilterIndex = 1;
+                choofdlog.Multiselect = false;
+
+                if (choofdlog.ShowDialog() == true)
+                {
+                    // Adding to resources
+                    backgroundTextPath = choofdlog.FileName;
+                }
+            }
+
             // Add the object to the file
             TextWriter tsw = new StreamWriter(backgroundTextPath, true);
             tsw.WriteLine(BackgroundObj._Output);
@@ -70,13 +85,9 @@ namespace FG5eParserLib.View_Mo.dels
         }
 
         public bool CanAdd(object _obj)
-        {            
-            if (!string.IsNullOrEmpty(backgroundTextPath))
-            {
-                return true;
-            }
+        {
             // TO DO: Validation logic for add goes here
-            return false;
+            return true;
         }
 
         private void resetObject(object obj)

@@ -25,8 +25,10 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
         public Backgrounds()
         {
             InitializeComponent();
-            //BackgroundViewModel _bvm = new BackgroundViewModel(Properties.Settings.Default.BackgroundTextPath);
-            //this.DataContext = _bvm;
+            
+            // Passing any existing file strings to the view model
+            BackgroundViewModel _bvm = new BackgroundViewModel() { backgroundTextPath = Properties.Settings.Default.BackgroundTextPath };
+            DataContext = _bvm;
         }
     }
 }
