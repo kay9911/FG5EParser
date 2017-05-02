@@ -22,29 +22,5 @@ namespace FG5EParser_v_2._0.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string BackgroundTextPath {
-            get {
-                return ((string)(this["BackgroundTextPath"]));
-            }
-            set {
-                this["BackgroundTextPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TablesTextPath {
-            get {
-                return ((string)(this["TablesTextPath"]));
-            }
-            set {
-                this["TablesTextPath"] = value;
-            }
-        }
     }
 }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FG5eParserModels.Player_Models;
-using FG5eParserModels.Utility_Modules;
 using System.IO;
 using Microsoft.Win32;
 using FG5eParserLib.Utility;

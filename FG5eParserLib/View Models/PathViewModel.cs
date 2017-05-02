@@ -17,12 +17,10 @@ namespace FG5eParserLib.View_Models
         {
             ParseCommand = new RelayCommand(Parse,CanParse);
             pathViewModel = new Paths();
-
-            //pathViewModel = new Paths() { SetBackgroundPath = "Something" } ;
         }
 
         // Functions
-        public void Parse(object _obj)
+        private void Parse(object _obj)
         {
             // Initiate parser here
             XMLParser _xml = new XMLParser();
@@ -44,7 +42,7 @@ namespace FG5eParserLib.View_Models
                     null,
                     null,
                     null,
-                    null,
+                    pathViewModel.SetTablesPath,
                     pathViewModel.SetBackgroundPath,
                     null
                     );
@@ -55,14 +53,10 @@ namespace FG5eParserLib.View_Models
             }
         }
 
-        public bool CanParse(object _obj)
+        private bool CanParse(object _obj)
         {
-            if (string.IsNullOrEmpty((string)_obj))
-            {
-                return false;
-            }
-            else
-                return true;
+            // TO DO: Validation Logic
+            return true;
         }
     }
 }
