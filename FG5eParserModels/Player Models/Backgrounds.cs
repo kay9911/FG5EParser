@@ -15,6 +15,10 @@ namespace FG5eParserModels.Player_Models
         private string Feature { get; set; }
         private string FeatureDescription { get; set; }
         private string SuggestedCharachteristics { get; set; }
+        private string PersonalityTraits { get; set; }
+        private string Flaws { get; set; }
+        private string Ideals { get; set; }
+        private string Bonds { get; set; }
 
         // Output
         private string Output { get; set; }
@@ -175,8 +179,61 @@ namespace FG5eParserModels.Player_Models
                 OnPropertyChanged("_Output");
             }
         }
+        public string _PersonalityTraits
+        {
+            get
+            {
+                return PersonalityTraits;
+            }
+            set
+            {
+                PersonalityTraits = value;
+                formatOutput();
+                OnPropertyChanged("_PersonalityTraits");
+            }
+        }
+        public string _Bonds
+        {
+            get
+            {
+                return Bonds;
+            }
+            set
+            {
+                Bonds = value;
+                formatOutput();
+                OnPropertyChanged("_Bonds");
+            }
+        }
+        public string _Ideals
+        {
+            get
+            {
+                return Ideals;
+            }
+            set
+            {
+                Ideals = value;
+                formatOutput();
+                OnPropertyChanged("_Ideals");
+            }
+        }
+        public string _Flaws
+        {
+            get
+            {
+                return Flaws;
+            }
+            set
+            {
+                Flaws = value;
+                formatOutput();
+                OnPropertyChanged("_Flaws");
+            }
+        }
         #endregion
 
+        // _Output value is obtained from here
         private void formatOutput()
         {
             StringBuilder _sb = new StringBuilder();
@@ -215,6 +272,29 @@ namespace FG5eParserModels.Player_Models
 
             // Suggested
             _sb.Append(_SuggestedCharachteristics);
+            _sb.Append(Environment.NewLine);
+
+            // Tables
+            _sb.Append("#zls;");
+            _sb.Append(Environment.NewLine);
+
+            //#zal;T;*;Acolyte Personality Traits;Acolyte Personality Traits
+            _sb.Append(string.Format("#zal;T;*;{0};{0}",_PersonalityTraits));
+            _sb.Append(Environment.NewLine);
+
+            //#zal;T;*;Acolyte Ideals;Acolyte Ideals
+            _sb.Append(string.Format("#zal;T;*;{0};{0}", _Ideals));
+            _sb.Append(Environment.NewLine);
+
+            //#zal;T;*;Acolyte Bonds;Acolyte Bonds
+            _sb.Append(string.Format("#zal;T;*;{0};{0}", _Bonds));
+            _sb.Append(Environment.NewLine);
+
+            //#zal;T;*;Acolyte Flaws;Acolyte Flaws
+            _sb.Append(string.Format("#zal;T;*;{0};{0}", _Flaws));
+            _sb.Append(Environment.NewLine);
+
+            _sb.Append("#zle;");
             _sb.Append(Environment.NewLine);
 
             _Output = _sb.ToString();

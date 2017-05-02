@@ -9,12 +9,17 @@ using FG5eParserModels.Player_Models;
 using FG5eParserModels.Utility_Modules;
 using System.IO;
 using Microsoft.Win32;
+using FG5eParserLib.Utility;
 
 namespace FG5eParserLib.View_Mo.dels
 {
     public class BackgroundViewModel : INotifyPropertyChanged
     {
         public string backgroundTextPath { get; set; }
+
+        // Table pop up data
+        private string tableTextPath { get; set; }
+        public ObservableCollection<string> TableNames { get; set; }
 
         // Relay Commands
         public RelayCommand AddBackground { get; set; } // Save Button
@@ -31,6 +36,14 @@ namespace FG5eParserLib.View_Mo.dels
             }
             set {
                 BackgroundObj = value;
+                OnPropertyChanged(null);
+            }
+        }
+        public string _tableTextPath
+        {
+            set
+            {
+                TableNames = getTableList(value);
                 OnPropertyChanged(null);
             }
         }
@@ -55,11 +68,13 @@ namespace FG5eParserLib.View_Mo.dels
 
             //Inits
             BackgroundObj = new Backgrounds();
+            TableNames = new ObservableCollection<string>();
         }
 
         // Functions
-        public void BackgroundAddToList(object obj)
+        private void BackgroundAddToList(object obj)
         {
+            // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(backgroundTextPath))
             {
                 OpenFileDialog choofdlog = new OpenFileDialog();
@@ -75,16 +90,19 @@ namespace FG5eParserLib.View_Mo.dels
             }
 
             // Add the object to the file
-            TextWriter tsw = new StreamWriter(backgroundTextPath, true);
-            tsw.WriteLine(BackgroundObj._Output);
-            tsw.Close();
+            if (!string.IsNullOrEmpty(backgroundTextPath))
+            {                
+                TextWriter tsw = new StreamWriter(backgroundTextPath, true);
+                tsw.WriteLine(BackgroundObj._Output);
+                tsw.Close();
 
-            // Reset the object
-            Backgrounds _backObj = new Backgrounds();
-            Background = _backObj;
+                // Reset the object and refresh the screen
+                Backgrounds _backObj = new Backgrounds();
+                Background = _backObj;
+            }
         }
 
-        public bool CanAdd(object _obj)
+        private bool CanAdd(object _obj)
         {
             // TO DO: Validation logic for add goes here
             return true;
@@ -92,8 +110,16 @@ namespace FG5eParserLib.View_Mo.dels
 
         private void resetObject(object obj)
         {
+            // Reset the object and refresh the screen
             Backgrounds _backObj = new Backgrounds();
             Background = _backObj;
+        }
+
+        private ObservableCollection<string> getTableList(string path)
+        {
+            Readers _reader = new Readers();
+            ObservableCollection<string> _tableList = _tableList = _reader.ReadTables(path);
+            return _tableList;
         }
     }
 }

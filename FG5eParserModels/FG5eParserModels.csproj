@@ -43,6 +43,7 @@
     <Compile Include="Player Models\Backgrounds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility Modules\Paths.cs" />
+    <Compile Include="Utility Modules\Tables.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

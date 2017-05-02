@@ -1,19 +1,7 @@
 ﻿using FG5eParserLib.View_Mo.dels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FG5EParser_v_2._0.Pages.Utilities;
 
 namespace FG5EParser_v_2._0.Pages.Player_Module
 {
@@ -22,13 +10,105 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
     /// </summary>
     public partial class Backgrounds : Page
     {
+        BackgroundViewModel _bvm = new BackgroundViewModel();
+
+        public string TablesTextPath { get; set; }
+
+        // Textbox Index
+        // 1. Personality
+        // 2. Ideals
+        // 3. Bonds
+        // 4. Flaws
+
+        int flg = 0;
+
         public Backgrounds()
         {
             InitializeComponent();
-            
-            // Passing any existing file strings to the view model
-            BackgroundViewModel _bvm = new BackgroundViewModel() { backgroundTextPath = Properties.Settings.Default.BackgroundTextPath };
-            DataContext = _bvm;
+            DataContext = _bvm;         
+        }
+
+        private void btnSelectPersonality_Click(object sender, RoutedEventArgs e)
+        {
+            rtbOutput.Visibility = Visibility.Hidden;
+            dtTableNames.Visibility = Visibility.Visible;
+            flg = 1;
+            getTableTextPath();
+        }
+
+        private void btnSelectIdeals_Click(object sender, RoutedEventArgs e)
+        {
+            rtbOutput.Visibility = Visibility.Hidden;
+            dtTableNames.Visibility = Visibility.Visible;
+            flg = 2;
+            getTableTextPath();
+        }
+
+        private void btnSelectBonds_Click(object sender, RoutedEventArgs e)
+        {
+            rtbOutput.Visibility = Visibility.Hidden;
+            dtTableNames.Visibility = Visibility.Visible;
+            flg = 3;
+            getTableTextPath();
+        }
+
+        private void btnSelectFlaws_Click(object sender, RoutedEventArgs e)
+        {
+            rtbOutput.Visibility = Visibility.Hidden;
+            dtTableNames.Visibility = Visibility.Visible;
+            flg = 4;
+            getTableTextPath();
+        }
+
+        private void dtTableNames_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (dtTableNames.SelectedItem == null)
+            {
+                // DO NOTHING
+            }
+            else
+            {
+                rtbOutput.Visibility = Visibility.Visible;
+                dtTableNames.Visibility = Visibility.Hidden;
+                if (flg == 1)
+                {
+                    txtPersonalityTraits.Text = dtTableNames.SelectedItem.ToString();
+                    flg = 0;
+                }
+                if (flg == 2)
+                {
+                    txtIdeals.Text = dtTableNames.SelectedItem.ToString();
+                    flg = 0;
+                }
+                if (flg == 3)
+                {
+                    txtBonds.Text = dtTableNames.SelectedItem.ToString();
+                    flg = 0;
+                }
+                if (flg == 4)
+                {
+                    txtFlaws.Text = dtTableNames.SelectedItem.ToString();
+                    flg = 0;
+                }
+            }
+        }
+
+        private void getTableTextPath()
+        {
+            if (string.IsNullOrEmpty(TablesTextPath))
+            {
+                OpenFileDialog choofdlog = new OpenFileDialog();
+                choofdlog.Filter = "All Files (*.*)|*.*";
+                choofdlog.FilterIndex = 1;
+                choofdlog.Multiselect = false;
+
+                if (choofdlog.ShowDialog() == true)
+                {
+                    // Adding to resources
+                    TablesTextPath = choofdlog.FileName;
+                    _bvm._tableTextPath = TablesTextPath;
+                }
+            }
         }
     }
 }

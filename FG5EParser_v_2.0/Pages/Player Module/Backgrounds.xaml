@@ -13,6 +13,7 @@
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width=".5*" />
+            <ColumnDefinition Width=".1*" />
             <ColumnDefinition Width="6*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -52,7 +53,7 @@
             <RowDefinition Height=".2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">BACKGROUNDS</Label>
+        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">BACKGROUNDS</Label>
 
         <!--Background Details-->
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Name:</Label>
@@ -101,27 +102,47 @@
         </RichTextBox>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Personality Traits:</Label>
-        <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" FontFamily="Cooper Black" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding Background._PersonalityTraits, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectPersonality_Click">&lt;&lt;&lt;</Button>
 
         <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ideals:</Label>
-        <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
-
+        <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding Background._Ideals, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectIdeals_Click">&lt;&lt;&lt;</Button>
+        
         <Label Grid.Column="0" Grid.Row="30" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Bonds:</Label>
-        <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding Background._Bonds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectBonds_Click">&lt;&lt;&lt;</Button>
 
         <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Flaws:</Label>
-        <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding Background._Flaws, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectFlaws_Click">&lt;&lt;&lt;</Button>
 
         <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
+        <!--<Button x:Name="btnShowTables" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnShowTables_Click">TABLES</Button>-->
         <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddBackground}">SAVE</Button>
 
-        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <RichTextBox x:Name="rtbOutput" SpellCheck.IsEnabled="True" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="{Binding Background._Output, Mode=OneWay}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-
+        <DataGrid 
+            x:Name="dtTableNames" 
+            ItemsSource="{Binding TableNames}"
+            AutoGenerateColumns="False"
+            Visibility="Hidden" 
+            SelectionMode="Extended" 
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            Grid.Column="4" 
+            Grid.RowSpan="32"  
+            Grid.Row="2" MouseDoubleClick="dtTableNames_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Table Name" Binding="{Binding}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
+    
 </Page>

@@ -82,7 +82,6 @@
     <Compile Include="Pages\Utilities\Paths.xaml.cs">
       <DependentUpon>Paths.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\XMLFormatting.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
