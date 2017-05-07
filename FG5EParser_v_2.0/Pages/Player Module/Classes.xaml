@@ -64,82 +64,112 @@
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">CLASSES</Label>
 
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Class Name:</Label>
-        <TextBox x:Name="txtClassName" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtClassName" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._ClassName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Class Details:</Label>
-        <RichTextBox x:Name="rtbClassDescription" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbClassDescription" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding ClassObject._ClassDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Hit Dice:</Label>
-        <TextBox x:Name="txtHitDice" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtHitDice" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._HitDice,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Hit Points (1st Level):</Label>
-        <TextBox x:Name="txtHpAtFirsttLevel" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtHpAtFirsttLevel" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._HitPointsAtFirstLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Hit Points (After 1st):</Label>
-        <TextBox x:Name="txtHpAfterFirstLevel" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtHpAfterFirstLevel" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._HitPointsAfterFirstLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Armor:</Label>
-        <TextBox x:Name="txtArmor" Grid.Column="1" Grid.Row="16" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtArmor" Grid.Column="1" Grid.Row="16" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._Armor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Weapons:</Label>
-        <TextBox x:Name="txtWeapons" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtWeapons" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._Weapons,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="20" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Tools:</Label>
-        <TextBox x:Name="txtTools" Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtTools" Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._Tools,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Saving Throws:</Label>
-        <TextBox x:Name="txtSavingThrows" Grid.Column="1" Grid.Row="22" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSavingThrows" Grid.Column="1" Grid.Row="22" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._SavingThrows,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Skills:</Label>
-        <TextBox x:Name="txtSkills" Grid.Column="1" Grid.Row="24" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSkills" Grid.Column="1" Grid.Row="24" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._Skills,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment:</Label>
-        <RichTextBox x:Name="rtbEquipment" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"  Grid.Row="26" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbEquipment" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"  Grid.Row="26" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding ClassObject._Equipment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
         <Label Grid.Column="4" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Name:</Label>
-        <TextBox x:Name="txtFeatureName" Grid.Column="5" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtFeatureName" Grid.Column="5" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding FeaturesObject._FeatureName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Level:</Label>
-        <TextBox x:Name="txtFeatureLevel" Grid.Column="7" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtFeatureLevel" Grid.Column="7" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding FeaturesObject._FeatureLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Description:</Label>
-        <RichTextBox x:Name="rtbFeatureDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbFeatureDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding FeaturesObject._FeatureDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
         <Label Grid.Column="4" Grid.Row="10" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Archtype Feature?:</Label>
-        <CheckBox x:Name="chkIsArchtype" Grid.Column="5" Grid.Row="10" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="chkIsArchtype" Grid.Column="5" Grid.Row="10" VerticalContentAlignment="Center" IsChecked="{Binding FeaturesObject._isArchtypeHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnAddFeature" Grid.Column="7" Grid.Row="10" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ADD FEATURE</Button>
+        <Button x:Name="btnAddFeature" Grid.Column="7" Grid.Row="10" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddFeature}">ADD FEATURE</Button>
 
         <Label Grid.Column="4" Grid.Row="12" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Header Name:</Label>
-        <TextBox x:Name="txtAbilityHeader" Grid.Column="5" Grid.Row="12" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAbilityHeader" Grid.Column="5" Grid.Row="12" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding ClassObject._FeatureArchtypeName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="14" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Name:</Label>
-        <TextBox x:Name="txtAbilityName" Grid.Column="5" Grid.Row="14" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAbilityName" Grid.Column="5" Grid.Row="14" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding AbilitiesObject._AbilityName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="14" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Level:</Label>
-        <TextBox x:Name="txtAbilityLevel" Grid.Column="7" Grid.Row="14" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAbilityLevel" Grid.Column="7" Grid.Row="14" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding AbilitiesObject._AbilityLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="16" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Description:</Label>
-        <RichTextBox x:Name="rtbAbilityDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="16" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbAbilityDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="16" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding AbilitiesObject._AbilityDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
-        <Button x:Name="btnAddAbility" Grid.Column="7" Grid.Row="22" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ADD ABILITY</Button>
+        <Button x:Name="btnAddAbility" Grid.Column="7" Grid.Row="22" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddAbility}">ADD ABILITY</Button>
 
         <Label Grid.Column="4" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Select Ability:</Label>
-        <ComboBox x:Name="cmbSelectAbility" Grid.Column="5" Grid.Row="24" Grid.ColumnSpan="3" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" />
+        <ComboBox x:Name="cmbSelectAbility" Grid.Column="5" Grid.Row="24" Grid.ColumnSpan="3" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" ItemsSource="{Binding AbilityHeaders}" SelectedItem="{Binding FeaturesAbilityObject._UnderArchtype, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="26" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Feature Name:</Label>
-        <TextBox x:Name="txtAbilityFeatureName" Grid.Column="5" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAbilityFeatureName" Grid.Column="5" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding FeaturesAbilityObject._FeatureName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="26" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Level:</Label>
-        <TextBox x:Name="txtAbilityFeatureLevel" Grid.Column="7" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAbilityFeatureLevel" Grid.Column="7" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding FeaturesAbilityObject._FeatureLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="28" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Description:</Label>
-        <RichTextBox x:Name="rtbAbilityFeatureDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="28" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbAbilityFeatureDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="28" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding FeaturesAbilityObject._FeatureDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
-        <Button x:Name="btnAddAbilityFeature" Grid.Column="7" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ADD FEATURE</Button>
+        <Button x:Name="btnAddAbilityFeature" Grid.Column="7" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddAbilityFeature}">ADD FEATURE</Button>
         
-        <Button x:Name="btnReset" Grid.Column="6" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="7" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
+        <Button x:Name="btnReset" Grid.Column="6" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="7" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddClass}">SAVE</Button>
 
     </Grid>
 </Page>

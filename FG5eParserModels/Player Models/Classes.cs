@@ -22,8 +22,11 @@ namespace FG5eParserModels.Player_Models
 
         private string FeatureArchtypeName { get; set; } // What the archtype section is called           
 
-        private ObservableCollection<ClassFeatures> _featureList { get; set; }
-        private ObservableCollection<ClassAbilities> _abilityList { get; set; }
+        public ObservableCollection<ClassFeatures> _featureList { get; set; }
+        public ObservableCollection<ClassAbilities> _abilityList { get; set; }
+
+        // Output
+        private string Output { get; set; }
 
         #region PROPERTY CHANGES
 
@@ -196,6 +199,19 @@ namespace FG5eParserModels.Player_Models
             }
         }
 
+        public string _Output
+        {
+            get
+            {
+                return Output;
+            }
+            set
+            {
+                Output = value;
+                OnPropertyChanged("_Output");
+            }
+        }
+
         #endregion  
 
         // Constructors
@@ -207,7 +223,7 @@ namespace FG5eParserModels.Player_Models
 
     }
 
-    class ClassFeatures : INotifyPropertyChanged
+    public class ClassFeatures : INotifyPropertyChanged
     {
         private string FeatureName { get; set; }
         private string FeatureLevels { get; set; }
@@ -296,11 +312,10 @@ namespace FG5eParserModels.Player_Models
                 OnPropertyChanged("_UnderArchtype");
             }
         }
-
-#endregion
+        #endregion
     }
 
-    class ClassAbilities : INotifyPropertyChanged
+    public class ClassAbilities : INotifyPropertyChanged
     {
         private string AbilityName { get; set; }
         private string AbilityDescription { get; set; }
