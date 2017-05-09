@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text;
 
 namespace FG5eParserModels.Player_Models
 {
@@ -19,18 +21,17 @@ namespace FG5eParserModels.Player_Models
         private string SavingThrows { get; set; }
         private string Skills { get; set; }
         private string Equipment { get; set; }
-
-        private string FeatureArchtypeName { get; set; } // What the archtype section is called           
-
+        
         public ObservableCollection<ClassFeatures> _featureList { get; set; }
+
+        private string FeatureArchtypeName { get; set; } // What the archtype section is called
         public ObservableCollection<ClassAbilities> _abilityList { get; set; }
 
-        // Output
-        private string Output { get; set; }
+        //NOTE: Output was moved to the viewmodel to make gathering all the details easier
 
         #region PROPERTY CHANGES
 
-        // Declare the nterface event
+        // Declare the interface event
         public event PropertyChangedEventHandler PropertyChanged;
         // Create the OnPropertyChanged method to raise the event
         public void OnPropertyChanged(string name)
@@ -199,19 +200,6 @@ namespace FG5eParserModels.Player_Models
             }
         }
 
-        public string _Output
-        {
-            get
-            {
-                return Output;
-            }
-            set
-            {
-                Output = value;
-                OnPropertyChanged("_Output");
-            }
-        }
-
         #endregion  
 
         // Constructors
@@ -220,7 +208,6 @@ namespace FG5eParserModels.Player_Models
             _featureList = new ObservableCollection<ClassFeatures>();
             _abilityList = new ObservableCollection<ClassAbilities>();
         }
-
     }
 
     public class ClassFeatures : INotifyPropertyChanged
