@@ -49,6 +49,7 @@
     <Compile Include="Utility\Readers.cs" />
     <Compile Include="View Models\BackgroundViewModel.cs" />
     <Compile Include="View Models\ClassesViewModel.cs" />
+    <Compile Include="View Models\EquipmentViewModel.cs" />
     <Compile Include="View Models\PathViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

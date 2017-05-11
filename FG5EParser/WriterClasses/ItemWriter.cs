@@ -78,7 +78,7 @@ namespace FG5EParser.WriterClasses
                             _itemDesc.Description = _basic[i].Replace(_basic[i].Split('.')[0].Trim() + ".","").Trim();
 
                             // Check to see if this is an Equipment Pack
-                            if (_basic[i + 1].Contains("#si;"))
+                            if (i != _basic.Count - 1 && _basic[i + 1].Contains("#si;"))
                             {
                                 string _temp = _basic[i + 1].Replace("#si;","");
 

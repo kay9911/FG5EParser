@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5eParserModels.Player_Models
 {
     public class Equipment : INotifyPropertyChanged
     {
-        // Mandatory
+        #region MANDATORY PROPERTIES
         private string Name { get; set; }
         private string isLocked { get { return "1"; } }
         private string Type { get; set; }
@@ -43,12 +40,13 @@ namespace FG5eParserModels.Player_Models
             get { return Weight; }
             set { Weight = value; OnPropertyChanged("_Weight"); }
         }
+        #endregion
 
-        // Armor Related
+        #region ARMOR PROPERTIES
         private string AC { get; set; }
         private string DexBonus { get; set; }
         private string StrRequired { get; set; }
-        private string StealthDisadvantage { get; set; }
+        private bool StealthDisadvantage { get; set; }
 
         public string _AC
         {
@@ -67,11 +65,12 @@ namespace FG5eParserModels.Player_Models
         }
         public string _StealthDisadvantage
         {
-            get { return StealthDisadvantage; }
-            set { StealthDisadvantage = value; OnPropertyChanged("_StealthDisadvantage"); }
+            get { return StealthDisadvantage.ToString(); }
+            set { StealthDisadvantage = Convert.ToBoolean(value); OnPropertyChanged("_StealthDisadvantage"); }
         }
+        #endregion
 
-        // Weapon Related
+        #region WEAPON PROPERTIES
         private string Damage { get; set; }
         private string Properties { get; set; }
 
@@ -85,8 +84,9 @@ namespace FG5eParserModels.Player_Models
             get { return Properties; }
             set { Properties = value; OnPropertyChanged("_Properties"); }
         }
+        #endregion
 
-        // Mounts and Locomotives
+        #region MOUNTS AND LOCOMOTIVE PROPERTIES
         private string Speed { get; set; }
         private string CarryingCapacity { get; set; }
 
@@ -100,8 +100,9 @@ namespace FG5eParserModels.Player_Models
             get { return CarryingCapacity; }
             set { CarryingCapacity = value; OnPropertyChanged("_CarryingCapacity"); }
         }
+        #endregion
 
-        // Magic Item Related
+        #region MAGICAL ITEM PROPERTIES
         private string ACBonus { get; set; }
         private string isIdentified { get; set; }
         private string Rarity { get; set; }
@@ -133,8 +134,11 @@ namespace FG5eParserModels.Player_Models
             get { return UnidentifiedDescription; }
             set { UnidentifiedDescription = value; OnPropertyChanged("_UnidentifiedDescription"); }
         }
+        #endregion
 
         // Misc
+        private string isTemplate { get { return "0"; } }
+
         private string Description { get; set; } // Needs formatting options
         public string _Description
         {
@@ -142,43 +146,24 @@ namespace FG5eParserModels.Player_Models
             set { Description = value; OnPropertyChanged("_Description"); }
         }
 
-        public ObservableCollection<Subitems> Subitems { get; set; }
-        private string isTemplate { get { return "0"; } }
+        private string Subitems { get; set; }
+        public string _Subitems
+        {
+            get { return Subitems; }
+            set { Subitems = value; OnPropertyChanged("_Subitems"); }
+        }
 
+        private string Output { get; set;}
+        public string _Output
+        {
+            get { return Output; }
+            set { Output = value; OnPropertyChanged("_Output"); }
+        }
+
+        // Constructor
         public Equipment()
         {
-            Subitems = new ObservableCollection<Subitems>();
-        }
-
-        #region PROPERTY CHANGES
-        // Declare the interface event
-        public event PropertyChangedEventHandler PropertyChanged;
-        // Create the OnPropertyChanged method to raise the event
-        public void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
-    }
-
-    public class Subitems : INotifyPropertyChanged
-    {
-        private string ItemName { get; set; }
-        private string Count { get; set; }
-
-        public string _ItemName
-        {
-            get { return ItemName; }
-            set { ItemName = value; OnPropertyChanged("_ItemName"); }
-        }
-        public string _Count
-        {
-            get { return Count; }
-            set { Count = value; OnPropertyChanged("_Count"); }
+            //Subitems = new ObservableCollection<String>();
         }
 
         #region PROPERTY CHANGES

@@ -78,7 +78,6 @@ namespace FG5eParserLib.View_Mo.dels
 
                 if (choofdlog.ShowDialog() == true)
                 {
-                    // Adding to resources
                     backgroundTextPath = choofdlog.FileName;
                 }
             }

@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:FG5EParser_v_2._0.Pages.Player_Module"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Equipment">
@@ -60,53 +59,61 @@
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="8" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">EQUIPMENT</Label>
 
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Select Type:</Label>
-        <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" />
+        <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" SelectionChanged="cmbType_SelectionChanged" SelectedItem="{Binding EquipmentObject._Type}" />
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Subtype:</Label>
-        <TextBox x:Name="txtSubType" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSubType" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Subtype,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Item Name:</Label>
-        <TextBox x:Name="txtItemName" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtItemName" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Cost:</Label>
-        <TextBox x:Name="txtCost" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtCost" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Cost,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Weight:</Label>
-        <TextBox x:Name="txtWeight" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtWeight" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Weight,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Armor Class(AC):</Label>
-        <TextBox x:Name="txtAC" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAC" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._AC,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Strength Required:</Label>
-        <TextBox x:Name="txtStrength" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtStrength" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._StrRequired,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Stealth Disadvantage?:</Label>
-        <CheckBox x:Name="chkStealth" Grid.Column="1" Grid.Row="16" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="chkStealth" Grid.Column="1" Grid.Row="16" VerticalContentAlignment="Center" IsChecked="{Binding EquipmentObject._StealthDisadvantage,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }"/>
 
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Weapon Damage:</Label>
-        <TextBox x:Name="txtDamage" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtDamage" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Damage,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="20" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Weapon Properties:</Label>
-        <TextBox x:Name="txtWeaponProperties" Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtWeaponProperties" Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Properties,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Speed:</Label>
-        <TextBox x:Name="txtSpeed" Grid.Column="1" Grid.Row="22" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSpeed" Grid.Column="1" Grid.Row="22" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Speed,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Carrying Capacity:</Label>
-        <TextBox x:Name="txtCarryingCapacity" Grid.Column="1" Grid.Row="24" Grid.ColumnSpan="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtCarryingCapacity" Grid.Column="1" Grid.Row="24" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._CarryingCapacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="3" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Description:</Label>
-        <RichTextBox x:Name="rtbItemDescription" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="txtItemDescription" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="4" Grid.Row="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding EquipmentObject._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="3" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Group Text:</Label>
+        <TextBox x:Name="txtSubtypeDescription" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="4" Grid.Row="6" TextWrapping="WrapWithOverflow" AcceptsReturn="True"/>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment Parts:</Label>
-        <RichTextBox x:Name="rtbItemParts" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Row="26" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="txtItemParts" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Row="26" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding EquipmentObject._Subitems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
+        <Button x:Name="btnAddItem" Grid.Column="1" Grid.Row="32" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddItemToList}">ADD TO LIST</Button>
 
-        <Button x:Name="btnReset" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="2" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
+        <Button x:Name="btnReset" Grid.Column="6" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="7" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding SaveEquipmentList}">SAVE</Button>
 
-        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="23" Grid.ColumnSpan="4" Grid.Row="8" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
-
-
+        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="23" Grid.ColumnSpan="4" Grid.Row="10" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" FontSize="14" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" IsReadOnly="True">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding _Output, Mode=OneWay}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
     </Grid>
 </Page>
