@@ -19,45 +19,74 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
         // 2. Ideals
         // 3. Bonds
         // 4. Flaws
-
         int flg = 0;
 
+        // Constructor
         public Backgrounds()
         {
             InitializeComponent();
             DataContext = _bvm;         
         }
 
+        // Functions
         private void btnSelectPersonality_Click(object sender, RoutedEventArgs e)
         {
-            rtbOutput.Visibility = Visibility.Hidden;
-            dtTableNames.Visibility = Visibility.Visible;
-            flg = 1;
-            getTableTextPath();
+            if (rtbOutput.Visibility == Visibility.Hidden)
+            {
+                undoHide();
+            }
+            else
+            {
+                rtbOutput.Visibility = Visibility.Hidden;
+                dtTableNames.Visibility = Visibility.Visible;
+                flg = 1;
+                getTableTextPath();
+            }
         }
 
         private void btnSelectIdeals_Click(object sender, RoutedEventArgs e)
         {
-            rtbOutput.Visibility = Visibility.Hidden;
-            dtTableNames.Visibility = Visibility.Visible;
-            flg = 2;
-            getTableTextPath();
+            if (rtbOutput.Visibility == Visibility.Hidden)
+            {
+                undoHide();
+            }
+            else
+            {
+                rtbOutput.Visibility = Visibility.Hidden;
+                dtTableNames.Visibility = Visibility.Visible;
+                flg = 2;
+                getTableTextPath();
+            }
         }
 
         private void btnSelectBonds_Click(object sender, RoutedEventArgs e)
         {
-            rtbOutput.Visibility = Visibility.Hidden;
-            dtTableNames.Visibility = Visibility.Visible;
-            flg = 3;
-            getTableTextPath();
+            if (rtbOutput.Visibility == Visibility.Hidden)
+            {
+                undoHide();
+            }
+            else
+            {
+                rtbOutput.Visibility = Visibility.Hidden;
+                dtTableNames.Visibility = Visibility.Visible;
+                flg = 3;
+                getTableTextPath();
+            }
         }
 
         private void btnSelectFlaws_Click(object sender, RoutedEventArgs e)
         {
-            rtbOutput.Visibility = Visibility.Hidden;
-            dtTableNames.Visibility = Visibility.Visible;
-            flg = 4;
-            getTableTextPath();
+            if (rtbOutput.Visibility == Visibility.Hidden)
+            {
+                undoHide();
+            }
+            else
+            {
+                rtbOutput.Visibility = Visibility.Hidden;
+                dtTableNames.Visibility = Visibility.Visible;
+                flg = 4;
+                getTableTextPath();
+            }
         }
 
         private void dtTableNames_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -108,6 +137,15 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
                     TablesTextPath = choofdlog.FileName;
                     _bvm._tableTextPath = TablesTextPath;
                 }
+            }
+        }
+
+        private void undoHide()
+        {
+            if (rtbOutput.Visibility == Visibility.Hidden)
+            {
+                rtbOutput.Visibility = Visibility.Visible;
+                dtTableNames.Visibility = Visibility.Hidden;
             }
         }
     }
