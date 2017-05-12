@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
@@ -158,12 +158,6 @@ namespace FG5eParserModels.Player_Models
         {
             get { return Output; }
             set { Output = value; OnPropertyChanged("_Output"); }
-        }
-
-        // Constructor
-        public Equipment()
-        {
-            //Subitems = new ObservableCollection<String>();
         }
 
         #region PROPERTY CHANGES

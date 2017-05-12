@@ -62,7 +62,7 @@
         <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" SelectionChanged="cmbType_SelectionChanged" SelectedItem="{Binding EquipmentObject._Type}" />
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Subtype:</Label>
-        <TextBox x:Name="txtSubType" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Subtype,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtSubType" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Subtype,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtSubType_TextChanged"/>
 
         <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Item Name:</Label>
         <TextBox x:Name="txtItemName" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding EquipmentObject._Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
@@ -98,7 +98,7 @@
         <TextBox x:Name="txtItemDescription" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="4" Grid.Row="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding EquipmentObject._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="3" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Group Text:</Label>
-        <TextBox x:Name="txtSubtypeDescription" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="4" Grid.Row="6" TextWrapping="WrapWithOverflow" AcceptsReturn="True"/>
+        <TextBox x:Name="txtSubtypeDescription" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="4" Grid.Row="6" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding _SubTypeDescriptionText,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment Parts:</Label>
         <TextBox x:Name="txtItemParts" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Row="26" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding EquipmentObject._Subitems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

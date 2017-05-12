@@ -17,6 +17,9 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
             InitializeComponent();
             cmbType.ItemsSource = getEquipmentTypes();
 
+            // Enabled only when subtype is entered
+            txtSubtypeDescription.IsEnabled = false;
+
             _EVM = new EquipmentViewModel();
             DataContext = _EVM;
         }
@@ -139,6 +142,17 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
                 txtSpeed.IsEnabled = true;
                 txtItemDescription.IsEnabled = true;
             }
+        }
+
+        private void txtSubType_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSubType.Text))
+            {
+                txtSubtypeDescription.IsEnabled = false;
+                txtSubtypeDescription.Text = string.Empty;
+            }
+            else
+                txtSubtypeDescription.IsEnabled = true;
         }
     }
 }

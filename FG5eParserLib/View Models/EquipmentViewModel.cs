@@ -30,6 +30,22 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        private string SubTypeDescriptionText { get; set; }
+        public string _SubTypeDescriptionText
+        {
+            get
+            {
+                return SubTypeDescriptionText;
+            }
+            set
+            {
+                SubTypeDescriptionText = value;
+                OnPropertyChanged("_SubTypeDescriptionText");
+            }
+        }
+
+        private List<string> SubTypeDescriptionTextList { get; set; }
+
         // Class Objects
         private Equipment _EquipmentObject { get; set; }
         public Equipment EquipmentObject
@@ -55,6 +71,7 @@ namespace FG5eParserLib.View_Models
         {
             // Object Inits
             EquipmentObject = new Equipment();
+            SubTypeDescriptionTextList = new List<string>();
 
             // Property Inits
             itemList = new ObservableCollection<Equipment>();
@@ -86,11 +103,11 @@ namespace FG5eParserLib.View_Models
             if (!string.IsNullOrEmpty(EquipmentTextPath))
             {
                 TextWriter tsw = new StreamWriter(EquipmentTextPath, true);
-                tsw.WriteLine("Output goes here!");
+                tsw.WriteLine(getOutput());
                 tsw.Close();
 
                 // Reset the object and refresh the screen
-                Equipment _equipmentObj = new Equipment();
+                Equipment _equipmentObj = new Equipment() { _Type = EquipmentObject._Type };
                 EquipmentObject = _equipmentObj;
             }
         }
@@ -104,14 +121,24 @@ namespace FG5eParserLib.View_Models
         private void resetObject(object obj)
         {
             // Reset the object and refresh the screen
-            Equipment _equipmentObj = new Equipment();
+            Equipment _equipmentObj = new Equipment() { _Type = EquipmentObject._Type };
             EquipmentObject = _equipmentObj;
+
+            _SubTypeDescriptionText = string.Empty;
+            SubTypeDescriptionTextList.Clear();
         }
 
         private void addItemToList(object obj)
         {
             // Add the item to the list
             itemList.Add(EquipmentObject);
+
+            // Check for subtype description
+            if (!string.IsNullOrEmpty(_SubTypeDescriptionText))
+            {
+                SubTypeDescriptionTextList.Add(string.Format("{0}. {1}",EquipmentObject._Subtype,_SubTypeDescriptionText));
+                _SubTypeDescriptionText = string.Empty;
+            }
 
             // Get the output
             _Output = getOutput();
@@ -283,6 +310,14 @@ namespace FG5eParserLib.View_Models
             _sb.Append("##;");
             _sb.Append(Environment.NewLine);
 
+            // Subtype descriptions
+            foreach (var desc in SubTypeDescriptionTextList)
+            {
+                _sb.Append(string.Format("#stt;{0}",desc));
+                _sb.Append(Environment.NewLine);
+            }
+
+            // Individual item descriptions
             foreach (var item in itemList)
             {
                 _sb.Append(string.Format("{0}. {1}", item._Name, item._Description));
@@ -291,12 +326,28 @@ namespace FG5eParserLib.View_Models
                 // If there is a item breakdown list
                 if (!string.IsNullOrEmpty(item._Subitems))
                 {
-                    _sb.Append(string.Format("#si;{0}",item._Subitems));
+                    // Format list of items
+                    _sb.Append(formatItemList(item._Subitems));
                     _sb.Append(Environment.NewLine);
                 }
             }
 
             return _sb.ToString();
+        }
+
+        private string formatItemList(string obj)
+        {
+            string _sb = string.Empty;
+            List<string> _items = new List<string>();
+
+            //Split the lines
+            string[] lines = obj.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                _sb = _sb + lines[i] + ";";
+            }
+            return string.Format("#si;{0}", _sb);
         }
 
         #region PROPERTY CHANGES
