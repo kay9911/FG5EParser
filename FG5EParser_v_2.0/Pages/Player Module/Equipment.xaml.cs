@@ -1,4 +1,5 @@
 ﻿using FG5eParserLib.View_Models;
+using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
@@ -153,6 +154,34 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
             }
             else
                 txtSubtypeDescription.IsEnabled = true;
+        }
+
+        private void btnSelectItems_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (rtbOutput.Visibility == System.Windows.Visibility.Hidden)
+            {
+                rtbOutput.Visibility = System.Windows.Visibility.Visible;
+                dtItemNames.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else
+            {
+                rtbOutput.Visibility = System.Windows.Visibility.Hidden;
+                dtItemNames.Visibility = System.Windows.Visibility.Visible;
+            }
+
+
+        }
+
+        private void dtItemNames_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (dtItemNames.SelectedItem == null)
+            {
+                // DO NOTHING
+            }
+            else
+            {
+                txtItemParts.Text = !string.IsNullOrEmpty(txtItemParts.Text) ? txtItemParts.Text + Environment.NewLine + _EVM.getSelectedItemName(dtItemNames.SelectedItem) :  _EVM.getSelectedItemName(dtItemNames.SelectedItem);
+            }
         }
     }
 }

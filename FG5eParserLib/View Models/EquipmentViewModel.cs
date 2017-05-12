@@ -310,18 +310,24 @@ namespace FG5eParserLib.View_Models
             _sb.Append("##;");
             _sb.Append(Environment.NewLine);
 
-            // Subtype descriptions
-            foreach (var desc in SubTypeDescriptionTextList)
+            if (SubTypeDescriptionTextList.Count != 0)
             {
-                _sb.Append(string.Format("#stt;{0}",desc));
-                _sb.Append(Environment.NewLine);
+                // Subtype descriptions
+                foreach (var desc in SubTypeDescriptionTextList)
+                {
+                    _sb.Append(string.Format("#stt;{0}", desc));
+                    _sb.Append(Environment.NewLine);
+                }
             }
 
             // Individual item descriptions
             foreach (var item in itemList)
             {
-                _sb.Append(string.Format("{0}. {1}", item._Name, item._Description));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(item._Description))
+                {
+                    _sb.Append(string.Format("{0}. {1}", item._Name, item._Description));
+                    _sb.Append(Environment.NewLine);
+                }
 
                 // If there is a item breakdown list
                 if (!string.IsNullOrEmpty(item._Subitems))
@@ -348,6 +354,11 @@ namespace FG5eParserLib.View_Models
                 _sb = _sb + lines[i] + ";";
             }
             return string.Format("#si;{0}", _sb);
+        }
+
+        public string getSelectedItemName(object obj)
+        {
+            return ((Equipment)obj)._Name;
         }
 
         #region PROPERTY CHANGES

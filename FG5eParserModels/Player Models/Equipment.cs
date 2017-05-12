@@ -153,13 +153,6 @@ namespace FG5eParserModels.Player_Models
             set { Subitems = value; OnPropertyChanged("_Subitems"); }
         }
 
-        private string Output { get; set;}
-        public string _Output
-        {
-            get { return Output; }
-            set { Output = value; OnPropertyChanged("_Output"); }
-        }
-
         #region PROPERTY CHANGES
         // Declare the interface event
         public event PropertyChangedEventHandler PropertyChanged;
