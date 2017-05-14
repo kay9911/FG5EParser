@@ -52,6 +52,7 @@
     <Compile Include="View Models\EquipmentViewModel.cs" />
     <Compile Include="View Models\PathViewModel.cs" />
     <Compile Include="View Models\RacesViewModel.cs" />
+    <Compile Include="View Models\SpellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FG5eParserModels\FG5eParserModels.csproj">

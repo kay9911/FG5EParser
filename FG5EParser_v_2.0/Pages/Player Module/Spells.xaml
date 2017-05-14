@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:FG5EParser_v_2._0.Pages.Player_Module"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Spells">
@@ -59,51 +58,57 @@
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">SPELLS</Label>
 
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">List Name:</Label>
-        <TextBox x:Name="txtSpellListName" Grid.Column="1" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSpellListName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
         
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Level:</Label>
         <ComboBox x:Name="cmbLevel" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="1" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" />
 
         <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Name:</Label>
-        <TextBox x:Name="txtSpellName" Grid.Column="1" Grid.Row="6" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSpellName" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
 
         <Button x:Name="btnAdd" Grid.Column="2" Grid.Row="6" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,100,7">ADD</Button>
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Name:</Label>
-        <TextBox x:Name="txtSpellNames" Grid.Column="1" Grid.Row="10" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSpellNames" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Level:</Label>
-        <ComboBox x:Name="cmbLevels" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="1" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" />
+        <ComboBox x:Name="cmbLevels" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="1" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellObject._Level}"/>
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell School:</Label>
-        <ComboBox x:Name="cmbSpellSchool" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="1" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" />
+        <ComboBox x:Name="cmbSpellSchool" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="1" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellObject._School}"/>
         
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Casting Time:</Label>
-        <TextBox x:Name="txtCastingTime" Grid.Column="1" Grid.Row="16" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtCastingTime" Grid.Column="1" Grid.Row="16" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._CastingTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Range:</Label>
-        <TextBox x:Name="txtRange" Grid.Column="1" Grid.Row="18" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtRange" Grid.Column="1" Grid.Row="18" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Range, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="20" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Verbal?:</Label>
-        <CheckBox x:Name="chkVerbal" Grid.Column="1" Grid.Row="20" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="chkVerbal" Grid.Column="1" Grid.Row="20" VerticalContentAlignment="Center" IsChecked="{Binding SpellObject._IsVerbal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Somatic?:</Label>
-        <CheckBox x:Name="chkSomatic" Grid.Column="1" Grid.Row="22" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="chkSomatic" Grid.Column="1" Grid.Row="22" VerticalContentAlignment="Center" IsChecked="{Binding SpellObject._IsSomatic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Material?:</Label>
-        <!--<CheckBox x:Name="chkMaterial" Grid.Column="1" Grid.Row="24" VerticalContentAlignment="Center"/>-->
-        <TextBox x:Name="txtMaterial" Grid.Column="1" Grid.Row="24" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtMaterial" Grid.Column="1" Grid.Row="24" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Material, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Duration:</Label>
-        <TextBox x:Name="txtDuration" Grid.Column="1" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtDuration" Grid.Column="1" Grid.Row="26" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Description:</Label>
-        <RichTextBox x:Name="rtbSpellDescription" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Row="28" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="txtSpellDescription" Grid.Column="1" Grid.RowSpan="5" Grid.Row="28" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding SpellObject._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnReset" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="2" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
+        <Button x:Name="btnAddSpell" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddSpell}">ADD SPELL</Button>
+        <Button x:Name="btnReset" Grid.Column="5" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="6" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding SaveSpells}">SAVE</Button>
 
-        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
     </Grid>
 </Page>

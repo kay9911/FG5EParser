@@ -48,8 +48,8 @@ namespace FG5eParserLib.View_Models
         // Relay Commands
         public RelayCommand SaveRaces { get; set; } // Save Button
         public RelayCommand ResetFields { get; set; } // Reset Button
-        public RelayCommand AddRace { get; set; } // Save Button
-        public RelayCommand AddSubRace { get; set; } // Save Button
+        public RelayCommand AddRace { get; set; } // Add Race
+        public RelayCommand AddSubRace { get; set; } // Add Subrace
 
         // Output
         private string _Output { get; set; }
