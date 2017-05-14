@@ -1,18 +1,5 @@
 ﻿using FG5eParserLib.View_Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FG5EParser_v_2._0.Pages.Player_Module
 {
@@ -30,6 +17,31 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
             // Object Inits
             _RVM = new RacesViewModel();
             DataContext = _RVM;
+
+            // Control Defaults
+            txtSubRaceName.IsEnabled = false;
+            txtSubRaceDetails.IsEnabled = false;
+            txtSubRaceTraits.IsEnabled = false;
+        }
+
+        private void txtRaceName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtRaceName.Text))
+            {
+                txtSubRaceName.IsEnabled = true;
+                txtSubRaceDetails.IsEnabled = true;
+                txtSubRaceTraits.IsEnabled = true;
+
+                txtSubRaceName.Text = string.Empty;
+                txtSubRaceDetails.Text = string.Empty;
+                txtSubRaceTraits.Text = string.Empty;
+            }
+            else
+            {
+                txtSubRaceName.IsEnabled = false;
+                txtSubRaceDetails.IsEnabled = false;
+                txtSubRaceTraits.IsEnabled = false;
+            }
         }
     }
 }

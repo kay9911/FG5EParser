@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:FG5EParser_v_2._0.Pages.Player_Module"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Races">
@@ -58,30 +57,36 @@
         <!--Race Details-->
 
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Name:</Label>
-        <TextBox x:Name="txtRaceName" Grid.Column="1" Grid.Row="2" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtRaceName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding RacesObject._Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtRaceName_TextChanged"/>
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Details:</Label>
-        <RichTextBox x:Name="rtbRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="4" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
-
+        <TextBox x:Name="txtRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="4" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding RacesObject._Details,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Traits:</Label>
-        <RichTextBox x:Name="rtbRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="10" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
-
+        <TextBox x:Name="txtRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="10" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding RacesObject._TraitDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Sub Race Name:</Label>
-        <TextBox x:Name="txtSubRaceName" Grid.Column="1" Grid.Row="16" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSubRaceName" Grid.Column="1" Grid.Row="16" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SubRaceObject._Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right">Sub Race Details:</Label>
-        <RichTextBox x:Name="rtbSubRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="18" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="txtSubRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="18" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding SubRaceObject._Details,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right">Sub Race Traits:</Label>
-        <RichTextBox x:Name="rtbSubRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="24" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="txtSubRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="24" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding SubRaceObject._TraitDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         
-        <Button x:Name="btnSaveSubRaces" Grid.Column="1" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE SUB RACE</Button>
+        <Button x:Name="btnSaveSubRaces" Grid.Column="1" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddSubRace}">ADD SUBRACE</Button>
+        <Button x:Name="btnSaveRace" Grid.Column="3" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddRace}">ADD RACE</Button>
 
-        <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
+        <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding SaveRaces}">SAVE</Button>
 
-        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="27" Grid.Row="2" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding Output, Mode=OneWay}"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
     </Grid>
 </Page>
