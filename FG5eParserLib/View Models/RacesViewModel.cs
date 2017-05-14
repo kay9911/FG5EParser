@@ -177,34 +177,34 @@ namespace FG5eParserLib.View_Models
                     _sb.Append(Environment.NewLine);
                     _sb.Append(string.Format("#h;{0}", race._Name));
                     _sb.Append(Environment.NewLine);
-                }
 
-                // Description
-                if (!string.IsNullOrEmpty(race._Description))
-                {                    
-                    _sb.Append(race._Description);
-                    _sb.Append(Environment.NewLine);
-                }
-
-                // Traits FORMAT
-                //#!;{Trait}
-                //#!;{Trait}
-                _sb.Append(formatRaceTraits(race._TraitDetails));
-
-                // SubRaces
-                List<Races> _subRaceList = _raceList.Where(x => x.SubRaceOff == race._Name).ToList();
-
-                if (_subRaceList.Count != 0)
-                {
-                    foreach (var _subRace in _subRaceList)
+                    // Description
+                    if (!string.IsNullOrEmpty(race._Description))
                     {
-                        _sb.Append(string.Format("#s;{0}",_subRace._Name));
+                        _sb.Append(race._Description);
                         _sb.Append(Environment.NewLine);
-                        _sb.Append(_subRace._Description);
-                        _sb.Append(Environment.NewLine);
+                    }
 
-                        // Traits
-                        _sb.Append(formatRaceTraits(_subRace._TraitDetails));
+                    // Traits FORMAT
+                    //#!;{Trait}
+                    //#!;{Trait}
+                    _sb.Append(formatRaceTraits(race._TraitDetails));
+
+                    // SubRaces
+                    List<Races> _subRaceList = _raceList.Where(x => x.SubRaceOff == race._Name).ToList();
+
+                    if (_subRaceList.Count != 0)
+                    {
+                        foreach (var _subRace in _subRaceList)
+                        {
+                            _sb.Append(string.Format("#s;{0}", _subRace._Name));
+                            _sb.Append(Environment.NewLine);
+                            _sb.Append(_subRace._Description);
+                            _sb.Append(Environment.NewLine);
+
+                            // Traits
+                            _sb.Append(formatRaceTraits(_subRace._TraitDetails));
+                        }
                     }
                 }
             }

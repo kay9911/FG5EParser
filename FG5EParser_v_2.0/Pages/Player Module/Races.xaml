@@ -60,7 +60,7 @@
         <TextBox x:Name="txtRaceName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding RacesObject._Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtRaceName_TextChanged"/>
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Details:</Label>
-        <TextBox x:Name="txtRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="4" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding RacesObject._Details,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="4" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding RacesObject._Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Race Traits:</Label>
         <TextBox x:Name="txtRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="10" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding RacesObject._TraitDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
@@ -69,7 +69,7 @@
         <TextBox x:Name="txtSubRaceName" Grid.Column="1" Grid.Row="16" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SubRaceObject._Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right">Sub Race Details:</Label>
-        <TextBox x:Name="txtSubRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="18" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding SubRaceObject._Details,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtSubRaceDetails" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="18" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding SubRaceObject._Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right">Sub Race Traits:</Label>
         <TextBox x:Name="txtSubRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="24" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding SubRaceObject._TraitDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
@@ -83,7 +83,7 @@
         <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="27" Grid.Row="2" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="{Binding Output, Mode=OneWay}"/>
+                    <Run Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
