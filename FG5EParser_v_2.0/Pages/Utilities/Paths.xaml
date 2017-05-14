@@ -100,6 +100,9 @@
         <TextBox x:Name="txtEquipmentPath" Grid.Column="1" Grid.Row="18" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetEquipmentPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnSelectEquipmentPath" Grid.Column="2" Grid.Row="18" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectEquipmentPath_Click">SELECT</Button>
 
+        <Label Grid.Column="0" Grid.Row="20" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Races Path:</Label>
+        <TextBox x:Name="txtRacesPath" Grid.Column="1" Grid.Row="20" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetRacesPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectRacesPath" Grid.Column="2" Grid.Row="20" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7">SELECT</Button>
 
 
 
