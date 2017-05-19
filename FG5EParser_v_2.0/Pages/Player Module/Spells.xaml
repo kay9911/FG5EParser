@@ -58,15 +58,13 @@
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">SPELLS</Label>
 
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">List Name:</Label>
-        <TextBox x:Name="txtSpellListName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
-        
-        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Level:</Label>
-        <ComboBox x:Name="cmbLevel" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="1" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" />
+        <TextBox x:Name="txtSpellListName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellListName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Name:</Label>
-        <TextBox x:Name="txtSpellName" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Names:</Label>
+        <TextBox x:Name="txtSpellList" Grid.Column="1" Grid.Row="4" Grid.RowSpan="5" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Text="{Binding SpellsinList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnAdd" Grid.Column="2" Grid.Row="6" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,100,7">ADD</Button>
+        <Button x:Name="btnAddFromList" Grid.Column="2" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,100,7" Click="btnAddFromList_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnAdd" Grid.Column="2" Grid.Row="8" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,100,7" Command="{Binding AddSpellList}">ADD</Button>
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Name:</Label>
         <TextBox x:Name="txtSpellNames" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -90,7 +88,7 @@
         <CheckBox x:Name="chkSomatic" Grid.Column="1" Grid.Row="22" VerticalContentAlignment="Center" IsChecked="{Binding SpellObject._IsSomatic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Material?:</Label>
-        <TextBox x:Name="txtMaterial" Grid.Column="1" Grid.Row="24" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Material, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtMaterial" Grid.Column="1" Grid.Row="24" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Material, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Duration:</Label>
         <TextBox x:Name="txtDuration" Grid.Column="1" Grid.Row="26" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -102,13 +100,26 @@
         <Button x:Name="btnReset" Grid.Column="5" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
         <Button x:Name="btnSave" Grid.Column="6" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding SaveSpells}">SAVE</Button>
 
-        <RichTextBox x:Name="rtbOutput" Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+        <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <DataGrid 
+            x:Name="dtSpellNames" 
+            ItemsSource="{Binding _spellList}"
+            AutoGenerateColumns="False"
+            Visibility="Hidden" 
+            SelectionMode="Extended" 
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" MouseDoubleClick="dtSpellNames_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="NAME" Binding="{Binding Path=_Name}"/>
+                <DataGridTextColumn Header="LEVEL" Binding="{Binding Path=_Level}"/>
+                <DataGridTextColumn Header="SCHOOL" Binding="{Binding Path=_School}"/>
+                <DataGridCheckBoxColumn Header="VERBAL" Binding="{Binding Path=_IsVerbal}"/>
+                <DataGridCheckBoxColumn Header="SOMATIC" Binding="{Binding Path=_IsSomatic}"/>
+                <DataGridTextColumn Header="MATERIAL" Binding="{Binding Path=_Material}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Page>
