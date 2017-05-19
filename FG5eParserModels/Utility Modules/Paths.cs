@@ -23,6 +23,7 @@ namespace FG5eParserModels.Utility_Modules
         private string BackgroundsPath { get; set; }
         private string RacesPath { get; set; }
         private string NPCsPath { get; set; }
+        private string SpellsPath { get; set; }
 
         private bool OuputIsChecked { get; set; }
         private bool DMOnlyIsChecked { get; set; }
@@ -193,6 +194,16 @@ namespace FG5eParserModels.Utility_Modules
             {
                 DMOnlyIsChecked = value;
                 OnPropertyChanged("SetDMOnlyChecked");
+            }
+        }
+
+        public string SetSpellsPath
+        {
+            get { return SpellsPath; }
+            set
+            {
+                SpellsPath = value;
+                OnPropertyChanged("SetSpellsPath");
             }
         }
 

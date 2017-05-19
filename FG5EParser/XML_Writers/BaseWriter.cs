@@ -1,11 +1,5 @@
-﻿using FG5EParser.Base_Classes;
-using FG5EParser.XML_Writer_Helper_Classes;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using FG5EParser.XML_Writer_Helper_Classes;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace FG5EParser.XMLWriters
@@ -24,7 +18,8 @@ namespace FG5EParser.XMLWriters
             string _parcelTextPath = "",
             string _tableTextPath = "",
             string _backgroundTextPath = "",
-            string _racesTextPath = ""
+            string _racesTextPath = "",
+            string _spellsTextPath = ""
         )
         {
             StringBuilder xml = new StringBuilder();
@@ -39,7 +34,8 @@ namespace FG5EParser.XMLWriters
             ParcelHelper _parcelHelper = new ParcelHelper();
             TableHelper _tableHelper = new TableHelper();
             BackgroundHelper _backgroundHelper = new BackgroundHelper();
-            RacesHelper _raceHelper = new RacesHelper();            
+            RacesHelper _raceHelper = new RacesHelper();
+            SpellHelper _spellHelper = new SpellHelper();
 
             bool requiresList = false;
 
@@ -190,6 +186,12 @@ namespace FG5EParser.XMLWriters
             {
                 xml.Append(_raceHelper.returnRaceXML(_racesTextPath,_moduleName));
                 xml.Append(_raceHelper.returnRaceXML(_racesTextPath, _moduleName,true));
+            }
+
+            // Input for Spells
+            if (!string.IsNullOrEmpty(_spellsTextPath))
+            {
+                xml.Append(_spellHelper.returnSpellsXML(_spellsTextPath, _moduleName));
             }
 
             xml.Append("</reference>");

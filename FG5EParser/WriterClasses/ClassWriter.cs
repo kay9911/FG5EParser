@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5EParser.WriterClasses
 {
@@ -41,37 +38,6 @@ namespace FG5EParser.WriterClasses
                             _basic.Add(_line);
                         }
                     }
-                    #endregion
-
-                    #region OLD CODE
-                    //    if (!String.IsNullOrWhiteSpace(_line))
-                    //    {
-                    //        _basic.Add(_line);
-                    //    }
-                    //    else
-                    //    {
-                    //        // Send for processing
-                    //        Classes _classes = new Classes();
-                    //        if (_basic.Count != 0)
-                    //        {
-                    //            _classes = _classes.bindValues(_basic,_moduleName);
-                    //            Classes.Add(_classes);
-                    //        }
-                    //        _basic.Clear();
-                    //    }
-                    //}
-
-                    //    // If there is just one entry or the last entry
-                    //    if (!string.IsNullOrEmpty(_basic.ToString()))
-                    //    {
-                    //        Classes _classes = new Classes();
-                    //        if (_basic.Count != 0)
-                    //        {
-                    //            _classes = _classes.bindValues(_basic, _moduleName);
-                    //            Classes.Add(_classes);
-                    //        }
-                    //        _basic.Clear();
-                    //    }
                     #endregion
                 }
 

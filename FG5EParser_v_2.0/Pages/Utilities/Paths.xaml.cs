@@ -97,5 +97,33 @@ namespace FG5EParser_v_2._0.Pages.Utilities
                 txtEquipmentPath.IsEnabled = false;
             }
         }
+
+        private void btnSelectRacesPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                txtRacesPath.Text = choofdlog.FileName;
+                txtRacesPath.IsEnabled = false;
+            }
+        }
+
+        private void btnSelectSpellsPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                txtSpellsPath.Text = choofdlog.FileName;
+                txtSpellsPath.IsEnabled = false;
+            }
+        }
     }
 }

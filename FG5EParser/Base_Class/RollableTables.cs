@@ -1,9 +1,7 @@
 ﻿using FG5EParser.Utilities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5EParser.Base_Class
 {

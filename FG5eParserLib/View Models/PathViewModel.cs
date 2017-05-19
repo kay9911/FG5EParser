@@ -1,7 +1,6 @@
 ﻿using FG5EParser.Utilities;
 using FG5eParserModels.Utility_Modules;
 using System;
-using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace FG5eParserLib.View_Models
@@ -44,7 +43,8 @@ namespace FG5eParserLib.View_Models
                     null,
                     pathViewModel.SetTablesPath,
                     pathViewModel.SetBackgroundPath,
-                    pathViewModel.SetRacesPath
+                    pathViewModel.SetRacesPath,
+                    pathViewModel.SetSpellsPath
                     );
             }
             catch (Exception ex)
