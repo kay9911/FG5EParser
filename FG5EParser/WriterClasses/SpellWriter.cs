@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace FG5EParser.WriterClasses
 {
@@ -83,6 +84,33 @@ namespace FG5EParser.WriterClasses
 
                     Spells.Add(_spell);
                     _spell = new Spells();
+                }
+
+                // Adding in Sources
+
+                string ListTitle = string.Empty;
+
+                for (int i = 0; i < SpellList.Count; i++)
+                {
+                    if (SpellList[i] == "#@;")
+                    {
+                        i++;
+                    }
+
+                    // Select the spell title
+                    ListTitle = SpellList[i];
+                    i++;
+
+                    while (i != SpellDetails.Count && !string.IsNullOrEmpty(SpellList[i]))
+                    {
+                        var spell = Spells.Where(x => x._Name == SpellList[i]).FirstOrDefault();
+                        if (spell != null)
+                        {
+                            spell._Source = string.IsNullOrEmpty(spell._Source) ? ListTitle : spell._Source + ", " + ListTitle;
+                        }
+                        i++;
+                    }
+
                 }
 
                 return Spells;

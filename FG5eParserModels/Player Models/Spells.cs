@@ -15,6 +15,7 @@ namespace FG5eParserModels.Player_Models
         private string CastingTime { get; set; }
         private string Range { get; set; }
         private string Duration { get; set; }
+        private string Source { get; set; }
 
         #region EXPOSED PROPERTIES        
         public string _Name
@@ -135,6 +136,18 @@ namespace FG5eParserModels.Player_Models
             {
                 Duration = value;
                 OnPropertyChanged("_Duration");
+            }
+        }
+        public string _Source
+        {
+            get
+            {
+                return Source;
+            }
+            set
+            {
+                Source = value;
+                OnPropertyChanged("_Source");
             }
         }
         #endregion
