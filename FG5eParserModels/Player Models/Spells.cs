@@ -16,6 +16,7 @@ namespace FG5eParserModels.Player_Models
         private string Range { get; set; }
         private string Duration { get; set; }
         private string Source { get; set; }
+        private string Components { get; set; }
 
         #region EXPOSED PROPERTIES        
         public string _Name
@@ -148,6 +149,18 @@ namespace FG5eParserModels.Player_Models
             {
                 Source = value;
                 OnPropertyChanged("_Source");
+            }
+        }
+        public string _Components
+        {
+            get
+            {
+                return Components;
+            }
+            set
+            {
+                Components = value;
+                OnPropertyChanged("_Components");
             }
         }
         #endregion

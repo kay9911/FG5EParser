@@ -1,4 +1,7 @@
-﻿using FG5EParser.XML_Writer_Helper_Classes;
+﻿using FG5EParser.WriterClasses;
+using FG5EParser.XML_Writer_Helper_Classes;
+using FG5eParserModels.Player_Models;
+using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
 
@@ -22,9 +25,11 @@ namespace FG5EParser.XMLWriters
             string _spellsTextPath = ""
         )
         {
+            // Defaults
             StringBuilder xml = new StringBuilder();
+            bool requiresList = false;
 
-            // Module Based Instances
+            #region MODULE BASED INSTANCES           
             PersonalitiesHelper _personalitiesHelper = new PersonalitiesHelper();
             ClassHelper _classHelper = new ClassHelper();
             StoryHelper _storyHelper = new StoryHelper();
@@ -36,10 +41,18 @@ namespace FG5EParser.XMLWriters
             BackgroundHelper _backgroundHelper = new BackgroundHelper();
             RacesHelper _raceHelper = new RacesHelper();
             SpellHelper _spellHelper = new SpellHelper();
+            #endregion
 
-            bool requiresList = false;
+            #region EXPERIMENTAL SECTION
+            List<Spells> _spellList = new List<Spells>();
+            if (!string.IsNullOrEmpty(_spellsTextPath))
+            {
+                SpellWriter _spellWriter = new SpellWriter();
+                _spellList = _spellWriter.compileSpellList(_spellsTextPath, _moduleName);
+            }
+            #endregion
 
-            #region XML Header
+            #region XML HEADER
             // TO DO: Check and see if this line is required...
             xml.Append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
             xml.Append("<root version=\"3.0\">");
@@ -96,6 +109,12 @@ namespace FG5EParser.XMLWriters
                 requiresList = true;
             }
 
+            // Spell Entries
+            if (!string.IsNullOrEmpty(_spellsTextPath))
+            {
+                requiresList = true;
+            }
+
             // Getting in the additional lists
             if (requiresList)
             {
@@ -141,6 +160,12 @@ namespace FG5EParser.XMLWriters
                 if (!string.IsNullOrEmpty(_tableTextPath))
                 {
                     xml.Append(_tableHelper.returnTableXML(_tableTextPath, _moduleName, true)); // true : Switch to list
+                }
+
+                // Spell List
+                if (!string.IsNullOrEmpty(_spellsTextPath))
+                {
+                    xml.Append(_spellHelper.returnSpellsXML(_spellList, true)); // true : Switch to list
                 }
 
                 xml.Append("</lists>");
@@ -191,7 +216,7 @@ namespace FG5EParser.XMLWriters
             // Input for Spells
             if (!string.IsNullOrEmpty(_spellsTextPath))
             {
-                xml.Append(_spellHelper.returnSpellsXML(_spellsTextPath, _moduleName));
+                xml.Append(_spellHelper.returnSpellsXML(_spellList));
             }
 
             xml.Append("</reference>");
@@ -380,6 +405,23 @@ namespace FG5EParser.XMLWriters
                 index++;
             }
 
+            // Entry for Spells
+            if (!string.IsNullOrEmpty(_spellsTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>referenceindex</class>");
+                xml.Append(string.Format("<recordname>lists.spells.byclass</recordname>"));
+
+                xml.Append("</librarylink>");
+                xml.Append("<name type=\"string\">Spells</name>");
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
             xml.Append("</entries>");
 
             xml.Append(string.Format("</libn{0}>", _moduleName.Replace(" ", "").Trim().ToLower()));
@@ -391,15 +433,12 @@ namespace FG5EParser.XMLWriters
             xml.Append("</root>");
 
             #region ENCODING FIX
-
             Encoding iso = Encoding.GetEncoding("ISO-8859-1");
             Encoding utf8 = Encoding.UTF8;
             byte[] utfBytes = utf8.GetBytes(xml.ToString());
             byte[] isoBytes = Encoding.Convert(utf8, iso, utfBytes);
             string encodedXML = iso.GetString(isoBytes);
-
             XDocument _xml = XDocument.Parse(encodedXML);
-
             #endregion
 
             return _xml;

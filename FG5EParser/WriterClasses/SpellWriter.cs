@@ -1,4 +1,5 @@
-﻿using FG5eParserModels.Player_Models;
+﻿using FG5EParser.Utilities;
+using FG5eParserModels.Player_Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,8 @@ namespace FG5EParser.WriterClasses
         {
             try
             {
+                XMLFormatting _xmlFormatting = new XMLFormatting();
+
                 // Read lines from file
                 var _lines = File.ReadLines(_inputLocation);
 
@@ -54,9 +57,18 @@ namespace FG5EParser.WriterClasses
                     i++;
 
                     // School and Level
-                    _spell._School = SpellDetails[i].Split(' ')[0];
-                    _spell._Level = SpellDetails[i].Split(' ')[1];
-                    i++;
+                    if (SpellDetails[i].Contains("cantrip"))
+                    {
+                        _spell._School = SpellDetails[i].Split(' ')[0];
+                        _spell._Level = returnLevel(SpellDetails[i].Split(' ')[1].Trim());
+                        i++;
+                    }
+                    else
+                    {
+                        _spell._School = SpellDetails[i].Split(' ')[1];
+                        _spell._Level = returnLevel(SpellDetails[i].Split(' ')[0].Trim());
+                        i++;
+                    }
 
                     // Casting Time
                     _spell._CastingTime = SpellDetails[i].Replace("Casting Time:", "").Trim();
@@ -70,6 +82,7 @@ namespace FG5EParser.WriterClasses
                     _spell._IsVerbal = SpellDetails[i].Contains("V") ? "true" : "false";
                     _spell._IsSomatic = SpellDetails[i].Contains("S") ? "true" : "false";
                     _spell._Material = SpellDetails[i].Contains("M") ? SpellDetails[i].Split('M')[1].Trim() : string.Empty;
+                    _spell._Components = SpellDetails[i].Replace("Components:","").Trim();
                     i++;
 
                     // Duration
@@ -78,7 +91,7 @@ namespace FG5EParser.WriterClasses
 
                     while (i != SpellDetails.Count && !string.IsNullOrEmpty(SpellDetails[i]))
                     {
-                        _spell._Description = string.IsNullOrEmpty(_spell._Description) ? _spell._Description + SpellDetails[i] : _spell._Description + Environment.NewLine + SpellDetails[i];
+                        _spell._Description = string.IsNullOrEmpty(_spell._Description) ? _spell._Description + _xmlFormatting.returnFormattedString(SpellDetails[i],moduleName) : _spell._Description + Environment.NewLine + _xmlFormatting.returnFormattedString(SpellDetails[i], moduleName);
                         i++;                      
                     }
 
@@ -113,13 +126,20 @@ namespace FG5EParser.WriterClasses
 
                 }
 
-                return Spells;
+                return Spells.OrderBy(x => x._Name).ToList();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
+        }
+
+        private string returnLevel(string _obj)
+        {
+            if (_obj.ToLower() == "cantrip") return "0";
+
+            return _obj.Substring(0,1);
         }
 
     }
