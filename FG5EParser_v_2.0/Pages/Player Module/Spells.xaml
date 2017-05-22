@@ -74,7 +74,8 @@
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell School:</Label>
         <ComboBox x:Name="cmbSpellSchool" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="1" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellObject._School}"/>
-        
+        <CheckBox x:Name="chkRitual" Grid.Column="2" Grid.Row="14" VerticalContentAlignment="Center" Content="Is Ritual?" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" IsChecked="{Binding isRitual, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Casting Time:</Label>
         <TextBox x:Name="txtCastingTime" Grid.Column="1" Grid.Row="16" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._CastingTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 

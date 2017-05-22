@@ -65,7 +65,14 @@ namespace FG5EParser.WriterClasses
                     }
                     else
                     {
-                        _spell._School = SpellDetails[i].Split(' ')[1];
+                        if (SpellDetails[i].ToLower().Contains("ritual"))
+                        {
+                            _spell._School = SpellDetails[i].Split(' ')[1] + " (Ritual)";
+                        }
+                        else
+                        {
+                            _spell._School = SpellDetails[i].Split(' ')[1];
+                        }
                         _spell._Level = returnLevel(SpellDetails[i].Split(' ')[0].Trim());
                         i++;
                     }

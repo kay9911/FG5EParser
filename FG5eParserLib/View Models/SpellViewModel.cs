@@ -51,6 +51,19 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged("SpellsinList");
             }
         }
+        private bool _isRitual { get; set; }
+        public bool isRitual
+        {
+            get
+            {
+                return _isRitual;
+            }
+            set
+            {
+                _isRitual = value;
+                OnPropertyChanged("isRitual");
+            }
+        }
 
         // Properties and Lists
         public string SpellsTextPath { get; set; }
@@ -80,6 +93,7 @@ namespace FG5eParserLib.View_Models
             _SpellLists = new List<string>();
             _LevelList = new List<string>() {
                 "",
+                "Cantrip",
                 "1st-Level",
                 "2nd-Level",
                 "3rd-Level",
@@ -154,6 +168,14 @@ namespace FG5eParserLib.View_Models
 
         private void addSpell(object obj)
         {
+            // Check if Ritual
+            if (isRitual)
+            {
+                SpellObject._School = SpellObject._School + " (Ritual)";
+            }
+
+            isRitual = false;
+
             // Add the spell to the list
             _spellList.Add(SpellObject);
 
