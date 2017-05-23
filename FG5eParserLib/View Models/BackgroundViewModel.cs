@@ -4,6 +4,8 @@ using FG5eParserModels.Player_Models;
 using System.IO;
 using Microsoft.Win32;
 using FG5eParserLib.Utility;
+using System.Text;
+using System;
 
 namespace FG5eParserLib.View_Mo.dels
 {
@@ -14,13 +16,18 @@ namespace FG5eParserLib.View_Mo.dels
         // Table pop up data
         private string tableTextPath { get; set; }
         public ObservableCollection<string> TableNames { get; set; }
+        public ObservableCollection<Backgrounds> BackgroundList { get; set; }
 
         // Relay Commands
         public RelayCommand AddBackground { get; set; } // Save Button
         public RelayCommand ResetFields { get; set; } // Reset Button
+        public RelayCommand AddToList { get; set; } // Add background to the list
 
         // Lists and Objects
         private Backgrounds BackgroundObj { get; set; }
+
+        // Output
+        private string Output { get; set; }
 
         #region PROPERTY CHANGES
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,10 +42,27 @@ namespace FG5eParserLib.View_Mo.dels
         }
         public string _tableTextPath
         {
+            get
+            {
+                return tableTextPath;
+            }
             set
             {
+                tableTextPath = value;
                 TableNames = getTableList(value);
                 OnPropertyChanged(null);
+            }
+        }
+        public string _Output
+        {
+            get
+            {
+                return Output;
+            }
+            set
+            {
+                Output = value;
+                OnPropertyChanged("_Output");
             }
         }
 
@@ -57,8 +81,12 @@ namespace FG5eParserLib.View_Mo.dels
         public BackgroundViewModel()
         {
             // Command Inits
-            AddBackground = new RelayCommand(BackgroundAddToList, CanAdd);
+            AddBackground = new RelayCommand(SaveList, CanAdd);
             ResetFields = new RelayCommand(resetObject);
+            AddToList = new RelayCommand(AddBackgroundtoList, canAddtoList);
+
+            // List Inits
+            BackgroundList = new ObservableCollection<Backgrounds>();
 
             //Inits
             BackgroundObj = new Backgrounds();
@@ -66,7 +94,7 @@ namespace FG5eParserLib.View_Mo.dels
         }
 
         // Functions
-        private void BackgroundAddToList(object obj)
+        private void SaveList(object obj)
         {
             // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(backgroundTextPath))
@@ -86,7 +114,7 @@ namespace FG5eParserLib.View_Mo.dels
             if (!string.IsNullOrEmpty(backgroundTextPath))
             {                
                 TextWriter tsw = new StreamWriter(backgroundTextPath, true);
-                tsw.WriteLine(BackgroundObj._Output);
+                tsw.WriteLine(_Output);
                 tsw.Close();
 
                 // Reset the object and refresh the screen
@@ -101,18 +129,109 @@ namespace FG5eParserLib.View_Mo.dels
             return true;
         }
 
+        private void AddBackgroundtoList(object obj)
+        {
+            // Add to list
+            BackgroundList.Add(Background);
+
+            getOutput();
+
+            // Reset the bound object
+            Background = new Backgrounds();
+        }
+
+        private bool canAddtoList(object obj)
+        {
+            return true;
+        }
+
         private void resetObject(object obj)
         {
-            // Reset the object and refresh the screen
-            Backgrounds _backObj = new Backgrounds();
-            Background = _backObj;
+            // Reset the object and refresh the screen           
+            Background = new Backgrounds();
+            _Output = string.Empty;
+            _tableTextPath = string.Empty;
+        }
+
+        // _Output value is obtained from here
+        private void getOutput()
+        {
+            StringBuilder _sb = new StringBuilder();
+
+            foreach (var background in BackgroundList)
+            {
+
+                // Name
+                _sb.Append(string.Format("##;{0}", background._Name));
+                _sb.Append(Environment.NewLine);
+
+                // Desc
+                _sb.Append(background._Description);
+                _sb.Append(Environment.NewLine);
+
+                //Skill Proficiencies: Insight, Religion
+                _sb.Append(string.Format("Skill Proficiencies: {0}", background._Skills));
+                _sb.Append(Environment.NewLine);
+
+                //Tool Proficiencies: Insight, Religion
+                _sb.Append(string.Format("Tool Proficiencies: {0}", background._Tools));
+                _sb.Append(Environment.NewLine);
+
+                //Languages: Two of your choice 
+                _sb.Append(string.Format("Languages: {0}", background._Languages));
+                _sb.Append(Environment.NewLine);
+
+                //Equipment:
+                _sb.Append(string.Format("Equipment: {0}", background._Equipment));
+                _sb.Append(Environment.NewLine);
+
+                //Feature:
+                _sb.Append(string.Format("Feature: {0}", background._Feature));
+                _sb.Append(Environment.NewLine);
+
+                // Desc
+                _sb.Append(background._FeatureDescription);
+                _sb.Append(Environment.NewLine);
+
+                // Suggested
+                _sb.Append(background._SuggestedCharachteristics);
+                _sb.Append(Environment.NewLine);
+
+                // Tables
+                _sb.Append("#zls;");
+                _sb.Append(Environment.NewLine);
+
+                //#zal;T;*;Acolyte Personality Traits;Acolyte Personality Traits
+                _sb.Append(string.Format("#zal;T;*;{0};{0}", background._PersonalityTraits));
+                _sb.Append(Environment.NewLine);
+
+                //#zal;T;*;Acolyte Ideals;Acolyte Ideals
+                _sb.Append(string.Format("#zal;T;*;{0};{0}", background._Ideals));
+                _sb.Append(Environment.NewLine);
+
+                //#zal;T;*;Acolyte Bonds;Acolyte Bonds
+                _sb.Append(string.Format("#zal;T;*;{0};{0}", background._Bonds));
+                _sb.Append(Environment.NewLine);
+
+                //#zal;T;*;Acolyte Flaws;Acolyte Flaws
+                _sb.Append(string.Format("#zal;T;*;{0};{0}", background._Flaws));
+                _sb.Append(Environment.NewLine);
+
+                _sb.Append("#zle;");
+                _sb.Append(Environment.NewLine);
+            }
+            _Output = _sb.ToString();
         }
 
         private ObservableCollection<string> getTableList(string path)
         {
-            Readers _reader = new Readers();
-            ObservableCollection<string> _tableList = _tableList = _reader.ReadTables(path);
-            return _tableList;
+            if (!string.IsNullOrEmpty(path))
+            {
+                Readers _reader = new Readers();
+                ObservableCollection<string> _tableList = _tableList = _reader.ReadTables(path);
+                return _tableList;
+            }
+            return null;
         }
     }
 }

@@ -13,7 +13,8 @@
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width=".5*" />
             <ColumnDefinition Width=".1*" />
-            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -98,16 +99,13 @@
         <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Flaws, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectFlaws_Click">&lt;&lt;&lt;</Button>
 
-        <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddBackground}">SAVE</Button>
+        <Button x:Name="btnAddtoList" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddToList}">ADD TO LIST</Button>
 
-        <RichTextBox x:Name="rtbOutput" SpellCheck.IsEnabled="True" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" FontStretch="Expanded" Block.LineHeight="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="{Binding Background._Output, Mode=OneWay}"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+        <Button x:Name="btnReset" Grid.Column="4" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="5" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddBackground}">SAVE</Button>
+
+        <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
         <DataGrid 
             x:Name="dtTableNames" 
             ItemsSource="{Binding TableNames}"

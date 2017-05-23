@@ -20,9 +20,6 @@ namespace FG5eParserModels.Player_Models
         private string Ideals { get; set; }
         private string Bonds { get; set; }
 
-        // Output
-        private string Output { get; set; }
-
         #region PROPERTY CHANGES
 
         // Declare the nterface event
@@ -49,7 +46,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Name = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Name");
             }
@@ -63,7 +59,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Description = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Description");
             }
@@ -77,7 +72,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Skills = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Skills");
             }
@@ -91,7 +85,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Tools = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Tools");
             }
@@ -106,7 +99,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Languages = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Languages");
             }
@@ -120,7 +112,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Equipment = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Equipment");
             }
@@ -134,7 +125,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Feature = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_Feature");
             }
@@ -148,7 +138,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 FeatureDescription = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_FeatureDescription");
             }
@@ -162,23 +151,11 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 SuggestedCharachteristics = value;
-                formatOutput();
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("_SuggestedCharachteristics");
             }
         }
-        public string _Output
-        {
-            get
-            {
-                return Output;
-            }
-            set
-            {
-                Output = value;
-                OnPropertyChanged("_Output");
-            }
-        }
+
         public string _PersonalityTraits
         {
             get
@@ -188,7 +165,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 PersonalityTraits = value;
-                formatOutput();
                 OnPropertyChanged("_PersonalityTraits");
             }
         }
@@ -201,7 +177,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Bonds = value;
-                formatOutput();
                 OnPropertyChanged("_Bonds");
             }
         }
@@ -214,7 +189,6 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Ideals = value;
-                formatOutput();
                 OnPropertyChanged("_Ideals");
             }
         }
@@ -227,78 +201,9 @@ namespace FG5eParserModels.Player_Models
             set
             {
                 Flaws = value;
-                formatOutput();
                 OnPropertyChanged("_Flaws");
             }
         }
-        #endregion
-
-        // _Output value is obtained from here
-        private void formatOutput()
-        {
-            StringBuilder _sb = new StringBuilder();
-
-            // Name
-            _sb.Append(string.Format("##;{0}", _Name));
-            _sb.Append(Environment.NewLine);
-
-            // Desc
-            _sb.Append(_Description);
-            _sb.Append(Environment.NewLine);
-
-            //Skill Proficiencies: Insight, Religion
-            _sb.Append(string.Format("Skill Proficiencies: {0}", _Skills));
-            _sb.Append(Environment.NewLine);
-
-            //Tool Proficiencies: Insight, Religion
-            _sb.Append(string.Format("Tool Proficiencies: {0}", _Tools));
-            _sb.Append(Environment.NewLine);
-
-            //Languages: Two of your choice 
-            _sb.Append(string.Format("Languages: {0}", _Languages));
-            _sb.Append(Environment.NewLine);
-
-            //Equipment:
-            _sb.Append(string.Format("Equipment: {0}", _Equipment));
-            _sb.Append(Environment.NewLine);
-
-            //Feature:
-            _sb.Append(string.Format("Feature: {0}", _Feature));
-            _sb.Append(Environment.NewLine);
-
-            // Desc
-            _sb.Append(_FeatureDescription);
-            _sb.Append(Environment.NewLine);
-
-            // Suggested
-            _sb.Append(_SuggestedCharachteristics);
-            _sb.Append(Environment.NewLine);
-
-            // Tables
-            _sb.Append("#zls;");
-            _sb.Append(Environment.NewLine);
-
-            //#zal;T;*;Acolyte Personality Traits;Acolyte Personality Traits
-            _sb.Append(string.Format("#zal;T;*;{0};{0}",_PersonalityTraits));
-            _sb.Append(Environment.NewLine);
-
-            //#zal;T;*;Acolyte Ideals;Acolyte Ideals
-            _sb.Append(string.Format("#zal;T;*;{0};{0}", _Ideals));
-            _sb.Append(Environment.NewLine);
-
-            //#zal;T;*;Acolyte Bonds;Acolyte Bonds
-            _sb.Append(string.Format("#zal;T;*;{0};{0}", _Bonds));
-            _sb.Append(Environment.NewLine);
-
-            //#zal;T;*;Acolyte Flaws;Acolyte Flaws
-            _sb.Append(string.Format("#zal;T;*;{0};{0}", _Flaws));
-            _sb.Append(Environment.NewLine);
-
-            _sb.Append("#zle;");
-            _sb.Append(Environment.NewLine);
-
-            _Output = _sb.ToString();
-            OnPropertyChanged("_Output");
-        }
+        #endregion        
     }
 }

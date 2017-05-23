@@ -31,13 +31,13 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
         // Functions
         private void btnSelectPersonality_Click(object sender, RoutedEventArgs e)
         {
-            if (rtbOutput.Visibility == Visibility.Hidden)
+            if (txtOutput.Visibility == Visibility.Hidden)
             {
                 undoHide();
             }
             else
             {
-                rtbOutput.Visibility = Visibility.Hidden;
+                txtOutput.Visibility = Visibility.Hidden;
                 dtTableNames.Visibility = Visibility.Visible;
                 flg = 1;
                 getTableTextPath();
@@ -46,13 +46,13 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
 
         private void btnSelectIdeals_Click(object sender, RoutedEventArgs e)
         {
-            if (rtbOutput.Visibility == Visibility.Hidden)
+            if (txtOutput.Visibility == Visibility.Hidden)
             {
                 undoHide();
             }
             else
             {
-                rtbOutput.Visibility = Visibility.Hidden;
+                txtOutput.Visibility = Visibility.Hidden;
                 dtTableNames.Visibility = Visibility.Visible;
                 flg = 2;
                 getTableTextPath();
@@ -61,13 +61,13 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
 
         private void btnSelectBonds_Click(object sender, RoutedEventArgs e)
         {
-            if (rtbOutput.Visibility == Visibility.Hidden)
+            if (txtOutput.Visibility == Visibility.Hidden)
             {
                 undoHide();
             }
             else
             {
-                rtbOutput.Visibility = Visibility.Hidden;
+                txtOutput.Visibility = Visibility.Hidden;
                 dtTableNames.Visibility = Visibility.Visible;
                 flg = 3;
                 getTableTextPath();
@@ -76,13 +76,13 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
 
         private void btnSelectFlaws_Click(object sender, RoutedEventArgs e)
         {
-            if (rtbOutput.Visibility == Visibility.Hidden)
+            if (txtOutput.Visibility == Visibility.Hidden)
             {
                 undoHide();
             }
             else
             {
-                rtbOutput.Visibility = Visibility.Hidden;
+                txtOutput.Visibility = Visibility.Hidden;
                 dtTableNames.Visibility = Visibility.Visible;
                 flg = 4;
                 getTableTextPath();
@@ -97,7 +97,7 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
             }
             else
             {
-                rtbOutput.Visibility = Visibility.Visible;
+                txtOutput.Visibility = Visibility.Visible;
                 dtTableNames.Visibility = Visibility.Hidden;
                 if (flg == 1)
                 {
@@ -124,6 +124,11 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
 
         private void getTableTextPath()
         {
+            if (string.IsNullOrEmpty(_bvm._tableTextPath))
+            {
+                TablesTextPath = string.Empty;
+            }
+
             if (string.IsNullOrEmpty(TablesTextPath))
             {
                 OpenFileDialog choofdlog = new OpenFileDialog();
@@ -142,9 +147,9 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
 
         private void undoHide()
         {
-            if (rtbOutput.Visibility == Visibility.Hidden)
+            if (txtOutput.Visibility == Visibility.Hidden)
             {
-                rtbOutput.Visibility = Visibility.Visible;
+                txtOutput.Visibility = Visibility.Visible;
                 dtTableNames.Visibility = Visibility.Hidden;
             }
         }
