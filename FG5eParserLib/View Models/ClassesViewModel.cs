@@ -74,7 +74,7 @@ namespace FG5eParserLib.View_Models
             if (!string.IsNullOrEmpty(ClassesTextPath))
             {
                 TextWriter tsw = new StreamWriter(ClassesTextPath, true);
-                tsw.WriteLine(getOutput());
+                tsw.WriteLine(Output);
                 tsw.Close();
 
                 // Reset the object and refresh the screen
@@ -92,8 +92,7 @@ namespace FG5eParserLib.View_Models
         private void resetObject(object obj)
         {
             // Reset the object and refresh the screen
-            Classes _classObj = new Classes();
-            ClassObject = _classObj;
+            ClassObject = new Classes();
         }
 
         private void AddFeaturetoObject(object obj)
@@ -101,8 +100,7 @@ namespace FG5eParserLib.View_Models
             ClassObject._featureList.Add(FeaturesObject);
 
             // Reset the object
-            ClassFeatures _featureObj = new ClassFeatures();
-            FeaturesObject = _featureObj;
+            FeaturesObject = new ClassFeatures(); ;
         }
 
         private bool CanAddFeature(object obj)
@@ -119,8 +117,7 @@ namespace FG5eParserLib.View_Models
             AbilityHeaders.Add(_abilityObject._AbilityName);
 
             // Reset the object
-            ClassAbilities _abilityObj = new ClassAbilities();
-            AbilitiesObject = _abilityObj;
+            AbilitiesObject = new ClassAbilities();
         }
 
         private bool CanAddAbility(object obj)
@@ -134,8 +131,7 @@ namespace FG5eParserLib.View_Models
             ClassObject._featureList.Add(FeaturesAbilityObject);
 
             // Reset the object
-            ClassFeatures _featureObj = new ClassFeatures();
-            FeaturesAbilityObject = _featureObj;
+            FeaturesAbilityObject = new ClassFeatures();
         }
 
         private bool CanAddFeatureAbility(object obj)

@@ -19,15 +19,15 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
 
         private void btnReview_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (rtbOuput.Visibility == System.Windows.Visibility.Hidden)
+            if (txtOutput.Visibility == System.Windows.Visibility.Hidden)
             {
-                rtbOuput.Visibility = System.Windows.Visibility.Visible;
+                txtOutput.Visibility = System.Windows.Visibility.Visible;
                 // Refresh the output information
                 _CVM.Output = _CVM.getOutput();
             }
             else
             {
-                rtbOuput.Visibility = System.Windows.Visibility.Hidden;
+                txtOutput.Visibility = System.Windows.Visibility.Hidden;
             }
         }
     }
