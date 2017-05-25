@@ -121,7 +121,7 @@ namespace FG5eParserLib.View_Models
                 foreach (var feat in _featList)
                 {
                     // Name
-                    _sb.Append(string.Format("##!{0}",feat._Name));
+                    _sb.Append(string.Format("##;{0}", feat._Name));
                     _sb.Append(Environment.NewLine);
 
                     //Prerequisite: Dexterity 13 or higher

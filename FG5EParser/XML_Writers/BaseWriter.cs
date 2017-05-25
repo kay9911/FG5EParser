@@ -22,7 +22,8 @@ namespace FG5EParser.XMLWriters
             string _tableTextPath = "",
             string _backgroundTextPath = "",
             string _racesTextPath = "",
-            string _spellsTextPath = ""
+            string _spellsTextPath = "",
+            string _featsTextPath = ""
         )
         {
             // Defaults
@@ -41,6 +42,7 @@ namespace FG5EParser.XMLWriters
             BackgroundHelper _backgroundHelper = new BackgroundHelper();
             RacesHelper _raceHelper = new RacesHelper();
             SpellHelper _spellHelper = new SpellHelper();
+            FeatsHelper _featsHelper = new FeatsHelper();
             #endregion
 
             #region EXPERIMENTAL SECTION
@@ -49,6 +51,12 @@ namespace FG5EParser.XMLWriters
             {
                 SpellWriter _spellWriter = new SpellWriter();
                 _spellList = _spellWriter.compileSpellList(_spellsTextPath, _moduleName);
+            }
+            List<Feats> _featsList = new List<Feats>();
+            if (!string.IsNullOrEmpty(_featsTextPath))
+            {
+                FeatsWriter _featsWriter = new FeatsWriter();
+                _featsList = _featsWriter.compileFeatsList(_featsTextPath, _moduleName);
             }
             #endregion
 
@@ -115,6 +123,12 @@ namespace FG5EParser.XMLWriters
                 requiresList = true;
             }
 
+            // Feats Entries
+            if (!string.IsNullOrEmpty(_featsTextPath))
+            {
+                requiresList = true;
+            }
+
             // Getting in the additional lists
             if (requiresList)
             {
@@ -167,7 +181,6 @@ namespace FG5EParser.XMLWriters
                 {
                     xml.Append(_spellHelper.returnSpellsXML(_spellList, true)); // true : Switch to list
                 }
-
                 xml.Append("</lists>");
             }
 
@@ -217,6 +230,13 @@ namespace FG5EParser.XMLWriters
             if (!string.IsNullOrEmpty(_spellsTextPath))
             {
                 xml.Append(_spellHelper.returnSpellsXML(_spellList));
+            }
+
+            // Input for Feats
+            if (!string.IsNullOrEmpty(_featsTextPath))
+            {
+                xml.Append(_featsHelper.returnFeatsXML(_featsList));
+                xml.Append(_featsHelper.returnFeatsXML(_featsList, true)); // true : Switch to list
             }
 
             xml.Append("</reference>");
@@ -416,6 +436,23 @@ namespace FG5EParser.XMLWriters
 
                 xml.Append("</librarylink>");
                 xml.Append("<name type=\"string\">Spells</name>");
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            // Entry for Feats
+            if (!string.IsNullOrEmpty(_featsTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_featlist</class>");
+                xml.Append(string.Format("<recordname>reference.featlists.byletter</recordname>"));
+
+                xml.Append("</librarylink>");
+                xml.Append("<name type=\"string\">Feats</name>");
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
 
                 // Counter + 1

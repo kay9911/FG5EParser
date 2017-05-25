@@ -44,7 +44,8 @@ namespace FG5eParserLib.View_Models
                     pathViewModel.SetTablesPath,
                     pathViewModel.SetBackgroundPath,
                     pathViewModel.SetRacesPath,
-                    pathViewModel.SetSpellsPath
+                    pathViewModel.SetSpellsPath,
+                    pathViewModel.SetFeatsPath
                     );
             }
             catch (Exception ex)

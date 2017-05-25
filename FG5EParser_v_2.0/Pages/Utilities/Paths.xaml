@@ -108,6 +108,9 @@
         <TextBox x:Name="txtSpellsPath" Grid.Column="1" Grid.Row="22" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetSpellsPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnSelectSpellsPath" Grid.Column="2" Grid.Row="22" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectSpellsPath_Click">SELECT</Button>
 
+        <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feats:</Label>
+        <TextBox x:Name="txtFeatsPath" Grid.Column="1" Grid.Row="24" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetFeatsPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectFeatsPath" Grid.Column="2" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectFeatsPath_Click">SELECT</Button>
 
 
 

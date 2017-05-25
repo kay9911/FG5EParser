@@ -125,5 +125,19 @@ namespace FG5EParser_v_2._0.Pages.Utilities
                 txtSpellsPath.IsEnabled = false;
             }
         }
+
+        private void btnSelectFeatsPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                txtFeatsPath.Text = choofdlog.FileName;
+                txtFeatsPath.IsEnabled = false;
+            }
+        }
     }
 }

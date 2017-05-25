@@ -1,11 +1,5 @@
-﻿using FG5EParser.Base_Classes;
-using FG5EParser.XMLWriters;
+﻿using FG5EParser.XMLWriters;
 using FG5EParser.Zipper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace FG5EParser.Utilities
@@ -30,7 +24,8 @@ namespace FG5EParser.Utilities
             string _tableTextPath = null,
             string _backgroundTextPath = null,
             string _racesTextPath = null,
-            string _spellsTextPath = null
+            string _spellsTextPath = null,
+            string _featsTextPath = null
         )
         {
             // Get the Xdoc's
@@ -56,7 +51,8 @@ namespace FG5EParser.Utilities
                 ,_tableTextPath
                 ,_backgroundTextPath
                 ,_racesTextPath,
-                _spellsTextPath
+                _spellsTextPath,
+                _featsTextPath
                 );
 
             if (string.IsNullOrEmpty(_authorName))

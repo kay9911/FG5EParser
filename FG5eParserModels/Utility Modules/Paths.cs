@@ -24,6 +24,7 @@ namespace FG5eParserModels.Utility_Modules
         private string RacesPath { get; set; }
         private string NPCsPath { get; set; }
         private string SpellsPath { get; set; }
+        private string FeatsPath { get; set; }
 
         private bool OuputIsChecked { get; set; }
         private bool DMOnlyIsChecked { get; set; }
@@ -204,6 +205,16 @@ namespace FG5eParserModels.Utility_Modules
             {
                 SpellsPath = value;
                 OnPropertyChanged("SetSpellsPath");
+            }
+        }
+
+        public string SetFeatsPath
+        {
+            get { return FeatsPath; }
+            set
+            {
+                FeatsPath = value;
+                OnPropertyChanged("SetFeatsPath");
             }
         }
 
