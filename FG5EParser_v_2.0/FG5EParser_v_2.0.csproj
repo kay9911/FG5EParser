@@ -89,6 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\DM Module\NPCs.xaml.cs">
+      <DependentUpon>NPCs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\DM Module\NPCs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,6 +198,10 @@
       <Project>{7fa229e1-9329-4b8a-834d-3d1a4e087622}</Project>
       <Name>FG5eParserLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FG5eParserModels\FG5eParserModels.csproj">
+      <Project>{B7B48A22-CAD2-400F-AF9A-AF55DA739894}</Project>
+      <Name>FG5eParserModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FG5EParser\FG5EParser.csproj">
       <Project>{ca5869ac-a7d5-4879-a009-6dfa78f9fd8b}</Project>
       <Name>FG5EParser</Name>
@@ -208,6 +219,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

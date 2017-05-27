@@ -1,19 +1,9 @@
-﻿using FG5EParser_v_2._0.Pages.Player_Module;
+﻿using FG5EParser_v_2._0.Pages.DM_Module;
+using FG5EParser_v_2._0.Pages.Player_Module;
 using FG5EParser_v_2._0.Pages.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FG5EParser_v_2._0.Pages
 {
@@ -75,6 +65,12 @@ namespace FG5EParser_v_2._0.Pages
         private void btnParse_Click(object sender, RoutedEventArgs e)
         {            
             NavigationService.Navigate(_pathsPage);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NPCs _npcPage = new NPCs();
+            NavigationService.Navigate(_npcPage);
         }
     }
 }

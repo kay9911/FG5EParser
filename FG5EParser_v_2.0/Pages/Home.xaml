@@ -37,7 +37,7 @@
         <Button x:Name="btnSkills" Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnSkills_Click">SKILLS</Button>
         <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" BorderBrush="Azure" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">STORY MODULE</Label>
         <Button Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">STORY ENTRIES</Button>
-        <Button Grid.Column="1" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">NPC</Button>
+        <Button Grid.Column="1" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="Button_Click">NPC</Button>
         <Button Grid.Column="2" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">TREASURE PARCELS</Button>
         <Button Grid.Column="3" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">MAGICAL ITEMS</Button>
         <Button Grid.Column="4" Grid.Row="4" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ENCOUNTERS</Button>
