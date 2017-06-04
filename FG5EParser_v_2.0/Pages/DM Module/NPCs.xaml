@@ -73,74 +73,77 @@
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="18" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">NPCS</Label>
 
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">NPC Name:</Label>
-        <TextBox x:Name="txtNPCName" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtNPCName" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Size:</Label>
-        <ComboBox x:Name="cmbNPCSize" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cmbNPCSize" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding NPCObject._Size,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Type:</Label>
-        <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="cmbSubType" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding NPCObject._Type,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox x:Name="cmbSubType" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding NPCObject._SubType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Alignment:</Label>
-        <ComboBox x:Name="cmbAlignment" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="4" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cmbAlignment" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="4" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding NPCObject._Alignment,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Armor Class:</Label>
-        <TextBox x:Name="txtAC" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAC" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._AC,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Hit Points:</Label>
-        <TextBox x:Name="txtHP" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtHP" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._HitPoints,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Speed:</Label>
-        <TextBox x:Name="txtSpeed" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSpeed" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Speed,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">STR:</Label>
-        <TextBox x:Name="txtSTR" Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSTR" Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Strenght,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtSTR_TextChanged" LostFocus="txtSTR_LostFocus" GotFocus="txtSTR_GotFocus"/>
         <Label Name="STR" Grid.Column="8" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
 
         <Label Grid.Column="6" Grid.Row="4" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">DEX:</Label>
-        <TextBox x:Name="txtDEX" Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtDEX" Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Dexterity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtDEX_TextChanged" LostFocus="txtDEX_LostFocus" GotFocus="txtDEX_GotFocus"/>
         <Label Name="DEX" Grid.Column="8" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
 
         <Label Grid.Column="6" Grid.Row="6" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">CON:</Label>
-        <TextBox x:Name="txtCON" Grid.Column="7" Grid.Row="6" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtCON" Grid.Column="7" Grid.Row="6" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Constitution,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtCON_TextChanged" LostFocus="txtCON_LostFocus" GotFocus="txtCON_GotFocus"/>
         <Label Name="CON" Grid.Column="8" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
 
         <Label Grid.Column="6" Grid.Row="8" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">INT:</Label>
-        <TextBox x:Name="txtINT" Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtINT" Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Intelligence,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtINT_TextChanged" LostFocus="txtINT_LostFocus" GotFocus="txtINT_GotFocus"/>
         <Label Name="INT" Grid.Column="8" Grid.Row="8" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
 
         <Label Grid.Column="6" Grid.Row="10" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">WIS:</Label>
-        <TextBox x:Name="txtWis" Grid.Column="7" Grid.Row="10" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtWIS" Grid.Column="7" Grid.Row="10" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Wisdom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtWIS_TextChanged" LostFocus="txtWIS_LostFocus" GotFocus="txtWIS_GotFocus"/>
         <Label Name="WIS" Grid.Column="8" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
 
         <Label Grid.Column="6" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">CHR:</Label>
-        <TextBox x:Name="txtCHR" Grid.Column="7" Grid.Row="12" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtCHR" Grid.Column="7" Grid.Row="12" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Charisma,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtCHR_TextChanged" LostFocus="txtCHR_LostFocus" GotFocus="txtCHR_GotFocus"/>
         <Label Name="CHR" Grid.Column="8" Grid.Row="12" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
 
+        <Label Grid.Column="6" Grid.Row="14" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">CR/XP:</Label>
+        <TextBox x:Name="txtLevelEXP" Grid.Column="7" Grid.Row="14" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._CR,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/> <!--CR AND XP will be taken from here itself-->
+
         <Label Grid.Column="0" Grid.Row="16" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Saving Throws:</Label>
-        <TextBox x:Name="txtSavingThrows" Grid.Column="2" Grid.Row="16" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSavingThrows" Grid.Column="2" Grid.Row="16" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._SavingThrows,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="18" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Senses:</Label>
-        <TextBox x:Name="txtSenses" Grid.Column="2" Grid.Row="18" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSenses" Grid.Column="2" Grid.Row="18" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Senses,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="20" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Languages:</Label>
-        <TextBox x:Name="txtLanguages" Grid.Column="2" Grid.Row="20" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtLanguages" Grid.Column="2" Grid.Row="20" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Languages,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="22" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Skills:</Label>
-        <TextBox x:Name="txtSkills" Grid.Column="2" Grid.Row="22" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtSkills" Grid.Column="2" Grid.Row="22" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Skills,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="24" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Damage Immunities:</Label>
-        <TextBox x:Name="txtDMGIMU" Grid.Column="2" Grid.Row="24" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtDMGIMU" Grid.Column="2" Grid.Row="24" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._DamageImmunities,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="26" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Condition Immunities:</Label>
-        <TextBox x:Name="txtCNDIMM" Grid.Column="2" Grid.Row="26" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtCNDIMM" Grid.Column="2" Grid.Row="26" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._ConditionImmunities,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="28" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Damage Resistances:</Label>
-        <TextBox x:Name="txtDMGRES" Grid.Column="2" Grid.Row="28" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtDMGRES" Grid.Column="2" Grid.Row="28" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._DamageResistance,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="30" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Damage Vulnarabilities:</Label>
-        <TextBox x:Name="txtDMGVUL" Grid.Column="2" Grid.Row="30" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtDMGVUL" Grid.Column="2" Grid.Row="30" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._DamageVulnarabilities,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <TextBox x:Name="txtAbilitiesAvailable" Grid.Column="0" Grid.ColumnSpan="9" Grid.RowSpan="5"  Grid.Row="32" AcceptsReturn="True" TextWrapping="WrapWithOverflow"/>
         
@@ -181,12 +184,12 @@
                         <RowDefinition Height=".2*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Name:</Label>
-                    <TextBox x:Name="txtAbilityName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtAbilityName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="{Binding AbilityName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     
                     <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
-                    <TextBox x:Name="txtAbilityDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" />
-                    
-                    <Button x:Name="btnAddAbility" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black">ADD ABILITY</Button>
+                    <TextBox x:Name="txtAbilityDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding AbilityDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Button x:Name="btnAddAbility" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" Command="{Binding AddAbilityToList}">ADD ABILITY</Button>
                 </Grid>
             </TabItem>
             <TabItem Header="ACTIONS">
@@ -220,12 +223,12 @@
                         <RowDefinition Height=".2*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Name:</Label>
-                    <TextBox x:Name="txtActionName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtActionName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="{Binding ActionName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
-                    <TextBox x:Name="txtActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" />
+                    <TextBox x:Name="txtActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding ActionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <Button x:Name="btnAddAction" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black">ADD ACTION</Button>
+                    <Button x:Name="btnAddAction" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" Command="{Binding AddActionToList}">ADD ACTION</Button>
                     </Grid>
             </TabItem>
             <TabItem Header="REACTIONS">
@@ -259,12 +262,12 @@
                         <RowDefinition Height=".2*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Name:</Label>
-                    <TextBox x:Name="txtReactionName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtReactionName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="{Binding ReactionName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
-                    <TextBox x:Name="txtReactionDescription" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="5" Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" />
+                    <TextBox x:Name="txtReactionDescription" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="5" Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding ReactionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <Button x:Name="btnAddReaction" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black">ADD REACTION</Button>
+                    <Button x:Name="btnAddReaction" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" Command="{Binding AddReactionToList}">ADD REACTION</Button>
                 </Grid>
             </TabItem>
             <TabItem Header="INNATE SPELLCASTING">
@@ -300,32 +303,32 @@
                         <RowDefinition Height=".2*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spellcasting Ability:</Label>
-                    <ComboBox x:Name="cmbSelectInnateModifier" Grid.Column="1" Grid.Row="0" FontSize="16" FontStretch="Expanded" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbSelectInnateModifier" Grid.Column="1" Grid.Row="0" FontSize="16" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding InnateSepllcastingObject._SpellcastingModifier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="2" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Save DC:</Label>
-                    <TextBox x:Name="txtISSaveDC" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtISSaveDC" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._spellDC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     
                     <Label Grid.Column="4" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Modifier:</Label>
-                    <TextBox x:Name="txtISModifier" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtISModifier" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._Modifier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <!--Slots-->
                     <Label Grid.Column="0" Grid.Row="2" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">At Will:</Label>
-                    <TextBox x:Name="txtAtWill" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtAtWill" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._AtWill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="4" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">1/day:</Label>
-                    <TextBox x:Name="txtOneDay" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtOneDay" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._OnceDay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="6" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">2/day:</Label>
-                    <TextBox x:Name="txtTwoDay" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtTwoDay" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._TwiceDay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="8" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">3/day:</Label>
-                    <TextBox x:Name="txtThreeDay" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtThreeDay" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._ThriceDay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="10" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">4/day:</Label>
-                    <TextBox x:Name="txtFourDay" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtFourDay" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._FourDay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="12" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">5/day:</Label>
-                    <TextBox x:Name="txtFiveDay" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtFiveDay" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding InnateSepllcastingObject._FiveDay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="SPELLCASTING">
@@ -362,44 +365,53 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spellcasting Ability:</Label>
-                    <ComboBox x:Name="cmbSelectSpellcastingModifier" Grid.Column="1" Grid.Row="0" FontSize="16" FontStretch="Expanded" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbSelectSpellcastingModifier" Grid.Column="1" Grid.Row="0" FontSize="16" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._SpellcastingModifier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="2" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Save DC:</Label>
-                    <TextBox x:Name="txtSSaveDC" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtSSaveDC" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._spellDC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="4" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Modifier:</Label>
-                    <TextBox x:Name="txtSModifier" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtSModifier" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._Modifier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <!--Slots-->
                     <Label Grid.Column="0" Grid.Row="2" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Cantrips:</Label>
-                    <TextBox x:Name="Cantrips" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="Cantrips" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._Cantrips, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="4" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 1:</Label>
-                    <TextBox x:Name="txtLevelOne" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelOneSlots" Grid.Column="1" Grid.Row="4" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._FirstLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelOne" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FirstLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="6" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 2:</Label>
-                    <TextBox x:Name="txtLevelTwo" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelTwoSlots" Grid.Column="1" Grid.Row="6" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._SecondLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelTwo" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SecondLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="8" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 3:</Label>
-                    <TextBox x:Name="txtLevelThree" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelThreeSlots" Grid.Column="1" Grid.Row="8" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._ThirdLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelThree" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._ThirdLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="10" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 4:</Label>
-                    <TextBox x:Name="txtLevelFour" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelFourSlots" Grid.Column="1" Grid.Row="10" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._FourthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelFour" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FourthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="12" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 5:</Label>
-                    <TextBox x:Name="txtLevelFive" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelFiveSlots" Grid.Column="1" Grid.Row="12" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._FifthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelFive" Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FifthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="14" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 6:</Label>
-                    <TextBox x:Name="txtLevelSix" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelSixSlots" Grid.Column="1" Grid.Row="14" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._SixthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelSix" Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SixthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="16" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 7:</Label>
-                    <TextBox x:Name="txtLevelSeven" Grid.Column="1" Grid.Row="16" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelSevenSlots" Grid.Column="1" Grid.Row="16" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._SeventhLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelSeven" Grid.Column="2" Grid.Row="16" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SeventhLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                    
                     <Label Grid.Column="0" Grid.Row="18" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 8:</Label>
-                    <TextBox x:Name="txtLevelEight" Grid.Column="1" Grid.Row="18" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelEightSlots" Grid.Column="1" Grid.Row="18" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._EightLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelEight" Grid.Column="2" Grid.Row="18" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._EightLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="20" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 9:</Label>
-                    <TextBox x:Name="txtLevelNine" Grid.Column="1" Grid.Row="20" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbLevelNineSlots" Grid.Column="1" Grid.Row="20" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._NinthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelNine" Grid.Column="2" Grid.Row="20" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._NinthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 </Grid>
             </TabItem>
@@ -434,12 +446,12 @@
                         <RowDefinition Height=".2*" />
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Name:</Label>
-                    <TextBox x:Name="txtLegendaryActionName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtLegendaryActionName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="{Binding LegendaryActionName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
-                    <TextBox x:Name="txtLegendaryActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" />
+                    <TextBox x:Name="txtLegendaryActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding LegendaryActionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <Button x:Name="btnAddLegendaryAction" Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black">ADD LEGENDARY ACTION</Button>
+                    <Button x:Name="btnAddLegendaryAction" Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" Command="{Binding AddLegendaryActionToList}">ADD LEGENDARY ACTION</Button>
                 </Grid>
             </TabItem>
             <TabItem Header="NPC DETAILS">
@@ -472,13 +484,15 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height=".2*" />
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="txtNPCDetails" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="18"   AcceptsReturn="True" TextWrapping="WrapWithOverflow"/>
+                    <TextBox x:Name="txtNPCDetails" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="18"   AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding NPCObject._Details,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </Grid>
             </TabItem>
         </TabControl>
 
-        <TextBox x:Name="txtOutput" Grid.Column="10" Grid.ColumnSpan="8" Grid.RowSpan="15"  Grid.Row="22" AcceptsReturn="True" TextWrapping="WrapWithOverflow"/>
+        <TextBox x:Name="txtOutput" Grid.Column="10" Grid.ColumnSpan="8" Grid.RowSpan="15"  Grid.Row="22" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding NPCObject.Output,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
+        <Button x:Name="btnAddtoList" Grid.Column="10" Grid.Row="38" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ADD TO LIST</Button>
+        
         <Button x:Name="btnReset" Grid.Column="16" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
         <Button x:Name="btnSave" Grid.Column="17" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
 

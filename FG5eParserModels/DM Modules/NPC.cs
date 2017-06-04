@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace FG5eParserModels.DM_Modules
@@ -8,10 +9,11 @@ namespace FG5eParserModels.DM_Modules
         #region PRIVATE PROPERTIES
         private string Name { get; set; }
         private string Type { get; set; }
+        private string SubType { get; set; }
         private string Size { get; set; }
         private string Alignment { get; set; }
-        private int AC { get; set; }
-        private int HitPoints { get; set; }
+        private string AC { get; set; }
+        private string HitPoints { get; set; }
         private string HitDice { get; set; }
         private string Speed { get; set; }
         private int Strenght { get; set; }
@@ -33,7 +35,7 @@ namespace FG5eParserModels.DM_Modules
         private string ConditionImmunities { get; set; }
 
         private string Details { get; set; }
-#endregion
+        #endregion
 
         #region EXPOSED PROPERTIES
         public string _Name
@@ -60,6 +62,18 @@ namespace FG5eParserModels.DM_Modules
                 OnPropertyChanged("_Type");
             }
         }
+        public string _SubType
+        {
+            get
+            {
+                return SubType;
+            }
+            set
+            {
+                SubType = value;
+                OnPropertyChanged("_SubType");
+            }
+        }
         public string _Size
         {
             get
@@ -84,7 +98,7 @@ namespace FG5eParserModels.DM_Modules
                 OnPropertyChanged("_Alignment");
             }
         }
-        public int _AC
+        public string _AC
         {
             get
             {
@@ -96,7 +110,7 @@ namespace FG5eParserModels.DM_Modules
                 OnPropertyChanged("_AC");
             }
         }
-        public int _HitPoints
+        public string _HitPoints
         {
             get
             {
@@ -132,75 +146,75 @@ namespace FG5eParserModels.DM_Modules
                 OnPropertyChanged("_Speed");
             }
         }
-        public int _Strenght
+        public string _Strenght
         {
             get
             {
-                return Strenght;
+                return Strenght.ToString();
             }
             set
             {
-                Strenght = value;
+                Strenght = Convert.ToInt32(value);
                 OnPropertyChanged("_Strenght");
             }
         }
-        public int _Dexterity
+        public string _Dexterity
         {
             get
             {
-                return Dexterity;
+                return Dexterity.ToString();
             }
             set
             {
-                Dexterity = value;
+                Dexterity = Convert.ToInt32(value);
                 OnPropertyChanged("_Dexterity");
             }
         }
-        public int _Constitution
+        public string _Constitution
         {
             get
             {
-                return Constitution;
+                return Constitution.ToString();
             }
             set
             {
-                Constitution = value;
+                Constitution = Convert.ToInt32(value);
                 OnPropertyChanged("_Constitution");
             }
         }
-        public int _Intelligence
+        public string _Intelligence
         {
             get
             {
-                return Intelligence;
+                return Intelligence.ToString();
             }
             set
             {
-                Intelligence = value;
+                Intelligence = Convert.ToInt32(value);
                 OnPropertyChanged("_Intelligence");
             }
         }
-        public int _Wisdom
+        public string _Wisdom
         {
             get
             {
-                return Wisdom;
+                return Wisdom.ToString();
             }
             set
             {
-                Wisdom = value;
+                Wisdom = Convert.ToInt32(value);
                 OnPropertyChanged("_Wisdom");
             }
         }
-        public int _Charisma
+        public string _Charisma
         {
             get
             {
-                return Charisma;
+                return Charisma.ToString();
             }
             set
             {
-                Charisma = value;
+                Charisma = Convert.ToInt32(value);
                 OnPropertyChanged("_Charisma");
             }
         }
