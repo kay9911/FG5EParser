@@ -489,9 +489,9 @@
             </TabItem>
         </TabControl>
 
-        <TextBox x:Name="txtOutput" Grid.Column="10" Grid.ColumnSpan="8" Grid.RowSpan="15"  Grid.Row="22" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding NPCObject.Output,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtOutput" Grid.Column="10" Grid.ColumnSpan="8" Grid.RowSpan="15"  Grid.Row="22" AcceptsReturn="True" SpellCheck.IsEnabled="True" TextWrapping="WrapWithOverflow" Text="{Binding Output,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnAddtoList" Grid.Column="10" Grid.Row="38" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">ADD TO LIST</Button>
+        <Button x:Name="btnAddtoList" Grid.Column="10" Grid.Row="38" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddNPCToList}">ADD TO LIST</Button>
         
         <Button x:Name="btnReset" Grid.Column="16" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
         <Button x:Name="btnSave" Grid.Column="17" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>

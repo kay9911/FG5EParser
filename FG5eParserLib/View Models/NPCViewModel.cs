@@ -362,13 +362,25 @@ namespace FG5eParserLib.View_Models
 
         private void addNPCToList(object obj)
         {
-            // Add the spell to the list
+            // Innate Spellcasting
+
+
+
+            // Add the NPC to the list
             _npcList.Add(NPCObject);
 
             getOutput();
 
             // Reset the object and refresh the screen
-            NPCObject = new NPC();
+            NPCObject = new NPC()
+            {   // Starting Values
+                _Strenght = "10",
+                _Dexterity = "10",
+                _Constitution = "10",
+                _Intelligence = "10",
+                _Wisdom = "10",
+                _Charisma = "10"
+            };
         }
 
         private bool canAddNPC(object obj)
@@ -415,6 +427,7 @@ namespace FG5eParserLib.View_Models
                     , NPC._Wisdom, buildStats(NPC._Wisdom)
                     , NPC._Charisma, buildStats(NPC._Charisma)
                     ));
+                _sb.Append(Environment.NewLine);
 
                 _sb.Append(string.Format("Saving Throws {0}", NPC._SavingThrows));
                 _sb.Append(Environment.NewLine);
@@ -444,7 +457,6 @@ namespace FG5eParserLib.View_Models
                 _sb.Append(Environment.NewLine);
 
                 //Lists
-
                 foreach (var str in NPC._Abilities)
                 {
                     _sb.Append(string.Format("{0}. {1}"
@@ -516,6 +528,7 @@ namespace FG5eParserLib.View_Models
         {
             string _str = ActionName + "." + ActionDescription;
             Actions.Add(_str);
+            NPCObject._Actions.Add(_str);
 
             // Refresh the properties
             ActionName = string.Empty;
@@ -531,6 +544,7 @@ namespace FG5eParserLib.View_Models
         {
             string _str = AbilityName + "." + AbilityDescription;
             Abilities.Add(_str);
+            NPCObject._Abilities.Add(_str);
 
             // Refresh the properties
             AbilityName = string.Empty;
@@ -546,6 +560,7 @@ namespace FG5eParserLib.View_Models
         {
             string _str = ReactionName + "." + ReactionDescription;
             Reactions.Add(_str);
+            NPCObject._Reaction.Add(_str);
 
             // Refresh the properties
             ReactionName = string.Empty;
@@ -561,6 +576,7 @@ namespace FG5eParserLib.View_Models
         {
             string _str = LegendaryActionName + "." + LegendaryActionDescription;
             LegendaryActions.Add(_str);
+            NPCObject._Legend.Add(_str);
 
             // Refresh the properties
             LegendaryActionName = string.Empty;
@@ -589,6 +605,7 @@ namespace FG5eParserLib.View_Models
         #endregion
     }
 
+    // Additonal Support Classes
     public class NPCInnateSpellCasting : INotifyPropertyChanged
     {
         private string SpellcastingModifier { get; set; }

@@ -31,11 +31,14 @@ namespace FG5eParserLib.View_Mo.dels
 
         #region PROPERTY CHANGES
         public event PropertyChangedEventHandler PropertyChanged;
-        public Backgrounds Background {
-            get {
+        public Backgrounds Background
+        {
+            get
+            {
                 return BackgroundObj;
             }
-            set {
+            set
+            {
                 BackgroundObj = value;
                 OnPropertyChanged(null);
             }
@@ -99,10 +102,8 @@ namespace FG5eParserLib.View_Mo.dels
             // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(backgroundTextPath))
             {
-                OpenFileDialog choofdlog = new OpenFileDialog();
+                SaveFileDialog choofdlog = new SaveFileDialog();
                 choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = false;
 
                 if (choofdlog.ShowDialog() == true)
                 {
@@ -112,20 +113,23 @@ namespace FG5eParserLib.View_Mo.dels
 
             // Add the object to the file
             if (!string.IsNullOrEmpty(backgroundTextPath))
-            {                
+            {
                 TextWriter tsw = new StreamWriter(backgroundTextPath, true);
                 tsw.WriteLine(_Output);
                 tsw.Close();
 
-                // Reset the object and refresh the screen
-                Backgrounds _backObj = new Backgrounds();
-                Background = _backObj;
+                // Clear the holding list
+                BackgroundList.Clear();
             }
         }
 
         private bool CanAdd(object _obj)
         {
             // TO DO: Validation logic for add goes here
+            if (BackgroundList.Count == 0)
+            {
+                return false;
+            }
             return true;
         }
 
@@ -174,16 +178,25 @@ namespace FG5eParserLib.View_Mo.dels
                 _sb.Append(Environment.NewLine);
 
                 //Tool Proficiencies: Insight, Religion
-                _sb.Append(string.Format("Tool Proficiencies: {0}", background._Tools));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(background._Tools))
+                {
+                    _sb.Append(string.Format("Tool Proficiencies: {0}", background._Tools));
+                    _sb.Append(Environment.NewLine);
+                }
 
                 //Languages: Two of your choice 
-                _sb.Append(string.Format("Languages: {0}", background._Languages));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(background._Languages))
+                {
+                    _sb.Append(string.Format("Languages: {0}", background._Languages));
+                    _sb.Append(Environment.NewLine);
+                }
 
                 //Equipment:
-                _sb.Append(string.Format("Equipment: {0}", background._Equipment));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(background._Equipment))
+                {
+                    _sb.Append(string.Format("Equipment: {0}", background._Equipment));
+                    _sb.Append(Environment.NewLine);
+                }
 
                 //Feature:
                 _sb.Append(string.Format("Feature: {0}", background._Feature));
@@ -194,6 +207,8 @@ namespace FG5eParserLib.View_Mo.dels
                 _sb.Append(Environment.NewLine);
 
                 // Suggested
+                _sb.Append("Suggested Characteristics");
+                _sb.Append(Environment.NewLine);
                 _sb.Append(background._SuggestedCharachteristics);
                 _sb.Append(Environment.NewLine);
 
