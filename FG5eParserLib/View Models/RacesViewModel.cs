@@ -77,14 +77,11 @@ namespace FG5eParserLib.View_Models
             // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(RacesTextPath))
             {
-                OpenFileDialog choofdlog = new OpenFileDialog();
+                SaveFileDialog choofdlog = new SaveFileDialog();
                 choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = false;
 
                 if (choofdlog.ShowDialog() == true)
                 {
-                    // Adding to resources
                     RacesTextPath = choofdlog.FileName;
                 }
             }
@@ -96,15 +93,16 @@ namespace FG5eParserLib.View_Models
                 tsw.WriteLine(Output);
                 tsw.Close();
 
-                // Reset the object and refresh the screen
-                Races _raceObj = new Races();
-                RacesObject = _raceObj;
+                _raceList.Clear();
             }
         }
 
         private bool canSaveAddRace(object obj)
         {
-            // Validation logic goes here
+            if (_raceList.Count == 0)
+            {
+                return false;
+            }
             return true;
         }
 
@@ -115,6 +113,7 @@ namespace FG5eParserLib.View_Models
 
             // Refresh the object
             RacesObject = new Races();
+            SubRaceObject = new Races();
 
             // Show Output
             getOutput();
