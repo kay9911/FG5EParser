@@ -34,7 +34,7 @@ namespace FG5eParserLib.View_Models
                     pathViewModel.SetImagePath,
                     pathViewModel.SetOuputChecked,
                     pathViewModel.SetDMOnlyChecked,
-                    null,
+                    pathViewModel.SetNPCsPath,
                     pathViewModel.SetClassesPath,
                     null,
                     pathViewModel.SetEquipmentPath,

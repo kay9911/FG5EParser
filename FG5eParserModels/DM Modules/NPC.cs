@@ -359,6 +359,7 @@ namespace FG5eParserModels.DM_Modules
         public ObservableCollection<string> _Actions { get; set; }
         public ObservableCollection<string> _Legend { get; set; }
         public ObservableCollection<string> _Reaction { get; set; }
+        public ObservableCollection<string> _Lair { get; set; }
 
         // Constructor
         public NPC()

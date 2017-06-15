@@ -90,6 +90,10 @@ namespace FG5eParserLib.View_Models
         private string legendaryActionName { get; set; }
         private string legendaryActionDescription { get; set; }
 
+        public ObservableCollection<string> LairActions { get; set; }
+        private string lairActionName { get; set; }
+        private string lairActionDescription { get; set; }
+
         #region EXPOSED TAB CONTROL PROPERTIES
         public string ActionName
         {
@@ -190,6 +194,31 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged("LegendaryActionDescription");
             }
         }
+
+        public string LairActionName
+        {
+            get
+            {
+                return lairActionName;
+            }
+            set
+            {
+                lairActionName = value;
+                OnPropertyChanged("LairActionName");
+            }
+        }
+        public string LairActionDescription
+        {
+            get
+            {
+                return lairActionDescription;
+            }
+            set
+            {
+                lairActionDescription = value;
+                OnPropertyChanged("LairActionDescription");
+            }
+        }
         #endregion
 
         // Tab Control Commands
@@ -197,6 +226,7 @@ namespace FG5eParserLib.View_Models
         public RelayCommand AddAbilityToList { get; set; }
         public RelayCommand AddReactionToList { get; set; }
         public RelayCommand AddLegendaryActionToList { get; set; }
+        public RelayCommand AddLairActionToList { get; set; }
 
         // Constructor
         public NPCViewModel()
@@ -316,6 +346,7 @@ namespace FG5eParserLib.View_Models
             AddAbilityToList = new RelayCommand(addAbilityToList, canAddAction);
             AddReactionToList = new RelayCommand(addReactionToList, canAddReaction);
             AddLegendaryActionToList = new RelayCommand(addLegendaryActionToList, canAddLegendaryAction);
+            AddLairActionToList = new RelayCommand(addLairActionToList, canAddLairAction);
         }
 
         // Functions
@@ -437,23 +468,41 @@ namespace FG5eParserLib.View_Models
                     ));
                 _sb.Append(Environment.NewLine);
 
-                _sb.Append(string.Format("Saving Throws {0}", NPC._SavingThrows));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(NPC._SavingThrows))
+                {
+                    _sb.Append(string.Format("Saving Throws {0}", NPC._SavingThrows));
+                    _sb.Append(Environment.NewLine);
+                }
 
-                _sb.Append(string.Format("Skills {0}", NPC._Skills));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(NPC._Skills))
+                {
+                    _sb.Append(string.Format("Skills {0}", NPC._Skills));
+                    _sb.Append(Environment.NewLine);
+                }
 
-                _sb.Append(string.Format("Damage Vulnerabilities {0}", NPC._DamageVulnarabilities));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(NPC._DamageVulnarabilities))
+                {
+                    _sb.Append(string.Format("Damage Vulnerabilities {0}", NPC._DamageVulnarabilities));
+                    _sb.Append(Environment.NewLine);
+                }
 
-                _sb.Append(string.Format("Damage Resistances {0}", NPC._DamageResistance));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(NPC._DamageResistance))
+                {
+                    _sb.Append(string.Format("Damage Resistances {0}", NPC._DamageResistance));
+                    _sb.Append(Environment.NewLine);
+                }
 
-                _sb.Append(string.Format("Damage Immunities {0}", NPC._DamageImmunities));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(NPC._DamageImmunities))
+                {
+                    _sb.Append(string.Format("Damage Immunities {0}", NPC._DamageImmunities));
+                    _sb.Append(Environment.NewLine);
+                }
 
-                _sb.Append(string.Format("Condition Immunities {0}", NPC._ConditionImmunities));
-                _sb.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(NPC._ConditionImmunities))
+                {
+                    _sb.Append(string.Format("Condition Immunities {0}", NPC._ConditionImmunities));
+                    _sb.Append(Environment.NewLine);
+                }
 
                 _sb.Append(string.Format("Senses {0}", NPC._Senses));
                 _sb.Append(Environment.NewLine);
@@ -465,52 +514,67 @@ namespace FG5eParserLib.View_Models
                 _sb.Append(Environment.NewLine);
 
                 //Lists
-                foreach (var str in NPC._Abilities)
+                if (NPC._Abilities.Count != 0)
                 {
-                    _sb.Append(string.Format("{0}. {1}"
-                        , str.Split('.')[0]
-                        , str.Replace(str.Split('.')[0] + ".", "").Trim()
-                        ));
-                    _sb.Append(Environment.NewLine);
+                    foreach (var str in NPC._Abilities)
+                    {
+                        _sb.Append(string.Format("{0}. {1}"
+                            , str.Split('.')[0]
+                            , str.Replace(str.Split('.')[0] + ".", "").Trim()
+                            ));
+                        _sb.Append(Environment.NewLine);
+                    }
                 }
 
-                _sb.Append("ACTIONS");
-                _sb.Append(Environment.NewLine);
-                foreach (var str in NPC._Actions)
+                if (NPC._Actions.Count != 0)
                 {
-                    _sb.Append(string.Format("{0}. {1}"
-                        , str.Split('.')[0]
-                        , str.Split('.')[1]
-                        ));
+                    _sb.Append("ACTIONS");
                     _sb.Append(Environment.NewLine);
+                    foreach (var str in NPC._Actions)
+                    {
+                        _sb.Append(string.Format("{0}. {1}"
+                            , str.Split('.')[0]
+                            , str.Replace(str.Split('.')[0] + ".", "").Trim()
+                            ));
+                        _sb.Append(Environment.NewLine);
+                    }
                 }
 
-                _sb.Append("REACTIONS");
-                _sb.Append(Environment.NewLine);
-                foreach (var str in NPC._Reaction)
+                if (NPC._Reaction.Count != 0)
                 {
-                    _sb.Append(string.Format("{0}. {1}"
-                        , str.Split('.')[0]
-                        , str.Split('.')[1]
-                        ));
+                    _sb.Append("REACTIONS");
                     _sb.Append(Environment.NewLine);
+                    foreach (var str in NPC._Reaction)
+                    {
+                        _sb.Append(string.Format("{0}. {1}"
+                            , str.Split('.')[0]
+                            , str.Replace(str.Split('.')[0] + ".", "").Trim()
+                            ));
+                        _sb.Append(Environment.NewLine);
+                    }
                 }
 
-                _sb.Append("LEGENDARY ACTIONS");
-                _sb.Append(Environment.NewLine);
-                foreach (var str in NPC._Legend)
+                if (NPC._Legend.Count != 0)
                 {
-                    _sb.Append(string.Format("{0}. {1}"
-                        , str.Split('.')[0]
-                        , str.Split('.')[1]
-                        ));
+                    _sb.Append("LEGENDARY ACTIONS");
                     _sb.Append(Environment.NewLine);
+                    foreach (var str in NPC._Legend)
+                    {
+                        _sb.Append(string.Format("{0}. {1}"
+                            , str.Split('.')[0]
+                            , str.Replace(str.Split('.')[0] + ".", "").Trim()
+                            ));
+                        _sb.Append(Environment.NewLine);
+                    }
                 }
 
-                _sb.Append("##;");
-                _sb.Append(NPC._Details);
+                if (!string.IsNullOrEmpty(NPC._Details))
+                {
+                    _sb.Append("##;");
+                    _sb.Append(NPC._Details);
+                    _sb.Append(Environment.NewLine);
+                }
             }
-
             Output = _sb.ToString();
         }
 
@@ -592,6 +656,22 @@ namespace FG5eParserLib.View_Models
         }
 
         private bool canAddLegendaryAction(object obj)
+        {
+            return true;
+        }
+
+        private void addLairActionToList(object obj)
+        {
+            string _str = LairActionName + "." + LairActionDescription;
+            LairActions.Add(_str);
+            NPCObject._Lair.Add(_str);
+
+            // Refresh the properties
+            LairActionName = string.Empty;
+            LairActionDescription = string.Empty;
+        }
+
+        private bool canAddLairAction(object obj)
         {
             return true;
         }
@@ -1116,11 +1196,11 @@ namespace FG5eParserLib.View_Models
             _sb.Append("Spellcasting.");
             _sb.Append(Environment.NewLine);
             _sb.Append(string.Format("The {0} is an {1}-level spellcaster. Its spellcasting ability is {2} (spell save DC {3}, +{4} to hit with spell attacks). The {0} has the following wizard spells prepared:"
-                ,name
-                ,_obj.Level
-                ,_obj._SpellcastingModifier
-                ,_obj._spellDC
-                ,_obj._Modifier
+                , name
+                , _obj.Level
+                , _obj._SpellcastingModifier
+                , _obj._spellDC
+                , _obj._Modifier
                 ));
 
             if (!string.IsNullOrEmpty(_obj._Cantrips))

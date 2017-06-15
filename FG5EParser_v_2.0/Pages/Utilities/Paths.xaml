@@ -112,7 +112,9 @@
         <TextBox x:Name="txtFeatsPath" Grid.Column="1" Grid.Row="24" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetFeatsPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnSelectFeatsPath" Grid.Column="2" Grid.Row="24" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectFeatsPath_Click">SELECT</Button>
 
-
+        <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">NPCs:</Label>
+        <TextBox x:Name="txtNPCsPath" Grid.Column="1" Grid.Row="26" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetNPCsPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectNPCsPath" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectNPCsPath_Click">SELECT</Button>
 
         <Button x:Name="btnParse" Grid.Column="2" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Command="{Binding Path=ParseCommand}" CommandParameter="{Binding ElementName=txtBackgroundPath,Path=Text}">PARSE!</Button>
 

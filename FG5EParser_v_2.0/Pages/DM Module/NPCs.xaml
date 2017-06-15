@@ -492,14 +492,53 @@
                     <TextBox x:Name="txtNPCDetails" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="18"   AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding NPCObject._Details,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="LAIR ACTIONS">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height=".2*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Name:</Label>
+                    <TextBox x:Name="txtLairActionName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" MinHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="{Binding LairActionName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
+                    <TextBox x:Name="txtLairActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding LairActionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Button x:Name="btnAddLairAction" Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" Command="{Binding AddLairActionToList}">ADD LAIR ACTION</Button>
+                </Grid>
+            </TabItem>
         </TabControl>
 
         <TextBox x:Name="txtOutput" Grid.Column="10" Grid.ColumnSpan="8" Grid.RowSpan="15"  Grid.Row="22" AcceptsReturn="True" SpellCheck.IsEnabled="True" TextWrapping="WrapWithOverflow" Text="{Binding Output,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button x:Name="btnAddtoList" Grid.Column="10" Grid.Row="38" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddNPCToList}">ADD TO LIST</Button>
-        
-        <Button x:Name="btnReset" Grid.Column="16" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="17" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">SAVE</Button>
+
+        <Button x:Name="btnReset" Grid.Column="16" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="17" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding SaveNPC}">SAVE</Button>
 
     </Grid>
 </Page>
