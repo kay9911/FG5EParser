@@ -367,6 +367,10 @@ namespace FG5eParserLib.View_Models
             }
 
             // Spellcasting
+            if (!string.IsNullOrEmpty(SpellcastingObject._SpellcastingModifier))
+            {
+                NPCObject._Abilities.Add(SpellcastingObject.getOutput(SpellcastingObject, NPCObject._Name));
+            }
 
             // Add the NPC to the list
             _npcList.Add(NPCObject);
@@ -465,7 +469,7 @@ namespace FG5eParserLib.View_Models
                 {
                     _sb.Append(string.Format("{0}. {1}"
                         , str.Split('.')[0]
-                        , str.Replace(str.Split('.')[0]+".", "").Trim()
+                        , str.Replace(str.Split('.')[0] + ".", "").Trim()
                         ));
                     _sb.Append(Environment.NewLine);
                 }
@@ -800,6 +804,7 @@ namespace FG5eParserLib.View_Models
         private string SpellcastingModifier { get; set; }
         private string spellDC { get; set; }
         private string Modifier { get; set; }
+        private string Level { get; set; }
 
         private string Cantrips { get; set; }
         private string FirstLevel { get; set; }
@@ -822,6 +827,19 @@ namespace FG5eParserLib.View_Models
         private string EightLevel_Slots { get; set; }
         private string NinthLevel_Slots { get; set; }
 
+        #region EXPOSED PROPERTIES
+        public string _Level
+        {
+            get
+            {
+                return Level;
+            }
+            set
+            {
+                Level = value;
+                OnPropertyChanged("_Level");
+            }
+        }
         public string _Cantrips
         {
             get
@@ -1088,6 +1106,74 @@ namespace FG5eParserLib.View_Models
                 Modifier = value;
                 OnPropertyChanged("_Modifier");
             }
+        }
+        #endregion
+
+        public string getOutput(NPCSpellCasting _obj, string name)
+        {
+            StringBuilder _sb = new StringBuilder();
+
+            _sb.Append("Spellcasting.");
+            _sb.Append(Environment.NewLine);
+            _sb.Append(string.Format("The {0} is an {1}-level spellcaster. Its spellcasting ability is {2} (spell save DC {3}, +{4} to hit with spell attacks). The {0} has the following wizard spells prepared:"
+                ,name
+                ,_obj.Level
+                ,_obj._SpellcastingModifier
+                ,_obj._spellDC
+                ,_obj._Modifier
+                ));
+
+            if (!string.IsNullOrEmpty(_obj._Cantrips))
+            {
+                _sb.Append("\\rCantrips (At will): " + _obj._Cantrips);
+            }
+
+            if (!string.IsNullOrEmpty(_obj._FirstLevel))
+            {
+                _sb.Append(string.Format("\\r1st Level ({0}): {1}", _obj._FirstLevel_Slots, _obj._FirstLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._SecondLevel))
+            {
+                _sb.Append(string.Format("\\r2nd Level ({0}): {1}", _obj._SecondLevel_Slots, _obj._SecondLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._ThirdLevel))
+            {
+                _sb.Append(string.Format("\\r3rd Level ({0}): {1}", _obj._ThirdLevel_Slots, _obj._ThirdLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._FourthLevel))
+            {
+                _sb.Append(string.Format("\\r4th Level ({0}): {1}", _obj._FourthLevel_Slots, _obj._FourthLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._FifthLevel))
+            {
+                _sb.Append(string.Format("\\r5th Level ({0}): {1}", _obj.FifthLevel_Slots, _obj._FifthLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._SixthLevel))
+            {
+                _sb.Append(string.Format("\\r6th Level ({0}): {1}", _obj._SixthLevel_Slots, _obj._SixthLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._SeventhLevel))
+            {
+                _sb.Append(string.Format("\\r7th Level ({0}): {1}", _obj._SeventhLevel_Slots, _obj._SeventhLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._EightLevel))
+            {
+                _sb.Append(string.Format("\\r8th Level ({0}): {1}", _obj._EightLevel_Slots, _obj._EightLevel));
+            }
+
+            if (!string.IsNullOrEmpty(_obj._NinthLevel))
+            {
+                _sb.Append(string.Format("\\r9th Level ({0}): {1}", _obj._NinthLevel_Slots, _obj._NinthLevel));
+            }
+
+            return _sb.ToString();
         }
 
 

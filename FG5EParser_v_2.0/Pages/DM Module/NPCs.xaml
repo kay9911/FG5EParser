@@ -334,12 +334,14 @@
             <TabItem Header="SPELLCASTING">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width=".6*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".2*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".2*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
@@ -373,45 +375,48 @@
                     <Label Grid.Column="4" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Modifier:</Label>
                     <TextBox x:Name="txtSModifier" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._Modifier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
+                    <Label Grid.Column="6" Grid.Row="0" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level:</Label>
+                    <TextBox x:Name="txtLevel" Grid.Column="7" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
                     <!--Slots-->
                     <Label Grid.Column="0" Grid.Row="2" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Cantrips:</Label>
-                    <TextBox x:Name="Cantrips" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._Cantrips, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="Cantrips" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="7" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._Cantrips, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="4" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 1:</Label>
                     <ComboBox x:Name="cmbLevelOneSlots" Grid.Column="1" Grid.Row="4" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._FirstLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelOne" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FirstLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelOne" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FirstLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="6" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 2:</Label>
                     <ComboBox x:Name="cmbLevelTwoSlots" Grid.Column="1" Grid.Row="6" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._SecondLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelTwo" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SecondLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelTwo" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SecondLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="8" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 3:</Label>
                     <ComboBox x:Name="cmbLevelThreeSlots" Grid.Column="1" Grid.Row="8" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._ThirdLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelThree" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._ThirdLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelThree" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._ThirdLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="10" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 4:</Label>
                     <ComboBox x:Name="cmbLevelFourSlots" Grid.Column="1" Grid.Row="10" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._FourthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelFour" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FourthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelFour" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FourthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="12" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 5:</Label>
                     <ComboBox x:Name="cmbLevelFiveSlots" Grid.Column="1" Grid.Row="12" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._FifthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelFive" Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FifthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelFive" Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._FifthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="14" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 6:</Label>
                     <ComboBox x:Name="cmbLevelSixSlots" Grid.Column="1" Grid.Row="14" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._SixthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelSix" Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SixthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelSix" Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SixthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="16" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 7:</Label>
                     <ComboBox x:Name="cmbLevelSevenSlots" Grid.Column="1" Grid.Row="16" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._SeventhLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelSeven" Grid.Column="2" Grid.Row="16" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SeventhLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelSeven" Grid.Column="2" Grid.Row="16" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._SeventhLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                    
                     <Label Grid.Column="0" Grid.Row="18" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 8:</Label>
                     <ComboBox x:Name="cmbLevelEightSlots" Grid.Column="1" Grid.Row="18" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._EightLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelEight" Grid.Column="2" Grid.Row="18" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._EightLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelEight" Grid.Column="2" Grid.Row="18" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._EightLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="20" FontSize="11" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Level 9:</Label>
                     <ComboBox x:Name="cmbLevelNineSlots" Grid.Column="1" Grid.Row="20" FontSize="12" FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellcastingObject._NinthLevel_Slots, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox x:Name="txtLevelNine" Grid.Column="2" Grid.Row="20" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._NinthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="txtLevelNine" Grid.Column="2" Grid.Row="20" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellcastingObject._NinthLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 </Grid>
             </TabItem>
