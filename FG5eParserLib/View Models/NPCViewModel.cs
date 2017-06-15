@@ -324,10 +324,8 @@ namespace FG5eParserLib.View_Models
             // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(NPCTextPath))
             {
-                OpenFileDialog choofdlog = new OpenFileDialog();
+                SaveFileDialog choofdlog = new SaveFileDialog();
                 choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = false;
 
                 if (choofdlog.ShowDialog() == true)
                 {
@@ -343,8 +341,8 @@ namespace FG5eParserLib.View_Models
                 tsw.WriteLine(Output);
                 tsw.Close();
 
-                // Reset the object and refresh the screen
-                NPCObject = new NPC();
+                // Reset the list
+                _npcList.Clear();
             }
         }
 
@@ -363,8 +361,12 @@ namespace FG5eParserLib.View_Models
         private void addNPCToList(object obj)
         {
             // Innate Spellcasting
+            if (!string.IsNullOrEmpty(InnateSepllcastingObject._SpellcastingModifier))
+            {
+                NPCObject._Abilities.Add(InnateSepllcastingObject.getOutput(InnateSepllcastingObject, NPCObject._Name));
+            }
 
-
+            // Spellcasting
 
             // Add the NPC to the list
             _npcList.Add(NPCObject);
@@ -381,6 +383,8 @@ namespace FG5eParserLib.View_Models
                 _Wisdom = "10",
                 _Charisma = "10"
             };
+            InnateSepllcastingObject = new NPCInnateSpellCasting();
+            SpellcastingObject = new NPCSpellCasting();
         }
 
         private bool canAddNPC(object obj)
@@ -461,7 +465,7 @@ namespace FG5eParserLib.View_Models
                 {
                     _sb.Append(string.Format("{0}. {1}"
                         , str.Split('.')[0]
-                        , str.Split('.')[1]
+                        , str.Replace(str.Split('.')[0]+".", "").Trim()
                         ));
                     _sb.Append(Environment.NewLine);
                 }
@@ -730,6 +734,51 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+
+        public string getOutput(NPCInnateSpellCasting _obj, string NPCName)
+        {
+            StringBuilder _sb = new StringBuilder();
+
+            _sb.Append("Innate Spellcasting.");
+            _sb.Append(Environment.NewLine);
+            _sb.Append(string.Format("The {0}'s spell casting ability is {1} (spell save DC {2}). The {0} can innately cast the following spells, requiring only verbal components:"
+                , NPCName
+                , _obj._SpellcastingModifier
+                , !String.IsNullOrEmpty(_obj.spellDC) ? _obj._spellDC : "0"
+                ));
+
+            if (!string.IsNullOrEmpty(_obj._AtWill))
+            {
+                _sb.Append("\\rAt will: " + _obj._AtWill);
+            }
+
+            if (!string.IsNullOrEmpty(_obj._OnceDay))
+            {
+                _sb.Append("\\r1/day each: " + _obj._OnceDay);
+            }
+
+            if (!string.IsNullOrEmpty(_obj._TwiceDay))
+            {
+                _sb.Append("\\r2/day each: " + _obj._TwiceDay);
+            }
+
+            if (!string.IsNullOrEmpty(_obj._ThriceDay))
+            {
+                _sb.Append("\\r3/day each: " + _obj._ThriceDay);
+            }
+
+            if (!string.IsNullOrEmpty(_obj._FourDay))
+            {
+                _sb.Append("\\r4/day each: " + _obj._FourDay);
+            }
+
+            if (!string.IsNullOrEmpty(_obj._FiveDay))
+            {
+                _sb.Append("\\r5/day each: " + _obj._FiveDay);
+            }
+
+            return _sb.ToString();
+        }
 
         #region PROPERTY CHANGES
         // Declare the interface event
