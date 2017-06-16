@@ -593,7 +593,7 @@ namespace FG5eParserLib.View_Models
             {
                 if (_retVal < 0)
                 {
-                    val = string.Format("-{0}", Convert.ToString(_retVal));
+                    val = string.Format("{0}", Convert.ToString(_retVal));
                 }
                 else
                     val = string.Format("+{0}", Convert.ToString(_retVal));
