@@ -96,27 +96,27 @@
 
         <Label Grid.Column="6" Grid.Row="2" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">STR:</Label>
         <TextBox x:Name="txtSTR" Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Strenght,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtSTR_TextChanged" LostFocus="txtSTR_LostFocus" GotFocus="txtSTR_GotFocus"/>
-        <Label Name="STR" Grid.Column="8" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
+        <Label Name="STR" Grid.Column="8" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">0</Label>
 
         <Label Grid.Column="6" Grid.Row="4" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">DEX:</Label>
         <TextBox x:Name="txtDEX" Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Dexterity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtDEX_TextChanged" LostFocus="txtDEX_LostFocus" GotFocus="txtDEX_GotFocus"/>
-        <Label Name="DEX" Grid.Column="8" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
+        <Label Name="DEX" Grid.Column="8" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">0</Label>
 
         <Label Grid.Column="6" Grid.Row="6" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">CON:</Label>
         <TextBox x:Name="txtCON" Grid.Column="7" Grid.Row="6" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Constitution,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtCON_TextChanged" LostFocus="txtCON_LostFocus" GotFocus="txtCON_GotFocus"/>
-        <Label Name="CON" Grid.Column="8" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
+        <Label Name="CON" Grid.Column="8" Grid.Row="6" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">0</Label>
 
         <Label Grid.Column="6" Grid.Row="8" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">INT:</Label>
         <TextBox x:Name="txtINT" Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Intelligence,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtINT_TextChanged" LostFocus="txtINT_LostFocus" GotFocus="txtINT_GotFocus"/>
-        <Label Name="INT" Grid.Column="8" Grid.Row="8" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
+        <Label Name="INT" Grid.Column="8" Grid.Row="8" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">0</Label>
 
         <Label Grid.Column="6" Grid.Row="10" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">WIS:</Label>
         <TextBox x:Name="txtWIS" Grid.Column="7" Grid.Row="10" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Wisdom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtWIS_TextChanged" LostFocus="txtWIS_LostFocus" GotFocus="txtWIS_GotFocus"/>
-        <Label Name="WIS" Grid.Column="8" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
+        <Label Name="WIS" Grid.Column="8" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">0</Label>
 
         <Label Grid.Column="6" Grid.Row="12" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">CHR:</Label>
         <TextBox x:Name="txtCHR" Grid.Column="7" Grid.Row="12" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._Charisma,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextChanged="txtCHR_TextChanged" LostFocus="txtCHR_LostFocus" GotFocus="txtCHR_GotFocus"/>
-        <Label Name="CHR" Grid.Column="8" Grid.Row="12" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">+0</Label>
+        <Label Name="CHR" Grid.Column="8" Grid.Row="12" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Left" VerticalAlignment="Stretch">0</Label>
 
         <Label Grid.Column="6" Grid.Row="14" FontWeight="Bold" FontSize="12" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">CR/XP:</Label>
         <TextBox x:Name="txtLevelEXP" Grid.Column="7" Grid.Row="14" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding NPCObject._CR,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/> <!--CR AND XP will be taken from here itself-->

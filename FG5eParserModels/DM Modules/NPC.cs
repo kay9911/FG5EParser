@@ -16,12 +16,12 @@ namespace FG5eParserModels.DM_Modules
         private string HitPoints { get; set; }
         private string HitDice { get; set; }
         private string Speed { get; set; }
-        private int Strenght { get; set; }
-        private int Dexterity { get; set; }
-        private int Constitution { get; set; }
-        private int Intelligence { get; set; }
-        private int Wisdom { get; set; }
-        private int Charisma { get; set; }
+        private string Strenght { get; set; }
+        private string Dexterity { get; set; }
+        private string Constitution { get; set; }
+        private string Intelligence { get; set; }
+        private string Wisdom { get; set; }
+        private string Charisma { get; set; }
         private string SavingThrows { get; set; }
         private string Skills { get; set; }
         private string Senses { get; set; }
@@ -154,7 +154,7 @@ namespace FG5eParserModels.DM_Modules
             }
             set
             {
-                Strenght = Convert.ToInt32(value);
+                Strenght = value;
                 OnPropertyChanged("_Strenght");
             }
         }
@@ -166,7 +166,7 @@ namespace FG5eParserModels.DM_Modules
             }
             set
             {
-                Dexterity = Convert.ToInt32(value);
+                Dexterity = value;
                 OnPropertyChanged("_Dexterity");
             }
         }
@@ -178,7 +178,7 @@ namespace FG5eParserModels.DM_Modules
             }
             set
             {
-                Constitution = Convert.ToInt32(value);
+                Constitution = value;
                 OnPropertyChanged("_Constitution");
             }
         }
@@ -190,7 +190,7 @@ namespace FG5eParserModels.DM_Modules
             }
             set
             {
-                Intelligence = Convert.ToInt32(value);
+                Intelligence = value;
                 OnPropertyChanged("_Intelligence");
             }
         }
@@ -202,7 +202,7 @@ namespace FG5eParserModels.DM_Modules
             }
             set
             {
-                Wisdom = Convert.ToInt32(value);
+                Wisdom = value;
                 OnPropertyChanged("_Wisdom");
             }
         }
@@ -214,7 +214,7 @@ namespace FG5eParserModels.DM_Modules
             }
             set
             {
-                Charisma = Convert.ToInt32(value);
+                Charisma = value;
                 OnPropertyChanged("_Charisma");
             }
         }
