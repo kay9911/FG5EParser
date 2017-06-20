@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace FG5eParserModels.Utility_Modules
 {
-    public class ReferenceModule : INotifyPropertyChanged
+    public class ReferenceManual : INotifyPropertyChanged
     {
         private string ChapterName { get; set; }
         ObservableCollection<Chapters> Subchapters { get; set; }
@@ -22,7 +22,7 @@ namespace FG5eParserModels.Utility_Modules
         }
 
         //constructor
-        public ReferenceModule()
+        public ReferenceManual()
         {
             Subchapters = new ObservableCollection<Chapters>();
         }

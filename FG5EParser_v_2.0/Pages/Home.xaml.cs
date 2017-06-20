@@ -72,5 +72,11 @@ namespace FG5EParser_v_2._0.Pages
             NPCs _npcPage = new NPCs();
             NavigationService.Navigate(_npcPage);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ReferenceManual _referenceManualPage = new ReferenceManual();
+            NavigationService.Navigate(_referenceManualPage);
+        }
     }
 }
