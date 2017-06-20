@@ -52,6 +52,7 @@
     <Compile Include="Player Models\Spells.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility Modules\Paths.cs" />
+    <Compile Include="Utility Modules\ReferenceModule.cs" />
     <Compile Include="Utility Modules\Tables.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

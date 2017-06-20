@@ -1,5 +1,8 @@
-﻿using FG5EParser.WriterClasses;
+﻿using FG5EParser.Base_Classes;
+using FG5EParser.Writer_Classes;
+using FG5EParser.WriterClasses;
 using FG5EParser.XML_Writer_Helper_Classes;
+using FG5eParserModels.DM_Modules;
 using FG5eParserModels.Player_Models;
 using System.Collections.Generic;
 using System.Text;
@@ -58,6 +61,12 @@ namespace FG5EParser.XMLWriters
                 FeatsWriter _featsWriter = new FeatsWriter();
                 _featsList = _featsWriter.compileFeatsList(_featsTextPath, _moduleName);
             }
+            List<Personalities> _npcList = new List<Personalities>();
+            if (!string.IsNullOrEmpty(_npcTextPath))
+            {
+                NPCWriter _npcWriter = new NPCWriter();
+                _npcList = _npcWriter.compileNPCListNew(_npcTextPath, _moduleName);
+            }
             #endregion
 
             #region XML HEADER
@@ -99,7 +108,7 @@ namespace FG5EParser.XMLWriters
             // NPC Entries
             if (!string.IsNullOrEmpty(_npcTextPath))
             {
-                xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcTextPath, _moduleName));
+                xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcList, _moduleName));
                 requiresList = true;
             }
 
@@ -159,9 +168,9 @@ namespace FG5EParser.XMLWriters
                 }
 
                 // NPC List
-                if(!string.IsNullOrEmpty(_npcTextPath))
+                if (!string.IsNullOrEmpty(_npcTextPath))
                 {
-                    xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcTextPath, _moduleName, true)); // true : Switch to list
+                    xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcList, _moduleName, true)); // true : Switch to list
                 }
 
                 // Treasure Parcel List
@@ -188,10 +197,10 @@ namespace FG5EParser.XMLWriters
             xml.Append("<reference static=\"true\">");
 
             // Input for personalities
-            if (!string.IsNullOrEmpty(_npcTextPath))
-            {
-                xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcTextPath, _moduleName));
-            }
+            //if (!string.IsNullOrEmpty(_npcTextPath))
+            //{
+            //    xml.Append(_personalitiesHelper.returnPersonalitiesXML(_npcList, _moduleName));
+            //}
 
             // Input for Classes
             if (!string.IsNullOrEmpty(_classTextPath))
@@ -209,7 +218,7 @@ namespace FG5EParser.XMLWriters
             // Input for NPC
             if (!string.IsNullOrEmpty(_npcTextPath))
             {
-                xml.Append(_personalitiesHelper.returnNPCReferenceDetails(_npcTextPath,_moduleName));
+                xml.Append(_personalitiesHelper.returnNPCReferenceDetails(_npcList, _moduleName));
             }
 
             // Input for Backgrounds

@@ -1,5 +1,4 @@
 ﻿using FG5EParser.Base_Classes;
-using FG5EParser.Writer_Classes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,15 +10,12 @@ namespace FG5EParser.XML_Writer_Helper_Classes
     class PersonalitiesHelper
     {
         public string returnPersonalitiesXML(
-            string _npcTextPath,
+            List<Personalities> _Npcs,
             string _moduleName,
             bool isList = false
         )
         {
             StringBuilder xml = new StringBuilder();
-
-            NPCWriter _npcWriter = new NPCWriter();
-            List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath,_moduleName);
 
             if (!isList)
             {
@@ -361,12 +357,9 @@ namespace FG5EParser.XML_Writer_Helper_Classes
             return _npc.ToString();
         }
 
-        public string returnNPCReferenceDetails(string _npcTextPath, string _moduleName)
+        public string returnNPCReferenceDetails(List<Personalities> _Npcs, string _moduleName)
         {
             StringBuilder xml = new StringBuilder();
-
-            NPCWriter _npcWriter = new NPCWriter();
-            List<Personalities> _Npcs = _npcWriter.compileNPCList(_npcTextPath,_moduleName);
 
             #region NPC DATA
 
