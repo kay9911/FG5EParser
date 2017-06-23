@@ -25,6 +25,7 @@ namespace FG5eParserModels.Utility_Modules
         private string NPCsPath { get; set; }
         private string SpellsPath { get; set; }
         private string FeatsPath { get; set; }
+        private string ReferenceManualPath { get; set; }
 
         private bool OuputIsChecked { get; set; }
         private bool DMOnlyIsChecked { get; set; }
@@ -165,6 +166,16 @@ namespace FG5eParserModels.Utility_Modules
             {
                 BackgroundsPath = value;
                 OnPropertyChanged("SetBackgroundPath");
+            }
+        }
+
+        public string SetReferenceManualPath
+        {
+            get { return SetReferenceManualPath; }
+            set
+            {
+                ReferenceManualPath = value;
+                OnPropertyChanged("SetReferenceManualPath");
             }
         }
 

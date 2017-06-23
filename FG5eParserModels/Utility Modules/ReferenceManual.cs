@@ -6,7 +6,8 @@ namespace FG5eParserModels.Utility_Modules
     public class ReferenceManual : INotifyPropertyChanged
     {
         private string ChapterName { get; set; }
-        ObservableCollection<Chapters> Subchapters { get; set; }
+        public ObservableCollection<string> SubchapterNameList { get; set; }
+        public ObservableCollection<ReferenceNote> ReferenceNoteList { get; set; }
 
         public string _ChapterName
         {
@@ -24,7 +25,7 @@ namespace FG5eParserModels.Utility_Modules
         //constructor
         public ReferenceManual()
         {
-            Subchapters = new ObservableCollection<Chapters>();
+            ReferenceNoteList = new ObservableCollection<ReferenceNote>();
         }
 
         #region PROPERTY CHANGES
@@ -42,21 +43,22 @@ namespace FG5eParserModels.Utility_Modules
         #endregion
     }
 
-    class Chapters : INotifyPropertyChanged
+    public class ReferenceNote : INotifyPropertyChanged
     {
-        private string SubchapterName { get; set; }
+        private string Title { get; set; }
         private string Details { get; set; }
+        private string SubchapterName { get; set; }
 
-        public string _SubchapterName
+        public string _Title
         {
             get
             {
-                return SubchapterName;
+                return Title;
             }
             set
             {
-                SubchapterName = value;
-                OnPropertyChanged("_SubchapterName");
+                Title = value;
+                OnPropertyChanged("_Title");
             }
         }
 
@@ -70,6 +72,19 @@ namespace FG5eParserModels.Utility_Modules
             {
                 Details = value;
                 OnPropertyChanged("_Details");
+            }
+        }
+
+        public string _SubchapterName
+        {
+            get
+            {
+                return SubchapterName;
+            }
+            set
+            {
+                SubchapterName = value;
+                OnPropertyChanged("_SubchapterName");
             }
         }
 

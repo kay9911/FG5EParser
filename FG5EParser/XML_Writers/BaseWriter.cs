@@ -4,6 +4,7 @@ using FG5EParser.WriterClasses;
 using FG5EParser.XML_Writer_Helper_Classes;
 using FG5eParserModels.DM_Modules;
 using FG5eParserModels.Player_Models;
+using FG5eParserModels.Utility_Modules;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
@@ -26,7 +27,8 @@ namespace FG5EParser.XMLWriters
             string _backgroundTextPath = "",
             string _racesTextPath = "",
             string _spellsTextPath = "",
-            string _featsTextPath = ""
+            string _featsTextPath = "",
+            string _referenceManualTextPath = ""
         )
         {
             // Defaults
@@ -46,6 +48,7 @@ namespace FG5EParser.XMLWriters
             RacesHelper _raceHelper = new RacesHelper();
             SpellHelper _spellHelper = new SpellHelper();
             FeatsHelper _featsHelper = new FeatsHelper();
+            ReferenceManualHelper _referenceManualHelper = new ReferenceManualHelper();
             #endregion
 
             #region EXPERIMENTAL SECTION
@@ -63,6 +66,12 @@ namespace FG5EParser.XMLWriters
             }
             List<Personalities> _npcList = new List<Personalities>();
             if (!string.IsNullOrEmpty(_npcTextPath))
+            {
+                NPCWriter _npcWriter = new NPCWriter();
+                _npcList = _npcWriter.compileNPCListNew(_npcTextPath, _moduleName);
+            }
+            List<ReferenceManual> _referenceManualList = new List<ReferenceManual>();
+            if (!string.IsNullOrEmpty(_referenceManualTextPath))
             {
                 NPCWriter _npcWriter = new NPCWriter();
                 _npcList = _npcWriter.compileNPCListNew(_npcTextPath, _moduleName);

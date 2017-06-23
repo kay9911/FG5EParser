@@ -175,6 +175,7 @@
     <Compile Include="WriterClasses\NPCWriter.cs" />
     <Compile Include="WriterClasses\ParcelWriter.cs" />
     <Compile Include="WriterClasses\RacesWriter.cs" />
+    <Compile Include="WriterClasses\ReferenceManualWriter.cs" />
     <Compile Include="WriterClasses\SpellWriter.cs" />
     <Compile Include="WriterClasses\StoryWriter.cs" />
     <Compile Include="WriterClasses\TableWriter.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="XML_Writer_Helper_Classes\ParcelHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\RacesHelper.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\ReferenceManualHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\SpellHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\StoryHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\TableHelper.cs" />
