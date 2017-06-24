@@ -171,7 +171,7 @@ namespace FG5eParserModels.Utility_Modules
 
         public string SetReferenceManualPath
         {
-            get { return SetReferenceManualPath; }
+            get { return ReferenceManualPath; }
             set
             {
                 ReferenceManualPath = value;

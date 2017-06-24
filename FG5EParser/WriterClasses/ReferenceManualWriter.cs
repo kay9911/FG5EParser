@@ -23,6 +23,7 @@ namespace FG5EParser.WriterClasses
                 ReferenceNote _referenceNote = new ReferenceNote();
 
                 string CurrentSubChapter = string.Empty;
+                StringBuilder _description = new StringBuilder();
 
                 // Convert _lines to a List
                 List<string> ReferenceManualEntries = new List<string>();
@@ -33,72 +34,76 @@ namespace FG5EParser.WriterClasses
 
                 for (int i = 0; i < ReferenceManualEntries.Count; i++)
                 {
+                    // Check for empty entry
                     if (!string.IsNullOrEmpty(ReferenceManualEntries[i]))
                     {
-                        if (!string.IsNullOrEmpty(_referenceManual._ChapterName))
-                        {
-                            referenceManualList.Add(_referenceManual);
-                            _referenceManual = new ReferenceManual();
-                            CurrentSubChapter = string.Empty;
-                            _referenceNote = new ReferenceNote();
-                        }
-
+                        // Chapter Header
                         if (ReferenceManualEntries[i].Contains("#@;"))
                         {
-                            _referenceManual._ChapterName = ReferenceManualEntries[i].Replace("#@;","").Trim();
-                            if (i + 1 != ReferenceManualEntries.Count)
+                            // If an entry already exists
+                            if (!string.IsNullOrEmpty(_referenceManual._ChapterName))
                             {
-                                i++;
+                                // Save the last of the details
+                                _referenceNote._Details = _description.ToString();
+                                _referenceManual.ReferenceNoteList.Add(_referenceNote);
+
+                                referenceManualList.Add(_referenceManual);
+                                _referenceManual = new ReferenceManual();
+                                _referenceNote = new ReferenceNote();
+                                CurrentSubChapter = string.Empty;
+                                _description.Clear();
                             }
+
+                            _referenceManual._ChapterName = ReferenceManualEntries[i].Replace("#@;", "").Trim();
                         }
-
-                        if (ReferenceManualEntries[i].Contains("#!"))
+                        // Subchapter Heading
+                        else if (ReferenceManualEntries[i].Contains("#!;"))
                         {
-                            _referenceManual.SubchapterNameList.Add(ReferenceManualEntries[i].Replace("#!", "").Trim());
-                            CurrentSubChapter = ReferenceManualEntries[i].Replace("#!", "").Trim();
-
-                            if (i + 1 != ReferenceManualEntries.Count)
+                            _referenceManual.SubchapterNameList.Add(ReferenceManualEntries[i].Replace("#!;", "").Trim());
+                            CurrentSubChapter = ReferenceManualEntries[i].Replace("#!;", "").Trim();
+                        }
+                        // Reference Note
+                        else if (ReferenceManualEntries[i].Contains("##;"))
+                        {
+                            // If Reference Note already exists
+                            if (!string.IsNullOrEmpty(_referenceNote._Title))
                             {
-                                i++;
-                            }
-                        }
+                                // Append the description
+                                _referenceNote._Details = _description.ToString();
+                                _description.Clear();
 
-                        if (ReferenceManualEntries[i].Contains("##;"))
-                        {
+                                // Add it to the main list
+                                _referenceManual.ReferenceNoteList.Add(_referenceNote);
+                                _referenceNote = new ReferenceNote();
+                            }
+
                             _referenceNote._Title = ReferenceManualEntries[i].Replace("##;", "").Trim();
+                            // Under chapter?
                             _referenceNote._SubchapterName = CurrentSubChapter;
-
-                            if (i + 1 != ReferenceManualEntries.Count)
-                            {
-                                i++;
-                            }
                         }
-
-                        StringBuilder _sb = new StringBuilder();
-                        while (!ReferenceManualEntries[i].Contains("##;") && !ReferenceManualEntries[i].Contains("#!") && !ReferenceManualEntries[i].Contains("#@;"))
+                        // Descriptions
+                        else
                         {
-                            _sb.Append(_xmlFormatting.returnFormattedString(ReferenceManualEntries[i], moduleName));
-                            
-
-                            if (i + 1 != ReferenceManualEntries.Count)
-                            {
-                                i++;
-                            }
+                            _description.Append(_xmlFormatting.returnFormattedString(ReferenceManualEntries[i].Trim(), moduleName));
                         }
-
-                        _referenceNote._Details = _sb.ToString();
-                        _sb = new StringBuilder();
-
-                        // Add the Reference Note to the master object
-                        _referenceManual.ReferenceNoteList.Add(_referenceNote);
-                        _referenceNote = new ReferenceNote();
                     }
                     else
                     {
                         if (i + 1 != ReferenceManualEntries.Count)
                         {
                             i++;
-                        }                       
+                        }
+                    }
+
+                    // Get the last entry
+                    if (i + 1 == ReferenceManualEntries.Count)
+                    {
+                        // Save the last of the details
+                        _referenceNote._Details = _description.ToString();
+                        _referenceManual.ReferenceNoteList.Add(_referenceNote);
+
+                        // Add it to the main list
+                        referenceManualList.Add(_referenceManual);
                     }
                 }
                 return referenceManualList;

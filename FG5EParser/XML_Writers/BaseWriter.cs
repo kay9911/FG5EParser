@@ -73,8 +73,8 @@ namespace FG5EParser.XMLWriters
             List<ReferenceManual> _referenceManualList = new List<ReferenceManual>();
             if (!string.IsNullOrEmpty(_referenceManualTextPath))
             {
-                NPCWriter _npcWriter = new NPCWriter();
-                _npcList = _npcWriter.compileNPCListNew(_npcTextPath, _moduleName);
+                ReferenceManualWriter _referenceManualWriter = new ReferenceManualWriter();
+                _referenceManualList = _referenceManualWriter.compileReferenceManualList(_referenceManualTextPath, _moduleName);
             }
             #endregion
 

@@ -26,6 +26,7 @@ namespace FG5eParserModels.Utility_Modules
         public ReferenceManual()
         {
             ReferenceNoteList = new ObservableCollection<ReferenceNote>();
+            SubchapterNameList = new ObservableCollection<string>();
         }
 
         #region PROPERTY CHANGES
