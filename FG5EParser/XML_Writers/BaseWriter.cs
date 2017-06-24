@@ -147,6 +147,12 @@ namespace FG5EParser.XMLWriters
                 requiresList = true;
             }
 
+            // Reference Note Entries
+            if (!string.IsNullOrEmpty(_referenceManualTextPath))
+            {
+                requiresList = true;
+            }
+
             // Getting in the additional lists
             if (requiresList)
             {
@@ -199,6 +205,13 @@ namespace FG5EParser.XMLWriters
                 {
                     xml.Append(_spellHelper.returnSpellsXML(_spellList, true)); // true : Switch to list
                 }
+
+                // Spell List
+                if (!string.IsNullOrEmpty(_referenceManualTextPath))
+                {
+                    xml.Append(_referenceManualHelper.returnReferenceNotesXML(_referenceManualList, true)); // true : Switch to list
+                }
+
                 xml.Append("</lists>");
             }
 
@@ -255,6 +268,12 @@ namespace FG5EParser.XMLWriters
             {
                 xml.Append(_featsHelper.returnFeatsXML(_featsList));
                 xml.Append(_featsHelper.returnFeatsXML(_featsList, true)); // true : Switch to list
+            }
+
+            // Input for References
+            if (!string.IsNullOrEmpty(_referenceManualTextPath))
+            {
+                xml.Append(_referenceManualHelper.returnReferenceNotesXML(_referenceManualList));
             }
 
             xml.Append("</reference>");
@@ -471,6 +490,24 @@ namespace FG5EParser.XMLWriters
 
                 xml.Append("</librarylink>");
                 xml.Append("<name type=\"string\">Feats</name>");
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            // Entry for Reference Notes
+            if (!string.IsNullOrEmpty(_referenceManualTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>reference_manual</class>");
+                xml.Append(string.Format("<recordname>lists.ReferenceManualEntries</recordname>"));
+                xml.Append("</librarylink>");
+
+                xml.Append("<name type=\"string\">Reference Manual</name>");
+
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
 
                 // Counter + 1

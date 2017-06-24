@@ -621,6 +621,7 @@ namespace FG5EParser.Utilities
                                                     .Replace(",", "_")
                                                     .Replace("+", "_")
                                                     .Replace("/", "_")
+                                                    .Replace(".", "_")
                                                     .ToLower().Trim();
 
                 return _toFormat;
