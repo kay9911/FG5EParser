@@ -85,6 +85,7 @@ namespace FG5EParser.WriterClasses
                         else
                         {
                             _description.Append(_xmlFormatting.returnFormattedString(ReferenceManualEntries[i].Trim(), moduleName));
+                            _description.Append(Environment.NewLine);
                         }
                     }
                     else

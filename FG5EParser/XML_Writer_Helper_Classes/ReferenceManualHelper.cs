@@ -1,5 +1,6 @@
 ﻿using FG5EParser.Utilities;
 using FG5eParserModels.Utility_Modules;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +14,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         )
         {
             StringBuilder xml = new StringBuilder();
+            StringBuilder _sb = new StringBuilder();
             XMLFormatting _xmlFormatting = new XMLFormatting();
 
             int blockIndex = 0;
@@ -38,14 +40,38 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                                 xml.Append("<blocks>");
 
-                                xml.Append(string.Format("<block{0}>", blockIndex.ToString()));
+                                // Split the description string
+                                
+                                string[] lines = ReferenceNote._Details.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 
-                                xml.Append("<blocktype type=\"string\">text</blocktype>");
-
-                                xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>", ReferenceNote._Details));
-
-                                xml.Append(string.Format("</block{0}>", blockIndex.ToString()));
-
+                                foreach (var line in lines)
+                                {
+                                    if (!string.IsNullOrEmpty(line) && line.Contains("#b;"))
+                                    {
+                                        if (!string.IsNullOrEmpty(_sb.ToString()) && line.Contains("#b;"))
+                                        {
+                                            xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>", _sb.ToString()));
+                                            xml.Append(string.Format("</block{0}>", blockIndex.ToString()));
+                                            blockIndex++;
+                                            _sb.Clear();
+                                        }
+                                        xml.Append(string.Format("<block{0}>", blockIndex.ToString()));
+                                        xml.Append("<blocktype type=\"string\">text</blocktype>");
+                                        _sb.Append(line.Replace("#b;", ""));
+                                    }
+                                    else
+                                    {
+                                        // Just capture the line here
+                                        _sb.Append(line);
+                                    }
+                                }
+                                if (!string.IsNullOrEmpty(_sb.ToString()))
+                                {
+                                    xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>", _sb.ToString()));
+                                    xml.Append(string.Format("</block{0}>", blockIndex.ToString()));
+                                    blockIndex++;
+                                    _sb.Clear();
+                                }
                                 xml.Append("</blocks>");
                                 //</copyrights>
                                 xml.Append(string.Format("</{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
@@ -53,7 +79,6 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                         }
                     }
                 }
-
                 xml.Append("</referencemanual>");
                 #endregion
             }
@@ -65,7 +90,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                 foreach (var Chapter in _referenceManualChapterList)
                 {
-                    xml.Append(string.Format("<{0}>",_xmlFormatting.formatXMLCharachters(Chapter._ChapterName,"IH")));
+                    xml.Append(string.Format("<{0}>", _xmlFormatting.formatXMLCharachters(Chapter._ChapterName, "IH")));
 
                     xml.Append(string.Format("<name type=\"string\">{0}</name>", Chapter._ChapterName));
 
