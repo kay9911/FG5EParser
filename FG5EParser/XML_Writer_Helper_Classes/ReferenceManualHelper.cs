@@ -34,7 +34,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                             if (ReferenceNote._SubchapterName == Subchapter)
                             {
                                 //<copyrights>
-                                xml.Append(string.Format("<{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
+                                xml.Append(string.Format("<_{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
 
                                 xml.Append(string.Format("<name type=\"string\">{0}</name>", ReferenceNote._Title));
 
@@ -74,7 +74,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                 }
                                 xml.Append("</blocks>");
                                 //</copyrights>
-                                xml.Append(string.Format("</{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
+                                xml.Append(string.Format("</_{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
                             }
                         }
                     }
@@ -90,7 +90,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                 foreach (var Chapter in _referenceManualChapterList)
                 {
-                    xml.Append(string.Format("<{0}>", _xmlFormatting.formatXMLCharachters(Chapter._ChapterName, "IH")));
+                    xml.Append(string.Format("<_{0}>", _xmlFormatting.formatXMLCharachters(Chapter._ChapterName, "IH")));
 
                     xml.Append(string.Format("<name type=\"string\">{0}</name>", Chapter._ChapterName));
 
@@ -98,7 +98,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     foreach (var Subchapter in Chapter.SubchapterNameList)
                     {
-                        xml.Append(string.Format("<{0}>", _xmlFormatting.formatXMLCharachters(Subchapter, "IH")));
+                        xml.Append(string.Format("<_{0}>", _xmlFormatting.formatXMLCharachters(Subchapter, "IH")));
 
                         xml.Append(string.Format("<name type=\"string\">{0}</name>", Subchapter));
 
@@ -108,13 +108,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                         {
                             if (ReferenceNote._SubchapterName == Subchapter)
                             {
-                                xml.Append(string.Format("<{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
+                                xml.Append(string.Format("<_{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
 
                                 xml.Append("<listlink type=\"windowreference\">");
 
                                 xml.Append("<class>reference_manualtextwide</class>");
 
-                                xml.Append(string.Format("<recordname>reference.referencemanual.{0}</recordname>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
+                                xml.Append(string.Format("<recordname>reference.referencemanual._{0}</recordname>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
 
                                 xml.Append("</listlink>");
 
@@ -122,18 +122,18 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                                 xml.Append(string.Format("<keywords type=\"string\">{0}</keywords>", ReferenceNote._Title));
 
-                                xml.Append(string.Format("</{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
+                                xml.Append(string.Format("</_{0}>", _xmlFormatting.formatXMLCharachters(ReferenceNote._Title, "IH")));
                             }
                         }
 
                         xml.Append("</refpages>");
 
-                        xml.Append(string.Format("</{0}>", _xmlFormatting.formatXMLCharachters(Subchapter, "IH")));
+                        xml.Append(string.Format("</_{0}>", _xmlFormatting.formatXMLCharachters(Subchapter, "IH")));
                     }
 
                     xml.Append("</subchapters>");
 
-                    xml.Append(string.Format("</{0}>", _xmlFormatting.formatXMLCharachters(Chapter._ChapterName, "IH")));
+                    xml.Append(string.Format("</_{0}>", _xmlFormatting.formatXMLCharachters(Chapter._ChapterName, "IH")));
                 }
 
                 xml.Append("</chapters>");
