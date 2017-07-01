@@ -62,10 +62,10 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                             xml.Append(string.Format("<dice type=\"dice\">{0}</dice>", _table.Dice));
 
                             // labels
-                            for (int k = 1; k < _table.ColumnLabel.Count +1; k++)
+                            for (int k = 1; k < _table.ColumnLabel.Count + 1; k++)
                             {
                                 // check to see if its a a black section
-                                if (!string.IsNullOrEmpty(_table.ColumnLabel[k-1]))
+                                if (!string.IsNullOrEmpty(_table.ColumnLabel[k - 1]))
                                 {
                                     xml.Append(string.Format("<labelcol{0} type=\"string\">{1}</labelcol{0}>", k, _table.ColumnLabel[k - 1].Trim()));
                                 }
@@ -101,46 +101,55 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                     {
                                         xml.Append(string.Format("<id-{0}>", j));
 
-                                        xml.Append("<resultlink type=\"windowreference\">");
+                                        xml.Append("<resultlink type=\"windowreference\">");                                        
 
-                                        xml.Append("<class>reference_tableresult</class>");
-
-                                        //record name
-
-                                        xml.Append(string.Format("<recordname>tables.{0}.tablerows.id-{1}.results.id-{2}@{3}</recordname>"
-                                            , string.Format("tab_{0}", xmlFormatting.formatXMLCharachters(_table.Name, "IH"))
-                                            , i
-                                            , j
-                                            , _moduleName
-                                            ));
-
-                                        xml.Append("</resultlink>");
-
-                                        xml.Append(string.Format("<result type=\"string\">{0}</result>", _row.Result.Split(';')[j].Trim()));
-
+                                        if (_row.Result.Contains("#zal"))
+                                        {
+                                            switch (_row.Result.Split(':')[1])
+                                            {
+                                                case "ST": xml.Append("<class>encounter</class>");
+                                                    break;
+                                                default:
+                                                    xml.Append("<class>reference_tableresult</class>");
+                                                    break;
+                                            }                                            
+                                            xml.Append(string.Format("<recordname>{0}</recordname>"
+                                                ,xmlFormatting.returnFormattedString(_row.Result,_moduleName)
+                                                ));
+                                            xml.Append("</resultlink>");
+                                            xml.Append(string.Format("<result type=\"string\">{0}</result>", _row.Result.Split(':')[3].Trim()));
+                                        }
+                                        else
+                                        {
+                                            //record name
+                                            xml.Append("<class>reference_tableresult</class>");
+                                            xml.Append(string.Format("<recordname>tables.{0}.tablerows.id-{1}.results.id-{2}@{3}</recordname>"
+                                                , string.Format("tab_{0}", xmlFormatting.formatXMLCharachters(_table.Name, "IH"))
+                                                , i
+                                                , j
+                                                , _moduleName
+                                                ));
+                                            xml.Append("</resultlink>");
+                                            xml.Append(string.Format("<result type=\"string\">{0}</result>", _row.Result.Split(';')[j].Trim()));
+                                        }
                                         xml.Append(string.Format("</id-{0}>", j));
                                     }
                                 }
-
                                 xml.Append("</results>");
 
                                 xml.Append(string.Format("</id-{0}>", i));
                                 i++;
                             }
-
                             xml.Append("</tablerows>");
-
                             xml.Append(string.Format("</tab_{0}>", xmlFormatting.formatXMLCharachters(_table.Name, "IH")));
                         }
                     }
-
                     xml.Append("</category>");
                 }
-
                 xml.Append("</tables>");
-
-                #endregion
             }
+            #endregion
+
             else
             {
                 xml.Append("<table>");
@@ -153,7 +162,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                 foreach (string _category in _categoryTypes)
                 {
-                    xml.Append(string.Format("<typecategory{0}>",xmlFormatting.formatXMLCharachters(_category,"IH")));
+                    xml.Append(string.Format("<typecategory{0}>", xmlFormatting.formatXMLCharachters(_category, "IH")));
 
                     // Name
                     xml.Append(string.Format("<description type=\"string\">{0}</description>", _category));
@@ -164,7 +173,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         if (_table.Category == _category)
                         {
-                            xml.Append(string.Format("<tab_{0}>",xmlFormatting.formatXMLCharachters(_table.Name,"IH")));
+                            xml.Append(string.Format("<tab_{0}>", xmlFormatting.formatXMLCharachters(_table.Name, "IH")));
 
                             xml.Append("<link type=\"windowreference\">");
 
@@ -189,7 +198,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     xml.Append("</index>");
 
                     xml.Append(string.Format("</typecategory{0}>", xmlFormatting.formatXMLCharachters(_category, "IH")));
-                }                
+                }
 
                 xml.Append("</groups>");
 

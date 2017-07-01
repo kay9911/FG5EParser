@@ -566,6 +566,14 @@ namespace FG5EParser.Utilities
                         break;
                     //T;*;Acolyte Traits;Acolyte Traits
                     case "T": _toFormat = string.Format("<link class=\"table\" recordname=\"tables.tab_{0}@{1}\">{2}</link>"
+                        , formatXMLCharachters(_toFormat.Split(';')[3].ToLower().Trim().Replace(" ", ""),"IH")
+                        , _toFormat.Split(';')[1]
+                        , _toFormat.Split(';')[2]
+                        );
+                        break;
+                    //ST;*;Story Name;StoryRecord example {6.1.2 Nighttime Random Encounters In Barovia}
+                    case "ST":
+                        _toFormat = string.Format("<link class=\"encounter\" recordname=\"encounter.enc_{0}@{1}\">{2}</link>"
                         , _toFormat.Split(';')[3].ToLower().Trim().Replace(" ", "")
                         , _toFormat.Split(';')[1]
                         , _toFormat.Split(';')[2]
@@ -576,7 +584,25 @@ namespace FG5EParser.Utilities
                 }
             }
             #endregion
+            else if (_toFormat.Contains("#zal:"))
+            {
+                // Remove the ZAL ref
+                _toFormat = _toFormat.Replace("#zal:", "").Replace(";","");
 
+                switch (_toFormat.Split(':')[0])
+                {
+                    //ST:*:Story Name:StoryRecord example {6.1.2 Nighttime Random Encounters In Barovia}
+                    case "ST":
+                        _toFormat = string.Format("encounter.enc_{0}@{1}"
+                        , _toFormat.Split(':')[3].ToLower().Trim().Replace(" ", "")
+                        , _toFormat.Split(':')[1]
+                        , _toFormat.Split(':')[2]
+                        );
+                        break;
+                    default:
+                        break;
+                }
+            }
             else
             {
                 _toFormat = string.Format("<p>{0}</p>", _toFormat);

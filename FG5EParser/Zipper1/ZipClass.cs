@@ -49,6 +49,13 @@ namespace FG5EParser.Zipper
                 {
                     File.Copy(_imagePath, tempPath + "\\" + Path.GetFileName(@"C:\BaseCode\Fantasy Grounds Parser\Fantasy Grounds Parser Tool\Fantasy Grounds Parser Tool\bin\Debug\thumbnail.png"));
                 }
+
+                // Copy 
+                //if (true)
+                //{
+                //    Directory.Move(@"C:\Users\Kayne\Desktop\RAW(Parsed)", tempPath);
+                //}
+
                 // Zip them up
                 ZipFile.CreateFromDirectory(tempPath, string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
 

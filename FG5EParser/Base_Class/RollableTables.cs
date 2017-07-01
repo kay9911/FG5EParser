@@ -58,7 +58,7 @@ namespace FG5EParser.Base_Class
                         StringBuilder _desc = new StringBuilder();
 
                         // Gather all the lines for the description
-                        while (!line.Contains("dice"))
+                        while (!line.Contains("column"))
                         {
                             _desc.Append(line.Replace("#!;","").Trim());
                             line = shiftUp(_Basic);
@@ -67,17 +67,17 @@ namespace FG5EParser.Base_Class
                         _tables.Description = _desc.ToString();
                     }
 
-                    // Check for dice
-                    if (line.Contains("dice"))
-                    {
-                        _tables.Dice = line.Split(';')[1].Trim();
-                        line = shiftUp(_Basic);
-                    }
-
                     // Check for column names
                     if (line.Contains("column"))
                     {
                         _tables.ColumnLabel = line.Replace("column;", "").Split(';').ToList();
+                        line = shiftUp(_Basic);
+                    }
+
+                    // Check for dice
+                    if (line.Contains("dice"))
+                    {
+                        _tables.Dice = line.Split(';')[1].Trim();
                         line = shiftUp(_Basic);
                     }
 

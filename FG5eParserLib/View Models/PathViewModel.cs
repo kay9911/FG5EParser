@@ -36,7 +36,7 @@ namespace FG5eParserLib.View_Models
                     pathViewModel.SetDMOnlyChecked,
                     pathViewModel.SetNPCsPath,
                     pathViewModel.SetClassesPath,
-                    null,
+                    pathViewModel.SetStoryPath,
                     pathViewModel.SetEquipmentPath,
                     null,
                     null,
@@ -51,7 +51,7 @@ namespace FG5eParserLib.View_Models
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Parser failed with the following error: " + ex.InnerException);
+                MessageBox.Show("Parser failed with the following error: " + ex);
             }
         }
 

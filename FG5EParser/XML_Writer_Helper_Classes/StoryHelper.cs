@@ -1,4 +1,5 @@
 ﻿using FG5EParser.Base_Class;
+using FG5EParser.Utilities;
 using FG5EParser.WriterClasses;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         public string returnStoryXML(string _storyTextPath, string _moduleName, bool isListCall = false)
         {
             StringBuilder xml = new StringBuilder();
+            XMLFormatting _xmlFormatting = new XMLFormatting();
 
             StoryWriter _storyWriter = new StoryWriter();
             List<StoryElements> _storyList = _storyWriter.compileStoryList(_storyTextPath,_moduleName);
@@ -45,7 +47,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         if (!string.IsNullOrEmpty(_storyList[i].StoryTitle) && _storyList[i].StoryHeader == _header) // Avoid Null exceptions
                         {
-                            xml.Append(string.Format("<enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".","_").Trim()));
+                            xml.Append(string.Format("<enc_{0}>", _xmlFormatting.formatXMLCharachters(_storyList[i].StoryTitle,"IH")));
 
                             xml.Append(string.Format("<locked type=\"number\">{0}</locked>", _storyList[i].isLocked));
 
@@ -53,7 +55,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                             xml.Append(string.Format("<text type=\"formattedtext\">{0}</text>", _storyList[i].StoryDescription));
 
-                            xml.Append(string.Format("</enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".", "_").Trim()));
+                            xml.Append(string.Format("</enc_{0}>", _xmlFormatting.formatXMLCharachters(_storyList[i].StoryTitle, "IH")));
                         }
                     }
 
@@ -98,7 +100,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         if (!string.IsNullOrEmpty(_storyList[i].StoryTitle) && _storyList[i].StoryHeader == _header)
                         {
-                            xml.Append(string.Format("<enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".","_").Trim()));
+                            xml.Append(string.Format("<enc_{0}>", _xmlFormatting.formatXMLCharachters(_storyList[i].StoryTitle, "IH")));
 
                             xml.Append("<link type=\"windowreference\">");
 
@@ -119,7 +121,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                             xml.Append("<source type=\"string\" />");
 
-                            xml.Append(string.Format("</enc_{0}>", _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".", "_").Trim()));
+                            xml.Append(string.Format("</enc_{0}>", _xmlFormatting.formatXMLCharachters(_storyList[i].StoryTitle, "IH")));
                         }
                     }
 
