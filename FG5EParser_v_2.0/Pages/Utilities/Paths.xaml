@@ -61,6 +61,8 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height=".2*" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">PATHS</Label>
@@ -124,8 +126,11 @@
         <TextBox x:Name="txtStoryPath" Grid.Column="1" Grid.Row="30" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetStoryPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnSelectStorylPath" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectStorylPath_Click">SELECT</Button>
 
-        <Button x:Name="btnParse" Grid.Column="2" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Command="{Binding Path=ParseCommand}" CommandParameter="{Binding ElementName=txtBackgroundPath,Path=Text}">PARSE!</Button>
+        <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Image Files:</Label>
+        <TextBox x:Name="txtImageFilePath" Grid.Column="1" Grid.Row="32" FontFamily="Cooper Black" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding pathViewModel.SetImageFolderPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button x:Name="btnSelectImageFilePath" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectImageFilePath_Click">SELECT</Button>
 
+        <Button x:Name="btnParse" Grid.Column="2" Grid.Row="36" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Command="{Binding Path=ParseCommand}" CommandParameter="{Binding ElementName=txtBackgroundPath,Path=Text}">PARSE!</Button>
 
     </Grid>
 </Page>

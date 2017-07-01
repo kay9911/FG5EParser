@@ -2,7 +2,6 @@
 using FG5EParser.Writer_Classes;
 using FG5EParser.WriterClasses;
 using FG5EParser.XML_Writer_Helper_Classes;
-using FG5eParserModels.DM_Modules;
 using FG5eParserModels.Player_Models;
 using FG5eParserModels.Utility_Modules;
 using System.Collections.Generic;
@@ -28,7 +27,8 @@ namespace FG5EParser.XMLWriters
             string _racesTextPath = "",
             string _spellsTextPath = "",
             string _featsTextPath = "",
-            string _referenceManualTextPath = ""
+            string _referenceManualTextPath = "",
+            string _imageFileTextPath = ""
         )
         {
             // Defaults

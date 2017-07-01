@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace FG5EParser_v_2._0.Pages.Utilities
 {
@@ -16,7 +17,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectImagePath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -30,7 +31,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectOutputPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -44,7 +45,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnBackgroundPathSave_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -58,7 +59,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectTablesPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -72,7 +73,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectClassesPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -86,7 +87,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectEquipmentPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -100,7 +101,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectRacesPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -114,7 +115,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectSpellsPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -128,7 +129,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectFeatsPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -142,7 +143,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectNPCsPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -156,7 +157,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectReferenceManualPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -170,7 +171,7 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void btnSelectStorylPath_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
             choofdlog.Filter = "All Files (*.*)|*.*";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
@@ -179,6 +180,17 @@ namespace FG5EParser_v_2._0.Pages.Utilities
             {
                 txtStoryPath.Text = choofdlog.FileName;
                 txtStoryPath.IsEnabled = false;
+            }
+        }
+
+        private void btnSelectImageFilePath_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                txtImageFilePath.Text = choofdlog.SelectedPath;
+                txtImageFilePath.IsEnabled = false;
             }
         }
     }

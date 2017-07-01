@@ -26,7 +26,8 @@ namespace FG5EParser.Utilities
             string _racesTextPath = null,
             string _spellsTextPath = null,
             string _featsTextPath = null,
-            string _referenceManualTextPath = null
+            string _referenceManualTextPath = null,
+            string _imageFileTextPath = null
         )
         {
             // Get the Xdoc's
@@ -54,7 +55,8 @@ namespace FG5EParser.Utilities
                 ,_racesTextPath,
                 _spellsTextPath,
                 _featsTextPath,
-                _referenceManualTextPath
+                _referenceManualTextPath,
+                _imageFileTextPath
                 );
 
             if (string.IsNullOrEmpty(_authorName))
@@ -65,7 +67,7 @@ namespace FG5EParser.Utilities
 
             // Zip files and deploy
             ZipClass _zip = new ZipClass();
-            _zip.ZipFiles(commonXML, definationXML, _moduleName, _destinationPath, _imagePath, _useInstalledPath, _isDMOnly);
+            _zip.ZipFiles(commonXML, definationXML, _moduleName, _destinationPath, _imagePath, _useInstalledPath, _isDMOnly, _imageFileTextPath);
             //END
         }
     }

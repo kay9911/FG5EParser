@@ -9,7 +9,7 @@ namespace FG5EParser.Zipper
 {
     class ZipClass
     {
-        public void ZipFiles(XDocument _one, XDocument _two, string _modName, string _destinationPath, string _imagePath = "", bool _useInstalledPath = false, bool _isDMOnly = false)
+        public void ZipFiles(XDocument _one, XDocument _two, string _modName, string _destinationPath, string _imagePath = "", bool _useInstalledPath = false, bool _isDMOnly = false, string ImageFilePath = "")
         {
             string zipPath = string.Empty;
             string tempPath = string.Empty;
@@ -33,6 +33,18 @@ namespace FG5EParser.Zipper
 
                 // Create a temporary dir
                 tempPath = GetTempDirectory();
+
+                // Create the image folder
+                if (!string.IsNullOrEmpty(ImageFilePath))
+                {
+                    DirectoryInfo tempFolder = new DirectoryInfo(tempPath);
+                    tempFolder.CreateSubdirectory("images");
+
+                    foreach (string newPath in Directory.GetFiles(ImageFilePath, "*.*", SearchOption.AllDirectories))
+                    {
+                        File.Copy(newPath, newPath.Replace(ImageFilePath, tempPath + @"\images"), true);
+                    }
+                }
 
                 // Store the XML's in there
                 if (_isDMOnly)
