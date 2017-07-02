@@ -184,6 +184,7 @@
     <Compile Include="XML_Writer_Helper_Classes\ClassHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\EncounterHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\FeatsHelper.cs" />
+    <Compile Include="XML_Writer_Helper_Classes\ImageHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ItemHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\ParcelHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\PersonalitiesHelper.cs" />

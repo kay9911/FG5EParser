@@ -49,6 +49,7 @@ namespace FG5EParser.XMLWriters
             SpellHelper _spellHelper = new SpellHelper();
             FeatsHelper _featsHelper = new FeatsHelper();
             ReferenceManualHelper _referenceManualHelper = new ReferenceManualHelper();
+            ImageHelper _imageHelper = new ImageHelper();
             #endregion
 
             #region EXPERIMENTAL SECTION
@@ -153,6 +154,13 @@ namespace FG5EParser.XMLWriters
                 requiresList = true;
             }
 
+            // Images & Maps
+            if (!string.IsNullOrEmpty(_imageFileTextPath))
+            {
+                xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _moduleName));
+                requiresList = true;
+            }
+
             // Getting in the additional lists
             if (requiresList)
             {
@@ -210,6 +218,12 @@ namespace FG5EParser.XMLWriters
                 if (!string.IsNullOrEmpty(_referenceManualTextPath))
                 {
                     xml.Append(_referenceManualHelper.returnReferenceNotesXML(_referenceManualList, true)); // true : Switch to list
+                }
+
+                // Images List
+                if (!string.IsNullOrEmpty(_imageFileTextPath))
+                {
+                    xml.Append(_imageHelper.returnImageXML(_imageFileTextPath,_moduleName,true)); // true : Switch to list
                 }
 
                 xml.Append("</lists>");
@@ -507,6 +521,24 @@ namespace FG5EParser.XMLWriters
                 xml.Append("</librarylink>");
 
                 xml.Append("<name type=\"string\">Reference Manual</name>");
+
+                xml.Append(string.Format("</id-0000{0}>", index.ToString()));
+
+                // Counter + 1
+                index++;
+            }
+
+            // Entry for Images & Maps
+            if (!string.IsNullOrEmpty(_imageFileTextPath))
+            {
+                xml.Append(string.Format("<id-0000{0}>", index.ToString()));
+                xml.Append("<librarylink type=\"windowreference\">");
+
+                xml.Append("<class>referenceindex</class>");
+                xml.Append(string.Format("<recordname>lists.imagewindow@{0}</recordname>",_moduleName));
+                xml.Append("</librarylink>");
+
+                xml.Append("<name type=\"string\">Images &amp; Maps</name>");
 
                 xml.Append(string.Format("</id-0000{0}>", index.ToString()));
 

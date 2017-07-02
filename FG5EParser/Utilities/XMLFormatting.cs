@@ -648,6 +648,7 @@ namespace FG5EParser.Utilities
                                                     .Replace("+", "_")
                                                     .Replace("/", "_")
                                                     .Replace(".", "_")
+                                                    .Replace(@"\", "_")
                                                     //.Replace("1", "_")
                                                     //.Replace("2", "_")
                                                     //.Replace("3", "_")

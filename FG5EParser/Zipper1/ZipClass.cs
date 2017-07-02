@@ -2,7 +2,8 @@
 using System;
 using System.IO;
 using System.IO.Compression;
-using System.Windows.Forms;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Xml.Linq;
 
 namespace FG5EParser.Zipper
@@ -40,6 +41,11 @@ namespace FG5EParser.Zipper
                     DirectoryInfo tempFolder = new DirectoryInfo(tempPath);
                     tempFolder.CreateSubdirectory("images");
 
+                    //DirectoryInfo dInfo = new DirectoryInfo(tempPath+@"\image");
+                    //DirectorySecurity dSecurity = dInfo.GetAccessControl();
+                    //dSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+                    //dInfo.SetAccessControl(dSecurity);
+
                     foreach (string newPath in Directory.GetFiles(ImageFilePath, "*.*", SearchOption.AllDirectories))
                     {
                         File.Copy(newPath, newPath.Replace(ImageFilePath, tempPath + @"\images"), true);
@@ -61,12 +67,6 @@ namespace FG5EParser.Zipper
                 {
                     File.Copy(_imagePath, tempPath + "\\" + Path.GetFileName(@"C:\BaseCode\Fantasy Grounds Parser\Fantasy Grounds Parser Tool\Fantasy Grounds Parser Tool\bin\Debug\thumbnail.png"));
                 }
-
-                // Copy 
-                //if (true)
-                //{
-                //    Directory.Move(@"C:\Users\Kayne\Desktop\RAW(Parsed)", tempPath);
-                //}
 
                 // Zip them up
                 ZipFile.CreateFromDirectory(tempPath, string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
