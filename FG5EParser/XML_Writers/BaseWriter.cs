@@ -164,7 +164,7 @@ namespace FG5EParser.XMLWriters
             // Images & Maps
             if (!string.IsNullOrEmpty(_imageFileTextPath))
             {
-                xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _moduleName));
+                xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _imagePinsList, _moduleName ));
                 requiresList = true;
             }
 
@@ -230,7 +230,7 @@ namespace FG5EParser.XMLWriters
                 // Images List
                 if (!string.IsNullOrEmpty(_imageFileTextPath))
                 {
-                    xml.Append(_imageHelper.returnImageXML(_imageFileTextPath,_moduleName,true)); // true : Switch to list
+                    xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _imagePinsList, _moduleName,true)); // true : Switch to list
                 }
 
                 xml.Append("</lists>");
