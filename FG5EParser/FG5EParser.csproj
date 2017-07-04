@@ -93,6 +93,7 @@
     <Compile Include="WriterClasses\ClassWriter.cs" />
     <Compile Include="WriterClasses\EncounterWriter.cs" />
     <Compile Include="WriterClasses\FeatsWriter.cs" />
+    <Compile Include="WriterClasses\ImagePinWriter.cs" />
     <Compile Include="WriterClasses\ItemWriter.cs" />
     <Compile Include="WriterClasses\NPCWriter.cs" />
     <Compile Include="WriterClasses\ParcelWriter.cs" />

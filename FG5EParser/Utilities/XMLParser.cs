@@ -27,7 +27,8 @@ namespace FG5EParser.Utilities
             string _spellsTextPath = null,
             string _featsTextPath = null,
             string _referenceManualTextPath = null,
-            string _imageFileTextPath = null
+            string _imageFileTextPath = null,
+            string _imagePinsTextPath = null
         )
         {
             // Get the Xdoc's
@@ -56,7 +57,8 @@ namespace FG5EParser.Utilities
                 _spellsTextPath,
                 _featsTextPath,
                 _referenceManualTextPath,
-                _imageFileTextPath
+                _imageFileTextPath,
+                _imagePinsTextPath
                 );
 
             if (string.IsNullOrEmpty(_authorName))

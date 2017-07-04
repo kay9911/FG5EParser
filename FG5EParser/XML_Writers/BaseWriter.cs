@@ -28,7 +28,8 @@ namespace FG5EParser.XMLWriters
             string _spellsTextPath = "",
             string _featsTextPath = "",
             string _referenceManualTextPath = "",
-            string _imageFileTextPath = ""
+            string _imageFileTextPath = "",
+            string _imagePinsTextPath = ""
         )
         {
             // Defaults
@@ -76,6 +77,12 @@ namespace FG5EParser.XMLWriters
             {
                 ReferenceManualWriter _referenceManualWriter = new ReferenceManualWriter();
                 _referenceManualList = _referenceManualWriter.compileReferenceManualList(_referenceManualTextPath, _moduleName);
+            }
+            List<ImagePins> _imagePinsList = new List<ImagePins>();
+            if (!string.IsNullOrEmpty(_imagePinsTextPath))
+            {
+                ImagePinWriter _imagePinWriter = new ImagePinWriter();
+                _imagePinsList = _imagePinWriter.compileImagePinsList(_imagePinsTextPath, _moduleName);
             }
             #endregion
 

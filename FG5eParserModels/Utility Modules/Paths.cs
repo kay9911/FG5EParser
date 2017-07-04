@@ -13,6 +13,7 @@ namespace FG5eParserModels.Utility_Modules
         private string AuthorName { get; set; }
         
         private string ImagePath { get; set; }
+        private string ImagePinsPath { get; set; }
         private string ImageFolderPath { get; set; }
         private string StoryPath { get; set; }
         private string ClassesPath { get; set; }
@@ -98,6 +99,16 @@ namespace FG5eParserModels.Utility_Modules
             {
                 ImageFolderPath = value;
                 OnPropertyChanged("SetImageFolderPath");
+            }
+        }
+
+        public string SetImagePinsPath
+        {
+            get { return ImagePinsPath; }
+            set
+            {
+                ImagePinsPath = value;
+                OnPropertyChanged("SetImagePinsPath");
             }
         }
 

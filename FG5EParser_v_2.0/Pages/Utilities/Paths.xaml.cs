@@ -193,5 +193,19 @@ namespace FG5EParser_v_2._0.Pages.Utilities
                 txtImageFilePath.IsEnabled = false;
             }
         }
+
+        private void btnSelectImagePinsPath_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                txtImagePinsPath.Text = choofdlog.FileName;
+                txtImagePinsPath.IsEnabled = false;
+            }
+        }
     }
 }

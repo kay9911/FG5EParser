@@ -1,9 +1,6 @@
 ﻿using FG5eParserLib.Utility;
 using System;
 using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace FG5EParser_v_2._0.Pages.Utilities
 {
