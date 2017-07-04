@@ -5,7 +5,7 @@ using System.IO;
 
 namespace FG5EParser.WriterClasses
 {
-    public class StoryWriter
+    class StoryWriter
     {
         public List<StoryElements> compileStoryList(string _inputLocation, string _moduleName)
         {

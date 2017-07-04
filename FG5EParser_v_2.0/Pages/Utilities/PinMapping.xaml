@@ -58,10 +58,10 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">PIN MAPPING</Label>
-        
-        <Image Name="imageDock" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="31" Visibility="Visible" MouseMove="imageDock_MouseMove"/>
-        <Button x:Name="btnSelectImage" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="34" FontSize="18" Click="btnSelectImage_Click" Margin="0,0,0,7">Select Image</Button>
-        <TextBox x:Name="txtImagePath" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center"/>
+
+        <Image Name="imageDock" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="31" Visibility="Visible" MouseMove="imageDock_MouseMove" MouseLeftButtonDown="imageDock_MouseLeftButtonDown" Source="{Binding ImageFilePath}"/>
+        <Button x:Name="btnSelectImage" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="34" FontSize="18" Margin="0,0,0,7" Command="{Binding LoadImage}">Select Image</Button>
+        <TextBox x:Name="txtImagePath" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding ImageFilePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Label Name="lblXYCords" Grid.Column="5" Grid.Row="34" Grid.ColumnSpan="2" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
 
         <DataGrid
@@ -74,12 +74,13 @@
             AutoGenerateColumns="False"
             >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="STORY ID" Binding="{Binding StoryTitle}" Width="*"/>
-                <DataGridTextColumn Header="COORDINATES" Width="*"/>
+                <DataGridTextColumn Header="STORY ID" Binding="{Binding Title}" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header="COORDINATES" Binding="{Binding Coordinates}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <Button x:Name="btnSave" Grid.Column="9" Grid.ColumnSpan="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding SavePins}">SAVE</Button>
+        <Button x:Name="btnLoadStories" Grid.Column="8" Grid.ColumnSpan="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding LoadStoryList}">Load Stories</Button>
 
     </Grid>
 </Page>

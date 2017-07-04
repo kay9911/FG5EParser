@@ -1,12 +1,12 @@
-﻿using FG5EParser.Base_Class;
-using FG5EParser.WriterClasses;
-using FG5eParserModels.Utility_Modules;
+﻿using FG5eParserModels.Utility_Modules;
 using Microsoft.Win32;
-using System.Collections.Generic;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 
-namespace FG5eParserLib.Utility 
+namespace FG5eParserLib.Utility
 {
     public class ImagePinsViewModel : INotifyPropertyChanged
     {
@@ -26,34 +26,36 @@ namespace FG5eParserLib.Utility
 
         // Relay Commands
         public RelayCommand SavePins { get; set; } // Save all imagepins
+        public RelayCommand LoadImage { get; set; } // Loads the image into view
         public RelayCommand LoadStoryList { get; set; } // Get all Story Entries
 
         // Lists
-        public List<StoryElements> StoryList { get; set; }
+        public ObservableCollection<StoryEntry> StoryList { get; set; }
 
-        private string ImageName { get; set; }
-        public string _ImageName
+        public string ImagePinsTextPath { get; set; }
+        private string _ImageFilePath { get; set; }
+        public string ImageFilePath
         {
             get
             {
-                return ImageName;
+                return _ImageFilePath;
             }
             set
             {
-                ImageName = value;
-                OnPropertyChanged("_ImageName");
+                _ImageFilePath = value;
+                OnPropertyChanged("ImageFilePath");
             }
         }
-
-        public string ImagePinsTextPath { get; set; }
+        private string ImageName;
 
         // Constructor
         public ImagePinsViewModel()
         {
             ImagePinObj = new ImagePins();
-            StoryList = new List<StoryElements>();
+            StoryList = new ObservableCollection<StoryEntry>();
             LoadStoryList = new RelayCommand(loadStoryList);
 
+            LoadImage = new RelayCommand(loadImage);
             SavePins = new RelayCommand(savePins);
         }
 
@@ -69,6 +71,7 @@ namespace FG5eParserLib.Utility
                 if (choofdlog.ShowDialog() == true)
                 {
                     ImagePinsTextPath = choofdlog.FileName;
+                    //ImageName = choofdlog.SafeFileName.Replace(".jpg", "").Trim();
                 }
             }
 
@@ -76,6 +79,22 @@ namespace FG5eParserLib.Utility
             if (!string.IsNullOrEmpty(ImagePinsTextPath))
             {
                 TextWriter tsw = new StreamWriter(ImagePinsTextPath, true);
+                tsw.WriteLine(GetOutput());
+                tsw.Close();
+            }
+        }
+
+        private void loadImage(object obj)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                ImageFilePath = choofdlog.FileName;
+                ImageName = choofdlog.SafeFileName.Replace(".jpg","").Trim();
             }
         }
 
@@ -88,11 +107,39 @@ namespace FG5eParserLib.Utility
 
             if (choofdlog.ShowDialog() == true)
             {
-                StoryWriter _encounterWriterObject = new StoryWriter();
+                Readers _readerObject = new Readers();
                 StoryList.Clear();
-                StoryList = _encounterWriterObject.compileStoryList(choofdlog.FileName, "");
+                foreach (var _story in _readerObject.ReadStoryEntries(choofdlog.FileName))
+                {
+                    StoryList.Add(_story);
+                }
             }
         }
+
+        private string GetOutput()
+        {
+            StringBuilder _sb = new StringBuilder();
+
+            foreach (var entry in StoryList)
+            {
+                if (!string.IsNullOrEmpty(entry.Coordinates))
+                {
+                    ImagePins _pin = new ImagePins()
+                    {
+                        _classType = "story",
+                        _imageName = ImageName,
+                        _recordName = entry.Title,
+                        _x = entry.Coordinates.Split(';')[0],
+                        _y = entry.Coordinates.Split(';')[1]
+                    };
+
+                    _sb.Append(string.Format("{0};{1};{2};{3};{4}", _pin._imageName, _pin._x, _pin._y, _pin._classType, _pin._recordName));
+                    _sb.Append(Environment.NewLine);
+                }
+            }
+            return _sb.ToString();
+        }
+
         #region PROPERTY CHANGES
         public event PropertyChangedEventHandler PropertyChanged;
 

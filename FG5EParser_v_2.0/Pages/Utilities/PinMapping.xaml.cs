@@ -1,6 +1,7 @@
 ﻿using FG5eParserLib.Utility;
 using System;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -12,6 +13,10 @@ namespace FG5EParser_v_2._0.Pages.Utilities
     public partial class PinMapping : Page
     {
         ImagePinsViewModel _IPVM;
+        StoryEntry _crrentRow;
+
+        double x;
+        double y;
 
         public PinMapping()
         {
@@ -26,26 +31,18 @@ namespace FG5EParser_v_2._0.Pages.Utilities
             double pixelWidth = imageDock.Source.Width;
             double pixelHeight = imageDock.Source.Height;
 
-            double x = Math.Round(pixelWidth * p.X / imageDock.ActualWidth, 0, MidpointRounding.AwayFromZero);
-            double y = Math.Round(pixelHeight * p.Y / imageDock.ActualHeight, 0, MidpointRounding.AwayFromZero);
+            x = Math.Round(pixelWidth * p.X / imageDock.ActualWidth, 0, MidpointRounding.AwayFromZero);
+            y = Math.Round(pixelHeight * p.Y / imageDock.ActualHeight, 0, MidpointRounding.AwayFromZero);
 
             lblXYCords.Content = string.Format("X:{0},Y:{1}", x.ToString(), y.ToString());
         }
 
-        private void btnSelectImage_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void imageDock_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
-            choofdlog.Filter = "All Files (*.*)|*.*";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
-
-            if (choofdlog.ShowDialog() == true)
+            _crrentRow = (StoryEntry)dtTemplateData.SelectedItem;
+            if (_crrentRow != null)
             {
-                txtImagePath.Text = choofdlog.FileName;
-                txtImagePath.IsEnabled = false;
-
-                ImageSource _imageSource = new BitmapImage(new Uri(choofdlog.FileName));
-                imageDock.Source = _imageSource;
+                _crrentRow.Coordinates = string.Format("{0};{1}", x.ToString(), y.ToString());
             }
         }
     }
