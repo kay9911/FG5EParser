@@ -73,10 +73,16 @@ namespace FG5EParser_v_2._0.Pages
             NavigationService.Navigate(_npcPage);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnReferenceManual_Click(object sender, RoutedEventArgs e)
         {
             ReferenceManual _referenceManualPage = new ReferenceManual();
             NavigationService.Navigate(_referenceManualPage);
+        }
+
+        private void btnImagesandMaps_Click(object sender, RoutedEventArgs e)
+        {
+            PinMapping _pinMappingPage = new PinMapping();
+            NavigationService.Navigate(_pinMappingPage);
         }
     }
 }

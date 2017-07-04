@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FG5EParser.Base_Class
 {
-    class StoryElements
+    public class StoryElements
     {
         public int StoryIndex { get; set; } // Keep track of what needs to be linked where later
         public string StoryHeader { get; set; } // Specify what main tab all entries should fall under

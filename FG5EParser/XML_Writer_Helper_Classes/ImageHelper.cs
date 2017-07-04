@@ -28,7 +28,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                     xml.Append("<image type=\"image\">");
 
-                    xml.Append(string.Format("<bitmap type=\"string\">{0}</bitmap>", newPath.Replace(_imageFileTextPath + @"\", "").Trim()));
+                    xml.Append(string.Format("<bitmap type=\"string\">image/{0}</bitmap>", newPath.Replace(_imageFileTextPath + @"\", "").Trim()));
 
                     xml.Append("</image>");
 

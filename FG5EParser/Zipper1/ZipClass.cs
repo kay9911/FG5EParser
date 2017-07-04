@@ -2,8 +2,6 @@
 using System;
 using System.IO;
 using System.IO.Compression;
-using System.Security.AccessControl;
-using System.Security.Principal;
 using System.Xml.Linq;
 
 namespace FG5EParser.Zipper
@@ -41,11 +39,6 @@ namespace FG5EParser.Zipper
                     DirectoryInfo tempFolder = new DirectoryInfo(tempPath);
                     tempFolder.CreateSubdirectory("images");
 
-                    //DirectoryInfo dInfo = new DirectoryInfo(tempPath+@"\image");
-                    //DirectorySecurity dSecurity = dInfo.GetAccessControl();
-                    //dSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
-                    //dInfo.SetAccessControl(dSecurity);
-
                     foreach (string newPath in Directory.GetFiles(ImageFilePath, "*.*", SearchOption.AllDirectories))
                     {
                         File.Copy(newPath, newPath.Replace(ImageFilePath, tempPath + @"\images"), true);
@@ -69,7 +62,7 @@ namespace FG5EParser.Zipper
                 }
 
                 // Zip them up
-                ZipFile.CreateFromDirectory(tempPath, string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
+                ZipFile.CreateFromDirectory(tempPath, string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName), CompressionLevel.NoCompression,false);
 
                 // Copy the end result to the modules file
                 File.Copy(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName), string.Format("{0}\\{1}", zipPath, Path.GetFileName(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName))), true);

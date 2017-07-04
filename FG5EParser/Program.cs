@@ -16,7 +16,6 @@ namespace FG5EParser
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LandingPage());
         }
     }
 }

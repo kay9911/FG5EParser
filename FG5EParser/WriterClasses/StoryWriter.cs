@@ -2,13 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5EParser.WriterClasses
 {
-    class StoryWriter
+    public class StoryWriter
     {
         public List<StoryElements> compileStoryList(string _inputLocation, string _moduleName)
         {

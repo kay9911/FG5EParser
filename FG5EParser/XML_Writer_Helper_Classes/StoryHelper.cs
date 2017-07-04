@@ -1,11 +1,9 @@
 ﻿using FG5EParser.Base_Class;
 using FG5EParser.Utilities;
 using FG5EParser.WriterClasses;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5EParser.XML_Writer_Helper_Classes
 {

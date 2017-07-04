@@ -77,86 +77,8 @@
     <Compile Include="Base_Class\Races.cs" />
     <Compile Include="Base_Class\RollableTables.cs" />
     <Compile Include="Base_Class\StoryElements.cs" />
-    <Compile Include="LandingPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LandingPage.Designer.cs">
-      <DependentUpon>LandingPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User Controls\Class_Controls\Class_Abilities.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Abilities.Designer.cs">
-      <DependentUpon>Class_Abilities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Basics.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Basics.Designer.cs">
-      <DependentUpon>Class_Basics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Buttons.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Buttons.Designer.cs">
-      <DependentUpon>Class_Buttons.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Description.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Description.Designer.cs">
-      <DependentUpon>Class_Description.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Features.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\Class_Controls\Class_Features.Designer.cs">
-      <DependentUpon>Class_Features.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Buttons.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Buttons.Designer.cs">
-      <DependentUpon>NPC_Buttons.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Stats.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Stats.Designer.cs">
-      <DependentUpon>NPC_Stats.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Actions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Actions.Designer.cs">
-      <DependentUpon>NPC_Actions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Innate_Spellcasting.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Innate_Spellcasting.Designer.cs">
-      <DependentUpon>NPC_Innate_Spellcasting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Resistance_Vulnaribilities.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Resistance_Vulnaribilities.Designer.cs">
-      <DependentUpon>NPC_Resistance_Vulnaribilities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Spellcasting.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\NPC_Controls\NPC_Spellcasting.Designer.cs">
-      <DependentUpon>NPC_Spellcasting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User Controls\SetPaths.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User Controls\SetPaths.Designer.cs">
-      <DependentUpon>SetPaths.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\ContextMenuFunctionHelper.cs" />
     <Compile Include="Utilities\KeyValuePairViewer.cs">
       <SubType>UserControl</SubType>
@@ -194,9 +116,6 @@
     <Compile Include="XML_Writer_Helper_Classes\StoryHelper.cs" />
     <Compile Include="XML_Writer_Helper_Classes\TableHelper.cs" />
     <Compile Include="Zipper1\ZipClass.cs" />
-    <EmbeddedResource Include="LandingPage.resx">
-      <DependentUpon>LandingPage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -206,42 +125,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="User Controls\Class_Controls\Class_Abilities.resx">
-      <DependentUpon>Class_Abilities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\Class_Controls\Class_Basics.resx">
-      <DependentUpon>Class_Basics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\Class_Controls\Class_Buttons.resx">
-      <DependentUpon>Class_Buttons.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\Class_Controls\Class_Description.resx">
-      <DependentUpon>Class_Description.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\Class_Controls\Class_Features.resx">
-      <DependentUpon>Class_Features.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Buttons.resx">
-      <DependentUpon>NPC_Buttons.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Stats.resx">
-      <DependentUpon>NPC_Stats.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Actions.resx">
-      <DependentUpon>NPC_Actions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Innate_Spellcasting.resx">
-      <DependentUpon>NPC_Innate_Spellcasting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Resistance_Vulnaribilities.resx">
-      <DependentUpon>NPC_Resistance_Vulnaribilities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\NPC_Controls\NPC_Spellcasting.resx">
-      <DependentUpon>NPC_Spellcasting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User Controls\SetPaths.resx">
-      <DependentUpon>SetPaths.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Utilities\KeyValuePairViewer.resx">
       <DependentUpon>KeyValuePairViewer.cs</DependentUpon>
     </EmbeddedResource>
