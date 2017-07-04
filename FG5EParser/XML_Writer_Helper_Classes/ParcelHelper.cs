@@ -37,7 +37,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                         if (_parcle.Category == _category)
                         {
                             // Name index
-                            xml.Append(string.Format("<0>", xmlFormatting.formatXMLCharachters(_parcle.Name, "IH")));
+                            xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_parcle.Name, "IH")));
 
                             // Name
                             xml.Append(string.Format("<name type=\"string\">{0}</name>", _parcle.Name));
@@ -84,7 +84,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                             xml.Append("</itemlist>");
 
-                            xml.Append(string.Format("</0>", xmlFormatting.formatXMLCharachters(_parcle.Name, "IH")));
+                            xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_parcle.Name, "IH")));
                         }
                     }
 
