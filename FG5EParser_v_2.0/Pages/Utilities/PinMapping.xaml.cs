@@ -1,6 +1,7 @@
 ﻿using FG5eParserLib.Utility;
-using System;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace FG5EParser_v_2._0.Pages.Utilities
 {
@@ -24,12 +25,10 @@ namespace FG5EParser_v_2._0.Pages.Utilities
 
         private void imageDock_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            System.Windows.Point p = e.GetPosition(imageDock);
-            double pixelWidth = imageDock.Source.Width;
-            double pixelHeight = imageDock.Source.Height;
-
-            x = pixelWidth * p.X / imageDock.ActualWidth;
-            y = pixelHeight * p.Y / imageDock.ActualHeight;
+            ImageSource imageSource = imageDock.Source;
+            BitmapSource bitmapImage = (BitmapSource)imageSource;
+            x = (e.GetPosition(imageDock).X * bitmapImage.PixelWidth / imageDock.ActualWidth);
+            y = (e.GetPosition(imageDock).Y * bitmapImage.PixelHeight / imageDock.ActualHeight);
 
             lblXYCords.Content = string.Format("X:{0},Y:{1}", x.ToString(), y.ToString());
         }

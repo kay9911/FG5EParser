@@ -59,7 +59,19 @@
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">PIN MAPPING</Label>
 
-        <Image Name="imageDock" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="31" Visibility="Visible" MouseMove="imageDock_MouseMove" MouseLeftButtonDown="imageDock_MouseLeftButtonDown" Source="{Binding ImageFilePath}"/>
+        <Image Name="imageDock" 
+               Grid.Column="0" 
+               Grid.Row="2" 
+               Grid.ColumnSpan="8" 
+               Grid.RowSpan="31" 
+               MouseMove="imageDock_MouseMove" 
+               MouseLeftButtonDown="imageDock_MouseLeftButtonDown" 
+               Source="{Binding ImageFilePath}"
+               VerticalAlignment="Stretch"
+               HorizontalAlignment="Stretch"
+               Stretch="Uniform"
+               />
+
         <Button x:Name="btnSelectImage" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="34" FontSize="18" Margin="0,0,0,7" Command="{Binding LoadImage}">Select Image</Button>
         <TextBox x:Name="txtImagePath" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding ImageFilePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Label Name="lblXYCords" Grid.Column="5" Grid.Row="34" Grid.ColumnSpan="2" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
