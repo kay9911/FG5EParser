@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5EParser.Utilities
 {
@@ -579,11 +577,28 @@ namespace FG5EParser.Utilities
                         , _toFormat.Split(';')[2]
                         );
                         break;
+                    //IMG;*;{Image Name};{Image Record Name}
+                    case "IMG":
+                        _toFormat = string.Format("<link class=\"imagewindow\" recordname=\"img{0}@{1}\">{2}</link>"
+                        , _toFormat.Split(';')[3].ToLower().Trim().Replace(" ", "")
+                        , _toFormat.Split(';')[1]
+                        , _toFormat.Split(';')[2]
+                        );
+                        break;
+                    //NPC;*;{NPC Name};{NPC Record Name}
+                    case "NPC":
+                        _toFormat = string.Format("<link class=\"npc\" recordname=\"npc.{0}@{1}\">{2}</link>"
+                        , _toFormat.Split(';')[3].ToLower().Trim().Replace(" ", "")
+                        , _toFormat.Split(';')[1]
+                        , _toFormat.Split(';')[2]
+                        );
+                        break;
                     default:
                         break;
                 }
             }
             #endregion
+            // When links need to be used in a table
             else if (_toFormat.Contains("#zal:"))
             {
                 // Remove the ZAL ref
@@ -596,7 +611,6 @@ namespace FG5EParser.Utilities
                         _toFormat = string.Format("encounter.enc_{0}@{1}"
                         , _toFormat.Split(':')[3].ToLower().Trim().Replace(" ", "")
                         , _toFormat.Split(':')[1]
-                        , _toFormat.Split(':')[2]
                         );
                         break;
                     default:

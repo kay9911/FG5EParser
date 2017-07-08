@@ -1,5 +1,5 @@
 ﻿using FG5EParser.Base_Classes;
-using FG5eParserModels.DM_Modules;
+using FG5EParser.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -66,6 +66,7 @@ namespace FG5EParser.Writer_Classes
             {
                 // Read the lines from the file
                 var _lines = File.ReadLines(_inputLocation);
+                XMLFormatting _xmlformatting = new XMLFormatting();
 
                 // Convert to list
                 List<string> _npcListDetails = new List<string>();
@@ -208,13 +209,13 @@ namespace FG5EParser.Writer_Classes
                         i++;
 
                         // Abilities
-                        while (!_npcListDetails[i].Contains("ACTIONS") && !_npcListDetails[i].Contains("REACTIONS") && !_npcListDetails[i].Contains("LEGENDARY ACTIONS") && !_npcListDetails[i].Contains("LAIR ACTIONS"))
+                        while (!_npcListDetails[i].Contains("ACTIONS") && !_npcListDetails[i].Contains("REACTIONS") && !_npcListDetails[i].Contains("LEGENDARY ACTIONS") && !_npcListDetails[i].Contains("LAIR ACTIONS") && !_npcListDetails[i].Contains("##;"))
                         {
                             _npc.NPCAbilities.Add(_npcListDetails[i]);
                             i++;
                         }
 
-                        while (!_npcListDetails[i].Contains("REACTIONS") && !_npcListDetails[i].Contains("LEGENDARY ACTIONS") && !_npcListDetails[i].Contains("LAIR ACTIONS") && !string.IsNullOrEmpty(_npcListDetails[i]))
+                        while (!_npcListDetails[i].Contains("REACTIONS") && !_npcListDetails[i].Contains("LEGENDARY ACTIONS") && !_npcListDetails[i].Contains("LAIR ACTIONS") && !_npcListDetails[i].Contains("##;") && !string.IsNullOrEmpty(_npcListDetails[i]))
                         {
                             // Skip the header
                             if (_npcListDetails[i].Contains("ACTIONS"))
@@ -237,7 +238,7 @@ namespace FG5EParser.Writer_Classes
                             }
                         }
 
-                        while (!_npcListDetails[i].Contains("LEGENDARY ACTIONS") && !_npcListDetails[i].Contains("LAIR ACTIONS") && !string.IsNullOrEmpty(_npcListDetails[i]))
+                        while (!_npcListDetails[i].Contains("LEGENDARY ACTIONS") && !_npcListDetails[i].Contains("LAIR ACTIONS") && !_npcListDetails[i].Contains("##;") && !string.IsNullOrEmpty(_npcListDetails[i]))
                         {
                             // Skip the header
                             if (_npcListDetails[i].Contains("REACTIONS"))
@@ -260,7 +261,7 @@ namespace FG5EParser.Writer_Classes
                             }
                         }
 
-                        while (!_npcListDetails[i].Contains("LAIR ACTIONS") && !string.IsNullOrEmpty(_npcListDetails[i]))
+                        while (!_npcListDetails[i].Contains("LAIR ACTIONS") && !_npcListDetails[i].Contains("##;") && !string.IsNullOrEmpty(_npcListDetails[i]))
                         {
                             // Skip the header
                             if (_npcListDetails[i].Contains("LEGENDARY ACTIONS"))
@@ -310,7 +311,11 @@ namespace FG5EParser.Writer_Classes
                         {
                             if (!string.IsNullOrEmpty(_npcListDetails[i]))
                             {
-                                _npc.NPCDetails.Add(_npcListDetails[i]);
+                                if (_npcListDetails[i].Contains("##;"))
+                                {
+                                    i++;
+                                }
+                                _npc.NPCDetails.Add(_xmlformatting.returnFormattedString(_npcListDetails[i], moduleName));
                                 if (i + 1 != _npcListDetails.Count)
                                 {
                                     i++;
