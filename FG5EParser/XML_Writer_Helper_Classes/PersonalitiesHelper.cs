@@ -443,6 +443,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         {
             StringBuilder _npc = new StringBuilder();
             List<string> alphabets = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            XMLFormatting _xmlformatting = new XMLFormatting();
 
             foreach (string _s in alphabets)
             {
@@ -466,13 +467,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                     {
                         _current = _list.First();
 
-                        _npc.Append(string.Format("<{0}>", _current.NPCName.Replace(" ", "").ToLower().Trim()));
+                        _npc.Append(string.Format("<{0}>", _xmlformatting.formatXMLCharachters(_current.NPCName.Replace(" ", "").ToLower().Trim(),"IH")));
 
                         _npc.Append("<link type=\"windowreference\">");
 
                         _npc.Append("<class>npc</class>");
 
-                        _npc.Append(string.Format("<recordname>npc.{0}@{1}</recordname>", _current.NPCName.Replace(" ", "").ToLower().Trim(), _moduleName));
+                        _npc.Append(string.Format("<recordname>npc.{0}@{1}</recordname>", _xmlformatting.formatXMLCharachters(_current.NPCName.Replace(" ", "").ToLower().Trim(), "IH"), _moduleName));
 
                         _npc.Append("<description>");
 
@@ -484,7 +485,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                         _npc.Append("<source type=\"string\" />");
 
-                        _npc.Append(string.Format("</{0}>", _current.NPCName.Replace(" ", "").ToLower().Trim()));
+                        _npc.Append(string.Format("</{0}>", _xmlformatting.formatXMLCharachters(_current.NPCName.Replace(" ", "").ToLower().Trim(), "IH")));
 
                         #region Example
                         //      < deathknight >
@@ -518,6 +519,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         {
             StringBuilder _npc = new StringBuilder();
             List<string> _npcLevelList = new List<string>();
+            XMLFormatting _xmlformatting = new XMLFormatting();
 
             if (_Npcs.Count != 0)
             {
@@ -546,16 +548,16 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                         {
                             if (_this.NPCCr == _currentLevelValue)
                             {
-                                _npc.Append(string.Format("<{0}>", _this.NPCName.Replace(" ", "").ToLower().Trim()));
+                                _npc.Append(string.Format("<{0}>", _xmlformatting.formatXMLCharachters(_this.NPCName.Replace(" ", "").ToLower().Trim(),"IH")));
                                 _npc.Append("<link type=\"windowreference\">");
                                 _npc.Append("<class>npc</class>");
-                                _npc.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _this.NPCName.Replace(" ", "").ToLower().Trim(), _moduleName));
+                                _npc.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _xmlformatting.formatXMLCharachters(_this.NPCName.Replace(" ", "").ToLower().Trim(), "IH"), _moduleName));
                                 _npc.Append("<description>");
                                 _npc.Append("<field>name</field>");
                                 _npc.Append("</description>");
                                 _npc.Append("</link>");
                                 _npc.Append("<source type=\"number\" />");
-                                _npc.Append(string.Format("</{0}>", _this.NPCName.Replace(" ", "").ToLower()));
+                                _npc.Append(string.Format("</{0}>", _xmlformatting.formatXMLCharachters(_this.NPCName.Replace(" ", "").ToLower().Trim(), "IH")));
                             }
                         }
 
@@ -576,6 +578,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         {
             StringBuilder _npc = new StringBuilder();
             List<string> _npcTypeList = new List<string>();
+            XMLFormatting _xmlformatting = new XMLFormatting();
 
             if (_Npcs.Count != 0)
             {
@@ -603,16 +606,16 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                         {
                             if (_this.NPCType == _currentTypeValue)
                             {
-                                _npc.Append(string.Format("<{0}>", _this.NPCName.Replace(" ", "").ToLower().Trim()));
+                                _npc.Append(string.Format("<{0}>", _xmlformatting.formatXMLCharachters(_this.NPCName.Replace(" ", "").ToLower().Trim(),"IH")));
                                 _npc.Append("<link type=\"windowreference\">");
                                 _npc.Append("<class>npc</class>");
-                                _npc.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _this.NPCName.Replace(" ", "").ToLower().Trim(), _moduleName));
+                                _npc.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _xmlformatting.formatXMLCharachters(_this.NPCName.Replace(" ", "").ToLower().Trim(), "IH"), _moduleName));
                                 _npc.Append("<description>");
                                 _npc.Append("<field>name</field>");
                                 _npc.Append("</description>");
                                 _npc.Append("</link>");
                                 _npc.Append(string.Format("<source>{0}</source>", _currentTypeValue));
-                                _npc.Append(string.Format("</{0}>", _this.NPCName.Replace(" ", "").ToLower()));
+                                _npc.Append(string.Format("</{0}>", _xmlformatting.formatXMLCharachters(_this.NPCName.Replace(" ", "").ToLower().Trim(), "IH")));
                             }
                         }
 
