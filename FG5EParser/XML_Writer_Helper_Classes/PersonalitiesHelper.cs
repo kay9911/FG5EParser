@@ -1,4 +1,5 @@
 ﻿using FG5EParser.Base_Classes;
+using FG5EParser.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -66,8 +67,9 @@ namespace FG5EParser.XML_Writer_Helper_Classes
         private string generateNPCXML(Personalities _person)
         {
             StringBuilder _npc = new StringBuilder();
+            XMLFormatting _xmlformatting = new XMLFormatting();
 
-            _npc.Append(string.Format("<{0}>", _person.NPCName.Replace(" ", "").ToLower().Trim()));
+            _npc.Append(string.Format("<{0}>", _xmlformatting.formatXMLCharachters(_person.NPCName.Replace(" ", "").ToLower().Trim(),"IH")));
 
             _npc.Append(string.Format("<locked type=\"number\">{0}</locked>", _person.LockType));
 
@@ -352,7 +354,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
             }
 
-            _npc.Append(string.Format("</{0}>", _person.NPCName.Replace(" ", "").ToLower().Trim()));
+            _npc.Append(string.Format("</{0}>", _xmlformatting.formatXMLCharachters(_person.NPCName.Replace(" ", "").ToLower().Trim(), "IH")));
 
             return _npc.ToString();
         }

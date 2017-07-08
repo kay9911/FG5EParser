@@ -28,8 +28,8 @@ namespace FG5EParser_v_2._0.Pages.Utilities
             double pixelWidth = imageDock.Source.Width;
             double pixelHeight = imageDock.Source.Height;
 
-            x = Math.Round(pixelWidth * p.X / imageDock.ActualWidth, 0, MidpointRounding.AwayFromZero);
-            y = Math.Round(pixelHeight * p.Y / imageDock.ActualHeight, 0, MidpointRounding.AwayFromZero);
+            x = pixelWidth * p.X / imageDock.ActualWidth;
+            y = pixelHeight * p.Y / imageDock.ActualHeight;
 
             lblXYCords.Content = string.Format("X:{0},Y:{1}", x.ToString(), y.ToString());
         }
