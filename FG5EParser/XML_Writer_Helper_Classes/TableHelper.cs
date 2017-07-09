@@ -109,6 +109,9 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                             {
                                                 case "ST": xml.Append("<class>encounter</class>");
                                                     break;
+                                                case "NPC":
+                                                    xml.Append("<class>npc</class>");
+                                                    break;
                                                 default:
                                                     xml.Append("<class>reference_tableresult</class>");
                                                     break;

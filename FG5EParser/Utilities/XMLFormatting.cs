@@ -613,6 +613,13 @@ namespace FG5EParser.Utilities
                         , _toFormat.Split(':')[1]
                         );
                         break;
+                    //NPC:*:{NPC Name}:{NPC Record Name}
+                    case "NPC":
+                        _toFormat = string.Format("npc.{0}@{1}"
+                        , formatXMLCharachters(_toFormat.Split(':')[3].ToLower().Trim().Replace(" ", ""),"IH")
+                        , _toFormat.Split(':')[1]
+                        );
+                        break;
                     default:
                         break;
                 }

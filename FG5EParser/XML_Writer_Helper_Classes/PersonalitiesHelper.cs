@@ -347,7 +347,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                 for (int i = 0; i < _person.NPCDetails.Count; i++)
                 {
-                    _npc.Append(string.Format("<p>{0}</p>",_person.NPCDetails[i].ToString()));
+                    _npc.Append(string.Format("{0}",_person.NPCDetails[i].ToString()));
                 }
 
                 _npc.Append("</text>");
