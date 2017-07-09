@@ -105,7 +105,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                             xml.Append("<class>encounter</class>");
 
                             xml.Append(string.Format("<recordname>encounter.enc_{0}@{1}</recordname>"
-                                , _storyList[i].StoryTitle.ToLower().Replace(" ", "").Replace(".", "_").Trim()
+                                , _xmlFormatting.formatXMLCharachters(_storyList[i].StoryTitle, "IH")
                                 , _moduleName
                                 ));
 
