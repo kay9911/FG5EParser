@@ -164,7 +164,6 @@ namespace FG5eParserLib.View_Mo.dels
 
             foreach (var background in BackgroundList)
             {
-
                 // Name
                 _sb.Append(string.Format("##;{0}", background._Name));
                 _sb.Append(Environment.NewLine);
@@ -233,7 +232,7 @@ namespace FG5eParserLib.View_Mo.dels
                 _sb.Append(Environment.NewLine);
 
                 _sb.Append("#zle;");
-                _sb.Append(Environment.NewLine);
+                _sb.Append(Environment.NewLine); // Seperate the next object in the list by a line break.
             }
             _Output = _sb.ToString();
         }

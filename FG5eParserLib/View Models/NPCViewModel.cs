@@ -572,6 +572,7 @@ namespace FG5eParserLib.View_Models
                 if (!string.IsNullOrEmpty(NPC._Details))
                 {
                     _sb.Append("##;");
+                    _sb.Append(Environment.NewLine);
                     _sb.Append(NPC._Details);
                     _sb.Append(Environment.NewLine);
                 }
