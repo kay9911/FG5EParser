@@ -56,9 +56,9 @@ namespace FG5EParser.WriterClasses
 
                 return Feats;
             }
-            catch (Exception ex)
+            catch (Exception)
             { 
-                throw ex;
+                throw;
             }
         }
     }

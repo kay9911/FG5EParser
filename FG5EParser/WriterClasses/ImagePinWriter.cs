@@ -36,9 +36,9 @@ namespace FG5EParser.WriterClasses
 
                 return _imagePinsList;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }

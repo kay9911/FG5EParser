@@ -56,9 +56,9 @@ namespace FG5EParser.WriterClasses
                 return _tableList;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }

@@ -51,9 +51,9 @@ namespace FG5EParser.WriterClasses
                 return _backgroundList;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }

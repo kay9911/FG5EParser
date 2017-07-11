@@ -136,9 +136,9 @@ namespace FG5EParser.WriterClasses
                 return Spells.OrderBy(x => x._Name).ToList();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

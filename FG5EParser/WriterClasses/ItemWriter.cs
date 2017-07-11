@@ -105,9 +105,9 @@ namespace FG5EParser.WriterClasses
 
                 return _itemList;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }
@@ -197,9 +197,9 @@ namespace FG5EParser.WriterClasses
 
                 return _itemList;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }

@@ -53,9 +53,9 @@ namespace FG5EParser.Writer_Classes
 
                 return NPCS;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
         #endregion
@@ -335,9 +335,9 @@ namespace FG5EParser.Writer_Classes
                 }
                 return NPCList;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

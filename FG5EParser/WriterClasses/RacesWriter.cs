@@ -53,9 +53,9 @@ namespace FG5EParser.WriterClasses
 
                 return _raceList;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }

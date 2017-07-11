@@ -344,7 +344,7 @@ namespace FG5EParser.XMLWriters
 
                 xml.Append("<class>reference_colindex</class>");
 
-                xml.Append(string.Format("<recordname>lists.magicitem.bytype</recordname>", _moduleName));
+                xml.Append("<recordname>lists.magicitem.bytype</recordname>");
 
                 xml.Append("</librarylink>");
 

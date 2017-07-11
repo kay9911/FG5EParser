@@ -71,7 +71,7 @@ namespace FG5EParser.Zipper
                 Directory.Delete(tempPath, true);
                 File.Delete(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Do clean up in case of exception
                 if (Directory.Exists(tempPath))
@@ -82,7 +82,7 @@ namespace FG5EParser.Zipper
                 {
                     File.Delete(string.Format("{0}\\{1}.mod", Environment.CurrentDirectory, _modName));
                 }
-                throw ex;
+                throw;
             }
         }
 

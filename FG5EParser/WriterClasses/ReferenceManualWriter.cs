@@ -109,9 +109,9 @@ namespace FG5EParser.WriterClasses
                 }
                 return referenceManualList;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }
