@@ -335,6 +335,7 @@ namespace FG5eParserLib.View_Models
             Abilities = new ObservableCollection<string>();
             Reactions = new ObservableCollection<string>();
             LegendaryActions = new ObservableCollection<string>();
+            LairActions = new ObservableCollection<string>();
 
             // Delegates
             SaveNPC = new RelayCommand(saveNPC, canSaveNPC);

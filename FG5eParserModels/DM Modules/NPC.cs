@@ -368,6 +368,7 @@ namespace FG5eParserModels.DM_Modules
             _Actions = new ObservableCollection<string>();
             _Legend = new ObservableCollection<string>();
             _Reaction = new ObservableCollection<string>();
+            _Lair = new ObservableCollection<string>();
         }
 
         #region PROPERTY CHANGES
