@@ -1,0 +1,51 @@
+﻿<Controls:MetroWindow x:Class="FG5EParser_v_2._0.MainAlternate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:VMA="clr-namespace:FG5eParserLib.View_Models;assembly=FG5eParserLib"
+        xmlns:VMB="clr-namespace:FG5eParserLib.View_Mo.dels;assembly=FG5eParserLib"
+        xmlns:VP="clr-namespace:FG5EParser_v_2._0.Controls"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="FG5EParser" Height="300" Width="300"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".04*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="MyMenu" Grid.Row="0">
+                <MenuItem Header="Projects">
+                <MenuItem Header="New Advenutre Project" Command="{Binding NewClassProject}" ToolTip="Creates all files for a new class."/>
+                    <MenuItem Header="New Class Project" ToolTip="Creates all files for an adventure."/>
+                    <MenuItem Header="New Custom Project" ToolTip="Creates all files needed." />
+                </MenuItem>
+                <MenuItem Header="Open">
+                    <MenuItem Header="Advenutre Project" ToolTip="Opens all files for a new class."/>
+                    <MenuItem Header="Class Project" ToolTip="Opens all files for an adventure."/>
+                    <MenuItem Header="Custom Project" ToolTip="Opens all files needed." />
+                </MenuItem>
+                <MenuItem Header="Parser">
+                </MenuItem>
+            </Menu>
+        <TabControl Grid.Row="1"
+                    ItemsSource="{Binding TabList}">
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type VMB:BackgroundViewModel}">
+                    <VP:BackgroundControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:ClassesViewModel}">
+                    <VP:ClassControl/>
+                </DataTemplate>
+            </TabControl.Resources>
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>                            
+                <TextBlock Text="{Binding Name}"/>
+                </TextBlock>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+        </TabControl>       
+    </Grid>
+</Controls:MetroWindow>

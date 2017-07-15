@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FG5EParser_v_2._0"
-        mc:Ignorable="d"
+        mc:Ignorable="d"        
         Title="FG5EParser" WindowStartupLocation="CenterScreen" d:DesignWidth="1333.2" d:DesignHeight="716.4" Height="768" Width="1366" ScrollViewer.CanContentScroll="True" Source="Pages/Home.xaml">
 </NavigationWindow>
