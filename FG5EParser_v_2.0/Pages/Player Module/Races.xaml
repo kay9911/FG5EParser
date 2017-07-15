@@ -75,7 +75,7 @@
         <TextBox x:Name="txtSubRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="24" TextWrapping="WrapWithOverflow" AcceptsReturn="True" ToolTip="One Trait Per Line" Text="{Binding SubRaceObject._TraitDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         
         <Button x:Name="btnSaveSubRaces" Grid.Column="1" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddSubRace}">ADD SUBRACE</Button>
-        <Button x:Name="btnSaveRace" Grid.Column="3" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddRace}">ADD RACE</Button>
+        <Button x:Name="btnSaveRace" Grid.Column="3" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddRace}">REVIEW RACE AND SUBRACES</Button>
 
         <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
         <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding SaveRaces}">SAVE</Button>
