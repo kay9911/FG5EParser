@@ -58,10 +58,8 @@ namespace FG5eParserLib.View_Models
             // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(ClassesTextPath))
             {
-                OpenFileDialog choofdlog = new OpenFileDialog();
+                SaveFileDialog choofdlog = new SaveFileDialog();
                 choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = false;
 
                 if (choofdlog.ShowDialog() == true)
                 {
@@ -78,8 +76,11 @@ namespace FG5eParserLib.View_Models
                 tsw.Close();
 
                 // Reset the object and refresh the screen
-                Classes _classObj = new Classes();
-                ClassObject = _classObj;
+                ClassObject = new Classes();
+                FeaturesObject = new ClassFeatures();
+                AbilitiesObject = new ClassAbilities();
+                AbilityHeaders.Clear();
+                FeaturesAbilityObject = new ClassFeatures();
             }
         }
 
@@ -93,6 +94,10 @@ namespace FG5eParserLib.View_Models
         {
             // Reset the object and refresh the screen
             ClassObject = new Classes();
+            FeaturesObject = new ClassFeatures();
+            AbilitiesObject = new ClassAbilities();
+            AbilityHeaders.Clear();
+            FeaturesAbilityObject = new ClassFeatures();
         }
 
         private void AddFeaturetoObject(object obj)

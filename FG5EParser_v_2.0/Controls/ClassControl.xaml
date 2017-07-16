@@ -95,7 +95,7 @@
         <TextBox x:Name="txtFeatureName" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding FeaturesObject._FeatureName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="2" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Level:</Label>
-        <TextBox x:Name="txtFeatureLevel" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding FeaturesObject._FeatureLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtFeatureLevel" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding FeaturesObject._FeatureLevels,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="4" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Description:</Label>
         <TextBox x:Name="txtFeatureDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="4" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding FeaturesObject._FeatureDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
@@ -111,8 +111,8 @@
         <Label Grid.Column="4" Grid.Row="14" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Name:</Label>
         <TextBox x:Name="txtAbilityName" Grid.Column="5" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding AbilitiesObject._AbilityName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="6" Grid.Row="14" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Level:</Label>
-        <TextBox x:Name="txtAbilityLevel" Grid.Column="7" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding AbilitiesObject._AbilityLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <!--<Label Grid.Column="6" Grid.Row="14" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Level:</Label>
+        <TextBox x:Name="txtAbilityLevel" Grid.Column="7" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding AbilitiesObject._AbilityLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
 
         <Label Grid.Column="4" Grid.Row="16" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Description:</Label>
         <TextBox x:Name="txtAbilityDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="16" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding AbilitiesObject._AbilityDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -126,7 +126,7 @@
         <TextBox x:Name="txtAbilityFeatureName" Grid.Column="5" Grid.Row="26" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding FeaturesAbilityObject._FeatureName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="26" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Level:</Label>
-        <TextBox x:Name="txtAbilityFeatureLevel" Grid.Column="7" Grid.Row="26" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding FeaturesAbilityObject._FeatureLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtAbilityFeatureLevel" Grid.Column="7" Grid.Row="26" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding FeaturesAbilityObject._FeatureLevels,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="28" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Description:</Label>
         <TextBox x:Name="txtAbilityFeatureDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="28" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding FeaturesAbilityObject._FeatureDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />

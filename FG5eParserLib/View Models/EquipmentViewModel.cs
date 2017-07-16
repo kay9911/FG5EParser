@@ -88,10 +88,8 @@ namespace FG5eParserLib.View_Models
             // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(EquipmentTextPath))
             {
-                OpenFileDialog choofdlog = new OpenFileDialog();
+                SaveFileDialog choofdlog = new SaveFileDialog();
                 choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = false;
 
                 if (choofdlog.ShowDialog() == true)
                 {
@@ -103,12 +101,11 @@ namespace FG5eParserLib.View_Models
             if (!string.IsNullOrEmpty(EquipmentTextPath))
             {
                 TextWriter tsw = new StreamWriter(EquipmentTextPath, true);
-                tsw.WriteLine(getOutput());
+                tsw.WriteLine(_Output);
                 tsw.Close();
 
                 // Reset the object and refresh the screen
-                Equipment _equipmentObj = new Equipment() { _Type = EquipmentObject._Type };
-                EquipmentObject = _equipmentObj;
+                EquipmentObject = new Equipment() { _Type = EquipmentObject._Type };
             }
         }
 
@@ -121,8 +118,7 @@ namespace FG5eParserLib.View_Models
         private void resetObject(object obj)
         {
             // Reset the object and refresh the screen
-            Equipment _equipmentObj = new Equipment() { _Type = EquipmentObject._Type };
-            EquipmentObject = _equipmentObj;
+            EquipmentObject = new Equipment() { _Type = EquipmentObject._Type };
 
             _SubTypeDescriptionText = string.Empty;
             SubTypeDescriptionTextList.Clear();
@@ -141,11 +137,10 @@ namespace FG5eParserLib.View_Models
             }
 
             // Get the output
-            _Output = getOutput();
+            getOutput();
 
             // Reset the object and refresh the screen
-            Equipment _equipmentObj = new Equipment() { _Type = EquipmentObject._Type, _Subtype = EquipmentObject._Subtype };
-            EquipmentObject = _equipmentObj;
+            EquipmentObject = new Equipment() { _Type = EquipmentObject._Type, _Subtype = EquipmentObject._Subtype };
         }
 
         private bool canAddItemtoList(object obj)
@@ -154,7 +149,7 @@ namespace FG5eParserLib.View_Models
             return true;
         }
 
-        private string getOutput()
+        private void getOutput()
         {
             StringBuilder _sb = new StringBuilder();
 
@@ -338,7 +333,7 @@ namespace FG5eParserLib.View_Models
                 }
             }
 
-            return _sb.ToString();
+            _Output = _sb.ToString();
         }
 
         private string formatItemList(string obj)
