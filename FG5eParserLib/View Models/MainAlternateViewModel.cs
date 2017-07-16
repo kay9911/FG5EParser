@@ -51,6 +51,8 @@ namespace FG5eParserLib.View_Models
             TabList.Add(new TabItem { Content = new BackgroundViewModel() {backgroundTextPath = ClassProjectPath + @"\Background.txt" }, Header = "Background" });
             File.Create(ClassProjectPath + @"\Equipment.txt");
             TabList.Add(new TabItem { Content = new EquipmentViewModel() { EquipmentTextPath = ClassProjectPath + @"\Equipment.txt" }, Header = "Equipment" });
+            File.Create(ClassProjectPath + @"\Spells.txt");
+            TabList.Add(new TabItem { Content = new SpellViewModel() { SpellsTextPath = ClassProjectPath + @"\Spells.txt" }, Header = "Spells" });
         }
 
         #region PROPERTY CHANGES

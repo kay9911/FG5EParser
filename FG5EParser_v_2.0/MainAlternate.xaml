@@ -41,6 +41,9 @@
                 <DataTemplate DataType="{x:Type VMA:EquipmentViewModel}">
                     <VP:EquipmentControl/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:SpellViewModel}">
+                    <VP:SpellsControl/>
+                </DataTemplate>
             </TabControl.Resources>
             <TabControl.ItemTemplate>
                 <DataTemplate>

@@ -105,6 +105,9 @@
     <Compile Include="Controls\EquipmentControl.xaml.cs">
       <DependentUpon>EquipmentControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SpellsControl.xaml.cs">
+      <DependentUpon>SpellsControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainAlternate.xaml.cs">
       <DependentUpon>MainAlternate.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\EquipmentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SpellsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

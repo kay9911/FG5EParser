@@ -130,10 +130,8 @@ namespace FG5eParserLib.View_Models
             // Chose the txt file that will hold the information
             if (string.IsNullOrEmpty(SpellsTextPath))
             {
-                OpenFileDialog choofdlog = new OpenFileDialog();
+                SaveFileDialog choofdlog = new SaveFileDialog();
                 choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = false;
 
                 if (choofdlog.ShowDialog() == true)
                 {
