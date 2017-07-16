@@ -38,6 +38,9 @@
                 <DataTemplate DataType="{x:Type VMA:ClassesViewModel}">
                     <VP:ClassControl/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:EquipmentViewModel}">
+                    <VP:EquipmentControl/>
+                </DataTemplate>
             </TabControl.Resources>
             <TabControl.ItemTemplate>
                 <DataTemplate>

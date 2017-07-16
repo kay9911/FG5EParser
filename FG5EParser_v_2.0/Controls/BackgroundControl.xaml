@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d"
+             >
     <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -15,6 +15,8 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0" />
+            <RowDefinition Height="0" />
             <RowDefinition Height="1*" />
             <RowDefinition Height=".2*" />
             <RowDefinition Height="1*" />
@@ -47,62 +49,104 @@
             <RowDefinition Height=".2*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height=".2*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height=".2*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" BorderBrush="Black" BorderThickness=".5" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Center">BACKGROUNDS</Label>
-
         <!--Background Details-->
-        <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Name:</Label>
+        <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Name:</Label>
         <TextBox x:Name="txtBackgroundName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Details:</Label>
+        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Details:</Label>
         <TextBox x:Name="txtBackgroundDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="4" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Skill Proficiencies:</Label>
+        <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Skill Proficiencies:</Label>
         <TextBox x:Name="txtSkillProficiencies" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Skills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Tool Proficiencies:</Label>
+        <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Tool Proficiencies:</Label>
         <TextBox x:Name="txtToolProficiencies" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Tools, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Languages:</Label>
+        <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Languages:</Label>
         <TextBox x:Name="txtLanguages" Grid.Column="1" Grid.Row="12" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Languages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment:</Label>
+        <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment:</Label>
         <TextBox x:Name="txtEquipment" Grid.Column="1" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Equipment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Name:</Label>
+        <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Name:</Label>
         <TextBox x:Name="txtFeatureName" Grid.Column="1" Grid.Row="16" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Feature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Description:</Label>
+        <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Description:</Label>
         <TextBox x:Name="txtFeatureDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="18" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._FeatureDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Suggested Characteristics:</Label>
+        <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Suggested Characteristics:</Label>
         <TextBox x:Name="txtSuggestionChar" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="22" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._SuggestedCharachteristics, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Personality Traits:</Label>
+        <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Personality Traits:</Label>
         <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding Background._PersonalityTraits, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectPersonality_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectPersonality_Click">&lt;&lt;&lt;</Button>
 
-        <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ideals:</Label>
+        <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ideals:</Label>
         <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Ideals, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectIdeals_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectIdeals_Click">&lt;&lt;&lt;</Button>
 
-        <Label Grid.Column="0" Grid.Row="30" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Bonds:</Label>
+        <Label Grid.Column="0" Grid.Row="30" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Bonds:</Label>
         <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Bonds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectBonds_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectBonds_Click">&lt;&lt;&lt;</Button>
 
-        <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14" FontFamily="Cooper Black" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Flaws:</Label>
+        <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Flaws:</Label>
         <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Flaws, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectFlaws_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectFlaws_Click">&lt;&lt;&lt;</Button>
 
-        <Button x:Name="btnAddtoList" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddToList}">REVIEW</Button>
+        <Button 
+            x:Name="btnAddtoList" 
+            ToolTip="Reviw and add to save list."
+            Grid.Column="1" 
+            Grid.Row="34"
+            Height="50"
+            Width="50"
+            Command="{Binding AddToList}">
+            <Rectangle Width="20"
+                Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
 
-        <Button x:Name="btnReset" Grid.Column="4" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding ResetFields}">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="5" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Command="{Binding AddBackground}">SAVE</Button>
+        <Button 
+            x:Name="btnReset"
+            ToolTip="Reset ALL fields. Will not reset items alreday comitted."
+            Grid.Column="4" 
+            Grid.Row="34"
+            Height="50"
+            Width="50"
+            Command="{Binding ResetFields}">
+            <Rectangle Width="20"
+                Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_reset}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
 
-        <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="32"  Grid.Row="2" Grid.ColumnSpan="2" FontSize="15" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button 
+            x:Name="btnSave" 
+            ToolTip="Save all details to text file."
+            Grid.Column="5" 
+            Grid.Row="34" 
+            Height="50"
+            Width="50"
+            Command="{Binding AddBackground}">
+            <Rectangle Width="20"
+                Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            </Button>
+
+            <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="31"  Grid.Row="2" Grid.ColumnSpan="2" FontSize="15" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
 
         <DataGrid 
             x:Name="dtTableNames" 

@@ -9,7 +9,7 @@ namespace FG5eParserLib.View_Models
 {
     public class MainAlternateViewModel : INotifyPropertyChanged
     {
-        private object ClassProjectPath;
+        private string ClassProjectPath;
 
         public ObservableCollection<TabItem> TabList { get; set; }
         private bool _FlgBackground { get; set; }
@@ -32,9 +32,6 @@ namespace FG5eParserLib.View_Models
         {
             NewClassProject = new RelayCommand(newClassProject);
             TabList = new ObservableCollection<TabItem>();
-
-            // Defaults
-            FlgBackground = false;
         }
 
         private void newClassProject(object obj)
@@ -52,6 +49,8 @@ namespace FG5eParserLib.View_Models
             TabList.Add(new TabItem { Content = new ClassesViewModel(), Header="Class" });
             File.Create(ClassProjectPath + @"\Background.txt");
             TabList.Add(new TabItem { Content = new BackgroundViewModel(), Header = "Background" });
+            File.Create(ClassProjectPath + @"\Equipment.txt");
+            TabList.Add(new TabItem { Content = new EquipmentViewModel(), Header = "Equipment" });
         }
 
         #region PROPERTY CHANGES
