@@ -169,7 +169,8 @@
             </Rectangle>
         </Button>
 
-        <TextBox x:Name="txtOutput" Grid.Row="1" Grid.RowSpan="34" Grid.Column="0" Grid.ColumnSpan="8" Visibility="Hidden" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtOutput" Grid.Row="1" Grid.RowSpan="34" Grid.Column="0" Grid.ColumnSpan="8" Visibility="Hidden" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" 
+                 SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button 
             x:Name="btnReview"

@@ -105,6 +105,9 @@
     <Compile Include="Controls\EquipmentControl.xaml.cs">
       <DependentUpon>EquipmentControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ParseControl.xaml.cs">
+      <DependentUpon>ParseControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SpellsControl.xaml.cs">
       <DependentUpon>SpellsControl.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\EquipmentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ParseControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -284,9 +291,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Save.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\WindowsIcons-license.txt" />

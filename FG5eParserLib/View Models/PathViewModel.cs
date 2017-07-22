@@ -1,21 +1,82 @@
 ﻿using FG5EParser.Utilities;
 using FG5eParserModels.Utility_Modules;
 using System;
+using System.ComponentModel;
 using System.Windows;
 
 namespace FG5eParserLib.View_Models
 {
-    public class PathViewModel
+    public class PathViewModel : INotifyPropertyChanged
     {
         //properties
         public RelayCommand ParseCommand { get; set; }
-        public Paths pathViewModel { get; set; }
+
+        private Paths _pathViewModel { get; set; }
+        public Paths pathViewModel
+        {
+            get { return _pathViewModel; }
+            set
+            {
+                _pathViewModel = value;
+                OnPropertyChanged("pathViewModel");
+            }
+        }
+
+        public string BackgroundPath
+        {
+            get { return pathViewModel.SetBackgroundPath; }
+            set
+            {
+                pathViewModel.SetBackgroundPath = value;
+                OnPropertyChanged("BackgroundPath");
+            }
+        }
+
+        public string ClassPath
+        {
+            get { return pathViewModel.SetClassesPath; }
+            set
+            {
+                pathViewModel.SetClassesPath = value;
+                OnPropertyChanged("ClassPath");
+            }
+        }
+
+        public string EquipmentPath
+        {
+            get { return pathViewModel.SetEquipmentPath; }
+            set
+            {
+                pathViewModel.SetEquipmentPath = value;
+                OnPropertyChanged("EquipmentPath");
+            }
+        }
+
+        public string SpellPath
+        {
+            get { return pathViewModel.SetSpellsPath; }
+            set
+            {
+                pathViewModel.SetSpellsPath = value;
+                OnPropertyChanged("SpellPath");
+            }
+        }
+
+        public string TablePath
+        {
+            get { return pathViewModel.SetTablesPath; }
+            set
+            {
+                pathViewModel.SetTablesPath = value;
+                OnPropertyChanged("TablePath");
+            }
+        }
 
         // Constructors
         public PathViewModel()
         {
             ParseCommand = new RelayCommand(Parse,CanParse);
-            pathViewModel = new Paths();
+            _pathViewModel = new Paths();
         }
 
         // Functions
@@ -62,5 +123,19 @@ namespace FG5eParserLib.View_Models
             // TO DO: Validation Logic
             return true;
         }
+
+        #region PROPERTY CHANGES
+        // Declare the interface event
+        public event PropertyChangedEventHandler PropertyChanged;
+        // Create the OnPropertyChanged method to raise the event
+        public void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        #endregion
     }
 }

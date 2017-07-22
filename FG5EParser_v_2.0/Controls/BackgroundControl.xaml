@@ -81,19 +81,19 @@
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Personality Traits:</Label>
         <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding Background._PersonalityTraits, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectPersonality_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectPersonality_Click">&gt;&gt;&gt;</Button>
 
         <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ideals:</Label>
         <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Ideals, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectIdeals_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectIdeals_Click">&gt;&gt;&gt;</Button>
 
         <Label Grid.Column="0" Grid.Row="30" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Bonds:</Label>
         <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Bonds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectBonds_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectBonds_Click">&gt;&gt;&gt;</Button>
 
         <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Flaws:</Label>
         <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Flaws, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="16"  Margin="0,0,0,7" Click="btnSelectFlaws_Click">&lt;&lt;&lt;</Button>
+        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectFlaws_Click">&gt;&gt;&gt;</Button>
 
         <Button 
             x:Name="btnAddtoList" 

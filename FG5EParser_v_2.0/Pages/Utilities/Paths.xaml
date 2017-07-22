@@ -137,6 +137,5 @@
         <Button x:Name="btnSelectImagePinsPath" Grid.Column="2" Grid.Row="34" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Click="btnSelectImagePinsPath_Click">SELECT</Button>
 
         <Button x:Name="btnParse" Grid.Column="2" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Margin="0,0,0,7" Command="{Binding Path=ParseCommand}" CommandParameter="{Binding ElementName=txtBackgroundPath,Path=Text}">PARSE!</Button>
-
     </Grid>
 </Page>

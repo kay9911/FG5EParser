@@ -10,16 +10,12 @@ namespace FG5EParser_v_2._0.Controls
     /// </summary>
     public partial class EquipmentControl : UserControl
     {
-        EquipmentViewModel _EVM;
         public EquipmentControl()
         {
             InitializeComponent();
             cmbType.ItemsSource = getEquipmentTypes();
             // Enabled only when subtype is entered
             txtSubtypeDescription.IsEnabled = false;
-
-            _EVM = new EquipmentViewModel();
-            DataContext = _EVM;
         }
 
         // Functions
@@ -56,89 +52,92 @@ namespace FG5EParser_v_2._0.Controls
             // Subtype reset
             txtSubType.Text = string.Empty;
 
-            // Enabling logic goes here
-            if (cmbType.SelectedItem.ToString() == "Adventuring Gear")
+            if (cmbType.SelectedItem != null)
             {
-                DisableAll();
+                // Enabling logic goes here
+                if (cmbType.SelectedItem.ToString() == "Adventuring Gear")
+                {
+                    DisableAll();
 
-                // Enables
-                txtSubType.IsEnabled = true;
-                txtItemName.IsEnabled = true;
-                txtCost.IsEnabled = true;
-                txtWeight.IsEnabled = true;
-                txtItemDescription.IsEnabled = true;
-            }
+                    // Enables
+                    txtSubType.IsEnabled = true;
+                    txtItemName.IsEnabled = true;
+                    txtCost.IsEnabled = true;
+                    txtWeight.IsEnabled = true;
+                    txtItemDescription.IsEnabled = true;
+                }
 
-            if (cmbType.SelectedItem.ToString() == "Armor")
-            {
-                DisableAll();
-                txtSubType.IsEnabled = true;
-                txtItemName.IsEnabled = true;
-                txtCost.IsEnabled = true;
-                txtWeight.IsEnabled = true;
-                txtItemDescription.IsEnabled = true;
+                if (cmbType.SelectedItem.ToString() == "Armor")
+                {
+                    DisableAll();
+                    txtSubType.IsEnabled = true;
+                    txtItemName.IsEnabled = true;
+                    txtCost.IsEnabled = true;
+                    txtWeight.IsEnabled = true;
+                    txtItemDescription.IsEnabled = true;
 
-                // Armor Related
-                txtAC.IsEnabled = true;
-                txtStrength.IsEnabled = true;
-                chkStealth.IsEnabled = true;
-            }
+                    // Armor Related
+                    txtAC.IsEnabled = true;
+                    txtStrength.IsEnabled = true;
+                    chkStealth.IsEnabled = true;
+                }
 
-            if (cmbType.SelectedItem.ToString() == "Weapon")
-            {
-                DisableAll();
-                txtSubType.IsEnabled = true;
-                txtItemName.IsEnabled = true;
-                txtCost.IsEnabled = true;
-                txtWeight.IsEnabled = true;
-                txtItemDescription.IsEnabled = true;
+                if (cmbType.SelectedItem.ToString() == "Weapon")
+                {
+                    DisableAll();
+                    txtSubType.IsEnabled = true;
+                    txtItemName.IsEnabled = true;
+                    txtCost.IsEnabled = true;
+                    txtWeight.IsEnabled = true;
+                    txtItemDescription.IsEnabled = true;
 
-                // Weapon Related
-                txtDamage.IsEnabled = true;
-                txtWeaponProperties.IsEnabled = true;
-            }
+                    // Weapon Related
+                    txtDamage.IsEnabled = true;
+                    txtWeaponProperties.IsEnabled = true;
+                }
 
-            if (cmbType.SelectedItem.ToString() == "Tools")
-            {
-                DisableAll();
-                txtSubType.IsEnabled = true;
-                txtItemName.IsEnabled = true;
-                txtCost.IsEnabled = true;
-                txtWeight.IsEnabled = true;
-                txtItemDescription.IsEnabled = true;
-            }
+                if (cmbType.SelectedItem.ToString() == "Tools")
+                {
+                    DisableAll();
+                    txtSubType.IsEnabled = true;
+                    txtItemName.IsEnabled = true;
+                    txtCost.IsEnabled = true;
+                    txtWeight.IsEnabled = true;
+                    txtItemDescription.IsEnabled = true;
+                }
 
-            if (cmbType.SelectedItem.ToString() == "Mounts and Other Animals")
-            {
-                DisableAll();
-                txtSubType.IsEnabled = true;
-                txtItemName.IsEnabled = true;
-                txtCost.IsEnabled = true;
-                txtItemDescription.IsEnabled = true;
+                if (cmbType.SelectedItem.ToString() == "Mounts and Other Animals")
+                {
+                    DisableAll();
+                    txtSubType.IsEnabled = true;
+                    txtItemName.IsEnabled = true;
+                    txtCost.IsEnabled = true;
+                    txtItemDescription.IsEnabled = true;
 
-                // Mounts and Other Animals related
-                txtCarryingCapacity.IsEnabled = true;
-                txtSpeed.IsEnabled = true;
-            }
+                    // Mounts and Other Animals related
+                    txtCarryingCapacity.IsEnabled = true;
+                    txtSpeed.IsEnabled = true;
+                }
 
-            if (cmbType.SelectedItem.ToString() == "Tack, Harness, and Drawn Vehicles")
-            {
-                DisableAll();
-                txtSubType.IsEnabled = true;
-                txtItemName.IsEnabled = true;
-                txtCost.IsEnabled = true;
-                txtWeight.IsEnabled = true;
-                txtItemDescription.IsEnabled = true;
-            }
+                if (cmbType.SelectedItem.ToString() == "Tack, Harness, and Drawn Vehicles")
+                {
+                    DisableAll();
+                    txtSubType.IsEnabled = true;
+                    txtItemName.IsEnabled = true;
+                    txtCost.IsEnabled = true;
+                    txtWeight.IsEnabled = true;
+                    txtItemDescription.IsEnabled = true;
+                }
 
-            if (cmbType.SelectedItem.ToString() == "Waterborne Vehicles")
-            {
-                DisableAll();
-                txtSubType.IsEnabled = true;
-                txtItemName.IsEnabled = true;
-                txtCost.IsEnabled = true;
-                txtSpeed.IsEnabled = true;
-                txtItemDescription.IsEnabled = true;
+                if (cmbType.SelectedItem.ToString() == "Waterborne Vehicles")
+                {
+                    DisableAll();
+                    txtSubType.IsEnabled = true;
+                    txtItemName.IsEnabled = true;
+                    txtCost.IsEnabled = true;
+                    txtSpeed.IsEnabled = true;
+                    txtItemDescription.IsEnabled = true;
+                }
             }
         }
 
@@ -169,6 +168,7 @@ namespace FG5EParser_v_2._0.Controls
 
         private void dtItemNames_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            EquipmentViewModel _EVM = new EquipmentViewModel();
             if (dtItemNames.SelectedItem == null)
             {
                 // DO NOTHING
