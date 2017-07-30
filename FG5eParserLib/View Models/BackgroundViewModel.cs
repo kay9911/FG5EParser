@@ -29,8 +29,7 @@ namespace FG5eParserLib.View_Mo.dels
         // Output
         private string Output { get; set; }
 
-        #region PROPERTY CHANGES
-        public event PropertyChangedEventHandler PropertyChanged;
+        #region EXPOSED PROPERTIES
         public Backgrounds Background
         {
             get
@@ -52,7 +51,7 @@ namespace FG5eParserLib.View_Mo.dels
             set
             {
                 tableTextPath = value;
-                TableNames = getTableList(value);
+                //TableNames = getTableList(value);
                 OnPropertyChanged(null);
             }
         }
@@ -68,7 +67,7 @@ namespace FG5eParserLib.View_Mo.dels
                 OnPropertyChanged("_Output");
             }
         }
-
+        public event PropertyChangedEventHandler PropertyChanged;
         // Create the OnPropertyChanged method to raise the event
         public void OnPropertyChanged(string name)
         {

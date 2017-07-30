@@ -22,8 +22,8 @@
                 <MenuItem Header="New Custom Project" ToolTip="Creates all files needed." />
             </MenuItem>
             <MenuItem Header="Open">
-                <MenuItem Header="Advenutre Project" ToolTip="Opens all files for a new class."/>
-                <MenuItem Header="Class Project" ToolTip="Opens all files for an adventure."/>
+                <MenuItem Header="Advenutre Project" ToolTip="Opens all files for an adventure."/>
+                <MenuItem Header="Class Project" ToolTip="Opens all files for a new class."/>
             </MenuItem>
         </Menu>
         <TabControl Grid.Row="1"

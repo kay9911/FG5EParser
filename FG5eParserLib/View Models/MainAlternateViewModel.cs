@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Forms;
-using System;
 
 namespace FG5eParserLib.View_Models
 {

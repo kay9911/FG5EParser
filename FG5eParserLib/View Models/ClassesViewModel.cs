@@ -17,10 +17,24 @@ namespace FG5eParserLib.View_Models
         // Output
         private string _Output { get; set; }
         public string Output { get { return _Output; } set { _Output = value; OnPropertyChanged("Output"); } }
+        private string OutputVisibleFlg { get; set; }
+        public bool _OutputVisibleFlg
+        {
+            get
+            {
+                return Convert.ToBoolean(OutputVisibleFlg);
+            }
+            set
+            {
+                OutputVisibleFlg = value.ToString();
+                OnPropertyChanged("_OutputVisibleFlg");
+            }
+        }
 
         // Relay Commands
         public RelayCommand AddClass { get; set; } // Save Button
         public RelayCommand ResetFields { get; set; } // Reset Button
+        public RelayCommand ToggleOutput { get; set; } // Show/Hide the Output Field
 
         public RelayCommand AddFeature { get; set; }
         public RelayCommand AddAbility { get; set; }
@@ -44,6 +58,8 @@ namespace FG5eParserLib.View_Models
             AddFeature = new RelayCommand(AddFeaturetoObject, CanAddFeature);
             AddAbility = new RelayCommand(AddAbilitytoObject, CanAddAbility);
             AddAbilityFeature = new RelayCommand(AddFeatureAbilitytoObject, CanAddFeatureAbility);
+
+            ToggleOutput = new RelayCommand(toggleOutput);
 
             // Classes Objects
             _classObject = new Classes();
@@ -174,7 +190,6 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged(null);
             }
         }
-
         public ClassFeatures FeaturesObject
         {
             get
@@ -187,7 +202,6 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged(null);
             }
         }
-
         public ClassAbilities AbilitiesObject
         {
             get
@@ -200,7 +214,6 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged(null);
             }
         }
-
         public ClassFeatures FeaturesAbilityObject
         {
             get
@@ -250,7 +263,18 @@ namespace FG5eParserLib.View_Models
             return _sb.ToString();
         }
 
-        public string getOutput()
+        private void toggleOutput(object obj)
+        {
+            // Show/Hide Output Control
+            if (_OutputVisibleFlg)
+                _OutputVisibleFlg = false;
+            else
+                _OutputVisibleFlg = true;
+
+            getOutput();
+        }
+
+        public void getOutput()
         {
             StringBuilder _build = new StringBuilder();
 
@@ -424,7 +448,7 @@ namespace FG5eParserLib.View_Models
                     }
                 }
             }
-            return _build.ToString();
+            Output =  _build.ToString();
         }
     }
 }

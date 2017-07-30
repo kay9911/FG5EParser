@@ -142,7 +142,7 @@
 
         <TextBox x:Name="txtOutput" Grid.Row="1" Grid.RowSpan="34" Grid.Column="0" Grid.ColumnSpan="8" Visibility="Hidden" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnReview" Grid.Column="1" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black" Click="btnReview_Click">REVIEW</Button>
+        <Button x:Name="btnReview" Grid.Column="1" Grid.Row="38" FontWeight="Bold" FontSize="16" FontFamily="Cooper Black">REVIEW</Button>
 
     </Grid>
 </Page>

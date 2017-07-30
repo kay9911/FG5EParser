@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d"
              >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -111,9 +113,6 @@
         <Label Grid.Column="4" Grid.Row="14" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Name:</Label>
         <TextBox x:Name="txtAbilityName" Grid.Column="5" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding AbilitiesObject._AbilityName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!--<Label Grid.Column="6" Grid.Row="14" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Level:</Label>
-        <TextBox x:Name="txtAbilityLevel" Grid.Column="7" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding AbilitiesObject._AbilityLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
-
         <Label Grid.Column="4" Grid.Row="16" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Description:</Label>
         <TextBox x:Name="txtAbilityDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="16" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding AbilitiesObject._AbilityDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
@@ -169,17 +168,18 @@
             </Rectangle>
         </Button>
 
-        <TextBox x:Name="txtOutput" Grid.Row="1" Grid.RowSpan="34" Grid.Column="0" Grid.ColumnSpan="8" Visibility="Hidden" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" 
-                 SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtOutput" Grid.Row="1" Grid.RowSpan="34" Grid.Column="0" Grid.ColumnSpan="8" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" 
+                 SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Visibility="{Binding _OutputVisibleFlg, Converter={StaticResource boolToVisibilityConverter}}"/>
 
         <Button 
             x:Name="btnReview"
             ToolTip="Review formatted text. Click once again to return."
             Grid.Column="1" 
-            Grid.Row="38"  
-            Click="btnReview_Click"
+            Grid.Row="38"
             Height="50"
             Width="50"
+            Command="{Binding ToggleOutput}"
             >
             <Rectangle Width="20"
                 Height="20"
