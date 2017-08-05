@@ -25,6 +25,9 @@
                 <MenuItem Header="Advenutre Project" ToolTip="Opens all files for an adventure."/>
                 <MenuItem Header="Class Project" ToolTip="Opens all files for a new class."/>
             </MenuItem>
+            <MenuItem Header="Single Pages">
+                <MenuItem Header="NPC" ToolTip="Create NPCs here." Command="{Binding NpcPage}"/>
+            </MenuItem>
         </Menu>
         <TabControl Grid.Row="1"
                     ItemsSource="{Binding TabList}">
@@ -40,6 +43,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:SpellViewModel}">
                     <VP:SpellsControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:NPCViewModel}">
+                    <VP:NpcControl/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:PathViewModel}">
                     <VP:ParseControl/>

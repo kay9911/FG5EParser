@@ -72,6 +72,16 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        public string NPCPath
+        {
+            get { return pathViewModel.SetNPCsPath; }
+            set
+            {
+                pathViewModel.SetNPCsPath = value;
+                OnPropertyChanged("NPCPath");
+            }
+        }
+
         // Constructors
         public PathViewModel()
         {

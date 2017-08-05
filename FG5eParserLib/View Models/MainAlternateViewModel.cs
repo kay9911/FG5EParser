@@ -31,12 +31,45 @@ namespace FG5eParserLib.View_Models
         public RelayCommand ParseOpenProject { get; set; }
         public RelayCommand ParseCustomProject { get; set; }
 
+        // Individual Files
+        public RelayCommand NpcPage { get; set; }
+
         public MainAlternateViewModel()
         {
             NewClassProject = new RelayCommand(newClassProject);
             ParseOpenProject = new RelayCommand(parseOpenProject);
 
+            // Single pages
+            NpcPage = new RelayCommand(singleNpcPage);
+
+            // A collection of all the tabs on the screen, initialize only once!
             TabList = new ObservableCollection<TabItem>();
+        }
+
+        private void singleNpcPage(object obj)
+        {
+            string NpcPagePath = string.Empty;
+            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
+            DialogResult result = choofdlog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                NpcPagePath = choofdlog.SelectedPath;
+                TabList.Clear();
+
+                // Create necessary Text files and then load the necessary tabs
+                File.Create(NpcPagePath + @"\NPC.txt");
+                TabList.Add(new TabItem { Content = new NPCViewModel() { NPCTextPath = NpcPagePath + @"\NPC.txt" }, Header = "NPC" });
+
+                TabList.Add(new TabItem
+                {
+                    Content = new PathViewModel()
+                    {
+                        NPCPath = NpcPagePath + @"\NPC.txt",
+                    },
+                    Header = "Parser"
+                });
+            }
         }
 
         private void parseOpenProject(object obj)

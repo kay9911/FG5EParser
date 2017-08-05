@@ -105,6 +105,9 @@
     <Compile Include="Controls\EquipmentControl.xaml.cs">
       <DependentUpon>EquipmentControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NpcControl.xaml.cs">
+      <DependentUpon>NpcControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ParseControl.xaml.cs">
       <DependentUpon>ParseControl.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\EquipmentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NpcControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
