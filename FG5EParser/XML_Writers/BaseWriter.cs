@@ -4,6 +4,7 @@ using FG5EParser.WriterClasses;
 using FG5EParser.XML_Writer_Helper_Classes;
 using FG5eParserModels.Player_Models;
 using FG5eParserModels.Utility_Modules;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
@@ -132,14 +133,14 @@ namespace FG5EParser.XMLWriters
             // Treasure Parcel Entries
             if (!string.IsNullOrEmpty(_parcelTextPath))
             {
-                xml.Append(_parcelHelper.returnParcelXML(_parcelTextPath,_moduleName));
+                xml.Append(_parcelHelper.returnParcelXML(_parcelTextPath, _moduleName));
                 requiresList = true;
             }
 
             // Table Entries
             if (!string.IsNullOrEmpty(_tableTextPath))
             {
-                xml.Append(_tableHelper.returnTableXML(_tableTextPath,_moduleName));
+                xml.Append(_tableHelper.returnTableXML(_tableTextPath, _moduleName));
                 requiresList = true;
             }
 
@@ -164,7 +165,7 @@ namespace FG5EParser.XMLWriters
             // Images & Maps
             if (!string.IsNullOrEmpty(_imageFileTextPath))
             {
-                xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _imagePinsList, _moduleName ));
+                xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _imagePinsList, _moduleName));
                 requiresList = true;
             }
 
@@ -176,13 +177,13 @@ namespace FG5EParser.XMLWriters
                 // Item List
                 if (!string.IsNullOrEmpty(_itemTextPath))
                 {
-                    xml.Append(_itemHelper.returnItemXML(_itemTextPath,_moduleName,true)); // true : Switch to list
+                    xml.Append(_itemHelper.returnItemXML(_itemTextPath, _moduleName, true)); // true : Switch to list
                 }
 
                 // Magical Item List
                 if (!string.IsNullOrEmpty(_magicalTextPath))
                 {
-                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath,_moduleName,true)); // true : Switch to list
+                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath, _moduleName, true)); // true : Switch to list
                 }
 
                 // Story List
@@ -206,7 +207,7 @@ namespace FG5EParser.XMLWriters
                 // Treasure Parcel List
                 if (!string.IsNullOrEmpty(_parcelTextPath))
                 {
-                    xml.Append(_parcelHelper.returnParcelXML(_parcelTextPath,_moduleName,true)); // true : Switch to list
+                    xml.Append(_parcelHelper.returnParcelXML(_parcelTextPath, _moduleName, true)); // true : Switch to list
                 }
 
                 // Table List
@@ -230,7 +231,7 @@ namespace FG5EParser.XMLWriters
                 // Images List
                 if (!string.IsNullOrEmpty(_imageFileTextPath))
                 {
-                    xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _imagePinsList, _moduleName,true)); // true : Switch to list
+                    xml.Append(_imageHelper.returnImageXML(_imageFileTextPath, _imagePinsList, _moduleName, true)); // true : Switch to list
                 }
 
                 xml.Append("</lists>");
@@ -254,7 +255,7 @@ namespace FG5EParser.XMLWriters
             // Input for Equipement
             if (!string.IsNullOrEmpty(_itemTextPath))
             {
-                xml.Append(_itemHelper.returnItemReferenceDetails(_itemTextPath,_moduleName));
+                xml.Append(_itemHelper.returnItemReferenceDetails(_itemTextPath, _moduleName));
                 xml.Append(_itemHelper.returnItemXML(_itemTextPath, _moduleName, true)); // true : Switch to list
             }
 
@@ -267,15 +268,15 @@ namespace FG5EParser.XMLWriters
             // Input for Backgrounds
             if (!string.IsNullOrEmpty(_backgroundTextPath))
             {
-                xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath,_moduleName));
-                xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath, _moduleName,true));
+                xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath, _moduleName));
+                xml.Append(_backgroundHelper.returnBackgroundXML(_backgroundTextPath, _moduleName, true));
             }
 
             // Input for Races
             if (!string.IsNullOrEmpty(_racesTextPath))
             {
-                xml.Append(_raceHelper.returnRaceXML(_racesTextPath,_moduleName));
-                xml.Append(_raceHelper.returnRaceXML(_racesTextPath, _moduleName,true));
+                xml.Append(_raceHelper.returnRaceXML(_racesTextPath, _moduleName));
+                xml.Append(_raceHelper.returnRaceXML(_racesTextPath, _moduleName, true));
             }
 
             // Input for Spells
@@ -302,7 +303,7 @@ namespace FG5EParser.XMLWriters
             #region Library References
 
             // Counter
-            int index = 1; 
+            int index = 1;
 
             xml.Append("<library>");
 
@@ -386,7 +387,7 @@ namespace FG5EParser.XMLWriters
 
                 xml.Append("<class>reference_colindex</class>");
 
-                xml.Append(string.Format("<recordname>lists.encounter.bycategory@{0}</recordname>",_moduleName));
+                xml.Append(string.Format("<recordname>lists.encounter.bycategory@{0}</recordname>", _moduleName));
 
                 xml.Append("</librarylink>");
 
@@ -439,7 +440,7 @@ namespace FG5EParser.XMLWriters
                 xml.Append("<librarylink type=\"windowreference\">");
 
                 xml.Append("<class>reference_colindex</class>");
-                xml.Append(string.Format("<recordname>lists.table.bycategory@{0}</recordname>",_moduleName));
+                xml.Append(string.Format("<recordname>lists.table.bycategory@{0}</recordname>", _moduleName));
 
                 xml.Append("</librarylink>");
                 xml.Append("<name type=\"string\">Tables</name>");
@@ -542,7 +543,7 @@ namespace FG5EParser.XMLWriters
                 xml.Append("<librarylink type=\"windowreference\">");
 
                 xml.Append("<class>referenceindex</class>");
-                xml.Append(string.Format("<recordname>lists.imagewindow@{0}</recordname>",_moduleName));
+                xml.Append(string.Format("<recordname>lists.imagewindow@{0}</recordname>", _moduleName));
                 xml.Append("</librarylink>");
 
                 xml.Append("<name type=\"string\">Images &amp; Maps</name>");
