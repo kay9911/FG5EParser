@@ -82,6 +82,36 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        public string FeatPath
+        {
+            get { return pathViewModel.SetFeatsPath; }
+            set
+            {
+                pathViewModel.SetFeatsPath = value;
+                OnPropertyChanged("FeatPath");
+            }
+        }
+
+        public string RacesPath
+        {
+            get { return pathViewModel.SetRacesPath; }
+            set
+            {
+                pathViewModel.SetRacesPath = value;
+                OnPropertyChanged("RacesPath");
+            }
+        }
+
+        public string PinMappingPath
+        {
+            get { return pathViewModel.SetImagePinsPath; }
+            set
+            {
+                pathViewModel.SetImagePinsPath = value;
+                OnPropertyChanged("PinMappingPath");
+            }
+        }
+
         // Constructors
         public PathViewModel()
         {

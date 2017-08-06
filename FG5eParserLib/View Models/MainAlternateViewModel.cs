@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System;
+using FG5eParserLib.Utility;
 
 namespace FG5eParserLib.View_Models
 {
@@ -33,6 +35,9 @@ namespace FG5eParserLib.View_Models
 
         // Individual Files
         public RelayCommand NpcPage { get; set; }
+        public RelayCommand FeatPage { get; set; }
+        public RelayCommand RacePage { get; set; }
+        public RelayCommand PinMappingPage { get; set; }
 
         public MainAlternateViewModel()
         {
@@ -41,9 +46,90 @@ namespace FG5eParserLib.View_Models
 
             // Single pages
             NpcPage = new RelayCommand(singleNpcPage);
+            FeatPage = new RelayCommand(featPage);
+            RacePage = new RelayCommand(racePage);
+            PinMappingPage = new RelayCommand(pinMappingpage);
 
             // A collection of all the tabs on the screen, initialize only once!
             TabList = new ObservableCollection<TabItem>();
+        }
+
+        private void pinMappingpage(object obj)
+        {
+            string PinMappingPath = string.Empty;
+            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
+            DialogResult result = choofdlog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                PinMappingPath = choofdlog.SelectedPath;
+                TabList.Clear();
+
+                // Create necessary Text files and then load the necessary tabs
+                File.Create(PinMappingPath + @"\ImagePins.txt");
+                TabList.Add(new TabItem { Content = new ImagePinsViewModel() { ImagePinsTextPath = PinMappingPath + @"\ImagePins.txt" }, Header = "Pin Mapping" });
+
+                TabList.Add(new TabItem
+                {
+                    Content = new PathViewModel()
+                    {
+                        PinMappingPath = PinMappingPath + @"\ImagePins.txt",
+                    },
+                    Header = "Parser"
+                });
+            }
+        }
+
+        private void racePage(object obj)
+        {
+            string RacesPathPage = string.Empty;
+            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
+            DialogResult result = choofdlog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                RacesPathPage = choofdlog.SelectedPath;
+                TabList.Clear();
+
+                // Create necessary Text files and then load the necessary tabs
+                File.Create(RacesPathPage + @"\Races.txt");
+                TabList.Add(new TabItem { Content = new RacesViewModel() { RacesTextPath = RacesPathPage + @"\Races.txt" }, Header = "Races" });
+
+                TabList.Add(new TabItem
+                {
+                    Content = new PathViewModel()
+                    {
+                        RacesPath = RacesPathPage + @"\Races.txt",
+                    },
+                    Header = "Parser"
+                });
+            }
+        }
+
+        private void featPage(object obj)
+        {
+            string FeatsPathPath = string.Empty;
+            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
+            DialogResult result = choofdlog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                FeatsPathPath = choofdlog.SelectedPath;
+                TabList.Clear();
+
+                // Create necessary Text files and then load the necessary tabs
+                File.Create(FeatsPathPath + @"\Feats.txt");
+                TabList.Add(new TabItem { Content = new FeatsViewModel() { FeatsTextPath = FeatsPathPath + @"\Feats.txt" }, Header = "Feats" });
+
+                TabList.Add(new TabItem
+                {
+                    Content = new PathViewModel()
+                    {
+                        FeatPath = FeatsPathPath + @"\Feats.txt",
+                    },
+                    Header = "Parser"
+                });
+            }
         }
 
         private void singleNpcPage(object obj)

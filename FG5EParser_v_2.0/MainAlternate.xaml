@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:VMA="clr-namespace:FG5eParserLib.View_Models;assembly=FG5eParserLib"
         xmlns:VMB="clr-namespace:FG5eParserLib.View_Mo.dels;assembly=FG5eParserLib"
+        xmlns:VMC="clr-namespace:FG5eParserLib.Utility;assembly=FG5eParserLib"
         xmlns:VP="clr-namespace:FG5EParser_v_2._0.Controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
@@ -17,8 +18,8 @@
         </Grid.RowDefinitions>
         <Menu x:Name="MyMenu" Grid.Row="0">
             <MenuItem Header="Projects">
-                <MenuItem Header="New Adventure Project" ToolTip="Creates all files for a new class."/>
-                <MenuItem Header="New Class Project" Command="{Binding NewClassProject}" ToolTip="Creates all files for an adventure."/>
+                <MenuItem Header="New Adventure Project" ToolTip="Creates all files for an adventure."/>
+                <MenuItem Header="New Class Project" Command="{Binding NewClassProject}" ToolTip="Creates all files for a new class"/>
                 <MenuItem Header="New Custom Project" ToolTip="Creates all files needed." />
             </MenuItem>
             <MenuItem Header="Open">
@@ -26,7 +27,10 @@
                 <MenuItem Header="Class Project" ToolTip="Opens all files for a new class."/>
             </MenuItem>
             <MenuItem Header="Single Pages">
-                <MenuItem Header="NPC" ToolTip="Create NPCs here." Command="{Binding NpcPage}"/>
+                <MenuItem Header="NPCs" Command="{Binding NpcPage}"/>
+                <MenuItem Header="Feats" Command="{Binding FeatPage}"/>
+                <MenuItem Header="Races" Command="{Binding RacePage}"/>
+                <MenuItem Header="Pin Mapping" Command="{Binding PinMappingPage}"/>
             </MenuItem>
         </Menu>
         <TabControl Grid.Row="1"
@@ -46,6 +50,15 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:NPCViewModel}">
                     <VP:NpcControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:FeatsViewModel}">
+                    <VP:FeatsControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:RacesViewModel}">
+                    <VP:RacesControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMC:ImagePinsViewModel}">
+                    <VP:PinMappingControl/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:PathViewModel}">
                     <VP:ParseControl/>

@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="FG5EParser_v_2._0.Controls.FeatsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            >
+    <Grid Margin="10,0,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width=".1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0" />
+            <RowDefinition Height="0*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feat Name:</Label>
+        <TextBox x:Name="txtFeatName" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding FeatObject._Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feat Description:</Label>
+        <TextBox x:Name="txtFeatDescription" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"  Grid.Row="4" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding FeatObject._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Prerequisite:</Label>
+        <TextBox x:Name="txtPrerequisite" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" FontSize="14" VerticalContentAlignment="Center" Text="{Binding FeatObject._Prerequisit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button x:Name="btnAddtoList" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="14"  Command="{Binding AddFeattoList}">ADD TO LIST</Button>
+
+        <Button x:Name="btnReset" Grid.Column="5" Grid.Row="34" FontWeight="Bold" FontSize="14"  Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="6" Grid.Row="34" FontWeight="Bold" FontSize="14"  Command="{Binding SaveFeats}">SAVE</Button>
+
+        <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</UserControl>

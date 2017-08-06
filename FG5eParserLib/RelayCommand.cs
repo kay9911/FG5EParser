@@ -8,6 +8,7 @@ namespace FG5eParserLib
         // Properties
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
+        private RelayCommand featPage;
 
         // Functionality constructor
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
@@ -23,6 +24,11 @@ namespace FG5eParserLib
         public RelayCommand(Action<object> execute) : this(execute,null)
         {
 
+        }
+
+        public RelayCommand(RelayCommand featPage)
+        {
+            this.featPage = featPage;
         }
 
         public event EventHandler CanExecuteChanged

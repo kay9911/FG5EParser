@@ -105,11 +105,23 @@
     <Compile Include="Controls\EquipmentControl.xaml.cs">
       <DependentUpon>EquipmentControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FeatsControl.xaml.cs">
+      <DependentUpon>FeatsControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NpcControl.xaml.cs">
       <DependentUpon>NpcControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ParseControl.xaml.cs">
       <DependentUpon>ParseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PinMappingControl.xaml.cs">
+      <DependentUpon>PinMappingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RacesControl.xaml.cs">
+      <DependentUpon>RacesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SkillsControl.xaml.cs">
+      <DependentUpon>SkillsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SpellsControl.xaml.cs">
       <DependentUpon>SpellsControl.xaml</DependentUpon>
@@ -159,11 +171,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\FeatsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NpcControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ParseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PinMappingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RacesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SkillsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
