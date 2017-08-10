@@ -1,213 +1,197 @@
-﻿using FG5eParserLib.View_Mo.dels;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Forms;
-using System;
 using FG5eParserLib.Utility;
+using FG5eParserLib.View_Mo.dels;
 
 namespace FG5eParserLib.View_Models
 {
     public class MainAlternateViewModel : INotifyPropertyChanged
     {
-        private string ClassProjectPath;
-
+        // Global Path variable for files
+        private string PagesPath = string.Empty;
         public ObservableCollection<TabItem> TabList { get; set; }
-        private bool _FlgBackground { get; set; }
-        public bool FlgBackground
-        {
-            get
-            {
-                return _FlgBackground;
-            }
-            set
-            {
-                _FlgBackground = value;
-                OnPropertyChanged("FlgBackground");
-            }
-        }
+        public RelayCommand LoadTabControl { get; set; }
+        private PathViewModel pathViewModel;
 
-        public RelayCommand NewClassProject { get; set; }
-        public RelayCommand NewAdventureProject { get; set; }
-        public RelayCommand ParseOpenProject { get; set; }
-        public RelayCommand ParseCustomProject { get; set; }
+        // Singular Tab Presence Flags
+        bool Background_Flg = false;
+        bool Class_Flg = false;
+        bool Equipment_Flg = false;
+        bool Feats_Flg = false;
+        bool NPC_Flg = false;
+        bool PinMapping_Flg = false;
+        bool Race_Flg = false;
+        bool Skill_Flg = false;
+        bool Spell_Flg = false;
+        bool Parser_Flg = false;
 
-        // Individual Files
-        public RelayCommand NpcPage { get; set; }
-        public RelayCommand FeatPage { get; set; }
-        public RelayCommand RacePage { get; set; }
-        public RelayCommand PinMappingPage { get; set; }
-
+        // Constructor
         public MainAlternateViewModel()
         {
-            NewClassProject = new RelayCommand(newClassProject);
-            ParseOpenProject = new RelayCommand(parseOpenProject);
-
-            // Single pages
-            NpcPage = new RelayCommand(singleNpcPage);
-            FeatPage = new RelayCommand(featPage);
-            RacePage = new RelayCommand(racePage);
-            PinMappingPage = new RelayCommand(pinMappingpage);
-
             // A collection of all the tabs on the screen, initialize only once!
             TabList = new ObservableCollection<TabItem>();
+
+            LoadTabControl = new RelayCommand(populateTabControlList);
+            pathViewModel = new PathViewModel();
         }
 
-        private void pinMappingpage(object obj)
+        private void populateTabControlList(object obj)
         {
-            string PinMappingPath = string.Empty;
-            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
-            DialogResult result = choofdlog.ShowDialog();
-
-            if (result == DialogResult.OK)
+            try
             {
-                PinMappingPath = choofdlog.SelectedPath;
-                TabList.Clear();
-
-                // Create necessary Text files and then load the necessary tabs
-                File.Create(PinMappingPath + @"\ImagePins.txt");
-                TabList.Add(new TabItem { Content = new ImagePinsViewModel() { ImagePinsTextPath = PinMappingPath + @"\ImagePins.txt" }, Header = "Pin Mapping" });
-
-                TabList.Add(new TabItem
+                // Check to see if the global path has been setup
+                if (string.IsNullOrEmpty(PagesPath))
                 {
-                    Content = new PathViewModel()
+                    FolderBrowserDialog choofdlog = new FolderBrowserDialog();
+                    DialogResult result = choofdlog.ShowDialog();
+
+                    if (result == DialogResult.OK)
                     {
-                        PinMappingPath = PinMappingPath + @"\ImagePins.txt",
-                    },
-                    Header = "Parser"
-                });
-            }
-        }
+                        PagesPath = choofdlog.SelectedPath;
+                        TabList.Clear();
+                    }
+                }
 
-        private void racePage(object obj)
-        {
-            string RacesPathPage = string.Empty;
-            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
-            DialogResult result = choofdlog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                RacesPathPage = choofdlog.SelectedPath;
-                TabList.Clear();
-
-                // Create necessary Text files and then load the necessary tabs
-                File.Create(RacesPathPage + @"\Races.txt");
-                TabList.Add(new TabItem { Content = new RacesViewModel() { RacesTextPath = RacesPathPage + @"\Races.txt" }, Header = "Races" });
-
-                TabList.Add(new TabItem
+                // Single Pages
+                if (!string.IsNullOrEmpty(PagesPath))
                 {
-                    Content = new PathViewModel()
+                    // Check to see which controls are already present in the list
+                    validateTabItemList(TabList);
+
+                    if (obj.ToString().ToLower().Trim() == "background")
                     {
-                        RacesPath = RacesPathPage + @"\Races.txt",
-                    },
-                    Header = "Parser"
-                });
-            }
-        }
+                        if (!Background_Flg)
+                        {
+                            File.Create(PagesPath + @"\Background.txt");
+                            TabList.Add(new TabItem() { Content = new BackgroundViewModel() { backgroundTextPath = PagesPath + @"\Background.txt" }, Header = "Background" });
+                            pathViewModel.BackgroundPath = PagesPath + @"\Background.txt";
+                        }
+                    }
 
-        private void featPage(object obj)
-        {
-            string FeatsPathPath = string.Empty;
-            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
-            DialogResult result = choofdlog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                FeatsPathPath = choofdlog.SelectedPath;
-                TabList.Clear();
-
-                // Create necessary Text files and then load the necessary tabs
-                File.Create(FeatsPathPath + @"\Feats.txt");
-                TabList.Add(new TabItem { Content = new FeatsViewModel() { FeatsTextPath = FeatsPathPath + @"\Feats.txt" }, Header = "Feats" });
-
-                TabList.Add(new TabItem
-                {
-                    Content = new PathViewModel()
+                    if (obj.ToString().ToLower().Trim() == "class")
                     {
-                        FeatPath = FeatsPathPath + @"\Feats.txt",
-                    },
-                    Header = "Parser"
-                });
-            }
-        }
+                        if (!Class_Flg)
+                        {
+                            File.Create(PagesPath + @"\Class.txt");
+                            TabList.Add(new TabItem() { Content = new ClassesViewModel() { ClassesTextPath = PagesPath + @"\Class.txt" }, Header = "Class" });
+                            pathViewModel.ClassPath = PagesPath + @"\Class.txt";
+                        }
+                    }
 
-        private void singleNpcPage(object obj)
-        {
-            string NpcPagePath = string.Empty;
-            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
-            DialogResult result = choofdlog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                NpcPagePath = choofdlog.SelectedPath;
-                TabList.Clear();
-
-                // Create necessary Text files and then load the necessary tabs
-                File.Create(NpcPagePath + @"\NPC.txt");
-                TabList.Add(new TabItem { Content = new NPCViewModel() { NPCTextPath = NpcPagePath + @"\NPC.txt" }, Header = "NPC" });
-
-                TabList.Add(new TabItem
-                {
-                    Content = new PathViewModel()
+                    if (obj.ToString().ToLower().Trim() == "equipment")
                     {
-                        NPCPath = NpcPagePath + @"\NPC.txt",
-                    },
-                    Header = "Parser"
-                });
-            }
-        }
+                        if (!Equipment_Flg)
+                        {
+                            File.Create(PagesPath + @"\Equipment.txt");
+                            TabList.Add(new TabItem() { Content = new EquipmentViewModel() { EquipmentTextPath = PagesPath + @"\Equipment.txt" }, Header = "Equipment" });
+                            pathViewModel.EquipmentPath = PagesPath + @"\Equipment.txt";
+                        }
+                    }
 
-        private void parseOpenProject(object obj)
-        {
-            if (!string.IsNullOrEmpty(ClassProjectPath))
-            {
-                TabList.Add(new TabItem
-                {
-                    Content = new PathViewModel(),
-                    Header = "Parser"
-                });
-            }
-            else
-            {
-                // Select a folder with details
-            }
-        }
-
-        private void newClassProject(object obj)
-        {
-            FolderBrowserDialog choofdlog = new FolderBrowserDialog();
-            DialogResult result = choofdlog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                ClassProjectPath = choofdlog.SelectedPath;
-                TabList.Clear();
-
-                // Create necessary Text files and then load the necessary tabs
-                File.Create(ClassProjectPath + @"\Class.txt");
-                TabList.Add(new TabItem { Content = new ClassesViewModel() { ClassesTextPath = ClassProjectPath + @"\Class.txt" }, Header = "Class" });
-                File.Create(ClassProjectPath + @"\Background.txt");
-                TabList.Add(new TabItem { Content = new BackgroundViewModel() { backgroundTextPath = ClassProjectPath + @"\Background.txt", _tableTextPath = ClassProjectPath + @"\Tables.txt" }, Header = "Background" });
-                File.Create(ClassProjectPath + @"\Equipment.txt");
-                TabList.Add(new TabItem { Content = new EquipmentViewModel() { EquipmentTextPath = ClassProjectPath + @"\Equipment.txt" }, Header = "Equipment" });
-                File.Create(ClassProjectPath + @"\Spells.txt");
-                TabList.Add(new TabItem { Content = new SpellViewModel() { SpellsTextPath = ClassProjectPath + @"\Spells.txt" }, Header = "Spells" });
-                File.Create(ClassProjectPath + @"\Tables.txt");
-                TabList.Add(new TabItem { Header = "Tables" });
-
-                TabList.Add(new TabItem
-                {
-                    Content = new PathViewModel()
+                    if (obj.ToString().ToLower().Trim() == "feat")
                     {
-                        BackgroundPath = ClassProjectPath + @"\Background.txt",
-                        ClassPath = ClassProjectPath + @"\Class.txt",
-                        EquipmentPath = ClassProjectPath + @"\Equipment.txt",
-                        SpellPath = ClassProjectPath + @"\Spells.txt",
-                        TablePath = ClassProjectPath + @"\Tables.txt"
-                    },
-                    Header = "Parser"
-                });
+                        if (!Feats_Flg)
+                        {
+                            File.Create(PagesPath + @"\Feat.txt");
+                            TabList.Add(new TabItem() { Content = new FeatsViewModel() { FeatsTextPath = PagesPath + @"\Feat.txt" }, Header = "Feat" });
+                            pathViewModel.FeatPath = PagesPath + @"\Feat.txt";
+                        }
+                    }
+
+                    if (obj.ToString().ToLower().Trim() == "npc")
+                    {
+                        if (!NPC_Flg)
+                        {
+                            File.Create(PagesPath + @"\NPC.txt");
+                            TabList.Add(new TabItem() { Content = new NPCViewModel() { NPCTextPath = PagesPath + @"\NPCs.txt" }, Header = "NPC" });
+                            pathViewModel.NPCPath = PagesPath + @"\NPC.txt";
+                        }
+                    }
+
+                    if (obj.ToString().ToLower().Trim() == "pinmapping")
+                    {
+                        if (!PinMapping_Flg)
+                        {
+                            File.Create(PagesPath + @"\ImagePin.txt");
+                            TabList.Add(new TabItem() { Content = new ImagePinsViewModel() { ImagePinsTextPath = PagesPath + @"\ImagePin.txt" }, Header = "Pin Mapping" });
+                            pathViewModel.PinMappingPath = PagesPath + @"\ImagePin.txt";
+                        }
+                    }
+
+                    if (obj.ToString().ToLower().Trim() == "race")
+                    {
+                        if (!Race_Flg)
+                        {
+                            File.Create(PagesPath + @"\Race.txt");
+                            TabList.Add(new TabItem() { Content = new RacesViewModel() { RacesTextPath = PagesPath + @"\Race.txt" }, Header = "Race" });
+                            pathViewModel.RacesPath = PagesPath + @"\Race.txt";
+                        }
+                    }
+
+                    //if (obj.ToString().ToLower().Trim() == "skill")
+                    //{
+                    //    if (!Skill_Flg)
+                    //    {
+                    //        File.Create(PagesPath + @"\Skill.txt");
+                    //        TabList.Add(new TabItem() { Content = new SkillViewModel() { RacesTextPath = PagesPath + @"\Skill.txt" }, Header = "Skill" });
+                    //    }
+                    //}
+
+                    if (obj.ToString().ToLower().Trim() == "spell")
+                    {
+                        if (!Spell_Flg)
+                        {
+                            File.Create(PagesPath + @"\Spell.txt");
+                            TabList.Add(new TabItem() { Content = new SpellViewModel() { SpellsTextPath = PagesPath + @"\Spell.txt" }, Header = "Spell" });
+                            pathViewModel.SpellPath = PagesPath + @"\Spell.txt";
+                        }
+                    }
+
+                    if (obj.ToString().ToLower().Trim() == "parser")
+                    {
+                        if (!Parser_Flg)
+                        {
+                            File.Create(PagesPath + @"\Parser.txt");
+                            TabList.Add(new TabItem() { Content = pathViewModel, Header = "Parser" });
+                        }
+                    }
+
+                    //Presets
+                    //if (obj.ToString().ToLower().Trim() == "adventuremod")
+                    //{
+                    //}
+                    //if (obj.ToString().ToLower().Trim() == "playermod")
+                    //{
+                    //}
+                    //if (obj.ToString().ToLower().Trim() == "splatmod")
+                    //{
+                    //}
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        private void validateTabItemList(ObservableCollection<TabItem> _tabList)
+        {
+            foreach (TabItem item in _tabList)
+            {                
+                if (item.Header.ToString() == "Background") Background_Flg = true;
+                if (item.Header.ToString() == "Class") Class_Flg = true;
+                if (item.Header.ToString() == "Equipment") Equipment_Flg = true;
+                if (item.Header.ToString() == "Feat") Feats_Flg = true;
+                if (item.Header.ToString() == "NPC") NPC_Flg = true;
+                if (item.Header.ToString() == "Pin Mapping") PinMapping_Flg = true;
+                if (item.Header.ToString() == "Race") Race_Flg = true;
+                if (item.Header.ToString() == "Skill") Skill_Flg = true;
+                if (item.Header.ToString() == "Spell") Spell_Flg = true;
+
+                if (item.Header.ToString() == "Parser") Parser_Flg = true;
             }
         }
 
