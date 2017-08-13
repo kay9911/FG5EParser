@@ -68,11 +68,11 @@
         <Label Grid.Column="0" Grid.Row="24" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right">Sub Race Traits:</Label>
         <TextBox x:Name="txtSubRaceTraits" Grid.Column="1" Grid.RowSpan="5"  Grid.Row="24" TextWrapping="WrapWithOverflow" AcceptsReturn="True" ToolTip="One Trait Per Line" Text="{Binding SubRaceObject._TraitDetails,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnSaveSubRaces" Grid.Column="1" Grid.Row="30" FontWeight="Bold" FontSize="14"  Command="{Binding AddSubRace}">ADD SUBRACE</Button>
-        <Button x:Name="btnSaveRace" Grid.Column="3" Grid.Row="30" FontWeight="Bold" FontSize="14"  Command="{Binding AddRace}">REVIEW RACE AND SUBRACES</Button>
+        <Button x:Name="btnSaveSubRaces" Grid.Column="1" Grid.Row="30"  Command="{Binding AddSubRace}">ADD SUBRACE</Button>
+        <Button x:Name="btnSaveRace" Grid.Column="3" Grid.Row="30" Command="{Binding AddRace}">REVIEW RACE AND SUBRACES</Button>
 
-        <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" FontWeight="Bold" FontSize="14"  Command="{Binding ResetFields}">RESET</Button>
-        <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" FontWeight="Bold" FontSize="14"  Command="{Binding SaveRaces}">SAVE</Button>
+        <Button x:Name="btnReset" Grid.Column="0" Grid.Row="34" Command="{Binding ResetFields}">RESET</Button>
+        <Button x:Name="btnSave" Grid.Column="1" Grid.Row="34" Command="{Binding SaveRaces}">SAVE</Button>
 
         <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="27"  Grid.Row="2" FontSize="15" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>

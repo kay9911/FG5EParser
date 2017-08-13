@@ -68,7 +68,7 @@
                Stretch="Uniform"
                />
 
-        <Button x:Name="btnSelectImage" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="34" FontSize="14" Margin="0,0,0,7" Command="{Binding LoadImage}">Select Image</Button>
+        <Button x:Name="btnSelectImage" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="34" Margin="0,0,0,7" Command="{Binding LoadImage}">Select Image</Button>
         <TextBox x:Name="txtImagePath" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding ImageFilePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Label Name="lblXYCords" Grid.Column="5" Grid.Row="34" Grid.ColumnSpan="2" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
 
@@ -87,8 +87,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="btnSave" Grid.Column="9" Grid.ColumnSpan="1" Grid.Row="34" FontWeight="Bold" FontSize="14" Command="{Binding SavePins}">SAVE</Button>
-        <Button x:Name="btnLoadStories" Grid.Column="8" Grid.ColumnSpan="1" Grid.Row="34" FontWeight="Bold" FontSize="14" Command="{Binding LoadStoryList}">Load Stories</Button>
+        <Button x:Name="btnSave" Grid.Column="9" Grid.ColumnSpan="1" Grid.Row="34" Command="{Binding SavePins}">SAVE</Button>
+        <Button x:Name="btnLoadStories" Grid.Column="8" Grid.ColumnSpan="1" Grid.Row="34" Command="{Binding LoadStoryList}">Load Stories</Button>
 
     </Grid>
 </UserControl>

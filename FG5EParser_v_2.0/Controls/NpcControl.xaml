@@ -188,7 +188,7 @@
                         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
                         <TextBox x:Name="txtAbilityDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding AbilityDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <Button x:Name="btnAddAbility" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12"  Command="{Binding AddAbilityToList}">ADD ABILITY</Button>
+                        <Button x:Name="btnAddAbility" Grid.Column="5" Grid.Row="12" Command="{Binding AddAbilityToList}">ADD ABILITY</Button>
                     </Grid>
                 </TabItem>
                 <TabItem Header="ACTIONS">
@@ -227,7 +227,7 @@
                         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
                         <TextBox x:Name="txtActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding ActionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <Button x:Name="btnAddAction" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12"  Command="{Binding AddActionToList}">ADD ACTION</Button>
+                        <Button x:Name="btnAddAction" Grid.Column="5" Grid.Row="12" Command="{Binding AddActionToList}">ADD ACTION</Button>
                     </Grid>
                 </TabItem>
                 <TabItem Header="REACTIONS">
@@ -266,7 +266,7 @@
                         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
                         <TextBox x:Name="txtReactionDescription" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="5" Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding ReactionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <Button x:Name="btnAddReaction" Grid.Column="5" Grid.Row="12" FontWeight="Bold" FontSize="12"  Command="{Binding AddReactionToList}">ADD REACTION</Button>
+                        <Button x:Name="btnAddReaction" Grid.Column="5" Grid.Row="12" Command="{Binding AddReactionToList}">ADD REACTION</Button>
                     </Grid>
                 </TabItem>
                 <TabItem Header="INNATE SPELLCASTING">
@@ -455,7 +455,7 @@
                         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
                         <TextBox x:Name="txtLegendaryActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding LegendaryActionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <Button x:Name="btnAddLegendaryAction" Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" Command="{Binding AddLegendaryActionToList}">ADD LEGENDARY ACTION</Button>
+                        <Button x:Name="btnAddLegendaryAction" Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="2" Command="{Binding AddLegendaryActionToList}">ADD LEGENDARY ACTION</Button>
                     </Grid>
                 </TabItem>
                 <TabItem Header="NPC DETAILS">
@@ -527,17 +527,17 @@
                         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Center" VerticalAlignment="Stretch">Details:</Label>
                         <TextBox x:Name="txtLairActionDecription" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="10"  Grid.Row="2" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding LairActionDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <Button x:Name="btnAddLairAction" Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="12" Command="{Binding AddLairActionToList}">ADD LAIR ACTION</Button>
+                        <Button x:Name="btnAddLairAction" Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="2" Command="{Binding AddLairActionToList}">ADD LAIR ACTION</Button>
                     </Grid>
                 </TabItem>
             </TabControl>
 
             <TextBox x:Name="txtOutput" Grid.Column="10" Grid.ColumnSpan="8" Grid.RowSpan="13"  Grid.Row="24" AcceptsReturn="True" SpellCheck.IsEnabled="True" TextWrapping="WrapWithOverflow" Text="{Binding Output,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Button x:Name="btnAddtoList" Grid.Column="10" Grid.Row="38" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16"  Command="{Binding AddNPCToList}">ADD TO LIST</Button>
+            <Button x:Name="btnAddtoList" Grid.Column="10" Grid.Row="38" Grid.ColumnSpan="2" Command="{Binding AddNPCToList}">ADD TO LIST</Button>
 
-            <Button x:Name="btnReset" Grid.Column="16" Grid.Row="38" FontWeight="Bold" FontSize="16"  Command="{Binding ResetFields}">RESET</Button>
-            <Button x:Name="btnSave" Grid.Column="17" Grid.Row="38" FontWeight="Bold" FontSize="16"  Command="{Binding SaveNPC}">SAVE</Button>
+            <Button x:Name="btnReset" Grid.Column="16" Grid.Row="38" Command="{Binding ResetFields}">RESET</Button>
+            <Button x:Name="btnSave" Grid.Column="17" Grid.Row="38" Command="{Binding SaveNPC}">SAVE</Button>
 
         </Grid>
     </Grid>
