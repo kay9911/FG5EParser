@@ -182,6 +182,11 @@ namespace FG5eParserLib.View_Mo.dels
                     _showOutputFlag = false;
                     _showDataTableFlg = true;
                 }
+                else if (_showDataTableFlg && locationCommandText != obj.ToString())
+                {
+                    _showOutputFlag = false;
+                    _showDataTableFlg = true;
+                }
                 else
                 {
                     _showOutputFlag = true;
