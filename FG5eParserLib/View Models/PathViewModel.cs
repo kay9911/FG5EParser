@@ -112,6 +112,16 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        public string StoryPath
+        {
+            get { return pathViewModel.SetStoryPath; }
+            set
+            {
+                pathViewModel.SetStoryPath = value;
+                OnPropertyChanged("StoryPath");
+            }
+        }
+
         // Constructors
         public PathViewModel()
         {

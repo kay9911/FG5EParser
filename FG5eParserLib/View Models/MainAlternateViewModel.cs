@@ -16,17 +16,20 @@ namespace FG5eParserLib.View_Models
         public RelayCommand LoadTabControl { get; set; }
         private PathViewModel pathViewModel;
 
-        // Singular Tab Presence Flags
+        /* PLAYER RELATED PAGES */
         bool Background_Flg = false;
         bool Class_Flg = false;
         bool Equipment_Flg = false;
-        bool Feats_Flg = false;
-        bool NPC_Flg = false;
+        bool Feats_Flg = false;        
         bool PinMapping_Flg = false;
         bool Race_Flg = false;
         bool Skill_Flg = false;
         bool Spell_Flg = false;
         bool Parser_Flg = false;
+
+        /* STORY RELATED PAGES */
+        bool NPC_Flg = false;
+        bool Story_Flg = false;
 
         // Constructor
         public MainAlternateViewModel()
@@ -150,6 +153,16 @@ namespace FG5eParserLib.View_Models
                         }
                     }
 
+                    if (obj.ToString().ToLower().Trim() == "story")
+                    {
+                        if (!Story_Flg)
+                        {
+                            File.Create(PagesPath + @"\Story.txt");
+                            TabList.Add(new TabItem() { Content = new StoryViewModel() { storyTextPath = PagesPath + @"\Story.txt" }, Header = "Story" });
+                            pathViewModel.StoryPath = PagesPath + @"\Story.txt";
+                        }
+                    }
+
                     if (obj.ToString().ToLower().Trim() == "parser")
                     {
                         if (!Parser_Flg)
@@ -192,6 +205,8 @@ namespace FG5eParserLib.View_Models
                 if (item.Header.ToString() == "Spell") Spell_Flg = true;
 
                 if (item.Header.ToString() == "Parser") Parser_Flg = true;
+
+                if (item.Header.ToString() == "Story") Story_Flg = true;
             }
         }
 

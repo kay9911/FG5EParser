@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DM Modules\NPC.cs" />
+    <Compile Include="DM Modules\Story.cs" />
     <Compile Include="Player Models\Backgrounds.cs" />
     <Compile Include="Player Models\Classes.cs" />
     <Compile Include="Player Models\Equipment.cs" />

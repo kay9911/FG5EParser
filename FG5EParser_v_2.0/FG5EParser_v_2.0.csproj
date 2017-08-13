@@ -120,11 +120,17 @@
     <Compile Include="Controls\RacesControl.xaml.cs">
       <DependentUpon>RacesControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ReferenceControl.xaml.cs">
+      <DependentUpon>ReferenceControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SkillsControl.xaml.cs">
       <DependentUpon>SkillsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SpellsControl.xaml.cs">
       <DependentUpon>SpellsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StoryControl.xaml.cs">
+      <DependentUpon>StoryControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainAlternate.xaml.cs">
       <DependentUpon>MainAlternate.xaml</DependentUpon>
@@ -191,11 +197,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ReferenceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SkillsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SpellsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StoryControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

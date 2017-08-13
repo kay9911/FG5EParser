@@ -27,6 +27,7 @@
                 <MenuItem Header="Races" Command="{Binding LoadTabControl}" CommandParameter="race"/>
                 <!--<MenuItem Header="Skills" Command="{Binding LoadTabControl}" CommandParameter="skill"/>-->
                 <MenuItem Header="Spell &amp; Spell Lists" Command="{Binding LoadTabControl}" CommandParameter="spell"/>
+                <MenuItem Header="Story" Command="{Binding LoadTabControl}" CommandParameter="story"/>
                 <Separator />
                 <MenuItem Header="Parser" Command="{Binding LoadTabControl}" CommandParameter="parser"/>
             </MenuItem>
@@ -69,6 +70,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:PathViewModel}">
                     <VP:ParseControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:StoryViewModel}">
+                    <VP:StoryControl/>
                 </DataTemplate>
             </TabControl.Resources>
             <TabControl.ItemTemplate>
