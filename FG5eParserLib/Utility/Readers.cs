@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 
@@ -6,10 +7,10 @@ namespace FG5eParserLib.Utility
 {
     class Readers
     {
-        public ObservableCollection<string> ReadTables(string _inputLocation)
+        public List<string> ReadTables(string _inputLocation)
         {
             var _lines = File.ReadLines(_inputLocation);
-            ObservableCollection<string> _tableList = new ObservableCollection<string>();
+            List<string> _tableList = new List<string>();
 
             foreach (var _line in _lines)
             {

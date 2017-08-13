@@ -124,25 +124,25 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
 
         private void getTableTextPath()
         {
-            if (string.IsNullOrEmpty(_bvm._tableTextPath))
-            {
-                TablesTextPath = string.Empty;
-            }
+            //if (string.IsNullOrEmpty(_bvm._tableTextPath))
+            //{
+            //    TablesTextPath = string.Empty;
+            //}
 
-            if (string.IsNullOrEmpty(TablesTextPath))
-            {
-                OpenFileDialog choofdlog = new OpenFileDialog();
-                choofdlog.Filter = "All Files (*.*)|*.*";
-                choofdlog.FilterIndex = 1;
-                choofdlog.Multiselect = false;
+            //if (string.IsNullOrEmpty(TablesTextPath))
+            //{
+            //    OpenFileDialog choofdlog = new OpenFileDialog();
+            //    choofdlog.Filter = "All Files (*.*)|*.*";
+            //    choofdlog.FilterIndex = 1;
+            //    choofdlog.Multiselect = false;
 
-                if (choofdlog.ShowDialog() == true)
-                {
-                    // Adding to resources
-                    TablesTextPath = choofdlog.FileName;
-                    _bvm._tableTextPath = TablesTextPath;
-                }
-            }
+            //    if (choofdlog.ShowDialog() == true)
+            //    {
+            //        // Adding to resources
+            //        TablesTextPath = choofdlog.FileName;
+            //        _bvm._tableTextPath = TablesTextPath;
+            //    }
+            //}
         }
 
         private void undoHide()

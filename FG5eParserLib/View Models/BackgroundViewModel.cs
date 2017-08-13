@@ -2,10 +2,11 @@
 using System.ComponentModel;
 using FG5eParserModels.Player_Models;
 using System.IO;
-using Microsoft.Win32;
 using FG5eParserLib.Utility;
 using System.Text;
 using System;
+using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace FG5eParserLib.View_Mo.dels
 {
@@ -14,7 +15,7 @@ namespace FG5eParserLib.View_Mo.dels
         public string backgroundTextPath { get; set; }
 
         // Table pop up data
-        private string tableTextPath { get; set; }
+        // private string tableTextPath { get; set; }
         public ObservableCollection<string> TableNames { get; set; }
         public ObservableCollection<Backgrounds> BackgroundList { get; set; }
 
@@ -22,6 +23,38 @@ namespace FG5eParserLib.View_Mo.dels
         public RelayCommand AddBackground { get; set; } // Save Button
         public RelayCommand ResetFields { get; set; } // Reset Button
         public RelayCommand AddToList { get; set; } // Add background to the list
+
+        public RelayCommand SelectTableData { get; set; }
+        public RelayCommand AddSelectedTableItem { get; set; }
+        private string tableTextPath = string.Empty;
+        private string locationCommandText = string.Empty;
+
+        private string showDataTableFlg { get; set; }
+        public bool _showDataTableFlg
+        {
+            get
+            {
+                return Convert.ToBoolean(showDataTableFlg);
+            }
+            set
+            {
+                showDataTableFlg = value.ToString();
+                OnPropertyChanged("_showDataTableFlg");
+            }
+        }
+        private string showOutputFlag { get; set; }
+        public bool _showOutputFlag
+        {
+            get
+            {
+                return Convert.ToBoolean(showOutputFlag);
+            }
+            set
+            {
+                showOutputFlag = value.ToString();
+                OnPropertyChanged("_showOutputFlag");
+            }
+        }
 
         // Lists and Objects
         private Backgrounds BackgroundObj { get; set; }
@@ -42,19 +75,21 @@ namespace FG5eParserLib.View_Mo.dels
                 OnPropertyChanged(null);
             }
         }
-        public string _tableTextPath
-        {
-            get
-            {
-                return tableTextPath;
-            }
-            set
-            {
-                tableTextPath = value;
-                //TableNames = getTableList(value);
-                OnPropertyChanged(null);
-            }
-        }
+
+        //public string _tableTextPath
+        //{
+        //    get
+        //    {
+        //        return tableTextPath;
+        //    }
+        //    set
+        //    {
+        //        tableTextPath = value;
+        //        //TableNames = getTableList(value);
+        //        OnPropertyChanged(null);
+        //    }
+        //}
+
         public string _Output
         {
             get
@@ -87,28 +122,93 @@ namespace FG5eParserLib.View_Mo.dels
             ResetFields = new RelayCommand(resetObject);
             AddToList = new RelayCommand(AddBackgroundtoList, canAddtoList);
 
+            SelectTableData = new RelayCommand(selectTableData);
+            AddSelectedTableItem = new RelayCommand(addSelectedTableItem);
+
             // List Inits
             BackgroundList = new ObservableCollection<Backgrounds>();
 
             //Inits
             BackgroundObj = new Backgrounds();
             TableNames = new ObservableCollection<string>();
+
+            // Display Output on Load
+            _showOutputFlag = true;
+        }
+
+        private void addSelectedTableItem(object obj)
+        {
+            if (!string.IsNullOrEmpty(obj.ToString()))
+            {
+                if (locationCommandText.ToLower().Trim() == "personalitytraits")
+                {
+                    Background._PersonalityTraits = obj.ToString();
+                }
+                if (locationCommandText.ToLower().Trim() == "bonds")
+                {
+                    Background._Bonds = obj.ToString();
+                }
+                if (locationCommandText.ToLower().Trim() == "ideals")
+                {
+                    Background._Ideals = obj.ToString();
+                }
+                if (locationCommandText.ToLower().Trim() == "flaws")
+                {
+                    Background._Flaws = obj.ToString();
+                }
+            }
+        }
+
+        private void selectTableData(object obj)
+        {
+            // If the tables path is blank or empty ask the user to select it
+            if (string.IsNullOrEmpty(tableTextPath))
+            {
+                OpenFileDialog choofdlog = new OpenFileDialog() { Title = "Please select a file that contains records of TABLES." };
+
+                if (choofdlog.ShowDialog() == true)
+                {
+                    tableTextPath = choofdlog.FileName;
+                }
+            }
+
+            // Gather the list of table Names
+            if (!string.IsNullOrEmpty(tableTextPath))
+            {
+                getTableList(tableTextPath);
+                // Display Table/Output
+                if (!_showDataTableFlg)
+                {
+                    _showOutputFlag = false;
+                    _showDataTableFlg = true;
+                }
+                else
+                {
+                    _showOutputFlag = true;
+                    _showDataTableFlg = false;
+                }
+
+                // Store the text box that needs to be filled
+                locationCommandText = obj.ToString();
+            }
         }
 
         // Functions
         private void SaveList(object obj)
         {
-            // Chose the txt file that will hold the information
-            if (string.IsNullOrEmpty(backgroundTextPath))
-            {
-                SaveFileDialog choofdlog = new SaveFileDialog();
-                choofdlog.Filter = "All Files (*.*)|*.*";
+            #region NOT REQUIRED
+            //// Chose the txt file that will hold the information
+            //if (string.IsNullOrEmpty(backgroundTextPath))
+            //{
+            //    SaveFileDialog choofdlog = new SaveFileDialog();
+            //    choofdlog.Filter = "All Files (*.*)|*.*";
 
-                if (choofdlog.ShowDialog() == true)
-                {
-                    backgroundTextPath = choofdlog.FileName;
-                }
-            }
+            //    if (choofdlog.ShowDialog() == true)
+            //    {
+            //        backgroundTextPath = choofdlog.FileName;
+            //    }
+            //}
+            #endregion
 
             // Add the object to the file
             if (!string.IsNullOrEmpty(backgroundTextPath))
@@ -153,7 +253,6 @@ namespace FG5eParserLib.View_Mo.dels
             // Reset the object and refresh the screen           
             Background = new Backgrounds();
             _Output = string.Empty;
-            _tableTextPath = string.Empty;
         }
 
         // _Output value is obtained from here
@@ -236,15 +335,22 @@ namespace FG5eParserLib.View_Mo.dels
             _Output = _sb.ToString();
         }
 
-        private ObservableCollection<string> getTableList(string path)
+        private void getTableList(string tablesPath)
         {
-            if (!string.IsNullOrEmpty(path))
+            if (!string.IsNullOrEmpty(tablesPath))
             {
                 Readers _reader = new Readers();
-                ObservableCollection<string> _tableList = _tableList = _reader.ReadTables(path);
-                return _tableList;
+                List<string> _tableList = _tableList = _reader.ReadTables(tablesPath);
+
+                if (_tableList.Count != 0)
+                {
+                    TableNames.Clear();
+                    foreach (string item in _tableList)
+                    {
+                        TableNames.Add(item);
+                    }
+                }
             }
-            return null;
         }
     }
 }

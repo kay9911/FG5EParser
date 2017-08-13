@@ -5,6 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
              >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -81,19 +84,19 @@
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Personality Traits:</Label>
         <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding Background._PersonalityTraits, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectPersonality_Click">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="PersonalityTraits">&gt;&gt;&gt;</Button>
 
         <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ideals:</Label>
         <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Ideals, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectIdeals_Click">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Ideals">&gt;&gt;&gt;</Button>
 
         <Label Grid.Column="0" Grid.Row="30" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Bonds:</Label>
         <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Bonds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectBonds_Click">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Bonds">&gt;&gt;&gt;</Button>
 
         <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Flaws:</Label>
         <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Flaws, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Click="btnSelectFlaws_Click">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Flaws">&gt;&gt;&gt;</Button>
 
         <Button 
             x:Name="btnAddtoList" 
@@ -146,19 +149,35 @@
             </Rectangle>
             </Button>
 
-            <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="31"  Grid.Row="2" Grid.ColumnSpan="2" FontSize="15" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
+            <TextBox x:Name="txtOutput" 
+                     Grid.Column="4"
+                     Grid.RowSpan="31"  
+                     Grid.Row="2" 
+                     Grid.ColumnSpan="2" 
+                     FontSize="15" 
+                     TextWrapping="Wrap" 
+                     AcceptsReturn="True" 
+                     VerticalScrollBarVisibility="Auto" 
+                     SpellCheck.IsEnabled="True" 
+                     Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Visibility="{Binding _showOutputFlag, Converter={StaticResource boolToVisibilityConverter}}"
+                     Margin="0,0,0,8"/>
 
         <DataGrid 
             x:Name="dtTableNames" 
             ItemsSource="{Binding TableNames}"
             AutoGenerateColumns="False"
-            Visibility="Hidden" 
+            Visibility="{Binding _showDataTableFlg, Converter={StaticResource boolToVisibilityConverter}}" 
             SelectionMode="Extended" 
             CanUserAddRows="False"
             IsReadOnly="True"
             Grid.Column="4" 
             Grid.RowSpan="32"  
-            Grid.Row="2" MouseDoubleClick="dtTableNames_MouseDoubleClick">
+            Grid.Row="2"
+            >
+            <DataGrid.InputBindings>
+                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedTableItem}" CommandParameter="{Binding ElementName=dtTableNames, Path=SelectedItem}"/>
+            </DataGrid.InputBindings>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Table Name" Binding="{Binding}"/>
             </DataGrid.Columns>
