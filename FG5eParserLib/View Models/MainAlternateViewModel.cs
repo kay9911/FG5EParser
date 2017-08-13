@@ -167,7 +167,6 @@ namespace FG5eParserLib.View_Models
                     {
                         if (!Parser_Flg)
                         {
-                            File.Create(PagesPath + @"\Parser.txt");
                             TabList.Add(new TabItem() { Content = pathViewModel, Header = "Parser" });
                         }
                     }

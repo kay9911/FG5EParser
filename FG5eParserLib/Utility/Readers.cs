@@ -36,6 +36,35 @@ namespace FG5eParserLib.Utility
             }
             return _storyList;
         }
+
+        public List<string> getNPCList(string _inputLocation)
+        {
+            List<string> _npcNames = new List<string>();
+            List<string> _Dumplines = new List<string>();
+            var _lines = File.ReadLines(_inputLocation);
+
+            foreach (string item in _lines)
+            {
+                _Dumplines.Add(item);
+            }
+
+            for (int i = 0; i < _Dumplines.Count; i++)
+            {
+                if (i == 0)
+                {
+                    _npcNames.Add(_Dumplines[i]);
+                }
+
+                if (string.IsNullOrEmpty(_Dumplines[i]) && i != _Dumplines.Count-1)
+                {
+                    i++;
+                    _npcNames.Add(_Dumplines[i]);
+                    i++;
+                }
+            }
+
+            return _npcNames;
+        }
     }
 
     public class StoryEntry : INotifyPropertyChanged

@@ -16,8 +16,8 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="0.1*" />
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -59,67 +59,76 @@
         </Grid.RowDefinitions>
         
         <!--Assistance Buttons-->
-        <Button Grid.Column="0" Grid.Row="2">TEST</Button>
-
+        <Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="equipment" IsEnabled="False">Equipment Links</Button>
+        <Button Grid.Column="0" Grid.Row="4" Command="{Binding DisplayEntriesList}" CommandParameter="image" IsEnabled="False">Image Links</Button>
+        <Button Grid.Column="0" Grid.Row="6" Command="{Binding DisplayEntriesList}" CommandParameter="magicitem" IsEnabled="False">Magical Item Links</Button>
+        <Button Grid.Column="0" Grid.Row="8" Command="{Binding DisplayEntriesList}" CommandParameter="npc">NPC Links</Button>
+        <Button Grid.Column="0" Grid.Row="10" Command="{Binding DisplayEntriesList}" CommandParameter="reference" IsEnabled="False">Reference Links</Button>
+        <Button Grid.Column="0" Grid.Row="12" Command="{Binding DisplayEntriesList}" CommandParameter="story" IsEnabled="False">Story Links</Button>
+        <Button Grid.Column="0" Grid.Row="14" Command="{Binding DisplayEntriesList}" CommandParameter="treasureparcel" IsEnabled="False">Treasure Parcel Links</Button>   
+        
         <TextBox x:Name="txtOutput" 
                      Grid.Column="2"
-                     Grid.RowSpan="33"  
+                     Grid.RowSpan="31"  
                      Grid.Row="1" 
-                     Grid.ColumnSpan="3" 
-                     FontSize="15" 
+                     Grid.ColumnSpan="4" 
+                     FontSize="14" 
                      TextWrapping="Wrap" 
                      AcceptsReturn="True" 
                      VerticalScrollBarVisibility="Auto" 
                      SpellCheck.IsEnabled="True" 
                      Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                     
                      Margin="0,0,0,8"/>
+
+        <Button
+            Grid.Column="2"  
+            Grid.Row="32"
+            Command="{Binding AddNewStoryBlock}"
+            >
+            Add New Story Block</Button>
         
+        <Button
+            Grid.Column="3"  
+            Grid.Row="32" 
+            Command="{Binding AddNewStoryEntry}"
+            >
+            Add New Story Entry</Button>
+
+        <Button 
+            Grid.Column="5"
+            Grid.Row="32"
+            Command="{Binding LoadAllEntries}"
+            ToolTip="WARNING! After clicking this all data saved henceforth will OVERWRITE existing information."
+            >
+            Load All Entries</Button>
+
         <DataGrid 
-            Grid.Column="6"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="32"  
+            Grid.Column="7"
+            Grid.RowSpan="30"  
             Grid.Row="1" 
             x:Name="dtTableNames" 
-            ItemsSource="{Binding TableNames}"
+            ItemsSource="{Binding EntryListItems}"
             AutoGenerateColumns="False"
-            Visibility="{Binding _showDataTableFlg, Converter={StaticResource boolToVisibilityConverter}}" 
-            SelectionMode="Extended" 
+            Visibility="{Binding _showDataTableFlg, Converter={StaticResource boolToVisibilityConverter}}"
             CanUserAddRows="False"
             IsReadOnly="True"
             >
             <DataGrid.InputBindings>
-                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedTableItem}" CommandParameter="{Binding ElementName=dtTableNames, Path=SelectedItem}"/>
+                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedItem}" CommandParameter="{Binding ElementName=dtTableNames, Path=SelectedItem}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Table Name" Binding="{Binding}"/>
+                <DataGridTextColumn Header="Entry Name" Binding="{Binding}"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <Button 
-            x:Name="btnAddtoList" 
-            ToolTip="Reviw and add to save list."
-            Grid.Column="2" 
-            Grid.Row="34"
-            Height="50"
-            Width="50"
-            Command="{Binding AddToList}">
-            <Rectangle Width="20"
-                Height="20"
-                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-
-        <Button 
             x:Name="btnSave" 
             ToolTip="Save all details to text file."
-            Grid.Column="4" 
+            Grid.Column="5" 
             Grid.Row="34" 
             Height="50"
             Width="50"
-            Command="{Binding AddBackground}">
+            Command="{Binding AddStoryEntry}">
             <Rectangle Width="20"
                 Height="20"
                 Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
