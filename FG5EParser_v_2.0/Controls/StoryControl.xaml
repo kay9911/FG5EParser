@@ -57,9 +57,17 @@
             <RowDefinition Height=".2*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        
+        <Grid.Resources>
+            <CollectionViewSource x:Key="Equipment" Source="{Binding EquipmentRecordNames}">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="Type" />
+                    <PropertyGroupDescription PropertyName="Subtype" />
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+        </Grid.Resources>
+
         <!--Assistance Buttons-->
-        <Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="equipment" IsEnabled="False">Equipment Links</Button>
+        <Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="equipment">Equipment Links</Button>
         <Button Grid.Column="0" Grid.Row="4" Command="{Binding DisplayEntriesList}" CommandParameter="image" IsEnabled="False">Image Links</Button>
         <Button Grid.Column="0" Grid.Row="6" Command="{Binding DisplayEntriesList}" CommandParameter="magicitem" IsEnabled="False">Magical Item Links</Button>
         <Button Grid.Column="0" Grid.Row="8" Command="{Binding DisplayEntriesList}" CommandParameter="npc">NPC Links</Button>
@@ -114,10 +122,52 @@
             IsReadOnly="True"
             >
             <DataGrid.InputBindings>
-                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedItem}" CommandParameter="{Binding ElementName=dtTableNames, Path=SelectedItem}"/>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding AddSelectedItem}" CommandParameter="{Binding ElementName=dtTableNames, Path=SelectedItem}"/>
             </DataGrid.InputBindings>
+            <!--<DataGridTextColumn Header="NPC" Binding="{Binding name}"/>-->
+        </DataGrid>
+
+        <DataGrid 
+            Grid.Column="7"
+            Grid.RowSpan="30"  
+            Grid.Row="1" 
+            x:Name="dtEquipmentTable" 
+            ItemsSource="{Binding Source={StaticResource Equipment}}"
+            AutoGenerateColumns="False"
+            Visibility="{Binding _showEquipmentTableFlg, Converter={StaticResource boolToVisibilityConverter}}"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            HeadersVisibility="None"
+            >
+            <DataGrid.InputBindings>
+                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedEquipmentItem}" CommandParameter="{Binding ElementName=dtEquipmentTable, Path=SelectedItem}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander IsExpanded="False">
+                                            <Expander.Header>
+                                                <DockPanel>
+                                                    <TextBlock Text="{Binding Path=Name}" />
+                                                </DockPanel>
+                                            </Expander.Header>
+                                            <Expander.Content>
+                                                <ItemsPresenter/>
+                                            </Expander.Content>
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>                               
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Entry Name" Binding="{Binding}"/>
+                <DataGridTextColumn Binding="{Binding Item}"/>
             </DataGrid.Columns>
         </DataGrid>
 

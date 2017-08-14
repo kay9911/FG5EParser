@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using FG5EParser.Base_Class;
 using System.IO;
 using System.Globalization;

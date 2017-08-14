@@ -17,6 +17,7 @@ namespace FG5eParserLib.View_Models
         private string tableTextPath = string.Empty;
         private string locationCommandText = string.Empty;
         private string NPCEntries = string.Empty;
+        private string EquipmentEntries = string.Empty;
         private string currentParameter = string.Empty;
 
         // Lists and Objects
@@ -46,8 +47,22 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged("_showDataTableFlg");
             }
         }
+        private string showEquipmentTableFlg { get; set; }
+        public bool _showEquipmentTableFlg
+        {
+            get
+            {
+                return Convert.ToBoolean(showEquipmentTableFlg);
+            }
+            set
+            {
+                showEquipmentTableFlg = value.ToString();
+                OnPropertyChanged("_showEquipmentTableFlg");
+            }
+        }
 
         public ObservableCollection<string> EntryNames { get; set; }
+        public ObservableCollection<EquipmentRecord> EquipmentRecordNames { get; set; }
 
         // Relay Commands
         public RelayCommand AddStoryEntry { get; set; } // Save Button
@@ -58,6 +73,7 @@ namespace FG5eParserLib.View_Models
         public RelayCommand AddNewStoryEntry { get; set; }
         public RelayCommand DisplayEntriesList { get; set; }
         public RelayCommand AddSelectedItem { get; set; }
+        public RelayCommand AddSelectedEquipmentItem { get; set; }
 
         // Output
         private string Output { get; set; }
@@ -78,7 +94,8 @@ namespace FG5eParserLib.View_Models
         public StoryViewModel()
         {
             _showDataTableFlg = true;
-            EntryListItems = new ObservableCollection<string>() { "TEST" };
+            EntryListItems = new ObservableCollection<string>();
+            EquipmentRecordNames = new ObservableCollection<EquipmentRecord>();
 
             // Class Object
             StoryObj = new Story();
@@ -90,9 +107,10 @@ namespace FG5eParserLib.View_Models
             AddNewStoryEntry = new RelayCommand(addNewStoryEntry);
             DisplayEntriesList = new RelayCommand(displayEntriesList);
             AddSelectedItem = new RelayCommand(addSelectedItem);
+            AddSelectedEquipmentItem = new RelayCommand(addSelectedEquipmentItem);
         }
 
-        private void addSelectedItem(object obj)
+        private void addSelectedEquipmentItem(object obj)
         {
             if (obj != null)
             {
@@ -114,11 +132,33 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        private void addSelectedItem(object obj)
+        {
+            if (obj != null)
+            {
+                StringBuilder _sb = new StringBuilder();
+                _sb.Append(_Output);
+
+                if (!string.IsNullOrEmpty(_Output))
+                {
+                    _sb.Append(Environment.NewLine);
+                }
+
+                // Basic Equipment
+                if (currentParameter == "npc")
+                {
+                    _sb.Append(string.Format("#zal;NPC;*;NPC:{0};{0}", obj.ToString()));
+                }
+
+                _Output = _sb.ToString();
+            }
+        }
+
         private void displayEntriesList(object obj)
         {
             Readers _reader = new Readers();
 
-            // NPC LIST
+            // NPC List
             if (obj.ToString().ToLower() == "npc")
             {
                 if (string.IsNullOrEmpty(NPCEntries))
@@ -140,10 +180,36 @@ namespace FG5eParserLib.View_Models
                             EntryListItems.Add(item);
                         }
                     }
-
                     currentParameter = obj.ToString().ToLower();
                 }
-            }            
+
+                _showEquipmentTableFlg = false;
+                _showDataTableFlg = true;
+            }
+
+            // Equipment List
+            if (obj.ToString().ToLower() == "equipment")
+            {
+                if (string.IsNullOrEmpty(EquipmentEntries))
+                {
+                    OpenFileDialog _ofd = new OpenFileDialog() { Title = "Please select a file that contains Basic Equipment Entries" };
+                    if (_ofd.ShowDialog() == true)
+                    {
+                        EquipmentEntries = _ofd.FileName;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(EquipmentEntries))
+                {
+                    EquipmentRecordNames.Clear();
+                    foreach (EquipmentRecord item in _reader.getEquipmentList(EquipmentEntries))
+                    {
+                        EquipmentRecordNames.Add(item);
+                    }
+                }
+                _showEquipmentTableFlg = true;
+                _showDataTableFlg = false;
+            }
         }
 
         private void addNewStoryEntry(object obj)
