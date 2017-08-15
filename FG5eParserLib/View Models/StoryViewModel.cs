@@ -5,19 +5,21 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace FG5eParserLib.View_Models
 {
     public class StoryViewModel : INotifyPropertyChanged
     {
-        public string storyTextPath { get; set; }
-        public ObservableCollection<string> EntryListItems { get; set; }
+        public string storyTextPath { get; set; }        
         private bool overrightFlg = false; // WARNING! Enabling this will OVERRIGHT any details present in the save to file
         private string tableTextPath = string.Empty;
         private string locationCommandText = string.Empty;
         private string NPCEntries = string.Empty;
         private string EquipmentEntries = string.Empty;
+        private string ImageEntries = string.Empty;
         private string currentParameter = string.Empty;
 
         // Lists and Objects
@@ -74,10 +76,24 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged("_showNPCTableFlg");
             }
         }
+        private string ShowImageTableFlg { get; set; }
+        public bool _showImageTableFlg
+        {
+            get
+            {
+                return Convert.ToBoolean(ShowImageTableFlg);
+            }
+            set
+            {
+                ShowImageTableFlg = value.ToString();
+                OnPropertyChanged("_showImageTableFlg");
+            }
+        }
 
         public ObservableCollection<string> EntryNames { get; set; }
         public ObservableCollection<EquipmentRecord> EquipmentRecordNames { get; set; }
         public ObservableCollection<NPCRecord> NpcRecordNames { get; set; }
+        public ObservableCollection<string> ImageNames { get; set; }
 
         // Relay Commands
         public RelayCommand AddStoryEntry { get; set; } // Save Button
@@ -89,6 +105,7 @@ namespace FG5eParserLib.View_Models
         public RelayCommand DisplayEntriesList { get; set; }
         public RelayCommand AddSelectedNPC { get; set; }
         public RelayCommand AddSelectedEquipmentItem { get; set; }
+        public RelayCommand AddSelectedImage { get; set; }
 
         // Output
         private string Output { get; set; }
@@ -109,9 +126,9 @@ namespace FG5eParserLib.View_Models
         public StoryViewModel()
         {
             _showDataTableFlg = true;
-            EntryListItems = new ObservableCollection<string>();
             EquipmentRecordNames = new ObservableCollection<EquipmentRecord>();
             NpcRecordNames = new ObservableCollection<NPCRecord>();
+            ImageNames = new ObservableCollection<string>();
 
             // Class Object
             StoryObj = new Story();
@@ -124,11 +141,30 @@ namespace FG5eParserLib.View_Models
             DisplayEntriesList = new RelayCommand(displayEntriesList);
             AddSelectedNPC = new RelayCommand(addSelectedNPC);
             AddSelectedEquipmentItem = new RelayCommand(addSelectedEquipmentItem);
+            AddSelectedImage = new RelayCommand(addSelectedImage);
 
             // Hide all datagrids on the UI
             _showDataTableFlg = false;
             _showEquipmentTableFlg = false;
             _showNPCTableFlg = false;
+        }
+
+        private void addSelectedImage(object obj)
+        {
+            if (obj != null)
+            {
+                StringBuilder _sb = new StringBuilder();
+                _sb.Append(_Output);
+
+                if (!string.IsNullOrEmpty(_Output))
+                {
+                    _sb.Append(Environment.NewLine);
+                }
+
+                _sb.Append(string.Format("#zal;IMG;*;Image:{0};{1}", obj.ToString().Replace(".jpg","").Trim(), obj.ToString()));
+
+                _Output = _sb.ToString();
+            }
         }
 
         private void addSelectedEquipmentItem(object obj)
@@ -203,7 +239,7 @@ namespace FG5eParserLib.View_Models
             {
                 if (string.IsNullOrEmpty(NPCEntries))
                 {
-                    OpenFileDialog _ofd = new OpenFileDialog() { Title = "Please select a file that contains NPC's" };
+                    Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a file that contains NPC's" };
                     if (_ofd.ShowDialog() == true)
                     {
                         NPCEntries = _ofd.FileName;
@@ -225,6 +261,7 @@ namespace FG5eParserLib.View_Models
                 _showEquipmentTableFlg = false;
                 _showDataTableFlg = false;
                 _showNPCTableFlg = true;
+                _showImageTableFlg = false;
             }
 
             // Equipment List
@@ -232,7 +269,7 @@ namespace FG5eParserLib.View_Models
             {
                 if (string.IsNullOrEmpty(EquipmentEntries))
                 {
-                    OpenFileDialog _ofd = new OpenFileDialog() { Title = "Please select a file that contains Basic Equipment Entries" };
+                    Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a file that contains Basic Equipment Entries" };
                     if (_ofd.ShowDialog() == true)
                     {
                         EquipmentEntries = _ofd.FileName;
@@ -250,6 +287,35 @@ namespace FG5eParserLib.View_Models
                 _showEquipmentTableFlg = true;
                 _showDataTableFlg = false;
                 _showNPCTableFlg = false;
+                _showImageTableFlg = false;
+            }
+
+            if (obj.ToString().ToLower() == "image")
+            {
+                if (string.IsNullOrEmpty(ImageEntries))
+                {
+                    FolderBrowserDialog _ofd = new FolderBrowserDialog() { Description = "Please select a folder that contains Images" };
+                    DialogResult result = _ofd.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        ImageEntries = _ofd.SelectedPath;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(ImageEntries))
+                {
+                    ImageNames.Clear();
+                    string[] names = Directory.GetFiles(ImageEntries);
+                    foreach (var item in names)
+                    {
+                        ImageNames.Add(item.Split('\\').Last());
+                    }
+                }
+
+                _showEquipmentTableFlg = false;
+                _showDataTableFlg = false;
+                _showNPCTableFlg = false;
+                _showImageTableFlg = true;
             }
         }
 

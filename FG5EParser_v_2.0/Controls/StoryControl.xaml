@@ -78,7 +78,7 @@
 
         <!--Assistance Buttons-->
         <Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="equipment">Equipment Links</Button>
-        <Button Grid.Column="0" Grid.Row="4" Command="{Binding DisplayEntriesList}" CommandParameter="image" IsEnabled="False">Image Links</Button>
+        <Button Grid.Column="0" Grid.Row="4" Command="{Binding DisplayEntriesList}" CommandParameter="image">Image Links</Button>
         <Button Grid.Column="0" Grid.Row="6" Command="{Binding DisplayEntriesList}" CommandParameter="magicitem" IsEnabled="False">Magical Item Links</Button>
         <Button Grid.Column="0" Grid.Row="8" Command="{Binding DisplayEntriesList}" CommandParameter="npc">NPC Links</Button>
         <Button Grid.Column="0" Grid.Row="10" Command="{Binding DisplayEntriesList}" CommandParameter="reference" IsEnabled="False">Reference Links</Button>
@@ -172,6 +172,27 @@
             Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             FontSize="14" TextChanged="txtFilter_TextChanged"
             />
+
+        <DataGrid 
+            Grid.Column="7"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="28"  
+            Grid.Row="3" 
+            x:Name="dtImageTable" 
+            ItemsSource="{Binding ImageNames}"
+            AutoGenerateColumns="False"
+            Visibility="{Binding _showImageTableFlg, Converter={StaticResource boolToVisibilityConverter}}"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            HeadersVisibility="None"
+            >
+            <DataGrid.InputBindings>
+                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedImage}" CommandParameter="{Binding ElementName=dtImageTable, Path=SelectedItem}"/>
+            </DataGrid.InputBindings>            
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <DataGrid 
             Grid.Column="7"
