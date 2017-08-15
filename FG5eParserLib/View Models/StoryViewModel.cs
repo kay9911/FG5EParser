@@ -1,6 +1,5 @@
 ﻿using FG5eParserLib.Utility;
 using FG5eParserModels.DM_Modules;
-using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -15,12 +14,10 @@ namespace FG5eParserLib.View_Models
     {
         public string storyTextPath { get; set; }        
         private bool overrightFlg = false; // WARNING! Enabling this will OVERRIGHT any details present in the save to file
-        private string tableTextPath = string.Empty;
-        private string locationCommandText = string.Empty;
         private string NPCEntries = string.Empty;
         private string EquipmentEntries = string.Empty;
         private string ImageEntries = string.Empty;
-        private string currentParameter = string.Empty;
+        private string TextEntries = string.Empty;
 
         // Lists and Objects
         private Story StoryObj { get; set; }
@@ -62,7 +59,6 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged("_showEquipmentTableFlg");
             }
         }
-        //_showNPCTableFlg
         private string ShowNPCTableFlg { get; set; }
         public bool _showNPCTableFlg
         {
@@ -90,7 +86,7 @@ namespace FG5eParserLib.View_Models
             }
         }
 
-        public ObservableCollection<string> EntryNames { get; set; }
+        public ObservableCollection<TextRecord> TextEntryNames { get; set; }
         public ObservableCollection<EquipmentRecord> EquipmentRecordNames { get; set; }
         public ObservableCollection<NPCRecord> NpcRecordNames { get; set; }
         public ObservableCollection<string> ImageNames { get; set; }
@@ -106,6 +102,7 @@ namespace FG5eParserLib.View_Models
         public RelayCommand AddSelectedNPC { get; set; }
         public RelayCommand AddSelectedEquipmentItem { get; set; }
         public RelayCommand AddSelectedImage { get; set; }
+        public RelayCommand AddSelectedTextItem { get; set; }
 
         // Output
         private string Output { get; set; }
@@ -125,10 +122,10 @@ namespace FG5eParserLib.View_Models
         // Constructor
         public StoryViewModel()
         {
-            _showDataTableFlg = true;
             EquipmentRecordNames = new ObservableCollection<EquipmentRecord>();
             NpcRecordNames = new ObservableCollection<NPCRecord>();
             ImageNames = new ObservableCollection<string>();
+            TextEntryNames = new ObservableCollection<TextRecord>();
 
             // Class Object
             StoryObj = new Story();
@@ -142,11 +139,33 @@ namespace FG5eParserLib.View_Models
             AddSelectedNPC = new RelayCommand(addSelectedNPC);
             AddSelectedEquipmentItem = new RelayCommand(addSelectedEquipmentItem);
             AddSelectedImage = new RelayCommand(addSelectedImage);
+            AddSelectedTextItem = new RelayCommand(addSelectedTextItem);
 
             // Hide all datagrids on the UI
             _showDataTableFlg = false;
             _showEquipmentTableFlg = false;
             _showNPCTableFlg = false;
+        }
+
+        private void addSelectedTextItem(object obj)
+        {
+            if (obj != null)
+            {
+                StringBuilder _sb = new StringBuilder();
+                _sb.Append(_Output);
+
+                if (!string.IsNullOrEmpty(_Output))
+                {
+                    _sb.Append(Environment.NewLine);
+                }
+
+                if (CurrentTab == "story")
+                {
+                    _sb.Append(string.Format("#zal;ST;*;Story:{0};{0}", ((TextRecord)obj).Title));
+                }
+
+                _Output = _sb.ToString();
+            }
         }
 
         private void addSelectedImage(object obj)
@@ -230,6 +249,7 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        string CurrentTab = string.Empty;
         private void displayEntriesList(object obj)
         {
             Readers _reader = new Readers();
@@ -316,6 +336,34 @@ namespace FG5eParserLib.View_Models
                 _showDataTableFlg = false;
                 _showNPCTableFlg = false;
                 _showImageTableFlg = true;
+            }
+
+            if (obj.ToString().ToLower() == "story" || obj.ToString().ToLower() == "reference")
+            {
+                if (string.IsNullOrEmpty(TextEntries))
+                {
+                    Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a folder that contains Text Entries" };
+                    if (_ofd.ShowDialog() == true)
+                    {
+                        TextEntries = _ofd.FileName;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(TextEntries))
+                {
+                    TextEntryNames.Clear();
+                    foreach (TextRecord item in _reader.getTextRecords(TextEntries))
+                    {
+                        TextEntryNames.Add(item);
+                    }
+
+                    CurrentTab = "story";
+                }
+
+                _showEquipmentTableFlg = false;
+                _showDataTableFlg = true;
+                _showNPCTableFlg = false;
+                _showImageTableFlg = false;
             }
         }
 

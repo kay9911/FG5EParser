@@ -64,7 +64,7 @@
                     <PropertyGroupDescription PropertyName="Type" />
                 </CollectionViewSource.GroupDescriptions>
             </CollectionViewSource>
-            <CollectionViewSource x:Key="TextEntries" Source="{Binding EntryNames}">
+            <CollectionViewSource x:Key="TextEntries" Source="{Binding TextEntryNames}">
                 <CollectionViewSource.GroupDescriptions>
                     <PropertyGroupDescription PropertyName="Header" />
                 </CollectionViewSource.GroupDescriptions>
@@ -82,8 +82,10 @@
         <Button Grid.Column="0" Grid.Row="6" Command="{Binding DisplayEntriesList}" CommandParameter="magicitem" IsEnabled="False">Magical Item Links</Button>
         <Button Grid.Column="0" Grid.Row="8" Command="{Binding DisplayEntriesList}" CommandParameter="npc">NPC Links</Button>
         <Button Grid.Column="0" Grid.Row="10" Command="{Binding DisplayEntriesList}" CommandParameter="reference" IsEnabled="False">Reference Links</Button>
-        <Button Grid.Column="0" Grid.Row="12" Command="{Binding DisplayEntriesList}" CommandParameter="story" IsEnabled="False">Story Links</Button>
-        <Button Grid.Column="0" Grid.Row="14" Command="{Binding DisplayEntriesList}" CommandParameter="treasureparcel" IsEnabled="False">Treasure Parcel Links</Button>   
+        <Button Grid.Column="0" Grid.Row="12" Command="{Binding DisplayEntriesList}" CommandParameter="table" IsEnabled="False">Rollable Table Links</Button>
+        <Button Grid.Column="0" Grid.Row="14" Command="{Binding DisplayEntriesList}" CommandParameter="spell" IsEnabled="False">Spell Links</Button>
+        <Button Grid.Column="0" Grid.Row="16" Command="{Binding DisplayEntriesList}" CommandParameter="story">Story Links</Button>
+        <Button Grid.Column="0" Grid.Row="18" Command="{Binding DisplayEntriesList}" CommandParameter="treasureparcel" IsEnabled="False">Treasure Parcel Links</Button>   
         
         <TextBox x:Name="txtOutput" 
                      Grid.Column="2"
@@ -120,10 +122,11 @@
             >
             Load All Entries</Button>
 
-        <!--<DataGrid 
+        <DataGrid 
             Grid.Column="7"
-            Grid.RowSpan="30"  
-            Grid.Row="1" 
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="28"  
+            Grid.Row="3"
             x:Name="dtTextTable" 
             ItemsSource="{Binding Source={StaticResource TextEntries}}"
             AutoGenerateColumns="False"
@@ -133,7 +136,7 @@
             HeadersVisibility="None"
             >
             <DataGrid.InputBindings>
-                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedItem}" CommandParameter="{Binding ElementName=dtTextTable, Path=SelectedItem}"/>
+                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedTextItem}" CommandParameter="{Binding ElementName=dtTextTable, Path=SelectedItem}"/>
             </DataGrid.InputBindings>
             <DataGrid.GroupStyle>
                 <GroupStyle>
@@ -142,7 +145,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type GroupItem}">
-                                        <Expander IsExpanded="False">
+                                        <Expander IsExpanded="True">
                                             <Expander.Header>
                                                 <DockPanel>
                                                     <TextBlock Text="{Binding Path=Name}" />
@@ -160,9 +163,9 @@
                 </GroupStyle>
             </DataGrid.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Header}"/>
+                <DataGridTextColumn Binding="{Binding Title}"/>
             </DataGrid.Columns>
-        </DataGrid>-->
+        </DataGrid>
 
         <TextBox
             x:Name="txtFilter"
@@ -171,6 +174,7 @@
             Grid.ColumnSpan="2"
             Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             FontSize="14" TextChanged="txtFilter_TextChanged"
+            ToolTip="Type to filter records below"
             />
 
         <DataGrid 

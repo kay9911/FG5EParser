@@ -132,6 +132,38 @@ namespace FG5eParserLib.Utility
             }
             return _equipmentList;
         }
+
+        public List<TextRecord> getTextRecords(string _inputLocation)
+        {
+            List<TextRecord> _textRecords = new List<TextRecord>();
+            List<string> _Dumplines = new List<string>();
+            var _lines = File.ReadLines(_inputLocation);
+
+            foreach (string item in _lines)
+            {
+                _Dumplines.Add(item);
+            }
+
+            string header = string.Empty;
+
+            for (int i = 0; i < _Dumplines.Count; i++)
+            {
+                if (_Dumplines[i].Contains("#@;"))
+                {
+                    header = _Dumplines[i].Replace("#@;","").Trim();
+                }
+                if (_Dumplines[i].Contains("##;"))
+                {
+                    _textRecords.Add(new TextRecord()
+                    {
+                        Header = header,
+                        Title = _Dumplines[i].Replace("##;", "").Trim()
+                    });
+                }
+            }
+
+            return _textRecords;
+        }
     }
 
     /* CLASS TEMPLATES */
