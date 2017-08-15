@@ -37,9 +37,9 @@ namespace FG5eParserLib.Utility
             return _storyList;
         }
 
-        public List<string> getNPCList(string _inputLocation)
+        public List<NPCRecord> getNPCList(string _inputLocation)
         {
-            List<string> _npcNames = new List<string>();
+            List<NPCRecord> _npcNames = new List<NPCRecord>();
             List<string> _Dumplines = new List<string>();
             var _lines = File.ReadLines(_inputLocation);
 
@@ -48,18 +48,39 @@ namespace FG5eParserLib.Utility
                 _Dumplines.Add(item);
             }
 
+            NPCRecord _npcRecord = new NPCRecord();
             for (int i = 0; i < _Dumplines.Count; i++)
-            {
-                if (i == 0)
+            {   
+                // Very first record
+                if (i == 0 && !string.IsNullOrEmpty(_Dumplines[i]))
                 {
-                    _npcNames.Add(_Dumplines[i]);
+                    _npcRecord.Name = _Dumplines[i].Trim();
+                    i++;
+                    if (_Dumplines[i].Contains(","))
+                    {
+                        _npcRecord.Class = _Dumplines[i].Split(',')[0].Trim().Split(' ')[1].Trim();
+                    }
                 }
-
-                if (string.IsNullOrEmpty(_Dumplines[i]) && i != _Dumplines.Count-1)
+                if (_Dumplines[i].Contains("Challenge") && !string.IsNullOrEmpty(_npcRecord.Name))
+                {
+                    _npcRecord.CR = _Dumplines[i].Split(' ')[1].Trim();
+                    _npcNames.Add(_npcRecord);
+                    _npcRecord = new NPCRecord();
+                    i++;
+                }
+                
+                if (string.IsNullOrEmpty(_Dumplines[i]) && i + 1 != _Dumplines.Count)
                 {
                     i++;
-                    _npcNames.Add(_Dumplines[i]);
+                    _npcRecord.Name = _Dumplines[i].Trim();
                     i++;
+                    _npcRecord.Class = _Dumplines[i].Split(',')[0].Trim().Split(' ')[1].Trim();
+                }
+                if (_Dumplines[i].Contains("Challenge"))
+                {
+                    _npcRecord.CR = _Dumplines[i].Split(' ')[1].Trim();
+                    _npcNames.Add(_npcRecord);
+                    _npcRecord = new NPCRecord();
                 }
             }
 
@@ -164,5 +185,16 @@ namespace FG5eParserLib.Utility
         public string Item { get; set; }
         public string Type { get; set; }
         public string Subtype { get; set; }
+    }
+    public class TextRecord
+    {
+        public string Header { get; set; }
+        public string Title { get; set; }
+    }
+    public class NPCRecord
+    {
+        public string Name { get; set; }        
+        public string CR { get; set; }
+        public string Class { get; set; }
     }
 }

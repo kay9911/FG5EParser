@@ -60,9 +60,24 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged("_showEquipmentTableFlg");
             }
         }
+        //_showNPCTableFlg
+        private string ShowNPCTableFlg { get; set; }
+        public bool _showNPCTableFlg
+        {
+            get
+            {
+                return Convert.ToBoolean(ShowNPCTableFlg);
+            }
+            set
+            {
+                ShowNPCTableFlg = value.ToString();
+                OnPropertyChanged("_showNPCTableFlg");
+            }
+        }
 
         public ObservableCollection<string> EntryNames { get; set; }
         public ObservableCollection<EquipmentRecord> EquipmentRecordNames { get; set; }
+        public ObservableCollection<NPCRecord> NpcRecordNames { get; set; }
 
         // Relay Commands
         public RelayCommand AddStoryEntry { get; set; } // Save Button
@@ -72,7 +87,7 @@ namespace FG5eParserLib.View_Models
         public RelayCommand AddNewStoryBlock { get; set; }
         public RelayCommand AddNewStoryEntry { get; set; }
         public RelayCommand DisplayEntriesList { get; set; }
-        public RelayCommand AddSelectedItem { get; set; }
+        public RelayCommand AddSelectedNPC { get; set; }
         public RelayCommand AddSelectedEquipmentItem { get; set; }
 
         // Output
@@ -96,6 +111,7 @@ namespace FG5eParserLib.View_Models
             _showDataTableFlg = true;
             EntryListItems = new ObservableCollection<string>();
             EquipmentRecordNames = new ObservableCollection<EquipmentRecord>();
+            NpcRecordNames = new ObservableCollection<NPCRecord>();
 
             // Class Object
             StoryObj = new Story();
@@ -106,8 +122,13 @@ namespace FG5eParserLib.View_Models
             AddNewStoryBlock = new RelayCommand(addNewStoryBlock);
             AddNewStoryEntry = new RelayCommand(addNewStoryEntry);
             DisplayEntriesList = new RelayCommand(displayEntriesList);
-            AddSelectedItem = new RelayCommand(addSelectedItem);
+            AddSelectedNPC = new RelayCommand(addSelectedNPC);
             AddSelectedEquipmentItem = new RelayCommand(addSelectedEquipmentItem);
+
+            // Hide all datagrids on the UI
+            _showDataTableFlg = false;
+            _showEquipmentTableFlg = false;
+            _showNPCTableFlg = false;
         }
 
         private void addSelectedEquipmentItem(object obj)
@@ -122,17 +143,13 @@ namespace FG5eParserLib.View_Models
                     _sb.Append(Environment.NewLine);
                 }
 
-                // NPCS
-                if (currentParameter == "npc")
-                {
-                    _sb.Append(string.Format("#zal;NPC;*;NPC:{0};{0}", obj.ToString()));
-                }
+                _sb.Append(string.Format("#zal;NPC;*;NPC:{0};{0}", obj.ToString()));
 
                 _Output = _sb.ToString();
             }
         }
 
-        private void addSelectedItem(object obj)
+        private void addSelectedNPC(object obj)
         {
             if (obj != null)
             {
@@ -144,11 +161,7 @@ namespace FG5eParserLib.View_Models
                     _sb.Append(Environment.NewLine);
                 }
 
-                // Basic Equipment
-                if (currentParameter == "npc")
-                {
-                    _sb.Append(string.Format("#zal;NPC;*;NPC:{0};{0}", obj.ToString()));
-                }
+                _sb.Append(string.Format("#zal;NPC;*;NPC:{0};{0}", ((NPCRecord)obj).Name));
 
                 _Output = _sb.ToString();
             }
@@ -172,19 +185,19 @@ namespace FG5eParserLib.View_Models
 
                 if (!string.IsNullOrEmpty(NPCEntries))
                 {
-                    EntryListItems.Clear();
-                    foreach (string item in _reader.getNPCList(NPCEntries))
+                    NpcRecordNames.Clear();
+                    foreach (NPCRecord item in _reader.getNPCList(NPCEntries))
                     {
                         if (item != null)
                         {
-                            EntryListItems.Add(item);
+                            NpcRecordNames.Add(item);
                         }
                     }
-                    currentParameter = obj.ToString().ToLower();
                 }
 
                 _showEquipmentTableFlg = false;
-                _showDataTableFlg = true;
+                _showDataTableFlg = false;
+                _showNPCTableFlg = true;
             }
 
             // Equipment List
@@ -209,6 +222,7 @@ namespace FG5eParserLib.View_Models
                 }
                 _showEquipmentTableFlg = true;
                 _showDataTableFlg = false;
+                _showNPCTableFlg = false;
             }
         }
 
