@@ -143,7 +143,34 @@ namespace FG5eParserLib.View_Models
                     _sb.Append(Environment.NewLine);
                 }
 
-                _sb.Append(string.Format("#zal;NPC;*;NPC:{0};{0}", obj.ToString()));
+                if (((EquipmentRecord)obj).Type.ToLower() == "adventuring gear")
+                {
+                    _sb.Append(string.Format("#zal;EG;*;Gear:{0};{0}", ((EquipmentRecord)obj).Item));
+                }
+                if (((EquipmentRecord)obj).Type.ToLower() == "armor")
+                {
+                    _sb.Append(string.Format("#zal;EA;*;Armor:{0};{0}", ((EquipmentRecord)obj).Item));
+                }
+                if (((EquipmentRecord)obj).Type.ToLower() == "weapon")
+                {
+                    _sb.Append(string.Format("#zal;EW;*;Weapon:{0};{0}", ((EquipmentRecord)obj).Item));
+                }
+                if (((EquipmentRecord)obj).Type.ToLower() == "tools")
+                {
+                    _sb.Append(string.Format("#zal;ET;*;Tool:{0};{0}", ((EquipmentRecord)obj).Item));
+                }
+                if (((EquipmentRecord)obj).Type.ToLower() == "mounts and other animals")
+                {
+                    _sb.Append(string.Format("#zal;EM;*;Mount:{0};{0}", ((EquipmentRecord)obj).Item));
+                }
+                if (((EquipmentRecord)obj).Type.ToLower() == "tack, harness, and drawn vehicles")
+                {
+                    _sb.Append(string.Format("#zal;EV;*;Vehicle:{0};{0}", ((EquipmentRecord)obj).Item));
+                }
+                if (((EquipmentRecord)obj).Type.ToLower() == "waterborne vehicles")
+                {
+                    _sb.Append(string.Format("#zal;EWV;*;Ship:{0};{0}", ((EquipmentRecord)obj).Item));
+                }
 
                 _Output = _sb.ToString();
             }
