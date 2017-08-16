@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Controls;
@@ -87,7 +86,7 @@ namespace FG5eParserLib.View_Models
                 }
                 if (item.ToLower().Contains("pin"))
                 {
-                    TabList.Add(new TabItem() { Content = new ImagePinsViewModel() { ImagePinsTextPath = item }, Header = "Image Pin" });
+                    TabList.Add(new TabItem() { Content = new ImagePinsViewModel() { ImagePinsTextPath = item }, Header = "Pin Mapping" });
                     pathViewModel.PinMappingPath = item;
                 }
                 if (item.ToLower().Contains("race"))
