@@ -23,21 +23,16 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtImagePath.Text = choofdlog.FileName;
-                txtImagePath.IsEnabled = false;
             }
         }
 
         private void btnSelectOutputPath_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
-            choofdlog.Filter = "All Files (*.*)|*.*";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
+            FolderBrowserDialog _fbd = new FolderBrowserDialog();
 
-            if (choofdlog.ShowDialog() == true)
+            if (_fbd.ShowDialog() == DialogResult.OK)
             {
-                txtOutputPath.Text = choofdlog.FileName;
-                txtOutputPath.IsEnabled = false;
+                txtOutputPath.Text = _fbd.SelectedPath;
             }
         }
 
@@ -51,7 +46,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtBackgroundPath.Text = choofdlog.FileName;
-                txtBackgroundPath.IsEnabled = false;
             }
         }
 
@@ -65,7 +59,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtTablesPath.Text = choofdlog.FileName;
-                txtTablesPath.IsEnabled = false;
             }
         }
 
@@ -79,7 +72,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtClassesPath.Text = choofdlog.FileName;
-                txtClassesPath.IsEnabled = false;
             }
         }
 
@@ -93,7 +85,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtEquipmentPath.Text = choofdlog.FileName;
-                txtEquipmentPath.IsEnabled = false;
             }
         }
 
@@ -107,7 +98,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtRacesPath.Text = choofdlog.FileName;
-                txtRacesPath.IsEnabled = false;
             }
         }
 
@@ -121,7 +111,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtSpellsPath.Text = choofdlog.FileName;
-                txtSpellsPath.IsEnabled = false;
             }
         }
 
@@ -135,7 +124,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtFeatsPath.Text = choofdlog.FileName;
-                txtFeatsPath.IsEnabled = false;
             }
         }
 
@@ -149,7 +137,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtNPCsPath.Text = choofdlog.FileName;
-                txtNPCsPath.IsEnabled = false;
             }
         }
 
@@ -163,7 +150,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtReferenceManualPath.Text = choofdlog.FileName;
-                txtReferenceManualPath.IsEnabled = false;
             }
         }
 
@@ -177,7 +163,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtStoryPath.Text = choofdlog.FileName;
-                txtStoryPath.IsEnabled = false;
             }
         }
 
@@ -188,7 +173,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
                 txtImageFilePath.Text = choofdlog.SelectedPath;
-                txtImageFilePath.IsEnabled = false;
             }
         }
 
@@ -202,7 +186,6 @@ namespace FG5EParser_v_2._0.Controls
             if (choofdlog.ShowDialog() == true)
             {
                 txtImagePinsPath.Text = choofdlog.FileName;
-                txtImagePinsPath.IsEnabled = false;
             }
         }
     }

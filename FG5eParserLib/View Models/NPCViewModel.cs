@@ -297,6 +297,7 @@ namespace FG5eParserLib.View_Models
             _npcAlignments = new List<string>() {
                 "",
                 "Any Alignment",
+                "Unaligned",
                 "Lawful good",
                 "Neutral good",
                 "Chaotic good",
