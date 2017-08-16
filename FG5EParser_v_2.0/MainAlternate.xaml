@@ -17,17 +17,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu x:Name="MyMenu" Grid.Row="0">
-            <MenuItem Header="Single Pages">
+            <MenuItem Header="Functions">
+                <MenuItem Header="Player Related">
                 <MenuItem Header="Backgrounds" Command="{Binding LoadTabControl}" CommandParameter="background"/>
                 <MenuItem Header="Classes" Command="{Binding LoadTabControl}" CommandParameter="class"/>
                 <MenuItem Header="Equipment" Command="{Binding LoadTabControl}" CommandParameter="equipment"/>
                 <MenuItem Header="Feats" Command="{Binding LoadTabControl}" CommandParameter="feat"/>
-                <MenuItem Header="NPCs" Command="{Binding LoadTabControl}" CommandParameter="npc"/>
-                <MenuItem Header="Pin Mapping" Command="{Binding LoadTabControl}" CommandParameter="pinmapping"/>
                 <MenuItem Header="Races" Command="{Binding LoadTabControl}" CommandParameter="race"/>
-                <!--<MenuItem Header="Skills" Command="{Binding LoadTabControl}" CommandParameter="skill"/>-->
                 <MenuItem Header="Spell &amp; Spell Lists" Command="{Binding LoadTabControl}" CommandParameter="spell"/>
+                </MenuItem>
+                <MenuItem Header="DM Related">
+                <MenuItem Header="NPCs" Command="{Binding LoadTabControl}" CommandParameter="npc"/>
+                <MenuItem Header="Pin Mapping" Command="{Binding LoadTabControl}" CommandParameter="pinmapping"/>                
+                <!--<MenuItem Header="Skills" Command="{Binding LoadTabControl}" CommandParameter="skill"/>-->                
                 <MenuItem Header="Story" Command="{Binding LoadTabControl}" CommandParameter="story"/>
+                </MenuItem>
                 <Separator />
                 <MenuItem Header="Parser" Command="{Binding LoadTabControl}" CommandParameter="parser"/>
             </MenuItem>
@@ -36,10 +40,7 @@
                 <MenuItem Header="New Class Project" Command="{Binding NewClassProject}" ToolTip="Creates all files for a new class"/>
                 <MenuItem Header="New Custom Project" ToolTip="Creates all files needed." />
             </MenuItem>-->
-            <!--<MenuItem Header="Open">
-                <MenuItem Header="Advenutre Project" ToolTip="Opens all files for an adventure."/>
-                <MenuItem Header="Class Project" ToolTip="Opens all files for a new class."/>
-            </MenuItem>-->
+            <MenuItem Header="Open Existing" Command="{Binding LoadExistingProject}" ToolTip="Open an existing project."/>
         </Menu>
         <TabControl Grid.Row="1"
                     ItemsSource="{Binding TabList}">
