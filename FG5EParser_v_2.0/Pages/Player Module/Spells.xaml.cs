@@ -37,16 +37,16 @@ namespace FG5EParser_v_2._0.Pages.Player_Module
             }
         }
 
-        private void dtSpellNames_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (dtSpellNames.SelectedItem == null)
-            {
-                // DO NOTHING
-            }
-            else
-            {
-                txtSpellList.Text = !string.IsNullOrEmpty(txtSpellList.Text) ? txtSpellList.Text + Environment.NewLine + _SPV.getSelectedSpellName(dtSpellNames.SelectedItem) : _SPV.getSelectedSpellName(dtSpellNames.SelectedItem);
-            }
-        }
+        //private void dtSpellNames_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
+        //    if (dtSpellNames.SelectedItem == null)
+        //    {
+        //        // DO NOTHING
+        //    }
+        //    else
+        //    {
+        //        txtSpellList.Text = !string.IsNullOrEmpty(txtSpellList.Text) ? txtSpellList.Text + Environment.NewLine + _SPV.getSelectedSpellName(dtSpellNames.SelectedItem) : _SPV.getSelectedSpellName(dtSpellNames.SelectedItem);
+        //    }
+        //}
     }
 }

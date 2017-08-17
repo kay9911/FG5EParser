@@ -1,6 +1,7 @@
-﻿using FG5eParserLib.View_Models;
-using System;
+﻿using FG5eParserLib.Utility;
+using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace FG5EParser_v_2._0.Controls
 {
@@ -9,42 +10,21 @@ namespace FG5EParser_v_2._0.Controls
     /// </summary>
     public partial class SpellsControl : UserControl
     {
-        SpellViewModel _SPV;
         public SpellsControl()
         {
             InitializeComponent();
-
-            // Datacontext
-            _SPV = new SpellViewModel();
-
-            // UI Constants/Bindings
-            cmbLevels.ItemsSource = _SPV._LevelList;
-            cmbSpellSchool.ItemsSource = _SPV._SpellSchools;
         }
 
-        private void btnAddFromList_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (dtSpellNames.Visibility == System.Windows.Visibility.Hidden)
+            if (dtSpellTable.Visibility == System.Windows.Visibility.Visible)
             {
-                dtSpellNames.Visibility = System.Windows.Visibility.Visible;
-                txtOutput.Visibility = System.Windows.Visibility.Hidden;
-            }
-            else
-            {
-                dtSpellNames.Visibility = System.Windows.Visibility.Hidden;
-                txtOutput.Visibility = System.Windows.Visibility.Visible;
-            }
-        }
-
-        private void dtSpellNames_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (dtSpellNames.SelectedItem == null)
-            {
-                // DO NOTHING
-            }
-            else
-            {
-                txtSpellList.Text = !string.IsNullOrEmpty(txtSpellList.Text) ? txtSpellList.Text + Environment.NewLine + _SPV.getSelectedSpellName(dtSpellNames.SelectedItem) : _SPV.getSelectedSpellName(dtSpellNames.SelectedItem);
+                ICollectionView view = CollectionViewSource.GetDefaultView(dtSpellTable.ItemsSource);
+                view.Filter = o =>
+                {
+                    var recordToIdentify = o as SpellRecord;
+                    return recordToIdentify.Name.Contains(txtFilter.Text);
+                };
             }
         }
     }

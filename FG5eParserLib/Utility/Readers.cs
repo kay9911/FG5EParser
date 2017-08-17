@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace FG5eParserLib.Utility
 {
@@ -164,6 +165,61 @@ namespace FG5eParserLib.Utility
 
             return _textRecords;
         }
+
+        public List<SpellRecord> getSpellRecords(string _inputLocation)
+        {
+            List<SpellRecord> _spellRecords = new List<SpellRecord>();
+            List<string> _Dumplines = new List<string>();
+            var _lines = File.ReadLines(_inputLocation);
+
+            bool SpellDetailsFlg = false;
+
+            foreach (string item in _lines)
+            {
+                if (item.Contains("##;")) SpellDetailsFlg = true;
+                if (SpellDetailsFlg) _Dumplines.Add(item);
+            }
+
+            SpellRecord _spellRecord = new SpellRecord();
+            for (int i = 0; i < _Dumplines.Count; i++)
+            {
+                if ((string.IsNullOrEmpty(_Dumplines[i]) || _Dumplines[i].Contains("##;")) && i+1 != _Dumplines.Count)
+                {
+                    i++;
+                    _spellRecord.Name = _Dumplines[i];
+                    i++;
+                    if (_Dumplines[i].ToLower().Contains("cantrip"))
+                    {
+                        _spellRecord.Level = _Dumplines[i].Split(' ')[1];
+                        _spellRecord.School = _Dumplines[i].Split(' ')[0];
+                    }
+                    else
+                    {
+                        _spellRecord.Level = _Dumplines[i].Split(' ')[0];
+                        _spellRecord.School = _Dumplines[i].Split(' ')[1];
+                    }
+                    i++;
+                }
+                if (_Dumplines[i].Contains("Components"))
+                {
+                    if (_Dumplines[i].Contains("V"))
+                    {
+                        _spellRecord.IsVerbal = true;
+                    }
+                    if (_Dumplines[i].Contains("S"))
+                    {
+                        _spellRecord.IsSomatic = true;
+                    }
+                    if (_Dumplines[i].Contains("M"))
+                    {
+                        _spellRecord.Material = _Dumplines[i].Split(',').Last().Replace("M","").Trim();
+                    }
+                    _spellRecords.Add(_spellRecord);
+                    _spellRecord = new SpellRecord();
+                }               
+            }
+            return _spellRecords;
+        }
     }
 
     /* CLASS TEMPLATES */
@@ -211,7 +267,6 @@ namespace FG5eParserLib.Utility
         }
         #endregion
     }
-
     public class EquipmentRecord
     {
         public string Item { get; set; }
@@ -228,5 +283,14 @@ namespace FG5eParserLib.Utility
         public string Name { get; set; }        
         public string CR { get; set; }
         public string Class { get; set; }
+    }
+    public class SpellRecord
+    {
+        public string Name { get; set; }
+        public string Level { get; set; }
+        public string School { get; set; }
+        public string Material { get; set; }
+        public bool IsVerbal { get; set; }
+        public bool IsSomatic { get; set; }
     }
 }

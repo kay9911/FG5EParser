@@ -5,6 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -52,24 +55,31 @@
             <RowDefinition Height=".2*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        
+        <Grid.Resources>
+            <CollectionViewSource x:Key="SpellList" Source="{Binding SpellList}">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="Level" />
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+        </Grid.Resources>
+
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">List Name:</Label>
         <TextBox x:Name="txtSpellListName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellListName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Names:</Label>
         <TextBox x:Name="txtSpellList" Grid.Column="1" Grid.Row="4" Grid.RowSpan="5" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Text="{Binding SpellsinList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnAddFromList" Grid.Column="2" Grid.Row="4" FontWeight="Bold" FontSize="14"  Margin="0,0,100,0" Click="btnAddFromList_Click">&lt;&lt;&lt;</Button>
-        <Button x:Name="btnAdd" Grid.Column="2" Grid.Row="8" Margin="0,0,100,0" Command="{Binding AddSpellList}" VerticalAlignment="Bottom">ADD</Button>
+        <Button x:Name="btnAddFromList" Grid.Column="2" Grid.Row="4" Margin="0,0,100,0" Command="{Binding ShowSpellList}" ToolTip="Click to display a list of spells can can be added to a spell list.">Show Spells</Button>
+        <Button x:Name="btnAdd" Grid.Column="2" Grid.Row="8" Margin="0,0,100,0" Command="{Binding AddSpellList}" VerticalAlignment="Bottom">Add Spell List</Button>
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Name:</Label>
         <TextBox x:Name="txtSpellNames" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding SpellObject._Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell Level:</Label>
-        <ComboBox x:Name="cmbLevels" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="1" FontSize="14"  FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellObject._Level}"/>
+        <ComboBox x:Name="cmbLevels" Grid.Column="1" Grid.Row="12" Grid.ColumnSpan="1" FontSize="14"  FontStretch="Expanded" VerticalContentAlignment="Center" ItemsSource="{Binding _LevelList}" SelectedItem="{Binding SpellObject._Level}"/>
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Spell School:</Label>
-        <ComboBox x:Name="cmbSpellSchool" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="1" FontSize="14"  FontStretch="Expanded" VerticalContentAlignment="Center" SelectedItem="{Binding SpellObject._School}"/>
+        <ComboBox x:Name="cmbSpellSchool" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="1" FontSize="14"  FontStretch="Expanded" VerticalContentAlignment="Center" ItemsSource="{Binding _SpellSchools}" SelectedItem="{Binding SpellObject._School}"/>
         <CheckBox x:Name="chkRitual" Grid.Column="2" Grid.Row="14" VerticalContentAlignment="Center" Content="Is Ritual?" FontWeight="Bold" FontSize="14"  IsChecked="{Binding isRitual, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,0,0"/>
 
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Casting Time:</Label>
@@ -100,16 +110,14 @@
                 Height="50"
                 Width="50"  
                 Command="{Binding AddSpell}" HorizontalAlignment="Right">
-                <Rectangle Width="20"
+            <Rectangle Width="20"
                             Height="20"
                             Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
         </Button>
-
-
         <Button x:Name="btnReset"
                 ToolTip="Reset ALL fields. Will not reset items alreday comitted."
                 Grid.Column="5" 
@@ -117,15 +125,14 @@
                 Height="50"
                 Width="50" 
                 Command="{Binding ResetFields}">
-                <Rectangle Width="20"
+            <Rectangle Width="20"
                                 Height="20"
                                 Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_reset}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_reset}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
         </Button>
-
         <Button x:Name="btnSave"
                 ToolTip="Save all details to text file."
                 Grid.Column="6" 
@@ -133,35 +140,82 @@
                 Height="50"
                 Width="50" 
                 Command="{Binding SaveSpells}">
-                <Rectangle Width="20"
+            <Rectangle Width="20"
                                     Height="20"
                                     Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
         </Button>
 
-        <TextBox x:Name="txtOutput" Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox 
+            x:Name="txtOutput" 
+            Grid.Column="4" 
+            Grid.RowSpan="31" 
+            Grid.ColumnSpan="4"
+            Grid.Row="2" 
+            TextWrapping="Wrap" 
+            AcceptsReturn="True" 
+            VerticalScrollBarVisibility="Auto" 
+            SpellCheck.IsEnabled="True" 
+            Text="{Binding Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Visibility="{Binding _showOutput, Converter={StaticResource boolToVisibilityConverter}}"
+            />
 
+        <TextBox
+            x:Name="txtFilter"
+            Grid.Column="4"
+            Grid.ColumnSpan="4"
+            Grid.Row="2"
+            Visibility="{Binding _showSpellTableFlg, Converter={StaticResource boolToVisibilityConverter}}"
+            ToolTip="Filter records below." TextChanged="TextBox_TextChanged"
+            />
+        
         <DataGrid 
-            x:Name="dtSpellNames" 
-            ItemsSource="{Binding _spellList}"
+            Grid.Column="4"
+            Grid.ColumnSpan="4"
+            Grid.RowSpan="28"  
+            Grid.Row="3" 
+            x:Name="dtSpellTable" 
+            ItemsSource="{Binding Source={StaticResource SpellList}}"
             AutoGenerateColumns="False"
-            Visibility="Hidden" 
-            SelectionMode="Extended" 
+            Visibility="{Binding _showSpellTableFlg, Converter={StaticResource boolToVisibilityConverter}}"
             CanUserAddRows="False"
             IsReadOnly="True"
-            Grid.Column="4" Grid.RowSpan="31" Grid.ColumnSpan="4" Grid.Row="2" MouseDoubleClick="dtSpellNames_MouseDoubleClick">
+            HeadersVisibility="Column"
+            >
+            <DataGrid.InputBindings>
+                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedSpellItem}" CommandParameter="{Binding ElementName=dtSpellTable, Path=SelectedItem}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <DockPanel>
+                                                    <TextBlock Text="{Binding Path=Name}" />
+                                                </DockPanel>
+                                            </Expander.Header>
+                                            <Expander.Content>
+                                                <ItemsPresenter/>
+                                            </Expander.Content>
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="NAME" Binding="{Binding Path=_Name}"/>
-                <DataGridTextColumn Header="LEVEL" Binding="{Binding Path=_Level}"/>
-                <DataGridTextColumn Header="SCHOOL" Binding="{Binding Path=_School}"/>
-                <DataGridCheckBoxColumn Header="VERBAL" Binding="{Binding Path=_IsVerbal}"/>
-                <DataGridCheckBoxColumn Header="SOMATIC" Binding="{Binding Path=_IsSomatic}"/>
-                <DataGridTextColumn Header="MATERIAL" Binding="{Binding Path=_Material}"/>
+                <DataGridTextColumn Header="Spell Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Spell School" Binding="{Binding School}"/>
             </DataGrid.Columns>
-        </DataGrid>
-
+        </DataGrid>        
     </Grid>
 </UserControl>

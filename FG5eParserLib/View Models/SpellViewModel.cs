@@ -1,4 +1,5 @@
-﻿using FG5eParserModels.Player_Models;
+﻿using FG5eParserLib.Utility;
+using FG5eParserModels.Player_Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -64,12 +65,26 @@ namespace FG5eParserLib.View_Models
                 OnPropertyChanged("isRitual");
             }
         }
+        // Revamped Table Changes
+        private string ShowSpellTableFlg { get; set; }
+        public bool _showSpellTableFlg
+        {
+            get
+            {
+                return Convert.ToBoolean(ShowSpellTableFlg);
+            }
+            set
+            {
+                ShowSpellTableFlg = value.ToString();
+                OnPropertyChanged("_showSpellTableFlg");
+            }
+        }
 
         // Properties and Lists
         public string SpellsTextPath { get; set; }
-        public ObservableCollection<Spells> _spellList { get; set; }
-        public List<string> _LevelList { get; set; }
-        public List<string> _SpellSchools { get; set; }
+        public ObservableCollection<Spells> _spellTempList { get; set; }
+        public ObservableCollection<string> _LevelList { get; set; }
+        public ObservableCollection<string> _SpellSchools { get; set; }
         public List<string> _SpellLists { get; set; }
 
         // Relay Commands
@@ -77,6 +92,24 @@ namespace FG5eParserLib.View_Models
         public RelayCommand ResetFields { get; set; } // Reset Button
         public RelayCommand AddSpell { get; set; } // Add Spell
         public RelayCommand AddSpellList { get; set; } // Spell Lists
+
+        // Revamped Table Changes
+        public ObservableCollection<SpellRecord> SpellList { get; set; }
+        public RelayCommand AddSelectedSpellItem { get; set; }
+        public RelayCommand ShowSpellList { get; set; }
+        private string ShowOutput { get; set; }
+        public bool _showOutput
+        {
+            get
+            {
+                return Convert.ToBoolean(ShowOutput);
+            }
+            set
+            {
+                ShowOutput = value.ToString();
+                OnPropertyChanged("_showOutput");
+            }
+        }
 
         // Output
         private string _Output { get; set; }
@@ -89,9 +122,9 @@ namespace FG5eParserLib.View_Models
             _SpellObj = new Spells() { _IsVerbal = "true" };
 
             // Lists Inits
-            _spellList = new ObservableCollection<Spells>();
+            _spellTempList = new ObservableCollection<Spells>();
             _SpellLists = new List<string>();
-            _LevelList = new List<string>() {
+            _LevelList = new ObservableCollection<string>() {
                 "",
                 "Cantrip",
                 "1st-Level",
@@ -104,8 +137,7 @@ namespace FG5eParserLib.View_Models
                 "8th-Level",
                 "9th-Level",
             };
-
-            _SpellSchools = new List<string>(){
+            _SpellSchools = new ObservableCollection<string>(){
                 "",
                 "Abjuration",
                 "Conjuration",
@@ -122,6 +154,48 @@ namespace FG5eParserLib.View_Models
             ResetFields = new RelayCommand(resetFields);
             AddSpell = new RelayCommand(addSpell, canAddSpell);
             AddSpellList = new RelayCommand(addSpellList, canAddSpellList);
+
+            // Revamped Table Changes
+            SpellList = new ObservableCollection<SpellRecord>();
+            AddSelectedSpellItem = new RelayCommand(addSelectedSpellItem);
+            ShowSpellList = new RelayCommand(showSpellList);
+            _showOutput = true;
+        }
+
+        // Revamped Table Changes
+        private void addSelectedSpellItem(object obj)
+        {
+            if (obj != null)
+            {
+                StringBuilder _sb = new StringBuilder();
+                _sb.Append(SpellsinList);
+
+                if (!string.IsNullOrEmpty(_sb.ToString()))
+                {
+                    _sb.Append(Environment.NewLine);
+                }
+                _sb.Append(((SpellRecord)obj).Name);
+
+                SpellsinList = _sb.ToString();
+            }
+        }
+
+        private void showSpellList(object obj)
+        {
+            // Save existing data, "Dummy" is just to pass a dummy so as to activate the save function
+            saveSpells("Dummy");
+
+            // Get the list of spells
+            Readers _reader = new Readers();
+            SpellList.Clear();
+            foreach (SpellRecord item in _reader.getSpellRecords(SpellsTextPath))
+            {
+                SpellList.Add(item);
+            }
+
+            // Show/Hide Controls
+            if (_showSpellTableFlg) _showSpellTableFlg = false; else _showSpellTableFlg = true;
+            if (_showSpellTableFlg) _showOutput = false; else _showOutput = true;
         }
 
         // Functions
@@ -141,7 +215,7 @@ namespace FG5eParserLib.View_Models
             }
 
             // Add the object to the file
-            if (!string.IsNullOrEmpty(SpellsTextPath))
+            if (!string.IsNullOrEmpty(SpellsTextPath) && !string.IsNullOrEmpty(Output))
             {
                 TextWriter tsw = new StreamWriter(SpellsTextPath, true);
                 tsw.WriteLine(Output);
@@ -175,7 +249,7 @@ namespace FG5eParserLib.View_Models
             isRitual = false;
 
             // Add the spell to the list
-            _spellList.Add(SpellObject);
+            _spellTempList.Add(SpellObject);
 
             getOutput();
 
@@ -218,12 +292,12 @@ namespace FG5eParserLib.View_Models
                 }
             }
 
-            if (_spellList.Count != 0)
+            if (_spellTempList.Count != 0)
             {
                 _sb.Append("##;");
                 _sb.Append(Environment.NewLine);
 
-                foreach (var spell in _spellList)
+                foreach (var spell in _spellTempList)
                 {
                     _sb.Append(spell._Name);
                     _sb.Append(Environment.NewLine);
@@ -262,11 +336,6 @@ namespace FG5eParserLib.View_Models
                 }
             }
             Output = _sb.ToString();
-        }
-
-        public string getSelectedSpellName(object obj)
-        {
-            return ((Spells)obj)._Name;
         }
 
         private void addSpellList(object obj)
