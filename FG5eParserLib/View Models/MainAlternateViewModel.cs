@@ -53,62 +53,62 @@ namespace FG5eParserLib.View_Models
                 PagesPath = choofdlog.SelectedPath;
                 pathViewModel = new PathViewModel();
                 TabList.Clear();
-            }
 
-            string[] _fileNames = Directory.GetFiles(PagesPath);
+                string[] _fileNames = Directory.GetFiles(PagesPath);
 
-            foreach (string item in _fileNames)
-            {
-                if (item.ToLower().Contains("background"))
+                foreach (string item in _fileNames)
                 {
-                    TabList.Add(new TabItem() { Content = new BackgroundViewModel() { backgroundTextPath = item }, Header = "Background" });
-                    pathViewModel.BackgroundPath = item;
+                    if (item.ToLower().Contains("background"))
+                    {
+                        TabList.Add(new TabItem() { Content = new BackgroundViewModel() { backgroundTextPath = item }, Header = "Background" });
+                        pathViewModel.BackgroundPath = item;
+                    }
+                    if (item.ToLower().Contains("class"))
+                    {
+                        TabList.Add(new TabItem() { Content = new ClassesViewModel() { ClassesTextPath = item }, Header = "Class" });
+                        pathViewModel.ClassPath = item;
+                    }
+                    if (item.ToLower().Contains("equipment"))
+                    {
+                        TabList.Add(new TabItem() { Content = new EquipmentViewModel() { EquipmentTextPath = item }, Header = "Equipment" });
+                        pathViewModel.EquipmentPath = item;
+                    }
+                    if (item.ToLower().Contains("feat"))
+                    {
+                        TabList.Add(new TabItem() { Content = new FeatsViewModel() { FeatsTextPath = item }, Header = "Feat" });
+                        pathViewModel.FeatPath = item;
+                    }
+                    if (item.ToLower().Contains("npc"))
+                    {
+                        TabList.Add(new TabItem() { Content = new NPCViewModel() { NPCTextPath = item }, Header = "NPC" });
+                        pathViewModel.NPCPath = item;
+                    }
+                    if (item.ToLower().Contains("pin"))
+                    {
+                        TabList.Add(new TabItem() { Content = new ImagePinsViewModel() { ImagePinsTextPath = item }, Header = "Pin Mapping" });
+                        pathViewModel.PinMappingPath = item;
+                    }
+                    if (item.ToLower().Contains("race"))
+                    {
+                        TabList.Add(new TabItem() { Content = new RacesViewModel() { RacesTextPath = item }, Header = "Race" });
+                        pathViewModel.RacesPath = item;
+                    }
+                    if (item.ToLower().Contains("spell"))
+                    {
+                        TabList.Add(new TabItem() { Content = new SpellViewModel() { SpellsTextPath = item }, Header = "Spell" });
+                        pathViewModel.SpellPath = item;
+                    }
+                    if (item.ToLower().Contains("story"))
+                    {
+                        TabList.Add(new TabItem() { Content = new StoryViewModel() { storyTextPath = item }, Header = "Story" });
+                        pathViewModel.StoryPath = item;
+                    }
                 }
-                if (item.ToLower().Contains("class"))
-                {
-                    TabList.Add(new TabItem() { Content = new ClassesViewModel() { ClassesTextPath = item }, Header = "Class" });
-                    pathViewModel.ClassPath = item;
-                }
-                if (item.ToLower().Contains("equipment"))
-                {
-                    TabList.Add(new TabItem() { Content = new EquipmentViewModel() { EquipmentTextPath = item }, Header = "Equipment" });
-                    pathViewModel.EquipmentPath = item;
-                }
-                if (item.ToLower().Contains("feat"))
-                {
-                    TabList.Add(new TabItem() { Content = new FeatsViewModel() { FeatsTextPath = item }, Header = "Feat" });
-                    pathViewModel.FeatPath = item;
-                }
-                if (item.ToLower().Contains("npc"))
-                {
-                    TabList.Add(new TabItem() { Content = new NPCViewModel() { NPCTextPath = item }, Header = "NPC" });
-                    pathViewModel.NPCPath = item;
-                }
-                if (item.ToLower().Contains("pin"))
-                {
-                    TabList.Add(new TabItem() { Content = new ImagePinsViewModel() { ImagePinsTextPath = item }, Header = "Pin Mapping" });
-                    pathViewModel.PinMappingPath = item;
-                }
-                if (item.ToLower().Contains("race"))
-                {
-                    TabList.Add(new TabItem() { Content = new RacesViewModel() { RacesTextPath = item }, Header = "Race" });
-                    pathViewModel.RacesPath = item;
-                }
-                if (item.ToLower().Contains("spell"))
-                {
-                    TabList.Add(new TabItem() { Content = new SpellViewModel() { SpellsTextPath = item }, Header = "Spell" });
-                    pathViewModel.SpellPath = item;
-                }
-                if (item.ToLower().Contains("story"))
-                {
-                    TabList.Add(new TabItem() { Content = new StoryViewModel() { storyTextPath = item }, Header = "Story" });
-                    pathViewModel.StoryPath = item;
-                }                
-            }
 
-            if (TabList.Count != 0)
-            {
-                TabList.Add(new TabItem() { Content = pathViewModel, Header = "Parser" });
+                if (TabList.Count != 0)
+                {
+                    TabList.Add(new TabItem() { Content = pathViewModel, Header = "Parser" });
+                }
             }
         }
 
