@@ -88,7 +88,7 @@
 
         <TextBox x:Name="txtOutput" 
                      Grid.Column="2"
-                     Grid.RowSpan="31"  
+                     Grid.RowSpan="30"  
                      Grid.Row="1" 
                      Grid.ColumnSpan="4" 
                      FontSize="14" 
@@ -97,7 +97,7 @@
                      VerticalScrollBarVisibility="Auto" 
                      SpellCheck.IsEnabled="True" 
                      Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                     
-                     Margin="0,0,0,8"/>
+                     />
 
         <Button
             Grid.Column="2"  
@@ -116,15 +116,16 @@
         <Label
             Grid.Column="4"  
             Grid.Row="32"
-            FontSize="14"
+            FontSize="12"
             FontWeight="Bold"
+            VerticalContentAlignment="Center"
             >            
         Number of Rows:</Label>
         <TextBox
             Grid.Column="4"  
             Grid.Row="32" 
             Text="{Binding NumberofRows}" 
-            Margin="100,0,0,0"
+            Margin="120,0,0,0"
             FontSize="14"
             />
 
@@ -150,7 +151,7 @@
             HeadersVisibility="None"
             >
             <DataGrid.InputBindings>
-                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedTextItem}" CommandParameter="{Binding ElementName=dtTextTable, Path=SelectedItem}"/>
+                <MouseBinding   MouseAction="LeftClick" Command="{Binding AddSelectedTextItem}" CommandParameter="{Binding ElementName=dtTextTable, Path=SelectedItem}"/>
             </DataGrid.InputBindings>
             <DataGrid.GroupStyle>
                 <GroupStyle>
@@ -225,7 +226,7 @@
             HeadersVisibility="Column"
             >
             <DataGrid.InputBindings>
-                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedNPC}" CommandParameter="{Binding ElementName=dtNPCTable, Path=SelectedItem}"/>
+                <MouseBinding   MouseAction="LeftClick"  Command="{Binding AddSelectedNPC}" CommandParameter="{Binding ElementName=dtNPCTable, Path=SelectedItem}"/>
             </DataGrid.InputBindings>
             <DataGrid.GroupStyle>
                 <GroupStyle>
@@ -256,6 +257,20 @@
                 <DataGridTextColumn Header="CR" Binding="{Binding CR}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBox
+            x:Name="txtSelectedItem"
+            Grid.Column="8"             
+            Grid.Row="32" 
+            Text="{Binding SelectedItem}"
+            IsReadOnly="True"
+        />
+        <Button
+            x:Name="btnCopySelectedItem"
+            Grid.Column="7"
+            Grid.Row="32" Click="btnCopySelectedItem_Click" 
+            >
+            COPY
+        </Button>
 
         <!--<DataGrid 
             Grid.Column="7"

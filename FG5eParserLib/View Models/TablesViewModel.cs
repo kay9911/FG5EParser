@@ -14,16 +14,33 @@ namespace FG5eParserLib.View_Models
     public class TablesViewModel : INotifyPropertyChanged
     {
         public string tablesTextPath { get; set; }
+        private string _SelectedItem { get; set; }
+        public string SelectedItem
+        {
+            get
+            {
+                return _SelectedItem;
+            }
+            set
+            {
+                _SelectedItem = value;
+                OnPropertyChanged("SelectedItem");
+            }
+        }
 
-        public ObservableCollection<EquipmentRecord> EquipmentRecordNames;
-        public ObservableCollection<TextRecord> TextEntryNames;
-        public ObservableCollection<NPCRecord> NpcRecordNames;
+        private string NPCEntries = string.Empty;
+        private string TextEntries = string.Empty;
+        string CurrentTab = string.Empty;
+
+        public ObservableCollection<EquipmentRecord> EquipmentRecordNames { get; set; }
+        public ObservableCollection<TextRecord> TextEntryNames { get; set; }
+        public ObservableCollection<NPCRecord> NpcRecordNames { get; set; }
 
         public RelayCommand DisplayEntriesList { get; set; }
         public RelayCommand AddNewTableBlock { get; set; }
         public RelayCommand AddNewTableEntry { get; set; }
         public RelayCommand AddSelectedTextItem { get; set; }
-        public RelayCommand AddSelectedImage { get; set; }
+        //public RelayCommand AddSelectedImage { get; set; }
         public RelayCommand AddSelectedNPC { get; set; }
         public RelayCommand AddTableEntry { get; set; }
 
@@ -93,7 +110,7 @@ namespace FG5eParserLib.View_Models
             AddNewTableBlock = new RelayCommand(addNewTableBlock);
             AddNewTableEntry = new RelayCommand(addNewTableEntry);
             AddSelectedTextItem = new RelayCommand(addSelectedTextItem);
-            AddSelectedImage = new RelayCommand(addSelectedImage);
+            //AddSelectedImage = new RelayCommand(addSelectedImage);
             AddSelectedNPC = new RelayCommand(addSelectedNPC);
             AddTableEntry = new RelayCommand(addTableEntry);
         }
@@ -112,17 +129,26 @@ namespace FG5eParserLib.View_Models
 
         private void addSelectedNPC(object obj)
         {
-            throw new NotImplementedException();
+            if (obj != null)
+            {
+                SelectedItem = string.Format("#zal:NPC:*:{0}:{0}", ((NPCRecord)obj).Name);
+            }
         }
 
-        private void addSelectedImage(object obj)
-        {
-            throw new NotImplementedException();
-        }
+        //private void addSelectedImage(object obj)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private void addSelectedTextItem(object obj)
         {
-            throw new NotImplementedException();
+            if (obj != null)
+            {
+                if (CurrentTab == "story")
+                {
+                    SelectedItem = string.Format("#zal:ST:*:{0}:{0}", ((TextRecord)obj).Title);
+                }
+            }
         }
 
         private void addNewTableEntry(object obj)
@@ -146,7 +172,7 @@ namespace FG5eParserLib.View_Models
             // Rows
             for (int i = 1; i <= Convert.ToInt32(NumberofRows); i++)
             {
-                _sb.Append(string.Format("row;{0};{0};ROW_Description_goes_here",i));
+                _sb.Append(string.Format("row;{0};{0};ROW_Description_goes_here", i));
                 _sb.Append(Environment.NewLine);
             }
 
@@ -185,7 +211,115 @@ namespace FG5eParserLib.View_Models
 
         private void displayEntriesList(object obj)
         {
-            throw new NotImplementedException();
+            Readers _reader = new Readers();
+
+            // NPC List
+            if (obj.ToString().ToLower() == "npc")
+            {
+                if (string.IsNullOrEmpty(NPCEntries))
+                {
+                    Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a file that contains NPC's" };
+                    if (_ofd.ShowDialog() == true)
+                    {
+                        NPCEntries = _ofd.FileName;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(NPCEntries))
+                {
+                    NpcRecordNames.Clear();
+                    foreach (NPCRecord item in _reader.getNPCList(NPCEntries))
+                    {
+                        if (item != null)
+                        {
+                            NpcRecordNames.Add(item);
+                        }
+                    }
+                }
+
+                _showDataTableFlg = false;
+                _showNPCTableFlg = true;
+            }
+
+            // Equipment List
+            //if (obj.ToString().ToLower() == "equipment")
+            //{
+            //    if (string.IsNullOrEmpty(EquipmentEntries))
+            //    {
+            //        Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a file that contains Basic Equipment Entries" };
+            //        if (_ofd.ShowDialog() == true)
+            //        {
+            //            EquipmentEntries = _ofd.FileName;
+            //        }
+            //    }
+
+            //    if (!string.IsNullOrEmpty(EquipmentEntries))
+            //    {
+            //        EquipmentRecordNames.Clear();
+            //        foreach (EquipmentRecord item in _reader.getEquipmentList(EquipmentEntries))
+            //        {
+            //            EquipmentRecordNames.Add(item);
+            //        }
+            //    }
+            //    _showEquipmentTableFlg = true;
+            //    _showDataTableFlg = false;
+            //    _showNPCTableFlg = false;
+            //    _showImageTableFlg = false;
+            //}
+
+            //if (obj.ToString().ToLower() == "image")
+            //{
+            //    if (string.IsNullOrEmpty(ImageEntries))
+            //    {
+            //        FolderBrowserDialog _ofd = new FolderBrowserDialog() { Description = "Please select a folder that contains Images" };
+            //        DialogResult result = _ofd.ShowDialog();
+            //        if (result == DialogResult.OK)
+            //        {
+            //            ImageEntries = _ofd.SelectedPath;
+            //        }
+            //    }
+
+            //    if (!string.IsNullOrEmpty(ImageEntries))
+            //    {
+            //        ImageNames.Clear();
+            //        string[] names = Directory.GetFiles(ImageEntries);
+            //        foreach (var item in names)
+            //        {
+            //            ImageNames.Add(item.Split('\\').Last());
+            //        }
+            //    }
+
+            //    _showEquipmentTableFlg = false;
+            //    _showDataTableFlg = false;
+            //    _showNPCTableFlg = false;
+            //    _showImageTableFlg = true;
+            //}
+
+            if (obj.ToString().ToLower() == "story" || obj.ToString().ToLower() == "reference")
+            {
+                if (string.IsNullOrEmpty(TextEntries))
+                {
+                    Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a folder that contains Text Entries" };
+                    if (_ofd.ShowDialog() == true)
+                    {
+                        TextEntries = _ofd.FileName;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(TextEntries))
+                {
+                    TextEntryNames.Clear();
+                    foreach (TextRecord item in _reader.getTextRecords(TextEntries))
+                    {
+                        TextEntryNames.Add(item);
+                    }
+
+                    CurrentTab = "story";
+                }
+
+                _showDataTableFlg = true;
+                _showNPCTableFlg = false;
+            }
         }
 
         #region PROPERTY CHANGES

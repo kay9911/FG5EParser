@@ -1,5 +1,6 @@
 ﻿using FG5eParserLib.Utility;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -53,6 +54,11 @@ namespace FG5EParser_v_2._0.Controls
                     return (recordToIdentify.Title.Contains(txtFilter.Text));
                 };
             }
+        }
+
+        private void btnCopySelectedItem_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Clipboard.SetText(txtSelectedItem.Text);
         }
     }
 }

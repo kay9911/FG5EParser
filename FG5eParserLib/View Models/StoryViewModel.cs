@@ -161,7 +161,7 @@ namespace FG5eParserLib.View_Models
 
                 if (CurrentTab == "story")
                 {
-                    _sb.Append(string.Format("#zal;ST;*;Story:{0};{0}", ((TextRecord)obj).Title));
+                    _sb.Append(string.Format("#zal:ST:*:{0}:{0}", ((TextRecord)obj).Title));
                 }
 
                 _Output = _sb.ToString();
