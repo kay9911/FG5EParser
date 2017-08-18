@@ -31,6 +31,7 @@
                 <MenuItem Header="Pin Mapping" Command="{Binding LoadTabControl}" CommandParameter="pinmapping"/>                
                 <!--<MenuItem Header="Skills" Command="{Binding LoadTabControl}" CommandParameter="skill"/>-->                
                 <MenuItem Header="Story" Command="{Binding LoadTabControl}" CommandParameter="story"/>
+                <MenuItem Header="Tables" Command="{Binding LoadTabControl}" CommandParameter="table"/>
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="Parser" Command="{Binding LoadTabControl}" CommandParameter="parser"/>
@@ -74,6 +75,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:StoryViewModel}">
                     <VP:StoryControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:TablesViewModel}">
+                    <VP:TableControl/>
                 </DataTemplate>
             </TabControl.Resources>
             <TabControl.ItemTemplate>

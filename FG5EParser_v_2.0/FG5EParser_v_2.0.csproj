@@ -132,6 +132,9 @@
     <Compile Include="Controls\StoryControl.xaml.cs">
       <DependentUpon>StoryControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TableControl.xaml.cs">
+      <DependentUpon>TableControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainAlternate.xaml.cs">
       <DependentUpon>MainAlternate.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\StoryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TableControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

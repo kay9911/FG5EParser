@@ -60,6 +60,7 @@
     <Compile Include="View Models\RacesViewModel.cs" />
     <Compile Include="View Models\SpellViewModel.cs" />
     <Compile Include="View Models\StoryViewModel.cs" />
+    <Compile Include="View Models\TablesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FG5eParserModels\FG5eParserModels.csproj">

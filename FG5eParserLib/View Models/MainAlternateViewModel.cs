@@ -27,6 +27,7 @@ namespace FG5eParserLib.View_Models
         bool Skill_Flg = false;
         bool Spell_Flg = false;
         bool Parser_Flg = false;
+        bool Table_Flg = false;
 
         /* STORY RELATED PAGES */
         bool NPC_Flg = false;
@@ -102,6 +103,11 @@ namespace FG5eParserLib.View_Models
                     {
                         TabList.Add(new TabItem() { Content = new StoryViewModel() { storyTextPath = item }, Header = "Story" });
                         pathViewModel.StoryPath = item;
+                    }
+                    if (item.ToLower().Contains("table"))
+                    {
+                        TabList.Add(new TabItem() { Content = new TablesViewModel() { tablesTextPath = item }, Header = "Table" });
+                        pathViewModel.TablePath = item;
                     }
                 }
 
@@ -242,6 +248,16 @@ namespace FG5eParserLib.View_Models
                         }
                     }
 
+                    if (obj.ToString().ToLower().Trim() == "table")
+                    {
+                        if (!Table_Flg)
+                        {
+                            File.Create(PagesPath + @"\Table.txt");
+                            TabList.Add(new TabItem() { Content = new TablesViewModel() { tablesTextPath = PagesPath + @"\Table.txt" }, Header = "Table" });
+                            pathViewModel.TablePath = PagesPath + @"\Table.txt";
+                        }
+                    }
+
                     //Presets
                     //if (obj.ToString().ToLower().Trim() == "adventuremod")
                     //{
@@ -273,10 +289,9 @@ namespace FG5eParserLib.View_Models
                 if (item.Header.ToString() == "Race") Race_Flg = true;
                 if (item.Header.ToString() == "Skill") Skill_Flg = true;
                 if (item.Header.ToString() == "Spell") Spell_Flg = true;
-
                 if (item.Header.ToString() == "Parser") Parser_Flg = true;
-
                 if (item.Header.ToString() == "Story") Story_Flg = true;
+                if (item.Header.ToString() == "Table") Table_Flg = true;
             }
         }
 
