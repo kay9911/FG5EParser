@@ -76,22 +76,23 @@
         </Grid.Resources>
 
         <!--Assistance Buttons-->
-        <!--<Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="equipment">Equipment Links</Button>-->
-        <!--<Button Grid.Column="0" Grid.Row="4" Command="{Binding DisplayEntriesList}" CommandParameter="image">Image Links</Button>-->
-        <Button Grid.Column="0" Grid.Row="6" Command="{Binding DisplayEntriesList}" CommandParameter="magicitem" IsEnabled="False">Magical Item Links</Button>
-        <Button Grid.Column="0" Grid.Row="8" Command="{Binding DisplayEntriesList}" CommandParameter="npc">NPC Links</Button>
-        <Button Grid.Column="0" Grid.Row="10" Command="{Binding DisplayEntriesList}" CommandParameter="reference" IsEnabled="False">Reference Links</Button>
-        <Button Grid.Column="0" Grid.Row="12" Command="{Binding DisplayEntriesList}" CommandParameter="table" IsEnabled="False">Rollable Table Links</Button>
-        <Button Grid.Column="0" Grid.Row="14" Command="{Binding DisplayEntriesList}" CommandParameter="spell" IsEnabled="False">Spell Links</Button>
-        <Button Grid.Column="0" Grid.Row="16" Command="{Binding DisplayEntriesList}" CommandParameter="story">Story Links</Button>
-        <Button Grid.Column="0" Grid.Row="18" Command="{Binding DisplayEntriesList}" CommandParameter="treasureparcel" IsEnabled="False">Treasure Parcel Links</Button>
+        <Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="encounter" IsEnabled="False">Encounter Links</Button>
+        <Button Grid.Column="0" Grid.Row="4" Command="{Binding DisplayEntriesList}" CommandParameter="equipment" IsEnabled="False">Equipment Links</Button>
+        <Button Grid.Column="0" Grid.Row="6" Command="{Binding DisplayEntriesList}" CommandParameter="image" IsEnabled="False">Image Links</Button>
+        <Button Grid.Column="0" Grid.Row="8" Command="{Binding DisplayEntriesList}" CommandParameter="magicitem" IsEnabled="False">Magical Item Links</Button>
+        <Button Grid.Column="0" Grid.Row="10" Command="{Binding DisplayEntriesList}" CommandParameter="npc">NPC Links</Button>
+        <Button Grid.Column="0" Grid.Row="12" Command="{Binding DisplayEntriesList}" CommandParameter="reference" IsEnabled="False">Reference Links</Button>
+        <Button Grid.Column="0" Grid.Row="14" Command="{Binding DisplayEntriesList}" CommandParameter="table" IsEnabled="False">Rollable Table Links</Button>
+        <Button Grid.Column="0" Grid.Row="16" Command="{Binding DisplayEntriesList}" CommandParameter="spell" IsEnabled="False">Spell Links</Button>
+        <Button Grid.Column="0" Grid.Row="18" Command="{Binding DisplayEntriesList}" CommandParameter="story">Story Links</Button>
+        <Button Grid.Column="0" Grid.Row="20" Command="{Binding DisplayEntriesList}" CommandParameter="treasureparcel" IsEnabled="False">Treasure Parcel Links</Button>
 
         <TextBox x:Name="txtOutput" 
                      Grid.Column="2"
                      Grid.RowSpan="30"  
                      Grid.Row="1" 
                      Grid.ColumnSpan="4" 
-                     FontSize="14" 
+                     FontSize="18" 
                      TextWrapping="Wrap" 
                      AcceptsReturn="True" 
                      VerticalScrollBarVisibility="Auto" 

@@ -1,13 +1,9 @@
 ﻿using FG5eParserLib.Utility;
-using FG5eParserModels.Utility_Modules;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5eParserLib.View_Models
 {
@@ -40,7 +36,6 @@ namespace FG5eParserLib.View_Models
         public RelayCommand AddNewTableBlock { get; set; }
         public RelayCommand AddNewTableEntry { get; set; }
         public RelayCommand AddSelectedTextItem { get; set; }
-        //public RelayCommand AddSelectedImage { get; set; }
         public RelayCommand AddSelectedNPC { get; set; }
         public RelayCommand AddTableEntry { get; set; }
 
@@ -110,7 +105,6 @@ namespace FG5eParserLib.View_Models
             AddNewTableBlock = new RelayCommand(addNewTableBlock);
             AddNewTableEntry = new RelayCommand(addNewTableEntry);
             AddSelectedTextItem = new RelayCommand(addSelectedTextItem);
-            //AddSelectedImage = new RelayCommand(addSelectedImage);
             AddSelectedNPC = new RelayCommand(addSelectedNPC);
             AddTableEntry = new RelayCommand(addTableEntry);
         }
@@ -134,11 +128,6 @@ namespace FG5eParserLib.View_Models
                 SelectedItem = string.Format("#zal:NPC:*:{0}:{0}", ((NPCRecord)obj).Name);
             }
         }
-
-        //private void addSelectedImage(object obj)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         private void addSelectedTextItem(object obj)
         {
@@ -240,60 +229,6 @@ namespace FG5eParserLib.View_Models
                 _showDataTableFlg = false;
                 _showNPCTableFlg = true;
             }
-
-            // Equipment List
-            //if (obj.ToString().ToLower() == "equipment")
-            //{
-            //    if (string.IsNullOrEmpty(EquipmentEntries))
-            //    {
-            //        Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a file that contains Basic Equipment Entries" };
-            //        if (_ofd.ShowDialog() == true)
-            //        {
-            //            EquipmentEntries = _ofd.FileName;
-            //        }
-            //    }
-
-            //    if (!string.IsNullOrEmpty(EquipmentEntries))
-            //    {
-            //        EquipmentRecordNames.Clear();
-            //        foreach (EquipmentRecord item in _reader.getEquipmentList(EquipmentEntries))
-            //        {
-            //            EquipmentRecordNames.Add(item);
-            //        }
-            //    }
-            //    _showEquipmentTableFlg = true;
-            //    _showDataTableFlg = false;
-            //    _showNPCTableFlg = false;
-            //    _showImageTableFlg = false;
-            //}
-
-            //if (obj.ToString().ToLower() == "image")
-            //{
-            //    if (string.IsNullOrEmpty(ImageEntries))
-            //    {
-            //        FolderBrowserDialog _ofd = new FolderBrowserDialog() { Description = "Please select a folder that contains Images" };
-            //        DialogResult result = _ofd.ShowDialog();
-            //        if (result == DialogResult.OK)
-            //        {
-            //            ImageEntries = _ofd.SelectedPath;
-            //        }
-            //    }
-
-            //    if (!string.IsNullOrEmpty(ImageEntries))
-            //    {
-            //        ImageNames.Clear();
-            //        string[] names = Directory.GetFiles(ImageEntries);
-            //        foreach (var item in names)
-            //        {
-            //            ImageNames.Add(item.Split('\\').Last());
-            //        }
-            //    }
-
-            //    _showEquipmentTableFlg = false;
-            //    _showDataTableFlg = false;
-            //    _showNPCTableFlg = false;
-            //    _showImageTableFlg = true;
-            //}
 
             if (obj.ToString().ToLower() == "story" || obj.ToString().ToLower() == "reference")
             {

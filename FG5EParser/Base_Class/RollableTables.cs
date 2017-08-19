@@ -1,4 +1,4 @@
-﻿using FG5EParser.Utilities;
+﻿using FG5eParserModels.Utility_Modules;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,137 +7,53 @@ namespace FG5EParser.Base_Class
 {
     class RollableTables
     {
-        public string Category { get; set; }
-        public string isLocked { get { return "1"; } set { isLocked = value; } }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Notes { get; set; }
-        public string HideResults { get { return "0"; } set { isLocked = value; } }
-        public string Mod { get { return "0"; } set { isLocked = value; } }
-        public string Dice { get; set; }
-        private List<string> _columnList = new List<string>();
-        public List<string> ColumnLabel { get { return _columnList; } set { _columnList = value; } }
-        private List<TableRows> _columnResultList = new List<TableRows>();
-        public List<TableRows> ColumnResults { get { return _columnResultList; } set { _columnResultList = value; } }
-
-        public List<RollableTables> bindValues(List<string> _Basic, string TableHeader, string _moduleName)
+        public List<Tables> bindValuesNew(List<string> _Basic, string TableHeader, string _moduleName)
         {
-            RollableTables _tables = new RollableTables();
-            List<RollableTables> _tableList = new List<RollableTables>();
-            // Init all the lists
-            List<TableRows> _tableRows = new List<TableRows>();
+            List<Tables> TableList = new List<Tables>();
+            Tables _table = new Tables() { _Category = TableHeader };
 
-            StringBuilder xml = new StringBuilder();
-            XMLFormatting _xmlFormatting = new XMLFormatting();
-
-            // Variable that will be used in order to process fields that are not mandatory
-            string line = _Basic.First();
-
-            while (line != "Its done!")
+            for (int i = 0; i < _Basic.Count; i++)
             {
-                // Clear heading line
-                if (line.Contains("#@;"))
+                if (!string.IsNullOrEmpty(_table._Name) && _Basic[i].Contains("##;"))
                 {
-                    line = shiftUp(_Basic);
+                    // Add to list here
+                    TableList.Add(_table);
+                    _table = new Tables() { _Category = TableHeader };
                 }
-
-                // Get the Encounter Name
-                if (line.Contains("##;"))
+                if (_Basic[i].Contains("##;"))
                 {
-                    _tables = new RollableTables();
-                    _tables.Name = line.Replace("##;", "");
-                    line = shiftUp(_Basic);
-                    _tableRows = new List<TableRows>();
+                    _table._Name = _Basic[i].Replace("##;","").Trim();
                 }
-
-                while (line != "Its done!" && !line.Contains("##;"))
+                if (_Basic[i].Contains("#!;"))
                 {
-                    // Check for description
-                    if (line.Contains("#!"))
+                    StringBuilder _sb = new StringBuilder();
+                    while (!_Basic[i].Contains("column;"))
                     {
-                        StringBuilder _desc = new StringBuilder();
-
-                        // Gather all the lines for the description
-                        while (!line.Contains("column"))
-                        {
-                            _desc.Append(line.Replace("#!;","").Trim());
-                            line = shiftUp(_Basic);
-                        }
-                        // Append the description to the object
-                        _tables.Description = _desc.ToString();
+                        _sb.Append(_Basic[i].Replace("#!;",""));
+                        i++;
                     }
-
-                    // Check for column names
-                    if (line.Contains("column"))
-                    {
-                        _tables.ColumnLabel = line.Replace("column;", "").Split(';').ToList();
-                        line = shiftUp(_Basic);
-                    }
-
-                    // Check for dice
-                    if (line.Contains("dice"))
-                    {
-                        _tables.Dice = line.Split(';')[1].Trim();
-                        line = shiftUp(_Basic);
-                    }
-
-                    // Get the individual table rows now
-                    while (line != "Its done!" && !line.Contains("##;"))
-                    {
-                        TableRows _tableRow = new TableRows();
-                        if (line.Contains("row"))
-                        {
-                            // Remove row
-                            line = line.Replace("row;", "");
-                            _tableRow.FromRange = line.Split(';')[0].Trim();
-                            _tableRow.ToRange = line.Split(';')[1].Trim();
-
-                            // Modify for description so as to get all rows
-                            StringBuilder _rowResult = new StringBuilder();
-                            for (int i = 2; i < line.Split(';').Count(); i++)
-                            {
-                                _rowResult.Append(string.Format("{0};", line.Split(';')[i]));
-                            }
-                            _tableRow.Result = _rowResult.ToString();
-                        }
-
-                        // Add to the list
-                        _tableRows.Add(_tableRow);
-                        line = shiftUp(_Basic);
-                    }
-
-                    // Add the NPC list
-                    _tables.ColumnResults = _tableRows;
+                    _table._Description = _sb.ToString();
                 }
-                // Add the category
-                _tables.Category = TableHeader;
-                // Add Encounter to main list
-                _tableList.Add(_tables);
+                if (_Basic[i].Contains("column;"))
+                {
+                    _table._Columns = _Basic[i].Replace("column;", "").Trim().Split(';').ToList();
+                }
+                if (_Basic[i].Contains("dice;"))
+                {
+                    _table._Dice = _Basic[i].Replace("dice;", "").Trim();
+                }
+                if (_Basic[i].Contains("row;"))
+                {
+                    _table._Rows.Add(_Basic[i].Replace("row;", "").Trim());
+                }
             }
-
-            return _tableList;
+            if (!string.IsNullOrEmpty(_table._Name))
+            {
+                // Add to list here
+                TableList.Add(_table);
+                _table = new Tables() { _Category = TableHeader };
+            }
+            return TableList;
         }
-
-        // Makes reading the list variable consistant
-        private string shiftUp(List<string> _Basic)
-        {
-            _Basic.RemoveAt(0);
-            if (_Basic.Count != 0)
-            {
-                return _Basic.First();
-            }
-            else
-            {
-                _Basic.Add("Its done!");
-                return _Basic.First();
-            }
-        }
-    }
-
-    class TableRows
-    {
-        public string FromRange { get; set; }
-        public string ToRange { get; set; }
-        public string Result { get; set; }
     }
 }

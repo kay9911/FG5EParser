@@ -9,6 +9,7 @@ namespace FG5eParserModels.Utility_Modules
         private string Name { get; set; }
         private string Description { get; set; }       
         private string Dice { get; set; }
+        private string Note { get; set; }
         private List<string> Columns { get; set; }
         private List<string> Rows { get; set; }
 
@@ -47,6 +48,15 @@ namespace FG5eParserModels.Utility_Modules
             {
                 Dice = value;
                 OnPropertyChanged("_Dice");
+            }
+        }
+        public string _Note
+        {
+            get { return Note; }
+            set
+            {
+                Note = value;
+                OnPropertyChanged("_Note");
             }
         }
         public List<string> _Columns
