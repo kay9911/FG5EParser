@@ -105,7 +105,7 @@
         <Label Grid.Column="4" Grid.Row="10" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Archtype Feature?:</Label>
         <CheckBox x:Name="chkIsArchtype" Grid.Column="5" Grid.Row="10" VerticalContentAlignment="Center" IsChecked="{Binding FeaturesObject._isArchtypeHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="btnAddFeature" Grid.Column="7" Grid.Row="10" FontWeight="Bold" FontSize="14"  Command="{Binding AddFeature}">ADD FEATURE</Button>
+        <Button x:Name="btnAddFeature" Grid.Column="7" Grid.Row="10" Command="{Binding AddFeature}">ADD FEATURE</Button>
 
         <Label Grid.Column="4" Grid.Row="12" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Header Name:</Label>
         <TextBox x:Name="txtAbilityHeader" Grid.Column="5" Grid.Row="12" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding ClassObject._FeatureArchtypeName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
@@ -116,7 +116,7 @@
         <Label Grid.Column="4" Grid.Row="16" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Description:</Label>
         <TextBox x:Name="txtAbilityDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="16" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding AbilitiesObject._AbilityDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-        <Button x:Name="btnAddAbility" Grid.Column="7" Grid.Row="22" FontWeight="Bold" FontSize="14"  Command="{Binding AddAbility}">ADD ABILITY</Button>
+        <Button x:Name="btnAddAbility" Grid.Column="7" Grid.Row="22" Command="{Binding AddAbility}">ADD ABILITY</Button>
 
         <Label Grid.Column="4" Grid.Row="24" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Select Ability:</Label>
         <ComboBox x:Name="cmbSelectAbility" Grid.Column="5" Grid.Row="24" Grid.ColumnSpan="3" FontSize="14" FontStretch="Expanded" VerticalContentAlignment="Center" ItemsSource="{Binding AbilityHeaders}" SelectedItem="{Binding FeaturesAbilityObject._UnderArchtype, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -130,7 +130,7 @@
         <Label Grid.Column="4" Grid.Row="28" FontWeight="Bold" FontSize="14" FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ability Description:</Label>
         <TextBox x:Name="txtAbilityFeatureDescription" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5"  Grid.Row="28" AcceptsReturn="True" TextWrapping="WrapWithOverflow" Text="{Binding FeaturesAbilityObject._FeatureDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
 
-        <Button x:Name="btnAddAbilityFeature" Grid.Column="7" Grid.Row="34" FontWeight="Bold" FontSize="14"  Command="{Binding AddAbilityFeature}">ADD FEATURE</Button>
+        <Button x:Name="btnAddAbilityFeature" Grid.Column="7" Grid.Row="34" Command="{Binding AddAbilityFeature}">ADD FEATURE</Button>
 
         <Button 
             x:Name="btnReset"

@@ -436,7 +436,7 @@ namespace FG5eParserLib.View_Models
                     // Only features that are related to the archtype are required here
                     if (_feature._UnderArchtype == _ability._AbilityName)
                     {
-                        string _formattedName = string.Format("#fe;{0};{1}"
+                        string _formattedName = string.Format("#abf;{0};{1}"
                                                                 , _feature._FeatureName
                                                                 , _feature._FeatureLevels
                                                                 );
