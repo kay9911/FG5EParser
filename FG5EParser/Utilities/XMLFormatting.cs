@@ -405,6 +405,13 @@ namespace FG5EParser.Utilities
                         , _toFormat.Split(':')[1]
                         );
                         break;
+                    //T;*;Acolyte Traits;Acolyte Traits
+                    case "T":
+                        _toFormat = string.Format("tables.tab_{0}@{1}"
+                        , formatXMLCharachters(_toFormat.Split(':')[3].ToLower().Trim().Replace(" ", ""), "IH")
+                        , _toFormat.Split(':')[1]
+                        );
+                        break;
                     default:
                         break;
                 }

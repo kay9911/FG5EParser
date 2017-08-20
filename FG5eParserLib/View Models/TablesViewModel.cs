@@ -26,7 +26,8 @@ namespace FG5eParserLib.View_Models
 
         private string NPCEntries = string.Empty;
         private string TextEntries = string.Empty;
-        string CurrentTab = string.Empty;
+        private string TableEntries = string.Empty;
+        private string CurrentTab = string.Empty;
 
         public ObservableCollection<EquipmentRecord> EquipmentRecordNames { get; set; }
         public ObservableCollection<TextRecord> TextEntryNames { get; set; }
@@ -137,6 +138,10 @@ namespace FG5eParserLib.View_Models
                 {
                     SelectedItem = string.Format("#zal:ST:*:{0}:{0}", ((TextRecord)obj).Title);
                 }
+                if (CurrentTab == "table")
+                {
+                    SelectedItem = string.Format("#zal:T:*:{0}:{0}", ((TextRecord)obj).Title);
+                }
             }
         }
 
@@ -230,26 +235,52 @@ namespace FG5eParserLib.View_Models
                 _showNPCTableFlg = true;
             }
 
-            if (obj.ToString().ToLower() == "story" || obj.ToString().ToLower() == "reference")
+            if (obj.ToString().ToLower() == "story" || obj.ToString().ToLower() == "reference" || obj.ToString().ToLower() == "table")
             {
-                if (string.IsNullOrEmpty(TextEntries))
+                if (obj.ToString().ToLower() == "story")
                 {
-                    Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a folder that contains Text Entries" };
-                    if (_ofd.ShowDialog() == true)
+                    if (string.IsNullOrEmpty(TextEntries))
                     {
-                        TextEntries = _ofd.FileName;
+                        Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a folder that contains Story Entries" };
+                        if (_ofd.ShowDialog() == true)
+                        {
+                            TextEntries = _ofd.FileName;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(TextEntries))
+                    {
+                        TextEntryNames.Clear();
+                        foreach (TextRecord item in _reader.getTextRecords(TextEntries))
+                        {
+                            TextEntryNames.Add(item);
+                        }
+
+                        CurrentTab = "story";
                     }
                 }
 
-                if (!string.IsNullOrEmpty(TextEntries))
+                if (obj.ToString().ToLower() == "table")
                 {
-                    TextEntryNames.Clear();
-                    foreach (TextRecord item in _reader.getTextRecords(TextEntries))
+                    if (string.IsNullOrEmpty(TableEntries))
                     {
-                        TextEntryNames.Add(item);
+                        Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a folder that contains Table Entries" };
+                        if (_ofd.ShowDialog() == true)
+                        {
+                            TableEntries = _ofd.FileName;
+                        }
                     }
 
-                    CurrentTab = "story";
+                    if (!string.IsNullOrEmpty(TableEntries))
+                    {
+                        TextEntryNames.Clear();
+                        foreach (TextRecord item in _reader.getTextRecords(TableEntries))
+                        {
+                            TextEntryNames.Add(item);
+                        }
+
+                        CurrentTab = "table";
+                    }
                 }
 
                 _showDataTableFlg = true;
