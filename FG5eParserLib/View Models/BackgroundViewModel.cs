@@ -16,7 +16,7 @@ namespace FG5eParserLib.View_Mo.dels
 
         // Table pop up data
         // private string tableTextPath { get; set; }
-        public ObservableCollection<string> TableNames { get; set; }
+        public ObservableCollection<TextRecord> TextEntryNames { get; set; }
         public ObservableCollection<Backgrounds> BackgroundList { get; set; }
 
         // Relay Commands
@@ -25,7 +25,7 @@ namespace FG5eParserLib.View_Mo.dels
         public RelayCommand AddToList { get; set; } // Add background to the list
 
         public RelayCommand SelectTableData { get; set; }
-        public RelayCommand AddSelectedTableItem { get; set; }
+        public RelayCommand AddSelectedTextItem { get; set; }
         private string tableTextPath = string.Empty;
         private string locationCommandText = string.Empty;
 
@@ -76,20 +76,6 @@ namespace FG5eParserLib.View_Mo.dels
             }
         }
 
-        //public string _tableTextPath
-        //{
-        //    get
-        //    {
-        //        return tableTextPath;
-        //    }
-        //    set
-        //    {
-        //        tableTextPath = value;
-        //        //TableNames = getTableList(value);
-        //        OnPropertyChanged(null);
-        //    }
-        //}
-
         public string _Output
         {
             get
@@ -123,38 +109,38 @@ namespace FG5eParserLib.View_Mo.dels
             AddToList = new RelayCommand(AddBackgroundtoList, canAddtoList);
 
             SelectTableData = new RelayCommand(selectTableData);
-            AddSelectedTableItem = new RelayCommand(addSelectedTableItem);
+            AddSelectedTextItem = new RelayCommand(addSelectedTextItem);
 
             // List Inits
             BackgroundList = new ObservableCollection<Backgrounds>();
 
             //Inits
             BackgroundObj = new Backgrounds();
-            TableNames = new ObservableCollection<string>();
+            TextEntryNames = new ObservableCollection<TextRecord>();
 
             // Display Output on Load
             _showOutputFlag = true;
         }
 
-        private void addSelectedTableItem(object obj)
+        private void addSelectedTextItem(object obj)
         {
-            if (!string.IsNullOrEmpty(obj.ToString()))
+            if (obj != null)
             {
                 if (locationCommandText.ToLower().Trim() == "personalitytraits")
                 {
-                    Background._PersonalityTraits = obj.ToString();
+                    Background._PersonalityTraits = ((TextRecord)obj).Title;
                 }
                 if (locationCommandText.ToLower().Trim() == "bonds")
                 {
-                    Background._Bonds = obj.ToString();
+                    Background._Bonds = ((TextRecord)obj).Title;
                 }
                 if (locationCommandText.ToLower().Trim() == "ideals")
                 {
-                    Background._Ideals = obj.ToString();
+                    Background._Ideals = ((TextRecord)obj).Title;
                 }
                 if (locationCommandText.ToLower().Trim() == "flaws")
                 {
-                    Background._Flaws = obj.ToString();
+                    Background._Flaws = ((TextRecord)obj).Title;
                 }
             }
         }
@@ -345,14 +331,14 @@ namespace FG5eParserLib.View_Mo.dels
             if (!string.IsNullOrEmpty(tablesPath))
             {
                 Readers _reader = new Readers();
-                List<string> _tableList = _tableList = _reader.ReadTables(tablesPath);
+                List<TextRecord> _tableList = _reader.getTextRecords(tablesPath);
 
                 if (_tableList.Count != 0)
                 {
-                    TableNames.Clear();
-                    foreach (string item in _tableList)
+                    TextEntryNames.Clear();
+                    foreach (TextRecord item in _tableList)
                     {
-                        TableNames.Add(item);
+                        TextEntryNames.Add(item);
                     }
                 }
             }

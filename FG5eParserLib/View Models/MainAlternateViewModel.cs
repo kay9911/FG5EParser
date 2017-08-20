@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using FG5eParserLib.Utility;
 using FG5eParserLib.View_Mo.dels;
+using System.Linq;
 
 namespace FG5eParserLib.View_Models
 {
@@ -59,52 +60,52 @@ namespace FG5eParserLib.View_Models
 
                 foreach (string item in _fileNames)
                 {
-                    if (item.ToLower().Contains("background"))
+                    if (item.ToLower().Split('\\').Last().Contains("background"))
                     {
                         TabList.Add(new TabItem() { Content = new BackgroundViewModel() { backgroundTextPath = item }, Header = "Background" });
                         pathViewModel.BackgroundPath = item;
                     }
-                    if (item.ToLower().Contains("class"))
+                    if (item.ToLower().Split('\\').Last().Contains("class"))
                     {
                         TabList.Add(new TabItem() { Content = new ClassesViewModel() { ClassesTextPath = item }, Header = "Class" });
                         pathViewModel.ClassPath = item;
                     }
-                    if (item.ToLower().Contains("equipment"))
+                    if (item.ToLower().Split('\\').Last().Contains("equipment"))
                     {
                         TabList.Add(new TabItem() { Content = new EquipmentViewModel() { EquipmentTextPath = item }, Header = "Equipment" });
                         pathViewModel.EquipmentPath = item;
                     }
-                    if (item.ToLower().Contains("feat"))
+                    if (item.ToLower().Split('\\').Last().Contains("feat"))
                     {
                         TabList.Add(new TabItem() { Content = new FeatsViewModel() { FeatsTextPath = item }, Header = "Feat" });
                         pathViewModel.FeatPath = item;
                     }
-                    if (item.ToLower().Contains("npc"))
+                    if (item.ToLower().Split('\\').Last().Contains("npc"))
                     {
                         TabList.Add(new TabItem() { Content = new NPCViewModel() { NPCTextPath = item }, Header = "NPC" });
                         pathViewModel.NPCPath = item;
                     }
-                    if (item.ToLower().Contains("pin"))
+                    if (item.ToLower().Split('\\').Last().Contains("pin"))
                     {
                         TabList.Add(new TabItem() { Content = new ImagePinsViewModel() { ImagePinsTextPath = item }, Header = "Pin Mapping" });
                         pathViewModel.PinMappingPath = item;
                     }
-                    if (item.ToLower().Contains("race"))
+                    if (item.ToLower().Split('\\').Last().Contains("race"))
                     {
                         TabList.Add(new TabItem() { Content = new RacesViewModel() { RacesTextPath = item }, Header = "Race" });
                         pathViewModel.RacesPath = item;
                     }
-                    if (item.ToLower().Contains("spell"))
+                    if (item.ToLower().Split('\\').Last().Contains("spell"))
                     {
                         TabList.Add(new TabItem() { Content = new SpellViewModel() { SpellsTextPath = item }, Header = "Spell" });
                         pathViewModel.SpellPath = item;
                     }
-                    if (item.ToLower().Contains("story"))
+                    if (item.ToLower().Split('\\').Last().Contains("story"))
                     {
                         TabList.Add(new TabItem() { Content = new StoryViewModel() { storyTextPath = item }, Header = "Story" });
                         pathViewModel.StoryPath = item;
                     }
-                    if (item.ToLower().Contains("table"))
+                    if (item.ToLower().Split('\\').Last().Contains("table"))
                     {
                         TabList.Add(new TabItem() { Content = new TablesViewModel() { tablesTextPath = item }, Header = "Table" });
                         pathViewModel.TablePath = item;

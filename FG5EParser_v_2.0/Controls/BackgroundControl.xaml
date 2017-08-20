@@ -10,12 +10,12 @@
     </UserControl.Resources>
     <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width=".5*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width=".1*" />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0" />
@@ -54,49 +54,56 @@
             <RowDefinition Height=".2*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
+        <Grid.Resources>
+            <CollectionViewSource x:Key="TextEntries" Source="{Binding TextEntryNames}">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="Header" />
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+        </Grid.Resources>
         <!--Background Details-->
         <Label Grid.Column="0" Grid.Row="2" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Name:</Label>
-        <TextBox x:Name="txtBackgroundName" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtBackgroundName" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="4" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Background Details:</Label>
-        <TextBox x:Name="txtBackgroundDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="4" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtBackgroundDescription" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3"  Grid.Row="4" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Skill Proficiencies:</Label>
-        <TextBox x:Name="txtSkillProficiencies" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Skills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtSkillProficiencies" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Skills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Tool Proficiencies:</Label>
-        <TextBox x:Name="txtToolProficiencies" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Tools, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtToolProficiencies" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Tools, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Languages:</Label>
-        <TextBox x:Name="txtLanguages" Grid.Column="1" Grid.Row="12" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Languages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtLanguages" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="12" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Languages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Equipment:</Label>
-        <TextBox x:Name="txtEquipment" Grid.Column="1" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Equipment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtEquipment" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="14" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Equipment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="16" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Name:</Label>
-        <TextBox x:Name="txtFeatureName" Grid.Column="1" Grid.Row="16" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Feature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtFeatureName" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="16" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Feature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Feature Description:</Label>
-        <TextBox x:Name="txtFeatureDescription" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="18" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._FeatureDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtFeatureDescription" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3"  Grid.Row="18" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._FeatureDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="22" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Suggested Characteristics:</Label>
-        <TextBox x:Name="txtSuggestionChar" Grid.Column="1" Grid.RowSpan="3"  Grid.Row="22" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._SuggestedCharachteristics, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtSuggestionChar" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3"  Grid.Row="22" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Text="{Binding Background._SuggestedCharachteristics, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="26" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Personality Traits:</Label>
         <TextBox x:Name="txtPersonalityTraits" Grid.Column="1" Grid.Row="26" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding Background._PersonalityTraits, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="PersonalityTraits">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectPersonality" Grid.Column="2" Grid.Row="26"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="PersonalityTraits">Add Personality Traits</Button>
 
         <Label Grid.Column="0" Grid.Row="28" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Ideals:</Label>
         <TextBox x:Name="txtIdeals" Grid.Column="1" Grid.Row="28" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Ideals, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Ideals">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectIdeals" Grid.Column="2" Grid.Row="28" Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Ideals">Add Ideals</Button>
 
         <Label Grid.Column="0" Grid.Row="30" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Bonds:</Label>
         <TextBox x:Name="txtBonds" Grid.Column="1" Grid.Row="30" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Bonds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Bonds">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectBonds" Grid.Column="2" Grid.Row="30" Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Bonds">Add Bonds</Button>
 
         <Label Grid.Column="0" Grid.Row="32" FontWeight="Bold" FontSize="14"  FontStretch="Expanded" HorizontalAlignment="Right" VerticalAlignment="Stretch">Flaws:</Label>
         <TextBox x:Name="txtFlaws" Grid.Column="1" Grid.Row="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="25" VerticalContentAlignment="Center" Text="{Binding Background._Flaws, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" FontWeight="Bold" FontSize="12"  Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Flaws">&gt;&gt;&gt;</Button>
+        <Button x:Name="btnSelectFlaws" Grid.Column="2" Grid.Row="32" Margin="0,0,0,7" Command="{Binding SelectTableData}" CommandParameter="Flaws">Add Flaws</Button>
 
         <Button 
             x:Name="btnAddtoList" 
@@ -163,24 +170,60 @@
                      Visibility="{Binding _showOutputFlag, Converter={StaticResource boolToVisibilityConverter}}"
                      Margin="0,0,0,8"/>
 
-        <DataGrid 
-            x:Name="dtTableNames" 
-            ItemsSource="{Binding TableNames}"
+        <TextBox
+            x:Name="txtFilter"
+            Grid.Column="4"
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            Visibility="{Binding _showDataTableFlg, Converter={StaticResource boolToVisibilityConverter}}"
+            ToolTip="Filter Records Below" TextChanged="txtFilter_TextChanged"
+            
+            />
+
+        <DataGrid
+            Grid.Column="4"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="28"  
+            Grid.Row="3"
+            x:Name="dtTextTable" 
+            ItemsSource="{Binding Source={StaticResource TextEntries}}"
             AutoGenerateColumns="False"
-            Visibility="{Binding _showDataTableFlg, Converter={StaticResource boolToVisibilityConverter}}" 
-            SelectionMode="Extended" 
+            Visibility="{Binding _showDataTableFlg, Converter={StaticResource boolToVisibilityConverter}}"
             CanUserAddRows="False"
             IsReadOnly="True"
-            Grid.Column="4" 
-            Grid.RowSpan="32"  
-            Grid.Row="2"
+            HeadersVisibility="None"
             >
             <DataGrid.InputBindings>
-                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedTableItem}" CommandParameter="{Binding ElementName=dtTableNames, Path=SelectedItem}"/>
+                <MouseBinding   MouseAction="LeftDoubleClick" Command="{Binding AddSelectedTextItem}" CommandParameter="{Binding ElementName=dtTextTable, Path=SelectedItem}"/>
             </DataGrid.InputBindings>
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <DockPanel>
+                                                    <TextBlock Text="{Binding Path=Name}" />
+                                                </DockPanel>
+                                            </Expander.Header>
+                                            <Expander.Content>
+                                                <ItemsPresenter/>
+                                            </Expander.Content>
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Table Name" Binding="{Binding}"/>
+                <DataGridTextColumn Binding="{Binding Title}"/>
             </DataGrid.Columns>
         </DataGrid>
+        
     </Grid>
 </UserControl>
