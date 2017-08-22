@@ -9,6 +9,7 @@ namespace FG5eParserLib
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
         private RelayCommand featPage;
+        private Action calculateCRandXP;
 
         // Functionality constructor
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
@@ -29,6 +30,11 @@ namespace FG5eParserLib
         public RelayCommand(RelayCommand featPage)
         {
             this.featPage = featPage;
+        }
+
+        public RelayCommand(Action calculateCRandXP)
+        {
+            this.calculateCRandXP = calculateCRandXP;
         }
 
         public event EventHandler CanExecuteChanged

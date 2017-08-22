@@ -1,4 +1,6 @@
 ﻿using FG5EParser.Utilities;
+using FG5eParserModels.DM_Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -505,105 +507,56 @@ namespace FG5EParser.Base_Class
 
     class Encounters
     {
-        #region PROPERTIES
-        public string Category { get; set; }
-        public string CR { get; set; }
-        public string Exp { get; set; }
-        public string isLocked { get { return "1"; } set { isLocked = value; } }
-        public string Name { get; set; }
-        private List<EncounterNPC> _npcList = new List<EncounterNPC>();
-        public List<EncounterNPC> NPCList { get { return _npcList; } set { _npcList = value; } }
-        #endregion
-
-        public List<Encounters> bindValues(List<string> _Basic, string EncounterHeader, string _moduleName)
+        public List<Encounter> bindValuesNew(List<string> _Basic)
         {
-            Encounters _encounter = new Encounters();
-            List<Encounters> _encounterList = new List<Encounters>();
-            // Init the NPC list
-            List<EncounterNPC> _listNPC = new List<EncounterNPC>();
+            List<Encounter> _encounterList = new List<Encounter>();
+            string currentCategory = string.Empty;
 
-            StringBuilder xml = new StringBuilder();
-            XMLFormatting _xmlFormatting = new XMLFormatting();
-
-            // Variable that will be used in order to process fields that are not mandatory
-            string line = _Basic.First();
-
-            while (line != "Its done!")
+            Encounter _encounter = new Encounter();
+            for (int i = 0; i < _Basic.Count; i++)
             {
-                // Clear heading line
-                if (line.Contains("#@;"))
+                // Category
+                if (_Basic[i].Contains("#@;"))
                 {
-                    line = shiftUp(_Basic);
+                    currentCategory = _Basic[i].Replace("#@;","").Trim();
                 }
-
-                // Get the Encounter Name
-                if (line.Contains("##;"))
+                if (_Basic[i].Contains("##;"))
                 {
-                    _encounter = new Encounters();
-                    _encounter.Name = line.Replace("##;", "");
-                    line = shiftUp(_Basic);
-                    _listNPC = new List<EncounterNPC>();
-                }
-
-                while (line != "Its done!" && !line.Contains("##;"))
-                {
-                    // Get the CR and EXP rating of the encounter
-                    if (line.Contains("XP"))
+                    if (!string.IsNullOrEmpty(_encounter._Name))
                     {
-                        line = line.Replace("CR", ";").Replace("XP", ";").Trim();
-                        _encounter.CR = line.Split(';')[1];
-                        _encounter.Exp = line.Split(';')[2];
-                        line = shiftUp(_Basic);
+                        _encounter._Category = currentCategory;
+
+                        _encounterList.Add(_encounter);
+                        _encounter = new Encounter();
                     }
-
-                    // Get the NPC's in this encounter
-                    while (line != "Its done!" && !line.Contains("##;"))
-                    {
-                        EncounterNPC _npc = new EncounterNPC();
-                        if (line.Contains(";"))
-                        {
-                            _npc.Count = line.Split(';')[0].Trim();
-                            _npc.Name = line.Split(';')[1].Trim();
-
-                            // Add to the list
-                            _listNPC.Add(_npc);
-
-                            line = shiftUp(_Basic);
-                        }
-                    }
-
-                    // Add the NPC list
-                    _encounter.NPCList = _listNPC;
+                    _encounter._Name = _Basic[i].Replace("##;", "").Trim();
                 }
-                // Add the category
-                _encounter.Category = EncounterHeader;
-                // Add Encounter to main list
+                if (_Basic[i].Contains("CR") && _Basic[i].Contains("XP"))
+                {
+                    _encounter._CR = Convert.ToInt32(_Basic[i].Split(' ')[1]);
+                    _encounter._XP = Convert.ToInt32(_Basic[i].Split(' ')[3]);
+                }
+                if (!_Basic[i].Contains("#@;") && !_Basic[i].Contains("##;") && (!_Basic[i].Contains("CR") && !_Basic[i].Contains("XP")))
+                {
+                    _encounter._NpcList.Add(new NPCList() {
+                        _Count = Convert.ToInt32(_Basic[i].Split(';')[0]),
+                        _Name = _Basic[i].Split(';')[1],
+                        _UniqueName = _Basic[i].Split(';')[2]
+                        // Map coordinates would come here but they dont for now :P
+                    });
+                }
+            }
+
+            // Catch anything left over
+            if (!string.IsNullOrEmpty(_encounter._Name))
+            {
+                _encounter._Category = currentCategory;
+
                 _encounterList.Add(_encounter);
+                _encounter = new Encounter();
             }
 
             return _encounterList;
         }
-
-        // Makes reading the list variable consistant
-        private string shiftUp(List<string> _Basic)
-        {
-            _Basic.RemoveAt(0);
-            if (_Basic.Count != 0)
-            {
-                return _Basic.First();
-            }
-            else
-            {
-                _Basic.Add("Its done!");
-                return _Basic.First();
-            }
-        }
-    }
-
-    class EncounterNPC
-    {
-        public string Count { get; set; }
-        public string Name { get; set; }
-        public string Token { get; set; }
     }
 }

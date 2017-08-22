@@ -52,6 +52,7 @@
     <Compile Include="View Models\BackgroundViewModel.cs" />
     <Compile Include="View Models\BooleanInverter.cs" />
     <Compile Include="View Models\ClassesViewModel.cs" />
+    <Compile Include="View Models\EncounterViewModel.cs" />
     <Compile Include="View Models\EquipmentViewModel.cs" />
     <Compile Include="View Models\FeatsViewModel.cs" />
     <Compile Include="View Models\MainAlternateViewModel.cs" />

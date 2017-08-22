@@ -1,26 +1,20 @@
-﻿using FG5EParser.Base_Class;
-using FG5EParser.Utilities;
-using FG5EParser.WriterClasses;
-using System;
+﻿using FG5EParser.Utilities;
+using FG5eParserModels.DM_Modules;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FG5EParser.XML_Writer_Helper_Classes
 {
     class EncounterHelper
     { 
-        public string returnEncounterXML(string _encounterTextPath, string _moduleName, bool isListCall = false)
+        public string returnEncounterXML(string _encounterTextPath, List<Encounter> _encounterList, string _moduleName, bool isListCall = false)
         {
             StringBuilder xml = new StringBuilder();
             XMLFormatting xmlFormatting = new XMLFormatting();
 
-            EncounterWriter _encounterWriter = new EncounterWriter();
-            List<Encounters> _encounterList = _encounterWriter.compileEncounterList(_encounterTextPath, _moduleName);
-
             // Gather a collection of all category types
-            List<string> _categoryTypes = _encounterList.Select(x => x.Category).Distinct().ToList();
+            List<string> _categoryTypes = _encounterList.Select(x => x._Category).Distinct().ToList();
 
 
             if (!isListCall)
@@ -36,50 +30,50 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                         xml.Append(string.Format("<category name=\"{0} - {1}\" baseicon=\"2\" decalicon=\"1\">", _category, _moduleName));
                     }
 
-                    foreach (Encounters _encounter in _encounterList)
+                    foreach (Encounter _encounter in _encounterList)
                     {
-                        if (_encounter.Category == _category)
+                        if (_encounter._Category == _category)
                         {
                             // Name Index of the encounter
-                            xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
+                            xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_encounter._Name, "IH")));
 
                             // CR
-                            xml.Append(string.Format("<cr type=\"string\">{0}</cr>", _encounter.CR.Trim()));
+                            xml.Append(string.Format("<cr type=\"string\">{0}</cr>", _encounter._CR));
                             // XP
-                            xml.Append(string.Format("<exp type=\"number\">{0}</exp>", _encounter.Exp.Trim()));
+                            xml.Append(string.Format("<exp type=\"number\">{0}</exp>", _encounter._XP));
 
-                            xml.Append(string.Format("<locked type=\"number\">{0}</locked>", _encounter.isLocked));
+                            xml.Append(string.Format("<locked type=\"number\">{0}</locked>", 1));
                             // Name
-                            xml.Append(string.Format("<name type=\"string\">{0}</name>", _encounter.Name.Trim()));
+                            xml.Append(string.Format("<name type=\"string\">{0}</name>", _encounter._Name));
 
                             // Adding the NPC list
                             xml.Append("<npclist>");
-                            foreach (EncounterNPC _npc in _encounter.NPCList)
+                            foreach (NPCList _npc in _encounter._NpcList)
                             {
                                 // Name Index
-                                xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_npc.Name, "IH")));
+                                xml.Append(string.Format("<{0}>", xmlFormatting.formatXMLCharachters(_npc._Name, "IH")));
 
                                 //Count
-                                xml.Append(string.Format("<count type=\"number\">{0}</count>", _npc.Count));
+                                xml.Append(string.Format("<count type=\"number\">{0}</count>", _npc._Count));
 
                                 xml.Append("<link type=\"windowreference\">");
 
                                 xml.Append("<class>npc</class>");
 
-                                xml.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _npc.Name.ToLower(), _moduleName));
+                                xml.Append(string.Format("<recordname>reference.npcdata.{0}@{1}</recordname>", _npc._Name.ToLower().Replace(" ","").Trim(), _moduleName));
 
                                 xml.Append("</link>");
 
                                 // NPC Name
-                                xml.Append(string.Format("<name type=\"string\">{0}</name>", _npc.Name));
+                                xml.Append(string.Format("<name type=\"string\">{0}</name>", _npc._Name));
                                 // Token
-                                xml.Append(string.Format("<token type=\"token\">{0}</token>", _npc.Token));
+                                xml.Append(string.Format("<token type=\"token\">{0}</token>", _npc._Token));
 
-                                xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_npc.Name, "IH")));
+                                xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_npc._Name, "IH")));
                             }
                             xml.Append("</npclist>");
 
-                            xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
+                            xml.Append(string.Format("</{0}>", xmlFormatting.formatXMLCharachters(_encounter._Name, "IH")));
                         }
                     }
                     // close category
@@ -104,23 +98,23 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                 {
                     xml.Append(string.Format("<typecategory{0}>", xmlFormatting.formatXMLCharachters(_category, "IH")));
 
-                    xml.Append(string.Format("<description type=\"string\">{0}</description>",_category));
+                    xml.Append(string.Format("<description type=\"string\">{0}</description>", _category));
 
                     xml.Append("<index>");
 
-                    foreach (Encounters _encounter in _encounterList)
+                    foreach (Encounter _encounter in _encounterList)
                     {
-                        if (_encounter.Category == _category)
+                        if (_encounter._Category == _category)
                         {
                             // Name Index
-                            xml.Append(string.Format("<enc_{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
+                            xml.Append(string.Format("<enc_{0}>", xmlFormatting.formatXMLCharachters(_encounter._Name, "IH")));
 
                             xml.Append("<link type=\"windowreference\">");
 
                             xml.Append("<class>battle</class>");
 
                             xml.Append(string.Format("<recordname>battle.{0}@{1}</recordname>"
-                                , xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")
+                                , xmlFormatting.formatXMLCharachters(_encounter._Name, "IH")
                                 , _moduleName
                                 ));
 
@@ -134,7 +128,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
 
                             xml.Append("<source type=\"string\" />");
 
-                            xml.Append(string.Format("</enc_{0}>", xmlFormatting.formatXMLCharachters(_encounter.Name, "IH")));
+                            xml.Append(string.Format("</enc_{0}>", xmlFormatting.formatXMLCharachters(_encounter._Name, "IH")));
                         }
                     }
 

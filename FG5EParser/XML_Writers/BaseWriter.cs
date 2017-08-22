@@ -2,6 +2,7 @@
 using FG5EParser.Writer_Classes;
 using FG5EParser.WriterClasses;
 using FG5EParser.XML_Writer_Helper_Classes;
+using FG5eParserModels.DM_Modules;
 using FG5eParserModels.Player_Models;
 using FG5eParserModels.Utility_Modules;
 using System;
@@ -85,6 +86,12 @@ namespace FG5EParser.XMLWriters
                 ImagePinWriter _imagePinWriter = new ImagePinWriter();
                 _imagePinsList = _imagePinWriter.compileImagePinsList(_imagePinsTextPath, _moduleName);
             }
+            List<Encounter> _encounterList = new List<Encounter>();
+            if (!string.IsNullOrEmpty(_encounterTextPath))
+            {
+                EncounterWriter _encounterWriter = new EncounterWriter();
+                _encounterList = _encounterWriter.compileEncounterList(_encounterTextPath, _moduleName);
+            }
             #endregion
 
             #region XML HEADER
@@ -119,7 +126,7 @@ namespace FG5EParser.XMLWriters
             // Encounter Entries
             if (!string.IsNullOrEmpty(_encounterTextPath))
             {
-                xml.Append(_encounterHelper.returnEncounterXML(_encounterTextPath, _moduleName));
+                xml.Append(_encounterHelper.returnEncounterXML(_encounterTextPath, _encounterList, _moduleName));
                 requiresList = true;
             }
 
@@ -195,7 +202,7 @@ namespace FG5EParser.XMLWriters
                 // Encounters List
                 if (!string.IsNullOrEmpty(_encounterTextPath))
                 {
-                    xml.Append(_encounterHelper.returnEncounterXML(_encounterTextPath, _moduleName, true)); // true : Switch to list
+                    xml.Append(_encounterHelper.returnEncounterXML(_encounterTextPath, _encounterList, _moduleName, true)); // true : Switch to list
                 }
 
                 // NPC List

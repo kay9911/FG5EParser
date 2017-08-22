@@ -25,7 +25,7 @@ namespace FG5eParserLib.View_Models
         bool Feats_Flg = false;        
         bool PinMapping_Flg = false;
         bool Race_Flg = false;
-        bool Skill_Flg = false;
+        //bool Skill_Flg = false;
         bool Spell_Flg = false;
         bool Parser_Flg = false;
         bool Table_Flg = false;
@@ -33,6 +33,7 @@ namespace FG5eParserLib.View_Models
         /* STORY RELATED PAGES */
         bool NPC_Flg = false;
         bool Story_Flg = false;
+        bool Encounter_Flg = false;
 
         // Constructor
         public MainAlternateViewModel()
@@ -69,6 +70,11 @@ namespace FG5eParserLib.View_Models
                     {
                         TabList.Add(new TabItem() { Content = new ClassesViewModel() { ClassesTextPath = item }, Header = "Class" });
                         pathViewModel.ClassPath = item;
+                    }
+                    if (item.ToLower().Split('\\').Last().Contains("encounter"))
+                    {
+                        TabList.Add(new TabItem() { Content = new EncounterViewModel() { EncounterTextPath = item }, Header = "Encounter" });
+                        pathViewModel.EncounterPath = item;
                     }
                     if (item.ToLower().Split('\\').Last().Contains("equipment"))
                     {
@@ -159,6 +165,16 @@ namespace FG5eParserLib.View_Models
                             File.Create(PagesPath + @"\Class.txt");
                             TabList.Add(new TabItem() { Content = new ClassesViewModel() { ClassesTextPath = PagesPath + @"\Class.txt" }, Header = "Class" });
                             pathViewModel.ClassPath = PagesPath + @"\Class.txt";
+                        }
+                    }
+
+                    if (obj.ToString().ToLower().Trim() == "encounter")
+                    {
+                        if (!Encounter_Flg)
+                        {
+                            File.Create(PagesPath + @"\Encounter.txt");
+                            TabList.Add(new TabItem() { Content = new EncounterViewModel() { EncounterTextPath = PagesPath + @"\Encounter.txt" }, Header = "Encounter" });
+                            pathViewModel.EncounterPath = PagesPath + @"\Encounter.txt";
                         }
                     }
 
@@ -288,11 +304,12 @@ namespace FG5eParserLib.View_Models
                 if (item.Header.ToString() == "NPC") NPC_Flg = true;
                 if (item.Header.ToString() == "Pin Mapping") PinMapping_Flg = true;
                 if (item.Header.ToString() == "Race") Race_Flg = true;
-                if (item.Header.ToString() == "Skill") Skill_Flg = true;
+                //if (item.Header.ToString() == "Skill") Skill_Flg = true;
                 if (item.Header.ToString() == "Spell") Spell_Flg = true;
                 if (item.Header.ToString() == "Parser") Parser_Flg = true;
                 if (item.Header.ToString() == "Story") Story_Flg = true;
                 if (item.Header.ToString() == "Table") Table_Flg = true;
+                if (item.Header.ToString() == "Encounter") Encounter_Flg = true;
             }
         }
 

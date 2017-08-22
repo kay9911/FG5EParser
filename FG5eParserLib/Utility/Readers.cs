@@ -65,6 +65,7 @@ namespace FG5eParserLib.Utility
                 if (_Dumplines[i].Contains("Challenge") && !string.IsNullOrEmpty(_npcRecord.Name))
                 {
                     _npcRecord.CR = _Dumplines[i].Split(' ')[1].Trim();
+                    _npcRecord.XP = _Dumplines[i].Split('(')[1].Replace(",","").Replace(")","").Replace("XP","").Trim();
                     _npcNames.Add(_npcRecord);
                     _npcRecord = new NPCRecord();
                     i++;
@@ -282,6 +283,7 @@ namespace FG5eParserLib.Utility
     {
         public string Name { get; set; }        
         public string CR { get; set; }
+        public string XP { get; set; }
         public string Class { get; set; }
     }
     public class SpellRecord

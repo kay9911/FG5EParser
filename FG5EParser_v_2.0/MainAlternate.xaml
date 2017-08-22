@@ -19,19 +19,19 @@
         <Menu x:Name="MyMenu" Grid.Row="0">
             <MenuItem Header="Functions">
                 <MenuItem Header="Player Related">
-                <MenuItem Header="Backgrounds" Command="{Binding LoadTabControl}" CommandParameter="background"/>
-                <MenuItem Header="Classes" Command="{Binding LoadTabControl}" CommandParameter="class"/>
-                <MenuItem Header="Equipment" Command="{Binding LoadTabControl}" CommandParameter="equipment"/>
-                <MenuItem Header="Feats" Command="{Binding LoadTabControl}" CommandParameter="feat"/>
-                <MenuItem Header="Races" Command="{Binding LoadTabControl}" CommandParameter="race"/>
-                <MenuItem Header="Spell &amp; Spell Lists" Command="{Binding LoadTabControl}" CommandParameter="spell"/>
+                    <MenuItem Header="Backgrounds" Command="{Binding LoadTabControl}" CommandParameter="background"/>
+                    <MenuItem Header="Classes" Command="{Binding LoadTabControl}" CommandParameter="class"/>
+                    <MenuItem Header="Equipment" Command="{Binding LoadTabControl}" CommandParameter="equipment"/>
+                    <MenuItem Header="Feats" Command="{Binding LoadTabControl}" CommandParameter="feat"/>
+                    <MenuItem Header="Races" Command="{Binding LoadTabControl}" CommandParameter="race"/>
+                    <MenuItem Header="Spell &amp; Spell Lists" Command="{Binding LoadTabControl}" CommandParameter="spell"/>
                 </MenuItem>
                 <MenuItem Header="DM Related">
-                <MenuItem Header="NPCs" Command="{Binding LoadTabControl}" CommandParameter="npc"/>
-                <MenuItem Header="Pin Mapping" Command="{Binding LoadTabControl}" CommandParameter="pinmapping"/>                
-                <!--<MenuItem Header="Skills" Command="{Binding LoadTabControl}" CommandParameter="skill"/>-->                
-                <MenuItem Header="Story" Command="{Binding LoadTabControl}" CommandParameter="story"/>
-                <MenuItem Header="Tables" Command="{Binding LoadTabControl}" CommandParameter="table"/>
+                    <MenuItem Header="Encounters" Command="{Binding LoadTabControl}" CommandParameter="encounter"/>
+                    <MenuItem Header="NPCs" Command="{Binding LoadTabControl}" CommandParameter="npc"/>
+                    <MenuItem Header="Pin Mapping" Command="{Binding LoadTabControl}" CommandParameter="pinmapping"/>                               
+                    <MenuItem Header="Story" Command="{Binding LoadTabControl}" CommandParameter="story"/>
+                    <MenuItem Header="Tables" Command="{Binding LoadTabControl}" CommandParameter="table"/>
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="Parser" Command="{Binding LoadTabControl}" CommandParameter="parser"/>
@@ -78,6 +78,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:TablesViewModel}">
                     <VP:TableControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:EncounterViewModel}">
+                    <VP:EncounterControl/>
                 </DataTemplate>
             </TabControl.Resources>
             <TabControl.ItemTemplate>

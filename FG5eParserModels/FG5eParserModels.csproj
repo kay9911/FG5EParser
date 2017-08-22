@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DM Modules\Encounter.cs" />
     <Compile Include="DM Modules\NPC.cs" />
     <Compile Include="DM Modules\Story.cs" />
     <Compile Include="Player Models\Backgrounds.cs" />

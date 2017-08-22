@@ -122,6 +122,16 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        public string EncounterPath
+        {
+            get { return pathViewModel.SetEncountersPath; }
+            set
+            {
+                pathViewModel.SetEncountersPath = value;
+                OnPropertyChanged("EncounterPath");
+            }
+        }
+
         // Constructors
         public PathViewModel()
         {
@@ -150,7 +160,7 @@ namespace FG5eParserLib.View_Models
                     pathViewModel.SetStoryPath,
                     pathViewModel.SetEquipmentPath,
                     null,
-                    null,
+                    pathViewModel.SetEncountersPath,
                     null,
                     pathViewModel.SetTablesPath,
                     pathViewModel.SetBackgroundPath,
