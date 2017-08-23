@@ -378,6 +378,14 @@ namespace FG5EParser.Utilities
                         , _toFormat.Split(';')[2]
                         );
                         break;
+                    //ENC;*;{Encounter Name};{Encounter Record Name}
+                    case "ENC":
+                        _toFormat = string.Format("<link class=\"battle\" recordname=\"battle.{0}@{1}\">{2}</link>"
+                        , _toFormat.Split(';')[3].ToLower().Trim().Replace(" ", "")
+                        , _toFormat.Split(';')[1]
+                        , _toFormat.Split(';')[2]
+                        );
+                        break;
                     default:
                         break;
                 }
@@ -408,6 +416,12 @@ namespace FG5EParser.Utilities
                     //T;*;Acolyte Traits;Acolyte Traits
                     case "T":
                         _toFormat = string.Format("tables.tab_{0}@{1}"
+                        , formatXMLCharachters(_toFormat.Split(':')[3].ToLower().Trim().Replace(" ", ""), "IH")
+                        , _toFormat.Split(':')[1]
+                        );
+                        break;
+                    case "ENC":
+                        _toFormat = string.Format("battle.{0}@{1}"
                         , formatXMLCharachters(_toFormat.Split(':')[3].ToLower().Trim().Replace(" ", ""), "IH")
                         , _toFormat.Split(':')[1]
                         );

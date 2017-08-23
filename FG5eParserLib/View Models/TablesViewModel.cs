@@ -27,6 +27,7 @@ namespace FG5eParserLib.View_Models
         private string NPCEntries = string.Empty;
         private string TextEntries = string.Empty;
         private string TableEntries = string.Empty;
+        private string EncounterEntries = string.Empty;
         private string CurrentTab = string.Empty;
 
         public ObservableCollection<EquipmentRecord> EquipmentRecordNames { get; set; }
@@ -134,6 +135,10 @@ namespace FG5eParserLib.View_Models
         {
             if (obj != null)
             {
+                if (CurrentTab == "encounter")
+                {
+                    SelectedItem = string.Format("#zal:ENC:*:{0}:{0}", ((TextRecord)obj).Title);
+                }
                 if (CurrentTab == "story")
                 {
                     SelectedItem = string.Format("#zal:ST:*:{0}:{0}", ((TextRecord)obj).Title);
@@ -235,8 +240,31 @@ namespace FG5eParserLib.View_Models
                 _showNPCTableFlg = true;
             }
 
-            if (obj.ToString().ToLower() == "story" || obj.ToString().ToLower() == "reference" || obj.ToString().ToLower() == "table")
+            if (obj.ToString().ToLower() == "encounter" || obj.ToString().ToLower() == "story" || obj.ToString().ToLower() == "reference" || obj.ToString().ToLower() == "table")
             {
+                if (obj.ToString().ToLower() == "encounter")
+                {
+                    if (string.IsNullOrEmpty(EncounterEntries))
+                    {
+                        Microsoft.Win32.OpenFileDialog _ofd = new Microsoft.Win32.OpenFileDialog() { Title = "Please select a folder that contains Encounter Entries" };
+                        if (_ofd.ShowDialog() == true)
+                        {
+                            EncounterEntries = _ofd.FileName;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(EncounterEntries))
+                    {
+                        TextEntryNames.Clear();
+                        foreach (TextRecord item in _reader.getTextRecords(EncounterEntries))
+                        {
+                            TextEntryNames.Add(item);
+                        }
+
+                        CurrentTab = "encounter";
+                    }
+                }
+
                 if (obj.ToString().ToLower() == "story")
                 {
                     if (string.IsNullOrEmpty(TextEntries))

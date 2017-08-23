@@ -106,6 +106,13 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                             xml.Append(string.Format("<recordname>{0}</recordname>", xmlFormatting.returnFormattedString(_table._Rows[i].Split(';')[a + 1], _moduleName)));
                                             xml.Append("</resultlink>");
                                         }
+                                        if (_table._Rows[i].Contains("ENC"))
+                                        {
+                                            xml.Append("<resultlink type=\"windowreference\">");
+                                            xml.Append("<class>battle</class>");
+                                            xml.Append(string.Format("<recordname>{0}</recordname>", xmlFormatting.returnFormattedString(_table._Rows[i].Split(';')[a + 1], _moduleName)));
+                                            xml.Append("</resultlink>");
+                                        }
                                     }
                                     else
                                     {

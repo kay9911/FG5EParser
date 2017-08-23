@@ -76,7 +76,7 @@
         </Grid.Resources>
 
         <!--Assistance Buttons-->
-        <Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="encounter" IsEnabled="False">Encounter Links</Button>
+        <Button Grid.Column="0" Grid.Row="2" Command="{Binding DisplayEntriesList}" CommandParameter="encounter">Encounter Links</Button>
         <Button Grid.Column="0" Grid.Row="4" Command="{Binding DisplayEntriesList}" CommandParameter="equipment" IsEnabled="False">Equipment Links</Button>
         <Button Grid.Column="0" Grid.Row="6" Command="{Binding DisplayEntriesList}" CommandParameter="image" IsEnabled="False">Image Links</Button>
         <Button Grid.Column="0" Grid.Row="8" Command="{Binding DisplayEntriesList}" CommandParameter="magicitem" IsEnabled="False">Magical Item Links</Button>
