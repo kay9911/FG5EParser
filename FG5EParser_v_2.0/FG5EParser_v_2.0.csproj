@@ -111,6 +111,9 @@
     <Compile Include="Controls\FeatsControl.xaml.cs">
       <DependentUpon>FeatsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MagicalItemControl.xaml.cs">
+      <DependentUpon>MagicalItemControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NpcControl.xaml.cs">
       <DependentUpon>NpcControl.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\FeatsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MagicalItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

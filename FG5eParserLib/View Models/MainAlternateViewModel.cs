@@ -31,6 +31,7 @@ namespace FG5eParserLib.View_Models
         bool Table_Flg = false;
 
         /* STORY RELATED PAGES */
+        bool MagicItem_Flg = false;
         bool NPC_Flg = false;
         bool Story_Flg = false;
         bool Encounter_Flg = false;
@@ -85,6 +86,11 @@ namespace FG5eParserLib.View_Models
                     {
                         TabList.Add(new TabItem() { Content = new FeatsViewModel() { FeatsTextPath = item }, Header = "Feat" });
                         pathViewModel.FeatPath = item;
+                    }
+                    if (item.ToLower().Split('\\').Last().Contains("magical item"))
+                    {
+                        TabList.Add(new TabItem() { Content = new MagicalItemViewModel() { MagicItemTextPath = item }, Header = "Magic Item" });
+                        //pathViewModel = item;
                     }
                     if (item.ToLower().Split('\\').Last().Contains("npc"))
                     {
@@ -195,6 +201,16 @@ namespace FG5eParserLib.View_Models
                             File.Create(PagesPath + @"\Feat.txt");
                             TabList.Add(new TabItem() { Content = new FeatsViewModel() { FeatsTextPath = PagesPath + @"\Feat.txt" }, Header = "Feat" });
                             pathViewModel.FeatPath = PagesPath + @"\Feat.txt";
+                        }
+                    }
+
+                    if (obj.ToString().ToLower().Trim() == "magicalitem")
+                    {
+                        if (!MagicItem_Flg)
+                        {
+                            File.Create(PagesPath + @"\Magical Item.txt");
+                            TabList.Add(new TabItem() { Content = new MagicalItemViewModel() { MagicItemTextPath = PagesPath + @"\Magical Item.txt" }, Header = "Magical Item" });
+                            pathViewModel.FeatPath = PagesPath + @"\Magical Item.txt";
                         }
                     }
 

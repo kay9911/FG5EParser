@@ -55,6 +55,7 @@
     <Compile Include="View Models\EncounterViewModel.cs" />
     <Compile Include="View Models\EquipmentViewModel.cs" />
     <Compile Include="View Models\FeatsViewModel.cs" />
+    <Compile Include="View Models\MagicalItemViewModel.cs" />
     <Compile Include="View Models\MainAlternateViewModel.cs" />
     <Compile Include="View Models\NPCViewModel.cs" />
     <Compile Include="View Models\PathViewModel.cs" />

@@ -13,6 +13,7 @@ namespace FG5eParserModels.Player_Models
         private string Cost { get; set; }
         private string Weight { get; set; }
 
+        #region EXPOSED PROPERTIES
         public string _Name
         {
             get { return Name; }
@@ -39,6 +40,7 @@ namespace FG5eParserModels.Player_Models
             set { Weight = value; OnPropertyChanged("_Weight"); }
         }
         #endregion
+        #endregion
 
         #region ARMOR PROPERTIES
         private string AC { get; set; }
@@ -46,6 +48,7 @@ namespace FG5eParserModels.Player_Models
         private string StrRequired { get; set; }
         private bool StealthDisadvantage { get; set; }
 
+        #region EXPOSED PROPERTIES
         public string _AC
         {
             get { return AC; }
@@ -66,6 +69,7 @@ namespace FG5eParserModels.Player_Models
             get { return StealthDisadvantage.ToString(); }
             set { StealthDisadvantage = Convert.ToBoolean(value); OnPropertyChanged("_StealthDisadvantage"); }
         }
+        #endregion
         #endregion
 
         #region WEAPON PROPERTIES

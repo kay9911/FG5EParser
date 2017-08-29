@@ -28,6 +28,7 @@
                 </MenuItem>
                 <MenuItem Header="DM Related">
                     <MenuItem Header="Encounters" Command="{Binding LoadTabControl}" CommandParameter="encounter"/>
+                    <MenuItem Header="Magical Items" Command="{Binding LoadTabControl}" CommandParameter="magicalitem"/>
                     <MenuItem Header="NPCs" Command="{Binding LoadTabControl}" CommandParameter="npc"/>
                     <MenuItem Header="Pin Mapping" Command="{Binding LoadTabControl}" CommandParameter="pinmapping"/>                               
                     <MenuItem Header="Story" Command="{Binding LoadTabControl}" CommandParameter="story"/>
@@ -81,6 +82,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type VMA:EncounterViewModel}">
                     <VP:EncounterControl/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VMA:MagicalItemViewModel}">
+                    <VP:MagicalItemControl/>
                 </DataTemplate>
             </TabControl.Resources>
             <TabControl.ItemTemplate>
