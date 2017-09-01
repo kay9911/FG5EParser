@@ -90,7 +90,7 @@ namespace FG5eParserLib.View_Models
                     if (item.ToLower().Split('\\').Last().Contains("magical item"))
                     {
                         TabList.Add(new TabItem() { Content = new MagicalItemViewModel() { MagicItemTextPath = item }, Header = "Magic Item" });
-                        //pathViewModel = item;
+                        pathViewModel.MagicalItemPath = item;
                     }
                     if (item.ToLower().Split('\\').Last().Contains("npc"))
                     {

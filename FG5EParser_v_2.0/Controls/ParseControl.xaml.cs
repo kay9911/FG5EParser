@@ -188,5 +188,18 @@ namespace FG5EParser_v_2._0.Controls
                 txtImagePinsPath.Text = choofdlog.FileName;
             }
         }
+
+        private void btnSelectMagicalItemPath_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog choofdlog = new Microsoft.Win32.OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == true)
+            {
+                txtMagicalItemPath.Text = choofdlog.FileName;
+            }
+        }
     }
 }

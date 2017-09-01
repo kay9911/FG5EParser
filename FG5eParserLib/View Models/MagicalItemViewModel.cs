@@ -8,7 +8,11 @@ namespace FG5eParserLib.View_Models
 {
     public class MagicalItemViewModel
     {
-
         public string MagicItemTextPath { get; set; }
+
+        public MagicalItemViewModel()
+        {
+
+        }
     }
 }

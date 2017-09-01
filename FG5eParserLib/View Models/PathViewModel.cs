@@ -132,6 +132,16 @@ namespace FG5eParserLib.View_Models
             }
         }
 
+        public string MagicalItemPath
+        {
+            get { return pathViewModel.SetMagicalEquipmentPath; }
+            set
+            {
+                pathViewModel.SetMagicalEquipmentPath = value;
+                OnPropertyChanged("MagicalItemPath");
+            }
+        }
+
         // Constructors
         public PathViewModel()
         {
@@ -159,7 +169,7 @@ namespace FG5eParserLib.View_Models
                     pathViewModel.SetClassesPath,
                     pathViewModel.SetStoryPath,
                     pathViewModel.SetEquipmentPath,
-                    null,
+                    pathViewModel.SetMagicalEquipmentPath,
                     pathViewModel.SetEncountersPath,
                     null,
                     pathViewModel.SetTablesPath,
