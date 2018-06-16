@@ -16,7 +16,6 @@ namespace FG5EParser.WriterClasses
                 List<Classes> Classes = new List<Classes>();
 
                 Classes _class = new Classes();
-
                 #region Populating the basic list
 
                 foreach (var _line in _lines)
@@ -33,8 +32,9 @@ namespace FG5EParser.WriterClasses
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(_line) && !_line.Contains("Its done!"))
+                        if (!string.IsNullOrEmpty(_line))
                         {
+                            //Console.WriteLine(_line);
                             _basic.Add(_line);
                         }
                     }

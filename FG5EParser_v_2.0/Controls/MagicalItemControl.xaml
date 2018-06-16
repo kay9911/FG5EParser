@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Background="White"
              >
     <Grid Margin="10,0,10,10">
         <Grid.ColumnDefinitions>
@@ -62,19 +63,19 @@
 
         <Label Grid.Column="0" Grid.Row="6" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Category:</Label>
         <TextBox x:Name="txtCategory" Grid.Column="1" Grid.Row="6"
-                 Text="{Binding EquipmentObject._Weight,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._Category,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="8" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Type:</Label>
-        <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="8"
-                  SelectionChanged="cmbType_SelectionChanged" SelectedItem="{Binding EquipmentObject._Type}" />
+        <ComboBox x:Name="cmbType" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding Types}"
+                  SelectedItem="{Binding EquipmentObject._Type}" />
 
         <Label Grid.Column="0" Grid.Row="10" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Subtype:</Label>
         <TextBox x:Name="txtSubType" Grid.Column="1" Grid.Row="10" 
                  Text="{Binding EquipmentObject._Subtype,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="12" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Rarity:</Label>
-        <ComboBox x:Name="cmbRarity" Grid.Column="1" Grid.Row="12"
-                  SelectionChanged="cmbType_SelectionChanged" SelectedItem="{Binding EquipmentObject._Rarity}" />
+        <ComboBox x:Name="cmbRarity" Grid.Column="1" Grid.Row="12" ItemsSource="{Binding Rarities}"
+                  SelectedItem="{Binding EquipmentObject._Rarity}" />
 
         <Label Grid.Column="0" Grid.Row="14" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Cost:</Label>
         <TextBox x:Name="txtCost" Grid.Column="1" Grid.Row="14"
@@ -86,7 +87,7 @@
 
         <Label Grid.Column="0" Grid.Row="18" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Properties:</Label>
         <TextBox x:Name="txtProperties" Grid.Column="1" Grid.Row="18"
-                 Text="{Binding EquipmentObject._Weight,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._Properties,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="4" Grid.Row="2" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center">ARMOR SECTION</Label>
         
@@ -96,7 +97,7 @@
 
         <Label Grid.Column="3" Grid.Row="6" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Bonus:</Label>
         <TextBox x:Name="txtACBonus" Grid.Column="4" Grid.Row="6"
-                 Text="{Binding EquipmentObject._AC,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._ACBonus,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="3" Grid.Row="8" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Strength Required:</Label>
         <TextBox x:Name="txtStrength" Grid.Column="4" Grid.Row="8"
@@ -104,10 +105,10 @@
 
         <Label Grid.Column="3" Grid.Row="10" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Dex Bonus:</Label>
         <TextBox x:Name="txtDexBonus" Grid.Column="4" Grid.Row="10"
-                 Text="{Binding EquipmentObject._StrRequired,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._DexBonus,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <CheckBox x:Name="chkStealth" Grid.Column="4" Grid.Row="12" VerticalContentAlignment="Center" 
-                  IsChecked="{Binding EquipmentObject._StealthDisadvantage,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">Stealth Disadvantage?</CheckBox>
+                  IsChecked="{Binding EquipmentObject._IsStealthDisadvantage,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">Stealth Disadvantage?</CheckBox>
 
         <Label Grid.Column="4" Grid.Row="14" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Center">WEAPON SECTION</Label>
         
@@ -117,24 +118,24 @@
 
         <Label Grid.Column="3" Grid.Row="18" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Bonus:</Label>
         <TextBox x:Name="txtDamageBonus" Grid.Column="4" Grid.Row="18"
-                 Text="{Binding EquipmentObject._Damage,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._DamageBonus,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="7" Grid.Row="2" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2" HorizontalContentAlignment="Center">DESCRIPTIONS</Label>
 
         <Label Grid.Column="6" Grid.Row="4" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Description:</Label>
         <TextBox x:Name="txtDescription" Grid.Column="7" Grid.RowSpan="9"  Grid.Row="4" Grid.ColumnSpan="2" FontSize="15" 
                  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" 
-                 Text="{Binding _Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="14" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Unidentified Base Type:</Label>
         <TextBox x:Name="txtBaseType" Grid.Column="7"  Grid.Row="14" Grid.ColumnSpan="2" FontSize="15" 
                  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" 
-                 Text="{Binding _Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._UnidenifiedBaseType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="6" Grid.Row="16" FontWeight="Bold" FontSize="14" HorizontalContentAlignment="Right">Unidentified Description:</Label>
         <TextBox x:Name="txtUnidentifiedDescription" Grid.Column="7" Grid.RowSpan="3"  Grid.Row="16" Grid.ColumnSpan="2" FontSize="15" 
                  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" 
-                 Text="{Binding _Output, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding EquipmentObject._UnidentifiedDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button x:Name="btnAddItem"
                 ToolTip="Reviw and add to save list."
@@ -151,22 +152,6 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-
-        <!--<Button x:Name="btnReset"
-                ToolTip="Reset ALL fields. Will not reset items alreday comitted."
-                Grid.Column="6" 
-                Grid.Row="34"            
-                Height="50"
-                Width="50"
-                Command="{Binding ResetFields}">
-            <Rectangle Width="20"
-                    Height="20"
-                    Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_reset}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>-->
 
         <Button x:Name="btnSave"
                 ToolTip="Save all details to text file."
@@ -193,9 +178,9 @@
             SelectionMode="Extended" 
             CanUserAddRows="False"
             IsReadOnly="True"
-            Grid.Column="0" 
+            Grid.Column="1" 
             Grid.RowSpan="9" 
-            Grid.ColumnSpan="9" 
+            Grid.ColumnSpan="7" 
             Grid.Row="22"
             >
             <DataGrid.Columns>

@@ -31,7 +31,7 @@ namespace FG5eParserModels.Player_Models
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        #endregion
+        #endregion 
 
         #region EXPOSED PROPERTIES
 

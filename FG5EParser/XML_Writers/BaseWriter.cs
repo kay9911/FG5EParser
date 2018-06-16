@@ -92,6 +92,12 @@ namespace FG5EParser.XMLWriters
                 EncounterWriter _encounterWriter = new EncounterWriter();
                 _encounterList = _encounterWriter.compileEncounterList(_encounterTextPath, _moduleName);
             }
+            List<MagicalItems> _magicalItemList = new List<MagicalItems>();
+            if (!string.IsNullOrEmpty(_magicalTextPath))
+            {
+                MagicalItemWriter _magicalEnocunterWriter = new MagicalItemWriter();
+                _magicalItemList = _magicalEnocunterWriter.compileItemListNew(_magicalTextPath, _moduleName);
+            }
             #endregion
 
             #region XML HEADER
@@ -110,7 +116,7 @@ namespace FG5EParser.XMLWriters
                 }
                 if (!string.IsNullOrEmpty(_magicalTextPath))
                 {
-                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath, _moduleName));
+                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath, _magicalItemList, _moduleName));
                 }
                 requiresList = true;
                 xml.Append("</item>");
@@ -190,7 +196,7 @@ namespace FG5EParser.XMLWriters
                 // Magical Item List
                 if (!string.IsNullOrEmpty(_magicalTextPath))
                 {
-                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath, _moduleName, true)); // true : Switch to list
+                    xml.Append(_magicalItemHelper.returnItemXML(_magicalTextPath, _magicalItemList, _moduleName, true)); // true : Switch to list
                 }
 
                 // Story List

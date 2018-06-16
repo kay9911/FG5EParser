@@ -23,27 +23,11 @@ namespace FG5EParser_v_2._0.Controls
         public MagicalItemControl()
         {
             InitializeComponent();
-            cmbType.ItemsSource = getEquipmentTypes();
             // Enabled only when subtype is entered
             //txtSubtypeDescription.IsEnabled = false;
         }
 
         // Functions
-        private List<string> getEquipmentTypes()
-        {
-            List<string> _equipment = new List<string>() {
-            "",
-            "Adventuring Gear",
-            "Armor",
-            "Weapon",
-            "Tools",
-            "Mounts and Other Animals",
-            "Tack, Harness, and Drawn Vehicles",
-            "Waterborne Vehicles"
-            };
-            return _equipment;
-        }
-
         private void DisableAll()
         {
         }

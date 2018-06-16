@@ -65,7 +65,7 @@ namespace FG5EParser.XML_Writer_Helper_Classes
                                 xml.Append("</link>");
 
                                 // NPC Name
-                                xml.Append(string.Format("<name type=\"string\">{0}</name>", _npc._Name));
+                                xml.Append(string.Format("<name type=\"string\">{0}</name>", !string.IsNullOrEmpty(_npc._UniqueName) ? _npc._UniqueName : _npc._Name));
                                 // Token
                                 xml.Append(string.Format("<token type=\"token\">{0}</token>", _npc._Token));
 

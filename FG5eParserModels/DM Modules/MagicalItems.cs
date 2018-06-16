@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FG5eParserModels.DM_Modules
 {
-    class MagicalItems : INotifyPropertyChanged
+    public class MagicalItems : INotifyPropertyChanged
     {
         /*GENERAL DETAILS*/
         private string Name { get; set; }
@@ -28,7 +28,7 @@ namespace FG5eParserModels.DM_Modules
 
         /*WEAPON DETAILS*/
         private string Damage { get; set; }
-        // public string BonusDamage { get; set; }
+        private string DamageBonus { get; set; }
 
         /*MAGIC ITEM PROPERTIES*/
         private string Properties { get; set; }
@@ -52,6 +52,7 @@ namespace FG5eParserModels.DM_Modules
         public bool _IsStealthDisadvantage { get { return Convert.ToBoolean(IsStealthDisadvantage); } set { IsStealthDisadvantage = value.ToString(); OnPropertyChanged("_IsStealthDisadvantage"); } }
 
         public string _Damage { get { return Damage; } set { Damage = value; OnPropertyChanged("_Damage"); } }
+        public string _DamageBonus { get { return DamageBonus; } set { DamageBonus = value; OnPropertyChanged("_DamageBonus"); } }
 
         public string _Properties { get { return Properties; } set { Properties = value; OnPropertyChanged("_Properties"); } }
         public string _UnidenifiedBaseType { get { return UnidenifiedBaseType; } set { UnidenifiedBaseType = value; OnPropertyChanged("_UnidenifiedBaseType"); } }
